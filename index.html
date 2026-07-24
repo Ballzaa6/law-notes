@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>สรุปตัวบทสำคัญ — เนติบัณฑิต</title>
+<meta name="description" content="รวบรวมมาตราสำคัญของประมวลกฎหมาย ขาอาญาและขาแพ่ง สำหรับเตรียมสอบเนติบัณฑิต อ่านได้แบบออฟไลน์">
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#3D5A3E">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="สรุปตัวบท กม.">
+<meta name="mobile-web-app-capable" content="yes">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+Thai:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:          #E8E4D9;
+  --bg2:         #DDD9CE;
+  --bg3:         #F2EFE7;
+  --border:      #3D5A3E;
+  --border-light:#C8C3B5;
+  --text:        #1E3120;
+  --text-muted:  #5A6E50;
+  --text-dim:    #8A9880;
+  --accent1:     #3D5A3E;
+  --accent2:     #5C7A3E;
+  --gold:        #B8860B;
+  --gold-light:  #D4A017;
+  --radius:      14px;
+  --radius-sm:   10px;
+  --shadow-card: 0 3px 0 0 #3D5A3E;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Sarabun', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  font-size: 17px;
+  min-height: 100vh;
+}
+
+.hero {
+  background: var(--bg);
+  border-bottom: 2px dashed var(--border-light);
+  padding: 64px 24px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(61,90,62,0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+.hero-emblem { font-size: 56px; margin-bottom: 16px; display: block; filter: drop-shadow(0 2px 6px rgba(61,90,62,0.25)); }
+.hero-title {
+  font-family: 'Noto Serif Thai', serif;
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 700; color: var(--accent1);
+  margin-bottom: 10px; line-height: 1.3; letter-spacing: -0.5px;
+}
+.hero-sub {
+  color: var(--text-muted);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px; letter-spacing: 0.3px;
+  max-width: 480px; margin: 0 auto;
+}
+
+.main-container { max-width: 760px; margin: 0 auto; padding: 40px 24px 80px; }
+
+.code-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.code-card {
+  display: block;
+  background: var(--bg3);
+  border: 2.5px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 4px 4px 0 var(--border);
+  padding: 28px 26px;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.18s;
+}
+.code-card:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--border); }
+.code-card:active { transform: translate(0, 0); box-shadow: 2px 2px 0 var(--border); }
+
+.code-card-icon { font-size: 38px; margin-bottom: 14px; display: block; }
+.code-card-title {
+  font-family: 'Noto Serif Thai', serif;
+  font-size: 21px; font-weight: 700; color: var(--accent1);
+  margin-bottom: 6px;
+}
+.code-card-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 18px; }
+
+.code-card-stats { display: flex; gap: 10px; flex-wrap: wrap; }
+.code-card-stat {
+  background: var(--bg2); border: 1.5px solid var(--border-light);
+  border-radius: 50px; padding: 4px 12px;
+  font-size: 12px; font-family: 'IBM Plex Mono', monospace;
+  color: var(--text-muted);
+}
+.code-card-stat b { color: var(--accent1); }
+
+.offline-note {
+  margin-top: 36px; text-align: center;
+  font-size: 13px; color: var(--text-dim);
+  font-family: 'IBM Plex Mono', monospace;
+}
+.offline-note.ready { color: var(--accent2); }
+
+@media (max-width: 600px) {
+  .hero { padding: 44px 20px 32px; }
+  .main-container { padding: 28px 18px 60px; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="hero-emblem">⚖️</span>
+  <h1 class="hero-title">สรุปตัวบทสำคัญ</h1>
+  <p class="hero-sub">รวบรวมมาตราสำคัญของประมวลกฎหมาย สำหรับเตรียมสอบเนติบัณฑิต — เลือกภาคที่ต้องการอ่าน</p>
+</div>
+
+<div class="main-container">
+  <div class="code-grid">
+    <a class="code-card" href="สรุปตัวบท_ขาอาญา_dashboard.html">
+      <span class="code-card-icon">🔨</span>
+      <div class="code-card-title">ขาอาญา</div>
+      <div class="code-card-sub">ประมวลกฎหมายอาญา และวิชากฎหมายอื่นที่เกี่ยวข้อง</div>
+      <div class="code-card-stats">
+        <span class="code-card-stat"><b>8</b> ข้อสอบ</span>
+        <span class="code-card-stat"><b>403</b> มาตรา</span>
+        <span class="code-card-stat"><b>21</b> หมวดวิชา</span>
+      </div>
+    </a>
+
+    <a class="code-card" href="สรุปตัวบท_ขาแพ่ง_dashboard.html">
+      <span class="code-card-icon">📜</span>
+      <div class="code-card-title">ขาแพ่ง</div>
+      <div class="code-card-sub">ประมวลกฎหมายแพ่งและพาณิชย์ และวิชากฎหมายอื่นที่เกี่ยวข้อง</div>
+      <div class="code-card-stats">
+        <span class="code-card-stat"><b>10</b> ข้อสอบ</span>
+        <span class="code-card-stat"><b>543</b> มาตรา</span>
+        <span class="code-card-stat"><b>29</b> หมวดวิชา</span>
+      </div>
+    </a>
+  </div>
+
+  <p class="offline-note" id="offlineNote">กำลังเตรียมข้อมูลสำหรับอ่านออฟไลน์…</p>
+</div>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(() => {
+        const note = document.getElementById('offlineNote');
+        note.textContent = 'พร้อมอ่านแบบออฟไลน์แล้ว';
+        note.classList.add('ready');
+      })
+      .catch(err => console.error('SW registration failed:', err));
+  });
+} else {
+  document.getElementById('offlineNote').textContent = '';
+}
+</script>
+
+</body>
+</html>
