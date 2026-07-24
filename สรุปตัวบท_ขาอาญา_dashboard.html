@@ -61,6 +61,7 @@ body {
   background: var(--bg);
   border-bottom: 2px dashed var(--border-light);
   padding: 56px 48px 44px;
+  padding-top: calc(56px + env(safe-area-inset-top));
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -197,7 +198,7 @@ body {
 .search-no-results { text-align: center; padding: 60px 20px; color: var(--text-muted); font-size: 17px; font-family: 'IBM Plex Mono', monospace; }
 
 .back-top {
-  position: fixed; bottom: 28px; right: 28px;
+  position: fixed; bottom: calc(28px + env(safe-area-inset-bottom)); right: 28px;
   width: 44px; height: 44px;
   background: var(--accent1); color: #E8F0E0;
   border: 2px solid #2A3E2B; border-radius: 50%;
@@ -209,7 +210,7 @@ body {
 .back-top.visible { display: flex; }
 
 .home-btn {
-  position: fixed; bottom: 28px; left: 28px;
+  position: fixed; bottom: calc(28px + env(safe-area-inset-bottom)); left: 28px;
   width: 44px; height: 44px;
   background: var(--gold); color: #fff;
   border: 2px solid #8B6308; border-radius: 50%;
@@ -224,12 +225,28 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* iPad / tablet */
+@media (max-width: 1024px) {
+  .hero { padding: 44px 32px 36px; padding-top: calc(44px + env(safe-area-inset-top)); }
+  .main-container { padding: 32px 20px 72px; }
+}
+
+/* iPhone / phone */
 @media (max-width: 768px) {
-  .hero { padding: 36px 20px 30px; }
+  .hero { padding: 36px 20px 30px; padding-top: calc(36px + env(safe-area-inset-top)); }
   .nav-bar { padding: 10px 16px; }
   .phak-body { padding: 14px; }
   .lugsana-body { padding: 14px; }
   .phak-header { padding: 18px 20px; }
+}
+
+/* small phones (iPhone SE / mini) */
+@media (max-width: 380px) {
+  .hero { padding: 28px 16px 24px; padding-top: calc(28px + env(safe-area-inset-top)); }
+  .hero-emblem { font-size: 40px; margin-bottom: 12px; }
+  .hero-stat { padding: 10px 18px; }
+  .hero-stat-num { font-size: 24px; }
+  .main-container { padding: 24px 14px 64px; }
 }
 </style>
 </head>
