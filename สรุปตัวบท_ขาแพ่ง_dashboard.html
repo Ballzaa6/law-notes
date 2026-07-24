@@ -208,6 +208,17 @@ body {
 .back-top:hover { background: var(--accent2); transform: translate(-1px, -1px); box-shadow: 4px 4px 0 #2A3E2B; }
 .back-top.visible { display: flex; }
 
+.home-btn {
+  position: fixed; bottom: 28px; left: 28px;
+  width: 44px; height: 44px;
+  background: var(--gold); color: #fff;
+  border: 2px solid #8B6308; border-radius: 50%;
+  text-decoration: none; font-size: 18px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 3px 3px 0 #8B6308; transition: all 0.2s; z-index: 999;
+}
+.home-btn:hover { background: var(--gold-light); transform: translate(-1px, -1px); box-shadow: 4px 4px 0 #8B6308; }
+
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -5311,6 +5322,7 @@ body {
 </section>
 </div>
 
+<a class="home-btn" href="index.html" title="กลับหน้าหลัก" aria-label="กลับหน้าหลัก">🏠</a>
 <button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <script>
