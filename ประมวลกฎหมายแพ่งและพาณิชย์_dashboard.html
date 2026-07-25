@@ -362,7 +362,7 @@ body {
   background: var(--bg);
 }
 .lugsana-section.open .lugsana-body { display: block; }
-.lugsana-section.open .toggle-icon { transform: rotate(180deg); }
+.lugsana-section.open > .lugsana-header .toggle-icon { transform: rotate(180deg); }
 
 /* ============= MUAT ============= */
 .muat-section {
@@ -375,8 +375,13 @@ body {
 .muat-header {
   background: var(--bg2);
   padding: 12px 18px;
-  border-bottom: 1.5px dashed var(--border-light);
+  border-bottom: 1.5px dashed transparent;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s;
 }
+.muat-header:hover { background: rgba(61,90,62,0.06); }
+.muat-section.open > .muat-header { border-bottom: 1.5px dashed var(--border-light); }
 .muat-title-row {
   display: flex;
   align-items: center;
@@ -387,12 +392,20 @@ body {
   font-weight: 700;
   color: var(--text);
 }
+.muat-badge-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 .muat-subtitle {
   font-size: 14px;
   color: var(--text-muted);
   font-weight: 500;
 }
-.muat-body { padding: 18px 16px 2px; }
+.muat-section .toggle-icon { font-size: 12px; }
+.muat-body { display: none; padding: 18px 16px 2px; }
+.muat-section.open .muat-body { display: block; }
+.muat-section.open > .muat-header .toggle-icon { transform: rotate(180deg); }
 
 /* ============= SUANTI ============= */
 .suanti-section {
@@ -871,11 +884,14 @@ body {
         <div class="lugsana-body">
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-1">
+            <div class="muat-header" onclick="toggleSection('muat-1')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 1</span>
-                <span class="muat-subtitle">บุคคลธรรมดา</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">บุคคลธรรมดา</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -1502,11 +1518,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-2">
+            <div class="muat-header" onclick="toggleSection('muat-2')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 2</span>
-                <span class="muat-subtitle">นิติบุคคล</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">นิติบุคคล</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -2584,11 +2603,14 @@ body {
         <div class="lugsana-body">
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-3">
+            <div class="muat-header" onclick="toggleSection('muat-3')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 1</span>
-                <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -2652,11 +2674,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-4">
+            <div class="muat-header" onclick="toggleSection('muat-4')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 2</span>
-                <span class="muat-subtitle">การแสดงเจตนา</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">การแสดงเจตนา</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -2872,11 +2897,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-5">
+            <div class="muat-header" onclick="toggleSection('muat-5')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 3</span>
-                <span class="muat-subtitle">โมฆะกรรมและโมฆียะกรรม</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">โมฆะกรรมและโมฆียะกรรม</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -3012,11 +3040,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-6">
+            <div class="muat-header" onclick="toggleSection('muat-6')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 4</span>
-                <span class="muat-subtitle">เงื่อนไขและเงื่อนเวลา</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">เงื่อนไขและเงื่อนเวลา</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -3295,11 +3326,14 @@ body {
         <div class="lugsana-body">
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-7">
+            <div class="muat-header" onclick="toggleSection('muat-7')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 1</span>
-                <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -3547,11 +3581,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-8">
+            <div class="muat-header" onclick="toggleSection('muat-8')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 2</span>
-                <span class="muat-subtitle">กำหนดอายุความ</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">กำหนดอายุความ</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -3682,11 +3719,14 @@ body {
         <div class="lugsana-body">
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-9">
+            <div class="muat-header" onclick="toggleSection('muat-9')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 1</span>
-                <span class="muat-subtitle">วัตถุแห่งหนี้</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">วัตถุแห่งหนี้</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -3799,11 +3839,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-10">
+            <div class="muat-header" onclick="toggleSection('muat-10')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 2</span>
-                <span class="muat-subtitle">ผลแห่งหนี้</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ผลแห่งหนี้</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -4883,11 +4926,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-11">
+            <div class="muat-header" onclick="toggleSection('muat-11')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 3</span>
-                <span class="muat-subtitle">ลูกหนี้และเจ้าหนี้หลายคน</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ลูกหนี้และเจ้าหนี้หลายคน</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -5044,11 +5090,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-12">
+            <div class="muat-header" onclick="toggleSection('muat-12')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 4</span>
-                <span class="muat-subtitle">โอนสิทธิเรียกร้อง</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">โอนสิทธิเรียกร้อง</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -5182,11 +5231,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-13">
+            <div class="muat-header" onclick="toggleSection('muat-13')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 5</span>
-                <span class="muat-subtitle">ความระงับหนี้</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ความระงับหนี้</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -5709,11 +5761,14 @@ body {
         <div class="lugsana-body">
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-14">
+            <div class="muat-header" onclick="toggleSection('muat-14')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 1</span>
-                <span class="muat-subtitle">ก่อให้เกิดสัญญา</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ก่อให้เกิดสัญญา</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -5898,11 +5953,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-15">
+            <div class="muat-header" onclick="toggleSection('muat-15')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 2</span>
-                <span class="muat-subtitle">ผลแห่งสัญญา</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ผลแห่งสัญญา</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -6003,11 +6061,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-16">
+            <div class="muat-header" onclick="toggleSection('muat-16')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 3</span>
-                <span class="muat-subtitle">มัดจำและกำหนดเบี้ยปรับ</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">มัดจำและกำหนดเบี้ยปรับ</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -6122,11 +6183,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-17">
+            <div class="muat-header" onclick="toggleSection('muat-17')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 4</span>
-                <span class="muat-subtitle">เลิกสัญญา</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">เลิกสัญญา</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -6580,11 +6644,14 @@ body {
         <div class="lugsana-body">
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-18">
+            <div class="muat-header" onclick="toggleSection('muat-18')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 1</span>
-                <span class="muat-subtitle">ความรับผิดเพื่อละเมิด</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ความรับผิดเพื่อละเมิด</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -6798,11 +6865,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-19">
+            <div class="muat-header" onclick="toggleSection('muat-19')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 2</span>
-                <span class="muat-subtitle">ค่าสินไหมทดแทนเพื่อละเมิด</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ค่าสินไหมทดแทนเพื่อละเมิด</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -6938,11 +7008,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-20">
+            <div class="muat-header" onclick="toggleSection('muat-20')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 3</span>
-                <span class="muat-subtitle">นิรโทษกรรม</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">นิรโทษกรรม</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -7035,11 +7108,14 @@ body {
         <div class="lugsana-body">
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-21">
+            <div class="muat-header" onclick="toggleSection('muat-21')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 1</span>
-                <span class="muat-subtitle">สภาพและหลักสำคัญของสัญญาซื้อขาย</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">สภาพและหลักสำคัญของสัญญาซื้อขาย</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -7152,11 +7228,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-22">
+            <div class="muat-header" onclick="toggleSection('muat-22')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 2</span>
-                <span class="muat-subtitle">หน้าที่และความรับผิดของผู้ขาย</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">หน้าที่และความรับผิดของผู้ขาย</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -7477,11 +7556,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-23">
+            <div class="muat-header" onclick="toggleSection('muat-23')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 3</span>
-                <span class="muat-subtitle">หน้าที่ของผู้ซื้อ</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">หน้าที่ของผู้ซื้อ</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -7546,11 +7628,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-24">
+            <div class="muat-header" onclick="toggleSection('muat-24')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 4</span>
-                <span class="muat-subtitle">การซื้อขายเฉพาะบางอย่าง</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">การซื้อขายเฉพาะบางอย่าง</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -8161,11 +8246,14 @@ body {
         <div class="lugsana-body">
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-25">
+            <div class="muat-header" onclick="toggleSection('muat-25')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 1</span>
-                <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -8279,11 +8367,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-26">
+            <div class="muat-header" onclick="toggleSection('muat-26')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 2</span>
-                <span class="muat-subtitle">หน้าที่และความรับผิดชอบของผู้ให้เช่า</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">หน้าที่และความรับผิดชอบของผู้ให้เช่า</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -8358,11 +8449,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-27">
+            <div class="muat-header" onclick="toggleSection('muat-27')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 3</span>
-                <span class="muat-subtitle">หน้าที่และความรับผิดของผู้เช่า</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">หน้าที่และความรับผิดของผู้เช่า</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -8510,11 +8604,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-28">
+            <div class="muat-header" onclick="toggleSection('muat-28')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 4</span>
-                <span class="muat-subtitle">ความระงับแห่งสัญญาเช่า</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ความระงับแห่งสัญญาเช่า</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -9113,11 +9210,14 @@ body {
                 </div>
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-29">
+            <div class="muat-header" onclick="toggleSection('muat-29')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 1</span>
-                <span class="muat-subtitle">รับขนของ</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">รับขนของ</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -9411,11 +9511,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-30">
+            <div class="muat-header" onclick="toggleSection('muat-30')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 2</span>
-                <span class="muat-subtitle">รับขนคนโดยสาร</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">รับขนคนโดยสาร</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -9509,11 +9612,14 @@ body {
         <div class="lugsana-body">
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-31">
+            <div class="muat-header" onclick="toggleSection('muat-31')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 1</span>
-                <span class="muat-subtitle">ยืมใช้คงรูป</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ยืมใช้คงรูป</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -9633,11 +9739,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-32">
+            <div class="muat-header" onclick="toggleSection('muat-32')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 2</span>
-                <span class="muat-subtitle">ยืมใช้สิ้นเปลือง</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ยืมใช้สิ้นเปลือง</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -9745,11 +9854,14 @@ body {
         <div class="lugsana-body">
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-33">
+            <div class="muat-header" onclick="toggleSection('muat-33')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 1</span>
-                <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -9926,11 +10038,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-34">
+            <div class="muat-header" onclick="toggleSection('muat-34')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 2</span>
-                <span class="muat-subtitle">วิธีเฉพาะการฝากเงิน</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">วิธีเฉพาะการฝากเงิน</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -9962,11 +10077,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-35">
+            <div class="muat-header" onclick="toggleSection('muat-35')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 3</span>
-                <span class="muat-subtitle">วิธีเฉพาะสำหรับเจ้าสำนักโรงแรม</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">วิธีเฉพาะสำหรับเจ้าสำนักโรงแรม</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -10064,11 +10182,14 @@ body {
         <div class="lugsana-body">
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-36">
+            <div class="muat-header" onclick="toggleSection('muat-36')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 1</span>
-                <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -10171,11 +10292,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-37">
+            <div class="muat-header" onclick="toggleSection('muat-37')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 2</span>
-                <span class="muat-subtitle">ผลก่อนชำระหนี้</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ผลก่อนชำระหนี้</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -10266,11 +10390,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-38">
+            <div class="muat-header" onclick="toggleSection('muat-38')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 3</span>
-                <span class="muat-subtitle">ผลภายหลังชำระหนี้</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ผลภายหลังชำระหนี้</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -10336,11 +10463,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-39">
+            <div class="muat-header" onclick="toggleSection('muat-39')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 4</span>
-                <span class="muat-subtitle">ความระงับสิ้นไปแห่งการค้ำประกัน</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ความระงับสิ้นไปแห่งการค้ำประกัน</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -10414,11 +10544,14 @@ body {
         <div class="lugsana-body">
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-40">
+            <div class="muat-header" onclick="toggleSection('muat-40')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 1</span>
-                <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -10590,11 +10723,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-41">
+            <div class="muat-header" onclick="toggleSection('muat-41')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 2</span>
-                <span class="muat-subtitle">สิทธิจำนองครอบเพียงใด</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">สิทธิจำนองครอบเพียงใด</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -10685,11 +10821,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-42">
+            <div class="muat-header" onclick="toggleSection('muat-42')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 3</span>
-                <span class="muat-subtitle">สิทธิและหน้าที่ของผู้รับจำนองและผู้จำนอง</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">สิทธิและหน้าที่ของผู้รับจำนองและผู้จำนอง</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -10777,11 +10916,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-43">
+            <div class="muat-header" onclick="toggleSection('muat-43')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 4</span>
-                <span class="muat-subtitle">การบังคับจำนอง</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">การบังคับจำนอง</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -10896,11 +11038,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-44">
+            <div class="muat-header" onclick="toggleSection('muat-44')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 5</span>
-                <span class="muat-subtitle">สิทธิและหน้าที่ของผู้รับโอนทรัพย์สินซึ่งจำนอง</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">สิทธิและหน้าที่ของผู้รับโอนทรัพย์สินซึ่งจำนอง</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -11009,11 +11154,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-45">
+            <div class="muat-header" onclick="toggleSection('muat-45')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 6</span>
-                <span class="muat-subtitle">ความระงับสิ้นไปแห่งสัญญาจำนอง</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ความระงับสิ้นไปแห่งสัญญาจำนอง</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -11078,11 +11226,14 @@ body {
         <div class="lugsana-body">
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-46">
+            <div class="muat-header" onclick="toggleSection('muat-46')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 1</span>
-                <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -11219,11 +11370,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-47">
+            <div class="muat-header" onclick="toggleSection('muat-47')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 2</span>
-                <span class="muat-subtitle">สิทธิและหน้าที่ของผู้จำนำและผู้รับจำนำ</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">สิทธิและหน้าที่ของผู้จำนำและผู้รับจำนำ</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -11301,11 +11455,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-48">
+            <div class="muat-header" onclick="toggleSection('muat-48')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 3</span>
-                <span class="muat-subtitle">การบังคับจำนำ</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">การบังคับจำนำ</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -11372,11 +11529,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-49">
+            <div class="muat-header" onclick="toggleSection('muat-49')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 4</span>
-                <span class="muat-subtitle">ความระงับสิ้นไปแห่งการจำนำ</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ความระงับสิ้นไปแห่งการจำนำ</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -11415,11 +11575,14 @@ body {
         <div class="lugsana-body">
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-50">
+            <div class="muat-header" onclick="toggleSection('muat-50')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 1</span>
-                <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -11483,11 +11646,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-51">
+            <div class="muat-header" onclick="toggleSection('muat-51')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 2</span>
-                <span class="muat-subtitle">ใบรับของคลังสินค้าและประทวนสินค้า</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ใบรับของคลังสินค้าและประทวนสินค้า</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -11773,11 +11939,14 @@ body {
         <div class="lugsana-body">
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-52">
+            <div class="muat-header" onclick="toggleSection('muat-52')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 1</span>
-                <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -11905,11 +12074,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-53">
+            <div class="muat-header" onclick="toggleSection('muat-53')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 2</span>
-                <span class="muat-subtitle">หน้าที่และความรับผิดของตัวแทนต่อตัวการ</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">หน้าที่และความรับผิดของตัวแทนต่อตัวการ</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -12008,11 +12180,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-54">
+            <div class="muat-header" onclick="toggleSection('muat-54')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 3</span>
-                <span class="muat-subtitle">หน้าที่และความรับผิดของตัวการต่อตัวแทน</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">หน้าที่และความรับผิดของตัวการต่อตัวแทน</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -12078,11 +12253,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-55">
+            <div class="muat-header" onclick="toggleSection('muat-55')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 4</span>
-                <span class="muat-subtitle">ความรับผิดของตัวการและตัวแทนต่อบุคคลภายนอก</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ความรับผิดของตัวการและตัวแทนต่อบุคคลภายนอก</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -12158,11 +12336,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-56">
+            <div class="muat-header" onclick="toggleSection('muat-56')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 5</span>
-                <span class="muat-subtitle">ความระงับสิ้นไปแห่งสัญญาตัวแทน</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ความระงับสิ้นไปแห่งสัญญาตัวแทน</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -12250,11 +12431,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-57">
+            <div class="muat-header" onclick="toggleSection('muat-57')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 6</span>
-                <span class="muat-subtitle">ตัวแทนค้าต่าง</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ตัวแทนค้าต่าง</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -12664,11 +12848,14 @@ body {
         <div class="lugsana-body">
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-58">
+            <div class="muat-header" onclick="toggleSection('muat-58')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 1</span>
-                <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -12783,11 +12970,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-59">
+            <div class="muat-header" onclick="toggleSection('muat-59')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 2</span>
-                <span class="muat-subtitle">ประกันวินาศภัย</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ประกันวินาศภัย</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -13055,11 +13245,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-60">
+            <div class="muat-header" onclick="toggleSection('muat-60')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 3</span>
-                <span class="muat-subtitle">ประกันชีวิต</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ประกันชีวิต</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -13190,11 +13383,14 @@ body {
         <div class="lugsana-body">
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-61">
+            <div class="muat-header" onclick="toggleSection('muat-61')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 1</span>
-                <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -13317,11 +13513,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-62">
+            <div class="muat-header" onclick="toggleSection('muat-62')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 2</span>
-                <span class="muat-subtitle">ตั๋วแลกเงิน</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ตั๋วแลกเงิน</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -14300,11 +14499,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-63">
+            <div class="muat-header" onclick="toggleSection('muat-63')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 3</span>
-                <span class="muat-subtitle">ตั๋วสัญญาใช้เงิน</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ตั๋วสัญญาใช้เงิน</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -14381,11 +14583,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-64">
+            <div class="muat-header" onclick="toggleSection('muat-64')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 4</span>
-                <span class="muat-subtitle">เช็ค</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">เช็ค</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -14572,11 +14777,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-65">
+            <div class="muat-header" onclick="toggleSection('muat-65')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 5</span>
-                <span class="muat-subtitle">อายุความ</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">อายุความ</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -14640,11 +14848,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-66">
+            <div class="muat-header" onclick="toggleSection('muat-66')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 6</span>
-                <span class="muat-subtitle">ตั๋วเงินปลอม ตั๋วเงินถูกลัก และตั๋วเงินหาย</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ตั๋วเงินปลอม ตั๋วเงินถูกลัก และตั๋วเงินหาย</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -14740,11 +14951,14 @@ body {
         <div class="lugsana-body">
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-67">
+            <div class="muat-header" onclick="toggleSection('muat-67')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 1</span>
-                <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -14924,11 +15138,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-68">
+            <div class="muat-header" onclick="toggleSection('muat-68')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 2</span>
-                <span class="muat-subtitle">ห้างหุ้นส่วนสามัญ</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ห้างหุ้นส่วนสามัญ</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -15608,11 +15825,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-69">
+            <div class="muat-header" onclick="toggleSection('muat-69')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 3</span>
-                <span class="muat-subtitle">ห้างหุ้นส่วนจำกัด</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ห้างหุ้นส่วนจำกัด</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -15877,11 +16097,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-70">
+            <div class="muat-header" onclick="toggleSection('muat-70')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 4</span>
-                <span class="muat-subtitle">บริษัทจำกัด</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">บริษัทจำกัด</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -17946,11 +18169,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-71">
+            <div class="muat-header" onclick="toggleSection('muat-71')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 5</span>
-                <span class="muat-subtitle">การชำระบัญชีห้างหุ้นส่วนจดทะเบียน</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">การชำระบัญชีห้างหุ้นส่วนจดทะเบียน</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -18271,11 +18497,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-72">
+            <div class="muat-header" onclick="toggleSection('muat-72')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 6</span>
-                <span class="muat-subtitle">การถอนทะเบียนห้างหุ้นส่วนจดทะเบียน</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">การถอนทะเบียนห้างหุ้นส่วนจดทะเบียน</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -18525,11 +18754,14 @@ body {
         <div class="lugsana-body">
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-73">
+            <div class="muat-header" onclick="toggleSection('muat-73')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 1</span>
-                <span class="muat-subtitle">การได้มาซึ่งกรรมสิทธิ์</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">การได้มาซึ่งกรรมสิทธิ์</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -18850,11 +19082,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-74">
+            <div class="muat-header" onclick="toggleSection('muat-74')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 2</span>
-                <span class="muat-subtitle">แดนแห่งกรรมสิทธิ์ และการใช้กรรมสิทธิ์</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">แดนแห่งกรรมสิทธิ์ และการใช้กรรมสิทธิ์</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -19108,11 +19343,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-75">
+            <div class="muat-header" onclick="toggleSection('muat-75')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 3</span>
-                <span class="muat-subtitle">กรรมสิทธิ์รวม</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">กรรมสิทธิ์รวม</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -20167,11 +20405,14 @@ body {
         <div class="lugsana-body">
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-76">
+            <div class="muat-header" onclick="toggleSection('muat-76')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 1</span>
-                <span class="muat-subtitle">การหมั้น</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">การหมั้น</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -20362,11 +20603,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-77">
+            <div class="muat-header" onclick="toggleSection('muat-77')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 2</span>
-                <span class="muat-subtitle">เงื่อนไขแห่งการสมรส</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">เงื่อนไขแห่งการสมรส</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -20528,11 +20772,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-78">
+            <div class="muat-header" onclick="toggleSection('muat-78')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 3</span>
-                <span class="muat-subtitle">ความสัมพันธ์ระหว่างคู่สมรส</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ความสัมพันธ์ระหว่างคู่สมรส</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -20599,11 +20846,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-79">
+            <div class="muat-header" onclick="toggleSection('muat-79')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 4</span>
-                <span class="muat-subtitle">ทรัพย์สินระหว่างคู่สมรส</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ทรัพย์สินระหว่างคู่สมรส</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -21000,11 +21250,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-80">
+            <div class="muat-header" onclick="toggleSection('muat-80')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 5</span>
-                <span class="muat-subtitle">ความเป็นโมฆะของการสมรส</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ความเป็นโมฆะของการสมรส</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -21117,11 +21370,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-81">
+            <div class="muat-header" onclick="toggleSection('muat-81')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 6</span>
-                <span class="muat-subtitle">การสิ้นสุดแห่งการสมรส</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">การสิ้นสุดแห่งการสมรส</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -21575,11 +21831,14 @@ body {
         <div class="lugsana-body">
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-82">
+            <div class="muat-header" onclick="toggleSection('muat-82')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 1</span>
-                <span class="muat-subtitle">บิดามารดา</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">บิดามารดา</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -21893,11 +22152,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-83">
+            <div class="muat-header" onclick="toggleSection('muat-83')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 2</span>
-                <span class="muat-subtitle">สิทธิและหน้าที่ของบิดามารดาและบุตร</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">สิทธิและหน้าที่ของบิดามารดาและบุตร</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -22227,11 +22489,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-84">
+            <div class="muat-header" onclick="toggleSection('muat-84')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 3</span>
-                <span class="muat-subtitle">ความปกครอง</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ความปกครอง</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -22633,11 +22898,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-85">
+            <div class="muat-header" onclick="toggleSection('muat-85')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 4</span>
-                <span class="muat-subtitle">บุตรบุญธรรม</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">บุตรบุญธรรม</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -22973,11 +23241,14 @@ body {
         <div class="lugsana-body">
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-86">
+            <div class="muat-header" onclick="toggleSection('muat-86')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 1</span>
-                <span class="muat-subtitle">การตกทอดแห่งทรัพย์มรดก</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">การตกทอดแห่งทรัพย์มรดก</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -23045,11 +23316,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-87">
+            <div class="muat-header" onclick="toggleSection('muat-87')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 2</span>
-                <span class="muat-subtitle">การเป็นทายาท</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">การเป็นทายาท</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -23109,11 +23383,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-88">
+            <div class="muat-header" onclick="toggleSection('muat-88')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 3</span>
-                <span class="muat-subtitle">การตัดมิให้รับมรดก</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">การตัดมิให้รับมรดก</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -23149,11 +23426,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-89">
+            <div class="muat-header" onclick="toggleSection('muat-89')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 4</span>
-                <span class="muat-subtitle">การสละมรดกและอื่น ๆ</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">การสละมรดกและอื่น ๆ</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -23295,11 +23575,14 @@ body {
         <div class="lugsana-body">
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-90">
+            <div class="muat-header" onclick="toggleSection('muat-90')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 1</span>
-                <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -23413,11 +23696,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-91">
+            <div class="muat-header" onclick="toggleSection('muat-91')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 2</span>
-                <span class="muat-subtitle">การแบ่งทรัพย์มรดกระหว่างทายาท</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">การแบ่งทรัพย์มรดกระหว่างทายาท</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -23467,11 +23753,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-92">
+            <div class="muat-header" onclick="toggleSection('muat-92')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 3</span>
-                <span class="muat-subtitle">การแบ่งส่วนมรดกของทายาทโดยธรรม</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">การแบ่งส่วนมรดกของทายาทโดยธรรม</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -23577,11 +23866,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-93">
+            <div class="muat-header" onclick="toggleSection('muat-93')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 4</span>
-                <span class="muat-subtitle">การรับมรดกแทนที่กัน</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">การรับมรดกแทนที่กัน</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -23684,11 +23976,14 @@ body {
         <div class="lugsana-body">
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-94">
+            <div class="muat-header" onclick="toggleSection('muat-94')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 1</span>
-                <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">บทเบ็ดเสร็จทั่วไป</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -23805,11 +24100,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-95">
+            <div class="muat-header" onclick="toggleSection('muat-95')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 2</span>
-                <span class="muat-subtitle">แบบพินัยกรรม</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">แบบพินัยกรรม</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -24043,11 +24341,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-96">
+            <div class="muat-header" onclick="toggleSection('muat-96')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 3</span>
-                <span class="muat-subtitle">ผลและการตีความแห่งพินัยกรรม</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ผลและการตีความแห่งพินัยกรรม</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -24207,11 +24508,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-97">
+            <div class="muat-header" onclick="toggleSection('muat-97')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 4</span>
-                <span class="muat-subtitle">พินัยกรรมที่ตั้งผู้ปกครองทรัพย์</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">พินัยกรรมที่ตั้งผู้ปกครองทรัพย์</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -24301,11 +24605,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-98">
+            <div class="muat-header" onclick="toggleSection('muat-98')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 5</span>
-                <span class="muat-subtitle">การเพิกถอนและการตกไปแห่งพินัยกรรม</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">การเพิกถอนและการตกไปแห่งพินัยกรรม</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -24397,11 +24704,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-99">
+            <div class="muat-header" onclick="toggleSection('muat-99')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 6</span>
-                <span class="muat-subtitle">ความเสียเปล่าแห่งพินัยกรรมหรือข้อกำหนดพินัยกรรม</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ความเสียเปล่าแห่งพินัยกรรมหรือข้อกำหนดพินัยกรรม</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -24564,11 +24874,14 @@ body {
         <div class="lugsana-body">
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-100">
+            <div class="muat-header" onclick="toggleSection('muat-100')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 1</span>
-                <span class="muat-subtitle">ผู้จัดการมรดก</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">ผู้จัดการมรดก</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -24849,11 +25162,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-101">
+            <div class="muat-header" onclick="toggleSection('muat-101')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 2</span>
-                <span class="muat-subtitle">การรวบรวมจำหน่ายทรัพย์มรดกเป็นตัวเงินและการชำระหนี้</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">การรวบรวมจำหน่ายทรัพย์มรดกเป็นตัวเงินและการชำระหนี้</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -25002,11 +25318,14 @@ body {
           </div> <!-- /muat-section -->
 
           <!-- หมวด SECTION -->
-          <div class="muat-section">
-            <div class="muat-header">
+          <div class="muat-section open" id="muat-102">
+            <div class="muat-header" onclick="toggleSection('muat-102')">
               <div class="muat-title-row">
                 <span class="muat-title">หมวด 3</span>
-                <span class="muat-subtitle">การแบ่งมรดก</span>
+                <div class="muat-badge-group">
+                  <span class="muat-subtitle">การแบ่งมรดก</span>
+                  <span class="toggle-icon">▼</span>
+                </div>
               </div>
             </div>
             <div class="muat-body">
@@ -25278,6 +25597,7 @@ function runSearch(q) {
   document.querySelectorAll('.muat-section').forEach(mt => {
     const visible = mt.querySelectorAll('.maatra-card:not(.hidden)').length > 0;
     mt.classList.toggle('hidden', !visible);
+    if (visible) mt.classList.add('open');
   });
   sections.forEach(lg => {
     const visible = lg.querySelectorAll('.maatra-card:not(.hidden)').length > 0;
