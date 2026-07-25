@@ -602,6 +602,24 @@ body {
   .hero-stat-num { font-size: 24px; }
   .main-container { padding: 24px 14px 64px; }
 }
+
+/* Appendix table */
+.appendix-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.appendix-table th, .appendix-table td {
+  border: 1.5px solid var(--border-light);
+  padding: 8px 12px;
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.6;
+}
+.appendix-table th {
+  background: var(--bg2);
+  color: var(--accent1);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+}
+.appendix-table td:last-child { white-space: nowrap; font-family: 'IBM Plex Mono', monospace; font-size: 14px; }
+.appendix-table tr:nth-child(even) td { background: rgba(61,90,62,0.03); }
 </style>
 </head>
 <body>
