@@ -1,5 +1,5 @@
 // เพิ่มเลขเวอร์ชันทุกครั้งที่แก้ไขไฟล์เนื้อหา เพื่อบังคับให้ผู้ใช้ได้แคชชุดใหม่
-const CACHE_NAME = 'sarup-tuabot-v17';
+const CACHE_NAME = 'sarup-tuabot-v18';
 
 const PRECACHE_URLS = [
   './',
@@ -12,6 +12,11 @@ const PRECACHE_URLS = [
   './ประมวลกฎหมายวิธีพิจารณาความอาญา_dashboard.html',
   './ประมวลรัษฎากร_dashboard.html',
   './มรรยาททนายความ_dashboard.html',
+  './รวมบทบรรณาธิการเนติบัณฑิต.html',
+  './บทบรรณาธิการ_ขาอาญา_สมัย76_dashboard.html',
+  './บทบรรณาธิการ_ขาอาญา_สมัย77_dashboard.html',
+  './บทบรรณาธิการ_ขาแพ่ง_สมัย76_dashboard.html',
+  './บทบรรณาธิการ_ขาแพ่ง_สมัย77_dashboard.html',
   './manifest.json',
   './icons/icon-192.png',
   './icons/icon-512.png',
