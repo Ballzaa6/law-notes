@@ -1,2 +1,6 @@
 .DS_Store
 .claude/
+
+# ไม่ต้องการ push ไฟล์ source ขึ้น GitHub
+*.md
+*.py
