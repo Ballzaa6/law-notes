@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>พรบ.การรับขนของทางทะเล พ.ศ. 2534 - Dashboard</title>
+<meta name="description" content="พระราชบัญญัติการรับขนของทางทะเล พ.ศ. 2534 ฉบับเต็ม ครบทุกมาตรา ค้นหาและอ่านได้แบบออฟไลน์">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#1B4B8A">
+<link rel="icon" href="../icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="รับขนทะเล">
+<meta name="mobile-web-app-capable" content="yes">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+Thai:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#E8E4D9;--bg2:#DDD9CE;--bg3:#F2EFE7;--sidebar:#DDD9CE;
+  --border:#1B4B8A;--border-light:#C8C3B5;
+  --text:#0D1F3C;--text-muted:#3A5A8A;--text-dim:#7A95B8;
+  --accent1:#1B4B8A;--accent2:#2563B0;
+  --gold:#B8860B;--gold-light:#D4A017;
+  --radius:14px;--radius-sm:10px;--shadow-card:0 3px 0 0 #1B4B8A;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;}
+::-webkit-scrollbar{width:6px;} ::-webkit-scrollbar-track{background:var(--bg2);}
+::-webkit-scrollbar-thumb{background:var(--accent1);border-radius:3px;}
+::-webkit-scrollbar-thumb:hover{background:var(--accent2);}
+.hero{background:var(--bg);border-bottom:2px dashed var(--border-light);padding:56px 48px 44px;padding-top:calc(56px + env(safe-area-inset-top));text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(27,75,138,0.05) 1px,transparent 1px);background-size:24px 24px;pointer-events:none;}
+.hero-emblem{font-size:52px;margin-bottom:16px;display:block;filter:drop-shadow(0 2px 6px rgba(27,75,138,0.25));}
+.hero-title{font-family:'Noto Serif Thai',serif;font-size:clamp(24px,4vw,42px);font-weight:700;color:var(--accent1);margin-bottom:10px;line-height:1.3;letter-spacing:-0.5px;}
+.hero-sub{color:var(--text-muted);font-family:'IBM Plex Mono',monospace;font-size:13px;margin-bottom:32px;letter-spacing:0.3px;}
+.hero-stats{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:36px;}
+.hero-stat{background:var(--bg3);border:2px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-card);padding:14px 28px;text-align:center;}
+.hero-stat-num{font-size:30px;font-weight:700;color:var(--accent1);display:block;font-family:'IBM Plex Mono',monospace;}
+.hero-stat-label{font-size:12px;color:var(--text-muted);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:0.8px;margin-top:2px;display:block;}
+.search-wrapper{max-width:580px;margin:0 auto;position:relative;}
+.search-input{width:100%;padding:13px 20px 13px 46px;background:var(--bg3);border:2px solid var(--border);border-radius:50px;color:var(--text);font-size:16px;font-family:'Sarabun',sans-serif;outline:none;transition:all 0.25s;box-shadow:3px 3px 0 var(--border);}
+.search-input::placeholder{color:var(--text-dim);}
+.search-input:focus{background:#fff;box-shadow:4px 4px 0 var(--accent1);}
+.search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:16px;pointer-events:none;}
+.search-results-count{position:absolute;right:18px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:12px;font-family:'IBM Plex Mono',monospace;}
+.nav-bar{background:var(--sidebar);border-bottom:2px solid var(--border-light);padding:10px 36px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav-label{font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-right:4px;white-space:nowrap;font-family:'IBM Plex Mono',monospace;}
+.nav-pill{display:inline-block;padding:5px 14px;background:var(--bg3);border:1.5px solid var(--border);border-radius:50px;color:var(--accent1);text-decoration:none;font-size:13px;font-weight:600;white-space:nowrap;transition:all 0.2s;box-shadow:2px 2px 0 var(--border);}
+.nav-pill:hover{background:var(--accent1);color:var(--bg3);transform:translate(-1px,-1px);box-shadow:3px 3px 0 #0d2e57;}
+.main-container{max-width:1060px;margin:0 auto;padding:40px 24px 80px;}
+.intro-note{background:var(--bg3);border:2px dashed var(--border-light);border-radius:var(--radius);padding:20px 24px;margin-bottom:32px;color:var(--text-muted);font-size:15px;line-height:1.85;}
+.phak-section{margin-bottom:32px;border-radius:var(--radius);overflow:hidden;border:2.5px solid var(--border);box-shadow:4px 4px 0 var(--border);background:var(--bg3);animation:fadeInUp 0.45s ease both;}
+.phak-header{padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.phak-title{font-family:'Noto Serif Thai',serif;font-size:22px;font-weight:700;margin-bottom:4px;}
+.phak-subtitle{font-size:15px;}
+.phak-title-group{flex:1;}
+.stat-badge{text-align:center;padding:10px 20px;border-radius:var(--radius-sm);border:1.5px solid;min-width:90px;}
+.stat-num{font-size:28px;font-weight:700;display:block;font-family:'IBM Plex Mono',monospace;}
+.stat-label{font-size:11px;color:rgba(255,255,255,0.6);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:0.5px;}
+.phak-body{background:var(--bg);padding:24px;}
+.maatra-card{background:var(--bg3);border:2px solid var(--border);border-radius:var(--radius-sm);margin-bottom:16px;overflow:hidden;transition:all 0.18s;box-shadow:3px 3px 0 var(--border);}
+.maatra-card:last-child{margin-bottom:0;}
+.maatra-card:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--border);}
+.maatra-card.highlight{border-color:var(--gold)!important;box-shadow:3px 3px 0 var(--gold)!important;}
+.maatra-card.highlight .maatra-badge{background:var(--gold)!important;color:#fff!important;border-color:#8B6308!important;}
+.maatra-header{padding:10px 18px;background:var(--bg2);border-bottom:1.5px solid var(--border-light);display:flex;flex-wrap:wrap;align-items:center;gap:10px;}
+.maatra-badge{background:var(--accent1);color:#D4E5FF;padding:4px 14px;border-radius:50px;font-size:13px;font-weight:700;white-space:nowrap;font-family:'IBM Plex Mono',monospace;border:1.5px solid #0d2e57;letter-spacing:0.3px;}
+.maatra-title{font-size:15px;font-weight:600;color:var(--text);letter-spacing:0.2px;}
+.maatra-body{padding:18px 20px;}
+.maatra-line{margin-bottom:12px;line-height:1.9;color:var(--text);font-size:16.5px;}
+.maatra-line.indent{padding-left:24px;margin-bottom:8px;}
+.maatra-line:last-child{margin-bottom:0;}
+.search-highlight{background:rgba(212,160,23,0.3);color:#5A3800;border-radius:3px;padding:0 3px;font-weight:600;}
+.hidden{display:none!important;}
+.search-no-results{text-align:center;padding:60px 20px;color:var(--text-muted);font-size:17px;font-family:'IBM Plex Mono',monospace;}
+.back-top{position:fixed;bottom:calc(28px + env(safe-area-inset-bottom));right:28px;width:44px;height:44px;background:var(--accent1);color:#D4E5FF;border:2px solid #0d2e57;border-radius:50%;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center;box-shadow:3px 3px 0 #0d2e57;transition:all 0.2s;z-index:999;}
+.back-top:hover{background:var(--accent2);transform:translate(-1px,-1px);box-shadow:4px 4px 0 #0d2e57;}
+.back-top.visible{display:flex;}
+.home-btn{position:fixed;bottom:calc(28px + env(safe-area-inset-bottom));left:28px;width:44px;height:44px;background:var(--gold);color:#fff;border:2px solid #8B6308;border-radius:50%;text-decoration:none;font-size:18px;display:flex;align-items:center;justify-content:center;box-shadow:3px 3px 0 #8B6308;transition:all 0.2s;z-index:999;}
+.home-btn:hover{background:var(--gold-light);transform:translate(-1px,-1px);box-shadow:4px 4px 0 #8B6308;}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:768px){.hero{padding:36px 20px 30px;padding-top:calc(36px + env(safe-area-inset-top));}.nav-bar{padding:10px 16px;}.phak-body{padding:14px;}.phak-header{padding:18px 20px;}.maatra-line.indent{padding-left:14px;}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="hero-emblem">&#x2693;</span>
+  <h1 class="hero-title">พรบ.การรับขนของทางทะเล พ.ศ. 2534</h1>
+  <p class="hero-sub">พระราชบัญญัติการรับขนของทางทะเล พ.ศ. 2534 &#8212; ฉบับเต็ม ครบถ้วนทุกหมวดทุกมาตรา (เลขอารบิก)</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><span class="hero-stat-num">7</span><span class="hero-stat-label">หมวด</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">61</span><span class="hero-stat-label">มาตรา</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">2534</span><span class="hero-stat-label">พ.ศ.</span></div>
+  </div>
+  <div class="search-wrapper">
+    <span class="search-icon">&#x1F50D;</span>
+    <input type="text" class="search-input" id="searchInput" placeholder="ค้นหา เช่น มาตรา 12 หรือ ใบตราส่ง หรือ ผู้ขนส่ง..." oninput="doSearch(this.value)">
+    <span class="search-results-count" id="searchCount"></span>
+  </div>
+</div>
+
+<nav class="nav-bar">
+  <span class="nav-label">ไปที่:</span>
+  <a href="#phak_0" class="nav-pill">บทนำ ม.1–7</a>
+  <a href="#phak_1" class="nav-pill">หมวด 1 ผู้ขนส่ง ม.8–17</a>
+  <a href="#phak_2" class="nav-pill">หมวด 2 ใบตราส่ง ม.18–30</a>
+  <a href="#phak_3" class="nav-pill">หมวด 3 ผู้ส่งของ ม.31–38</a>
+  <a href="#phak_4" class="nav-pill">หมวด 4 ความรับผิด ม.39–50</a>
+  <a href="#phak_5" class="nav-pill">หมวด 5 ข้อยกเว้น ม.51–57</a>
+  <a href="#phak_6" class="nav-pill">หมวด 6 จำกัดความรับผิด ม.58–61</a>
+</nav>
+
+<div class="main-container" id="mainContainer">
+  <div id="searchNoResults" class="search-no-results hidden">ไม่พบผลลัพธ์สำหรับการค้นหานี้</div>
+  <p class="intro-note">พระราชบัญญัติการรับขนของทางทะเล พ.ศ. 2534 บัญญัติขึ้นเพื่อกำหนดกรอบสิทธิและหน้าที่ของผู้ขนส่ง ผู้ส่งของ และผู้รับตราส่ง รวมถึงการออกใบตราส่ง ความรับผิด ข้อยกเว้น และข้อจำกัดความรับผิดในการขนส่งของทางทะเลระหว่างประเทศที่เกี่ยวข้องกับราชอาณาจักรไทย (เนื้อหาครบถ้วนตรงตามต้นฉบับ แสดงเป็นตัวเลขอารบิกเพื่อความสะดวกรวดเร็วในการอ่าน)</p>
+
+  <section class="phak-section" id="phak_0" style="animation-delay:0.00s">
+    <div class="phak-header" style="background:#1B4B8A">
+      <div class="phak-title-group"><h2 class="phak-title" style="color:#D4E5FF">บทนำ</h2><span class="phak-subtitle" style="color:#90B4E0">บทบัญญัติทั่วไป (มาตรา 1–7)</span></div>
+      <div class="stat-badge" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.3)"><span class="stat-num" style="color:#A8D0FF">7</span><span class="stat-label">มาตรา</span></div>
+    </div>
+    <div class="phak-body">
+      <div class="maatra-card" id="m1">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 1</span><span class="maatra-title">ชื่อพระราชบัญญัติ</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">พระราชบัญญัตินี้เรียกว่า “พระราชบัญญัติการรับขนของทางทะเล พ.ศ. 2534”</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m2">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 2</span><span class="maatra-title">วันใช้บังคับ</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">พระราชบัญญัตินี้ให้ใช้บังคับเมื่อพ้นกำหนดเก้าสิบวันนับแต่วันประกาศในราชกิจจานุเบกษาเป็นต้นไป</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m3">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 3</span><span class="maatra-title">บทนิยาม</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ในพระราชบัญญัตินี้</p>
+        <p class="maatra-line">“ผู้ขนส่ง” หมายความว่า บุคคลซึ่งประกอบการรับขนของทางทะเลเพื่อบำเหน็จเป็นทางค้าปกติ โดยทำสัญญารับขนของทางทะเลกับผู้ส่งของ</p>
+        <p class="maatra-line">“ผู้ขนส่งอื่น” หมายความว่า บุคคลซึ่งมิได้เป็นคู่สัญญากับผู้ส่งของในสัญญารับขนของทางทะเล แต่ได้รับมอบหมายจากผู้ขนส่งให้ทำการขนส่งของตามสัญญานั้นแม้เพียงช่วงระยะทางช่วงใดช่วงหนึ่ง และให้หมายความรวมถึงบุคคลอื่นใดซึ่งผู้ขนส่งอื่นได้มอบหมายช่วงต่อไปให้ทำการขนส่งของนั้นด้วย ไม่ว่าจะมีการมอบหมายช่วงกันไปกี่ทอดก็ตาม แต่ทั้งนี้ ไม่รวมถึงบุคคลซึ่งได้รับมอบอำนาจโดยชัดแจ้งหรือโดยปริยายตามประเพณีในธุรกิจการรับขนของทางทะเล ให้เป็นตัวแทนผู้ขนส่งหรือผู้ขนส่งอื่นในการดำเนินงานอันเกี่ยวกับธุรกิจเนื่องจากการรับขนของทางทะเล เช่น พิธีการเข้าเมือง พิธีการศุลกากร การนำร่อง การเข้าท่า การออกจากท่า การบรรทุกของลงเรือ การขนถ่ายของขึ้นจากเรือ หรือการส่งมอบของแก่ผู้รับตราส่ง เป็นต้น</p>
+        <p class="maatra-line">“ผู้ส่งของ” หมายความว่า บุคคลซึ่งเป็นคู่สัญญากับผู้ขนส่งในสัญญารับขนของทางทะเล</p>
+        <p class="maatra-line">“ผู้รับตราส่ง” หมายความว่า</p>
+        <p class="maatra-line indent">(ก) บุคคลซึ่งมีชื่อระบุไว้ในใบตราส่งว่าเป็นผู้รับตราส่ง หรือผู้รับของสำหรับใบตราส่งที่ออกให้แก่บุคคลโดยนาม</p>
+        <p class="maatra-line indent">(ข) ผู้รับสลักหลังคนสุดท้าย สำหรับใบตราส่งที่ออกให้แก่บุคคลเพื่อเขาสั่งหรือใบตราส่งที่ออกให้แก่บุคคลโดยนาม และไม่มีข้อห้ามการสลักหลังไว้ หรือ</p>
+        <p class="maatra-line indent">(ค) บุคคลซึ่งมีชื่อเป็นผู้รับของ ในกรณีที่ไม่มีการออกใบตราส่งหรือมีการออกเอกสารที่มีชื่อเรียกอย่างอื่น</p>
+        <p class="maatra-line">“ของ” หมายความว่า สังหาริมทรัพย์ สัตว์มีชีวิต รวมทั้งภาชนะขนส่งที่ผู้ส่งของเป็นผู้จัดหามาเพื่อใช้ในการขนส่งด้วย</p>
+        <p class="maatra-line">“ภาชนะขนส่ง” หมายความว่า ตู้สินค้า ไม้รองสินค้า หรือสิ่งอื่นที่มีลักษณะทำนองเดียวกันซึ่งใช้บรรจุหรือรองรับของ หรือใช้รวมหน่วยการขนส่งของหลายหน่วยเข้าด้วยกัน เพื่อประโยชน์ในการขนส่งทางทะเล</p>
+        <p class="maatra-line">“หน่วยการขนส่ง” หมายความว่า หน่วยแห่งของที่ขนส่งทางทะเลซึ่งนับเป็นหนึ่ง และแต่ละหน่วยอาจทำการขนส่งไปตามลำพังได้ เช่น กระสอบ ชิ้น ถัง ตู้ ม้วน ลัง ลูก ห่อ หีบ อัน หรือหน่วยที่เรียกชื่ออย่างอื่น</p>
+        <p class="maatra-line">“สัญญารับขนของทางทะเล” หมายความว่า สัญญาที่ผู้ขนส่งรับขนของทางทะเลจากท่าหรือที่ในประเทศหนึ่งไปยังท่าหรือที่ในอีกประเทศหนึ่ง โดยคิดค่าระวาง</p>
+        <p class="maatra-line">“อุปกรณ์แห่งค่าระวาง” หมายความว่า ค่าใช้จ่ายอย่างใดที่ผู้ขนส่งได้เสียไปโดยควรในระหว่างขนส่ง ซึ่งตามประเพณีในการขนส่งทางทะเลถือเป็นส่วนหนึ่งของค่าระวาง และให้หมายความรวมถึงเงินที่ผู้ขนส่งจำเป็นต้องเรียกเก็บเพิ่มขึ้นจากอัตราค่าระวางปกติ เพื่อชดเชยค่าใช้จ่ายในการให้บริการของผู้ขนส่งเนื่องจากเหตุที่ผู้ขนส่งไม่อาจป้องกันได้ อันมีประเพณีในการขนส่งทางทะเลที่ผู้ขนส่งจะเรียกได้ เช่น การขึ้นราคาน้ำมันเชื้อเพลิง ค่าใช้จ่ายที่เพิ่มขึ้นเนื่องจากภาวะคับคั่งของท่าเรือหรือที่ที่บรรทุกหรือขนถ่ายของ หรือการเปลี่ยนแปลงของอัตราแลกเปลี่ยนเงินตราต่างสกุล เป็นต้น</p>
+        <p class="maatra-line">“ใบตราส่ง” หมายความว่า เอกสารที่ผู้ขนส่งออกให้แก่ผู้ส่งของเป็นหลักฐานแห่งสัญญารับขนของทางทะเลแสดงว่าผู้ขนส่งได้รับของตามที่ระบุในใบตราส่งไว้ในความดูแลหรือได้บรรทุกของลงเรือแล้ว และผู้ขนส่งรับที่จะส่งมอบของดังกล่าวให้แก่ผู้มีสิทธิรับของนั้น เมื่อได้รับเวนคืนใบตราส่ง</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m4">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 4</span><span class="maatra-title">ขอบเขตการใช้บังคับ</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">พระราชบัญญัตินี้ให้ใช้บังคับแก่การขนส่งทางทะเลจากที่แห่งหนึ่งในราชอาณาจักรไปยังที่อีกแห่งหนึ่งนอกราชอาณาจักร หรือจากที่แห่งหนึ่งนอกราชอาณาจักรมายังที่อีกแห่งหนึ่งในราชอาณาจักร เว้นแต่กรณีที่ได้ระบุในใบตราส่งว่าให้ใช้กฎหมายของประเทศอื่นหรือกฎหมายระหว่างประเทศบังคับก็ให้เป็นไปตามนั้น แต่แม้ว่าจะได้ระบุไว้เช่นนั้นก็ตาม ถ้าปรากฏว่าคู่กรณีฝ่ายหนึ่งฝ่ายใดเป็นผู้มีสัญชาติไทยหรือเป็นนิติบุคคลที่จัดตั้งขึ้นตามกฎหมายไทย ก็ให้ใช้พระราชบัญญัตินี้บังคับ</p>
+        <p class="maatra-line">การขนส่งของทางทะเลภายในราชอาณาจักร ถ้าได้ตกลงกันเป็นหนังสือว่าให้ใช้พระราชบัญญัตินี้บังคับ ก็ให้ใช้พระราชบัญญัตินี้บังคับโดยอนุโลม</p>
+        <p class="maatra-line">ในกรณีที่เป็นการขนส่งโดยไม่คิดค่าระวาง ผู้ขนส่งไม่ต้องรับผิดตามพระราชบัญญัตินี้ แต่ถ้ามีการออกใบตราส่ง ใบรับของ หรือเอกสารอื่นทำนองเดียวกันผู้ขนส่งต้องจดแจ้งไว้ในใบตราส่ง ใบรับของ หรือเอกสารอื่นนั้น ว่าผู้ขนส่งไม่ต้องรับผิด มิฉะนั้นจะยกขึ้นใช้ยันบุคคลภายนอกซึ่งเป็นผู้รับตราส่ง หรือรับโอนสิทธิตามใบตราส่ง ใบรับของ หรือเอกสารดังกล่าวมิได้</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m5">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 5</span><span class="maatra-title">ข้อยกเว้น — สัญญาจ้างเหมาระวาง</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">พระราชบัญญัตินี้ไม่ใช้บังคับแก่การขนส่งของทางทะเลตามสัญญาจ้างเหมาระวางบรรทุกของเรือไม่ว่าทั้งลำหรือบางส่วน แต่ถ้ามีการออกใบตราส่งสำหรับของที่ขนส่งตามสัญญาจ้างเหมานั้นด้วย หน้าที่และสิทธิของผู้ขนส่งและผู้รับตราส่งซึ่งมิใช่ผู้จ้างเหมาให้เป็นไปตามพระราชบัญญัตินี้</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m6">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 6</span><span class="maatra-title">การขนส่งหลายรูปแบบ</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">สัญญารับขนของที่มีการขนส่งทางทะเลและทางอื่นรวมอยู่ด้วยให้อยู่ภายใต้บังคับแห่งพระราชบัญญัตินี้เฉพาะในส่วนที่เกี่ยวกับการขนส่งทางทะเลเท่านั้น</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m7">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 7</span><span class="maatra-title">รัฐมนตรีรักษาการ</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ให้รัฐมนตรีว่าการกระทรวงคมนาคมรักษาการตามพระราชบัญญัตินี้</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="phak-section" id="phak_1" style="animation-delay:0.05s">
+    <div class="phak-header" style="background:#154075">
+      <div class="phak-title-group"><h2 class="phak-title" style="color:#D4E5FF">หมวด 1</h2><span class="phak-subtitle" style="color:#90B4E0">หน้าที่และสิทธิของผู้ขนส่ง (มาตรา 8–17)</span></div>
+      <div class="stat-badge" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.3)"><span class="stat-num" style="color:#A8D0FF">10</span><span class="stat-label">มาตรา</span></div>
+    </div>
+    <div class="phak-body">
+      <div class="maatra-card" id="m8">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 8</span><span class="maatra-title">หน้าที่ก่อนออกเดินทาง — ความสมทรงเรือ</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ก่อนบรรทุกของลงเรือหรือก่อนที่เรือนั้นจะออกเดินทาง ผู้ขนส่งมีหน้าที่ต้อง</p>
+        <p class="maatra-line indent">(1) ทำให้เรืออยู่ในสภาพที่สามารถเดินทะเลได้อย่างปลอดภัยในเส้นทางเดินเรือนั้น</p>
+        <p class="maatra-line indent">(2) จัดให้มีคนประจำเรือ เครื่องมือ เครื่องใช้ เครื่องอุปกรณ์ และสิ่งจำเป็นให้เหมาะสมแก่ความต้องการสำหรับเรือนั้น และ</p>
+        <p class="maatra-line indent">(3) จัดระวางบรรทุกและส่วนอื่น ๆ ที่ใช้บรรทุกของให้เหมาะสมและปลอดภัยตามสภาพแห่งของที่จะรับ ขนส่ง และรักษา เช่น เครื่องปรับอากาศ ห้องเย็น เป็นต้น</p>
+        <p class="maatra-line">ในการปฏิบัติหน้าที่ตามมาตรานี้ ผู้ขนส่งต้องกระทำการทั้งปวงเท่าที่เป็นธรรมดาและสมควรจะต้องกระทำสำหรับผู้ประกอบอาชีพรับขนของทางทะเล</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m9">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 9</span><span class="maatra-title">แก้ไขความบกพร่องระหว่างเดินทาง</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ถ้ามีความบกพร่องอย่างใดอย่างหนึ่งตามมาตรา 8 เกิดขึ้นหลังจากบรรทุกของลงเรือหรือเมื่อเรือนั้นออกเดินทางแล้ว ผู้ขนส่งจะต้องจัดการแก้ไขความบกพร่องนั้นโดยเร็วที่สุดเท่าที่อยู่ในวิสัยที่ผู้ประกอบอาชีพรับขนของทางทะเลจะทำได้ในภาวะเช่นนั้น</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m10">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 10</span><span class="maatra-title">ความระมัดระวังในการจัดการของ</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ผู้ขนส่งต้องใช้ความระมัดระวังและปฏิบัติการให้เหมาะสมในการบรรทุกลงเรือ การยกขน การเคลื่อนย้าย การเก็บรักษา การดูแลและการขนถ่ายซึ่งของที่ตนทำการขนส่ง</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m11">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 11</span><span class="maatra-title">การบรรทุกบนปากระวาง</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ผู้ขนส่งมีสิทธิบรรทุกของบนปากระวางเฉพาะในกรณีที่ได้ตกลงกับผู้ส่งของ หรือเป็นการกระทำตามที่กฎหมายบัญญัติ หรือเป็นการปฏิบัติตามประเพณีทางการค้าเกี่ยวกับการบรรทุกของเช่นนั้น</p>
+        <p class="maatra-line">ถ้าผู้ขนส่งและผู้ส่งของตกลงกันให้บรรทุกหรืออาจบรรทุกของบนปากระวางได้ ผู้ขนส่งต้องจดแจ้งข้อตกลงดังกล่าวไว้ในใบตราส่งหรือเอกสารอื่นอันเป็นหลักฐานแห่งสัญญารับขนของทางทะเลในกรณีที่ไม่มีการออกใบตราส่ง</p>
+        <p class="maatra-line">ถ้าไม่มีการจดแจ้งข้อความในใบตราส่งหรือเอกสารอื่นตามวรรคสอง หากผู้ขนส่งอ้างว่ามีข้อตกลงกัน ให้ผู้ขนส่งมีหน้าที่พิสูจน์ถึงข้อตกลงนั้น แต่จะยกขึ้นเป็นข้อต่อสู้ผู้รับตราส่งหรือบุคคลภายนอกซึ่งได้ใบตราส่งหรือเอกสารอื่นมาโดยไม่รู้ถึงข้อตกลงนั้นมิได้</p>
+        <p class="maatra-line">ถ้ามีการบรรทุกของบนปากระวางโดยขัดต่อบทบัญญัติในวรรคหนึ่ง หรือในกรณีที่ไม่ได้จดแจ้งข้อตกลงไว้ในใบตราส่งหรือเอกสารอื่นตามวรรคสาม มิให้นำบทบัญญัติในมาตรา 51 มาตรา 52 มาตรา 53 มาตรา 54 มาตรา 55 หรือมาตรา 56 มาใช้บังคับ</p>
+        <p class="maatra-line">ในกรณีที่มีความตกลงโดยชัดแจ้งระหว่างผู้ขนส่งกับผู้ส่งของให้บรรทุกของใดในระวาง  ถ้าผู้ขนส่งบรรทุกของนั้นบนปากระวาง ให้ถือว่าผู้ขนส่งกระทำการหรืองดเว้นกระทำการตามมาตรา 60 (1)</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m12">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 12</span><span class="maatra-title">หน้าที่ออกใบตราส่งเมื่อรับของ</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">เมื่อผู้ขนส่งได้รับของไว้ในความดูแลแล้ว ถ้าผู้ส่งของเรียกเอาใบตราส่ง ผู้ขนส่งต้องออกให้</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m13">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 13</span><span class="maatra-title">ใบตราส่งชนิด “บรรทุกแล้ว”</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">เมื่อได้บรรทุกของลงเรือเสร็จแล้ว ถ้าผู้ส่งของเรียกเอาใบตราส่งชนิด “บรรทุกแล้ว” ผู้ขนส่งต้องออกให้</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m14">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 14</span><span class="maatra-title">สิทธิได้รับค่าระวาง</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">เมื่อได้ขนของไปถึงท่าปลายทางหรือที่หมายปลายทางตามที่ตกลงกันไว้ และพร้อมที่จะส่งมอบของนั้นแล้ว ผู้ขนส่งมีสิทธิได้รับค่าระวางและอุปกรณ์แห่งค่าระวาง เว้นแต่จะมีข้อกำหนดในใบตราส่งหรือได้ตกลงกันไว้เป็นอย่างอื่นในสัญญารับขนของทางทะเล</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m15">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 15</span><span class="maatra-title">สิทธิยึดหน่วงของ</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ผู้ขนส่งชอบที่จะยึดหน่วงของไว้จนกว่าจะได้รับชำระค่าระวางและอุปกรณ์แห่งค่าระวาง หรือจนกว่าผู้รับตราส่งจะได้จัดให้มีประกันตามควร</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m16">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 16</span><span class="maatra-title">หน้าที่บอกกล่าวเมื่อของถึงปลายทาง</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">เมื่อของไปถึงท่าปลายทางหรือที่หมายปลายทางตามที่ตกลงกันไว้แล้ว ผู้ขนส่งต้องบอกกล่าวแก่ผู้รับตราส่งโดยไม่ชักช้า</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m17">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 17</span><span class="maatra-title">ข้อกำหนดโมฆะ — ห้ามยกเว้นความรับผิด</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ข้อกำหนดใดในสัญญารับขนของทางทะเลซึ่งมีวัตถุประสงค์หรือมีผลไม่ว่าโดยตรงหรือโดยปริยายดังต่อไปนี้ ข้อกำหนดนั้นเป็นโมฆะ</p>
+        <p class="maatra-line indent">(1) ปลดเปลื้องผู้ขนส่งจากหน้าที่หรือความรับผิดใด ๆ ตามที่บัญญัติไว้ในพระราชบัญญัตินี้</p>
+        <p class="maatra-line indent">(2) กำหนดความรับผิดของผู้ขนส่งให้น้อยกว่าที่กำหนดไว้ในมาตรา 58 หรือมาตรา 60</p>
+        <p class="maatra-line indent">(3) ปัดภาระการพิสูจน์ซึ่งพระราชบัญญัตินี้กำหนดให้เป็นหน้าที่ของผู้ขนส่งไปให้ผู้ส่งของหรือบุคคลภายนอกเป็นผู้พิสูจน์</p>
+        <p class="maatra-line indent">(4) ให้ผู้ขนส่งเป็นผู้รับประโยชน์ในสัญญาประกันภัยแห่งของตามสัญญารับขนของทางทะเลอันเป็นวัตถุที่เอาประกันภัย</p>
+        <p class="maatra-line">ความเป็นโมฆะของข้อกำหนดตามวรรคหนึ่งไม่กระทบกระทั่งถึงความสมบูรณ์ของข้อกำหนดอื่นในสัญญานั้น และให้ถือว่าคู่สัญญาได้เจตนาให้ข้อกำหนดอื่นนั้นแยกออกต่างหากจากข้อกำหนดที่เป็นโมฆะตามวรรคหนึ่ง</p>
+        <p class="maatra-line">บทบัญญัติในมาตรานี้ไม่ตัดสิทธิคู่กรณีที่จะตกลงกันกำหนดหน้าที่และความรับผิดชอบของผู้ขนส่งให้มากขึ้นกว่าที่บัญญัติไว้ในพระราชบัญญัตินี้</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="phak-section" id="phak_2" style="animation-delay:0.10s">
+    <div class="phak-header" style="background:#0F3060">
+      <div class="phak-title-group"><h2 class="phak-title" style="color:#D4E5FF">หมวด 2</h2><span class="phak-subtitle" style="color:#90B4E0">ใบตราส่ง (มาตรา 18–30)</span></div>
+      <div class="stat-badge" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.3)"><span class="stat-num" style="color:#A8D0FF">13</span><span class="stat-label">มาตรา</span></div>
+    </div>
+    <div class="phak-body">
+      <div class="maatra-card" id="m18">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 18</span><span class="maatra-title">รายการในใบตราส่ง 14 ประการ</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ใบตราส่งพึงแสดงรายการ ดังต่อไปนี้</p>
+        <p class="maatra-line indent">(1) ลักษณะทั่วไปแห่งของ เครื่องหมายที่จำเป็นเพื่อบ่งตัวของ ข้อความที่แจ้งลักษณะอันตรายแห่งของ หากจะต้องมี จำนวน หน่วยการขนส่ง และน้ำหนักของหรือปริมาณอย่างอื่น  ทั้งนี้ ตามที่ผู้ส่งของแจ้งหรือจัดให้</p>
+        <p class="maatra-line indent">(2) สภาพแห่งของเท่าที่เห็นได้จากภายนอก</p>
+        <p class="maatra-line indent">(3) ชื่อและสำนักงานของผู้ขนส่ง</p>
+        <p class="maatra-line indent">(4) ชื่อของผู้ส่งของ</p>
+        <p class="maatra-line indent">(5) ชื่อของผู้รับตราส่ง ถ้าผู้ส่งของระบุไว้</p>
+        <p class="maatra-line indent">(6) ค่าระวางเท่าที่ผู้รับตราส่งจะต้องจ่าย หรือข้อความแสดงว่าผู้รับตราส่งเป็นผู้จ่ายค่าระวางและค่าเรือเสียเวลาในการบรรทุกของลงเรือ ณ ท่าต้นทาง</p>
+        <p class="maatra-line indent">(7) ท่าต้นทางที่บรรทุกของลงเรือตามสัญญารับขนของทางทะเลและวันที่ผู้ขนส่งรับของเข้ามาอยู่ในความดูแล</p>
+        <p class="maatra-line indent">(8) ท่าปลายทางที่ขนถ่ายของขึ้นจากเรือตามสัญญารับขนของทางทะเล</p>
+        <p class="maatra-line indent">(9) ข้อความแสดงว่าของนั้นให้บรรทุกบนปากระวางหรืออาจบรรทุกบนปากระวางได้</p>
+        <p class="maatra-line indent">(10) วันหรือระยะเวลาส่งมอบของ ณ ท่าปลายทางที่ขนถ่ายของขึ้นจากเรือ ถ้าคู่สัญญาได้ตกลงกันไว้</p>
+        <p class="maatra-line indent">(11) ข้อจำกัดความรับผิดซึ่งมากกว่าที่กำหนดไว้ในมาตรา 58</p>
+        <p class="maatra-line indent">(12) สถานที่และวันที่ออกใบตราส่ง</p>
+        <p class="maatra-line indent">(13) จำนวนต้นฉบับใบตราส่งที่ออก</p>
+        <p class="maatra-line indent">(14) ลายมือชื่อผู้ขนส่งหรือตัวแทนผู้ขนส่ง</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m19">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 19</span><span class="maatra-title">ใบตราส่งชนิด “บรรทุกแล้ว” — รายการเพิ่มเติม</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ใบตราส่งชนิด “บรรทุกแล้ว” ตามมาตรา 13 นอกจากจะมีรายการตามมาตรา 18 แล้ว ให้ระบุชื่อเรือที่รับบรรทุกของและวันที่บรรทุกของนั้นลงเรือเสร็จแล้วด้วย</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m20">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 20</span><span class="maatra-title">การแลกเปลี่ยนเอกสารเป็นใบตราส่งชนิด “บรรทุกแล้ว”</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ในกรณีที่ผู้ขนส่งได้ออกใบตราส่งหรือเอกสารสิทธิอย่างอื่นที่เกี่ยวข้องกับของให้แก่ผู้ส่งของไว้ก่อนบรรทุกของลงเรือ ถ้าผู้ส่งของขอให้ผู้ขนส่งออกใบตราส่งชนิด “บรรทุกแล้ว” ผู้ส่งของต้องคืนใบตราส่งหรือเอกสารดังกล่าวให้แก่ผู้ขนส่งเพื่อแลกกับใบตราส่งชนิด “บรรทุกแล้ว” ในการนี้ผู้ขนส่งอาจทำให้โดยแก้ไขใบตราส่งหรือเอกสารดังกล่าวให้เป็นใบตราส่งชนิด “บรรทุกแล้ว” ก็ได้ ถ้าใบตราส่งหรือเอกสารที่แก้ไขแล้วนั้นมีรายการต่าง ๆ ครบถ้วนตามที่ใบตราส่งชนิด “บรรทุกแล้ว” จะพึงมี</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m21">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 21</span><span class="maatra-title">ใบตราส่งรายการไม่ครบ</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ใบตราส่งที่ออกโดยผู้ขนส่งมีรายการไม่ครบตามที่ระบุไว้ในมาตรา 18 หรือมาตรา 19 ใบตราส่งนั้นยังคงมีฐานะทางกฎหมายเป็นใบตราส่ง ถ้ามีข้อความครบลักษณะเป็นใบตราส่งตามมาตรา 3</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m22">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 22</span><span class="maatra-title">ข้อสันนิษฐานเรื่องค่าระวางและค่าเรือเสียเวลา</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ใบตราส่งใดไม่มีข้อความตามมาตรา 18 (6) ให้สันนิษฐานไว้ก่อนว่าผู้รับตราส่งไม่ต้องจ่ายค่าระวางและค่าเรือเสียเวลาในการบรรทุกของลงเรือ ณ ท่าต้นทาง แต่ถ้าใบตราส่งนั้นได้โอนไปยังผู้รับตราส่งหรือบุคคลภายนอกซึ่งได้กระทำการโดยสุจริตโดยเชื่อใบตราส่งนั้น ห้ามมิให้ผู้ขนส่งพิสูจน์เป็นอย่างอื่น</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m23">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 23</span><span class="maatra-title">การบันทึกข้อสงวนในใบตราส่ง</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ในกรณีที่ผู้ส่งของเป็นผู้แจ้งหรือจัดให้ซึ่งข้อความในใบตราส่งเกี่ยวกับลักษณะทั่วไปแห่งของ เครื่องหมายที่จำเป็นเพื่อบ่งตัวของ จำนวนหน่วยการขนส่ง น้ำหนักของหรือปริมาณอย่างอื่น ถ้าผู้ขนส่งหรือบุคคลอื่นซึ่งออกใบตราส่งในนามของผู้ขนส่งทราบ หรือมีเหตุอันควรสงสัยว่าข้อความดังกล่าวไม่ถูกต้องตรงกับของที่รับไว้จริง หรือไม่ถูกต้องตรงกับของที่ได้รับบรรทุกไว้จริงในกรณีที่มีการออกใบตราส่งชนิด “บรรทุกแล้ว” หรือไม่อาจตรวจสอบความถูกต้องแท้จริงของรายการดังกล่าวในใบตราส่งโดยวิธีการอันสมควรแก่วิสัยและพฤติการณ์ในภาวะเช่นนั้นได้ บุคคลดังกล่าวต้องบันทึกเป็นข้อสงวนไว้ในใบตราส่งโดยระบุถึงข้อที่ไม่ตรงกับความจริง เหตุแห่งความสงสัย หรือพฤติการณ์ที่ไม่อาจตรวจสอบความถูกต้องแท้จริงได้ แล้วแต่กรณี</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m24">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 24</span><span class="maatra-title">ข้อสันนิษฐานสภาพภายนอกแห่งของ</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ถ้าผู้ขนส่งหรือบุคคลอื่นซึ่งออกใบตราส่งในนามของผู้ขนส่งมิได้บันทึกสภาพแห่งของเท่าที่เห็นได้จากภายนอกไว้ในใบตราส่ง ให้ถือว่าของตามใบตราส่งนั้นมีสภาพภายนอกเรียบร้อย</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m25">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 25</span><span class="maatra-title">ผลของการไม่บันทึกข้อสงวน</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ถ้ามิได้บันทึกเป็นข้อสงวนไว้ในใบตราส่งตามมาตรา 23 ให้สันนิษฐานไว้ก่อนว่าผู้ขนส่งได้รับของไว้หรือได้บรรทุกของลงเรือในกรณีที่เป็นใบตราส่งชนิด “บรรทุกแล้ว”  ทั้งนี้ ตามรายการที่แสดงไว้ในใบตราส่งนั้น แต่ถ้าใบตราส่งใดได้โอนไปยังผู้รับตราส่งหรือบุคคลภายนอกซึ่งได้กระทำการโดยสุจริต โดยเชื่อตามข้อความในใบตราส่งนั้นแล้ว ห้ามมิให้ผู้ขนส่งพิสูจน์เป็นอย่างอื่น</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m26">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 26</span><span class="maatra-title">ข้อกำหนดในใบตราส่งผูกพันผู้รับตราส่ง</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ในกรณีที่ได้ออกใบตราส่งให้แก่กันไว้ ความสัมพันธ์ระหว่างผู้ขนส่งกับผู้รับตราส่งในเรื่องทั้งหลายเกี่ยวกับการขนส่งของที่ระบุไว้ในใบตราส่งนั้น ให้เป็นไปตามข้อกำหนดในใบตราส่ง</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m27">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 27</span><span class="maatra-title">การสลักหลังโอนใบตราส่ง</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ใบตราส่งใดแม้จะได้ออกให้แก่บุคคลใดโดยนามก็ยังอาจโอนให้กันได้โดยการสลักหลัง เว้นแต่จะมีข้อกำหนดห้ามการสลักหลังไว้ในใบตราส่งนั้น</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m28">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 28</span><span class="maatra-title">การเวนคืนใบตราส่งเพื่อรับของ</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">เมื่อได้ออกใบตราส่งให้แก่กันไว้แล้ว ผู้รับตราส่งจะเรียกให้ส่งมอบของได้ต่อเมื่อเวนคืนใบตราส่งนั้นแก่ผู้ขนส่งหรือให้ประกันตามควร</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m29">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 29</span><span class="maatra-title">ใบตราส่งหลายต้นฉบับ — ของถึงปลายทางแล้ว</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ในกรณีที่ได้ออกใบตราส่งให้แก่กันไว้โดยมีต้นฉบับมากกว่าหนึ่งฉบับ และของได้ถึงท่าปลายทางหรือที่หมายปลายทางแล้ว</p>
+        <p class="maatra-line indent">(1) แม้ผู้รับตราส่งจะนำต้นฉบับใบตราส่งมาเวนคืนเพียงฉบับเดียว ผู้ขนส่งก็จำต้องส่งมอบของให้ และเมื่อผู้ขนส่งได้ส่งมอบของแล้ว ให้ใบตราส่งฉบับอื่น ๆ ที่ยังไม่ได้เวนคืนเป็นอันสิ้นผล</p>
+        <p class="maatra-line indent">(2) ก่อนหรือในระหว่างการส่งมอบของ ถ้าปรากฏว่ามีผู้รับตราส่งมากกว่าหนึ่งคนเรียกให้ส่งมอบของรายเดียวกันโดยแต่ละคนต่างมีต้นฉบับใบตราส่งมาเวนคืนให้ ให้ผู้ขนส่งนำของทั้งหมดหรือของส่วนที่ยังไม่ได้ส่งมอบไปฝากไว้ ณ สำนักงานวางทรัพย์ และให้นำบทบัญญัติมาตรา 333 แห่งประมวลกฎหมายแพ่งและพาณิชย์มาใช้บังคับโดยอนุโลม</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m30">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 30</span><span class="maatra-title">ใบตราส่งหลายต้นฉบับ — ของยังไม่ถึงปลายทาง</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ในกรณีที่ได้ออกใบตราส่งให้แก่กันไว้โดยมีต้นฉบับมากกว่าหนึ่งฉบับในระหว่างที่ของยังไปไม่ถึงท่าปลายทางหรือที่หมายปลายทาง ผู้ขนส่งไม่จำต้องส่งมอบของนั้นแก่บุคคลใด เว้นแต่จะได้รับเวนคืนต้นฉบับใบตราส่งทั้งหมดที่ออกให้แก่กันไว้</p>
+        <p class="maatra-line">ถ้าผู้ขนส่งส่งมอบของไปโดยที่ยังไม่ได้รับเวนคืนใบตราส่งทั้งหมด ผู้ขนส่งต้องรับผิดต่อผู้รับตราส่งซึ่งมีต้นฉบับใบตราส่งที่ยังไม่ได้เวนคืน</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="phak-section" id="phak_3" style="animation-delay:0.15s">
+    <div class="phak-header" style="background:#1A5276">
+      <div class="phak-title-group"><h2 class="phak-title" style="color:#D4E5FF">หมวด 3</h2><span class="phak-subtitle" style="color:#90B4E0">หน้าที่และสิทธิของผู้ส่งของ (มาตรา 31–38)</span></div>
+      <div class="stat-badge" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.3)"><span class="stat-num" style="color:#A8D0FF">8</span><span class="stat-label">มาตรา</span></div>
+    </div>
+    <div class="phak-body">
+      <div class="maatra-card" id="m31">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 31</span><span class="maatra-title">ความรับผิดของผู้ส่งของ</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ผู้ส่งของไม่ต้องรับผิดเพื่อการที่ผู้ขนส่งหรือผู้ขนส่งอื่นได้รับความเสียหายหรือการที่เรือเสียหาย เว้นแต่จะเป็นเหตุมาจากความผิดหรือประมาทเลินเล่อของผู้ส่งของหรือตัวแทนหรือลูกจ้างของผู้ส่งของหรือจากสภาพแห่งของนั้นเอง โดยผู้ส่งของมิได้ปฏิบัติตามกฎหมายหรือประเพณีทางการค้าเกี่ยวกับการส่งของนั้น</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m32">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 32</span><span class="maatra-title">ผู้ส่งของรับรองความถูกต้องของข้อความในใบตราส่ง</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ถ้าผู้ส่งของได้แจ้งหรือจัดให้ซึ่งข้อความตามมาตรา 23 เพื่อให้ผู้ขนส่งบันทึกข้อความนั้นไว้ในใบตราส่ง และเมื่อได้บันทึกให้ตามนั้นแล้วให้ถือว่าผู้ส่งของได้รับรองกับผู้ขนส่งว่าข้อความที่แจ้งหรือจัดให้นั้นถูกต้องตรงกับความเป็นจริงเกี่ยวกับของนั้นทุกประการ</p>
+        <p class="maatra-line">ถ้ามีความเสียหายใด ๆ เกิดขึ้นเนื่องจากความไม่ถูกต้องแท้จริงของข้อความตามวรรคหนึ่ง ผู้ส่งของต้องรับผิดชดใช้ความเสียหายให้แก่ผู้ขนส่ง แม้ว่าผู้ส่งของจะได้โอนใบตราส่งนั้นให้แก่บุคคลภายนอกไปแล้วก็ตาม แต่ทั้งนี้ ผู้ขนส่งยังคงต้องรับผิดตามสัญญารับขนของทางทะเลต่อบุคคลภายนอก</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m33">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 33</span><span class="maatra-title">ของอันตราย — หน้าที่แจ้งและทำเครื่องหมาย</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ของใดที่มีสภาพอันก่อให้เกิดอันตรายได้ เช่น ไวไฟ หรืออาจเกิดระเบิด หรืออาจเป็นอันตรายโดยประการอื่น ผู้ส่งของต้องทำเครื่องหมายหรือปิดป้ายตามสมควรเพื่อให้รู้ว่าของนั้นมีอันตราย</p>
+        <p class="maatra-line">เมื่อส่งของตามวรรคหนึ่งให้แก่ผู้ขนส่งหรือผู้ขนส่งอื่น ผู้ส่งของต้องแจ้งให้ผู้ขนส่งหรือผู้ขนส่งอื่นทราบถึงสภาพอันตรายแห่งของนั้น และในกรณีที่ผู้ขนส่งหรือผู้ขนส่งอื่นร้องขอ ให้ผู้ส่งของแจ้งข้อควรระวังและวิธีป้องกันอันตรายให้ทราบด้วย</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m34">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 34</span><span class="maatra-title">ผู้ขนส่งไม่รู้ถึงอันตราย — สิทธิทำลายของ</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ถ้าผู้ส่งของไม่ปฏิบัติตามมาตรา 33 และผู้ขนส่งหรือผู้ขนส่งอื่นไม่ทราบถึงสภาพอันตรายแห่งของนั้น สิทธิและหน้าที่ของผู้ส่งของ ผู้ขนส่ง และผู้ขนส่งอื่นมีดังต่อไปนี้</p>
+        <p class="maatra-line indent">(1) ไม่ว่าเวลาใด ๆ ผู้ขนส่งหรือผู้ขนส่งอื่นอาจขนถ่ายของนั้นขึ้นจากเรือ ทำลาย หรือทำให้หมดฤทธิ์ ตามความจำเป็นแห่งกรณี โดยไม่ต้องชดใช้ค่าสินไหมทดแทน</p>
+        <p class="maatra-line indent">(2) ผู้ส่งของยังคงต้องรับผิดในความเสียหายหรือค่าใช้จ่ายทั้งปวงอันเกิดขึ้นหรือเป็นผลเนื่องจากการขนส่งของนั้น นอกจากค่าใช้จ่ายตาม (1)</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m35">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 35</span><span class="maatra-title">ของอันตราย — อาจทำลายได้แม้รู้อันตรายแล้ว</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">แม้ว่าผู้ส่งของจะได้ปฏิบัติตามมาตรา 33 แล้ว หรือผู้ขนส่งหรือผู้ขนส่งอื่นได้รับบรรทุกของตามมาตรา 33 วรรคหนึ่ง โดยรู้ถึงสภาพอันตรายแห่งของนั้นก็ตาม แต่ถ้าปรากฏในภายหลังว่าของนั้นจะเกิดเป็นอันตรายต่อชีวิตหรือทรัพย์สินขึ้นอย่างแน่ชัด ผู้ขนส่งหรือผู้ขนส่งอื่นอาจขนถ่ายของนั้นขึ้นจากเรือ ทำลาย หรือทำให้หมดฤทธิ์ตามความจำเป็นแห่งกรณีได้ โดยไม่ต้องชดใช้ค่าสินไหมทดแทน เว้นแต่เป็นกรณีที่ผู้ขนส่งต้องรับผิดตามมาตรา 39 โดยไม่อาจอ้างข้อยกเว้นความรับผิดตามมาตรา 51 มาตรา 52 มาตรา 53 มาตรา 54 มาตรา 55 หรือมาตรา 56 ได้</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m36">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 36</span><span class="maatra-title">สิทธิของผู้ส่งของในการสั่งการระหว่างขนส่ง</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ในระหว่างที่ของอยู่ในความดูแลของผู้ขนส่ง ผู้ส่งของจะสั่งให้ผู้ขนส่งงดการส่งของนั้นไป ส่งกลับคืนมา ระงับการส่งมอบแก่ผู้รับตราส่ง หรือจัดการแก่ของนั้นเป็นประการอื่นก็ได้ แต่ต้องเวนคืนต้นฉบับใบตราส่งทั้งหมดที่ออกให้แก่กันไว้แก่ผู้ขนส่ง ในกรณีเช่นนี้ ผู้ขนส่งมีสิทธิได้รับค่าใช้จ่ายที่ได้เสียไปเพื่อจัดการในการขนส่ง หรือตามคำสั่งของผู้ส่งของและมีสิทธิได้รับค่าระวางตามส่วนแห่งระยะทางที่ได้จัดการขนส่งไปแล้ว</p>
+        <p class="maatra-line">ถ้าได้จัดการไปตามคำสั่งของผู้ส่งของโดยยังไม่ได้รับเวนคืนต้นฉบับใบตราส่งทั้งหมด ผู้ขนส่งต้องรับผิดต่อผู้รับตราส่งซึ่งมีใบตราส่งฉบับที่ยังไม่ได้เวนคืน</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m37">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 37</span><span class="maatra-title">คำบอกกล่าวความเสียหายโดยผู้ขนส่ง — 90 วัน</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ถ้าผู้ขนส่งหรือผู้ขนส่งอื่นได้รับความเสียหายเนื่องจากความผิดหรือประมาทเลินเล่อของผู้ส่งของหรือตัวแทนหรือลูกจ้างของผู้ส่งของ ผู้ขนส่งหรือผู้ขนส่งอื่นนั้นต้องส่งคำบอกกล่าวเป็นหนังสือแก่ผู้ส่งของหรือตัวแทนว่าได้เกิดความเสียหายพร้อมทั้งแจ้งให้ทราบถึงสภาพโดยทั่วไปของความเสียหายดังกล่าวภายในเก้าสิบวันนับแต่วันที่ได้เกิดความเสียหาย หรือวันที่ส่งมอบของตามมาตรา 40 แล้วแต่วันใดจะเป็นวันหลัง มิฉะนั้นให้สันนิษฐานไว้ก่อนว่าผู้ขนส่งหรือผู้ขนส่งอื่นไม่ได้รับความเสียหายนั้น</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m38">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 38</span><span class="maatra-title">ข้อตกลงออกใบตราส่งไม่มีข้อสงวน</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ในกรณีที่ผู้ส่งของขอให้ผู้ขนส่งหรือตัวแทนออกใบตราส่งให้แก่ตนโดยไม่ต้องบันทึกข้อสงวนเกี่ยวกับรายการใด ๆ ในใบตราส่งและให้ใบตราส่งมีข้อความตามที่ผู้ส่งของได้แจ้งหรือจัดให้ หรือโดยไม่มีข้อสงวนเกี่ยวกับสภาพภายนอกแห่งของในใบตราส่งนั้น และผู้ส่งของรับรองหรือตกลงว่าตนยินยอมชดใช้ค่าเสียหายอันเกิดจากการออกใบตราส่งนั้น คำรับรองหรือข้อตกลงดังกล่าวจะใช้ยันผู้รับตราส่งหรือบุคคลภายนอกผู้รับโอนใบตราส่งนั้นมิได้</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="phak-section" id="phak_4" style="animation-delay:0.20s">
+    <div class="phak-header" style="background:#1F618D">
+      <div class="phak-title-group"><h2 class="phak-title" style="color:#D4E5FF">หมวด 4</h2><span class="phak-subtitle" style="color:#90B4E0">ความรับผิดของผู้ขนส่ง (มาตรา 39–50)</span></div>
+      <div class="stat-badge" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.3)"><span class="stat-num" style="color:#A8D0FF">12</span><span class="stat-label">มาตรา</span></div>
+    </div>
+    <div class="phak-body">
+      <div class="maatra-card" id="m39">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 39</span><span class="maatra-title">หลักการรับผิดของผู้ขนส่งและความดูแลแห่งของ</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ภายใต้บังคับมาตรา 51 มาตรา 52 มาตรา 53 มาตรา 54 มาตรา 55 มาตรา 56 และมาตรา 58 ผู้ขนส่งต้องรับผิดเพื่อความเสียหายอันเป็นผลจากการที่ของซึ่งได้รับมอบจากผู้ส่งของ สูญหาย เสียหาย หรือมีการส่งมอบชักช้า ถ้าเหตุแห่งการสูญหาย เสียหาย หรือการส่งมอบชักช้านั้นได้เกิดขึ้นในระหว่างที่ของดังกล่าวอยู่ในความดูแลของตน</p>
+        <p class="maatra-line">เพื่อประโยชน์แห่งมาตรานี้ ให้ถือว่าของอยู่ในความดูแลของผู้ขนส่งนับตั้งแต่เวลาที่ผู้ขนส่งได้รับของนั้นไว้จากผู้ส่งของ หรือตัวแทนผู้ส่งของหรือจากเจ้าหน้าที่หรือบุคคลใด ๆ ซึ่งกฎหมายหรือกฎข้อบังคับที่ใช้อยู่ ณ ท่าต้นทางที่บรรทุกของลงเรือกำหนดให้ผู้ส่งของต้องมอบของที่จะขนส่งไว้กับเจ้าหน้าที่หรือบุคคลดังกล่าวจนถึงเวลาที่ผู้ขนส่งส่งมอบของนั้น ณ ท่าปลายทางหรือที่หมายปลายทางตามที่กำหนดไว้ในมาตรา 40</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m40">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 40</span><span class="maatra-title">การส่งมอบของ — 3 กรณี</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ในกรณีดังต่อไปนี้ ให้ถือว่าผู้ขนส่งได้ส่งมอบของซึ่งตนได้รับไว้แล้ว</p>
+        <p class="maatra-line indent">(1) ผู้ขนส่งได้มอบของให้แก่ผู้รับตราส่งแล้ว</p>
+        <p class="maatra-line indent">(2) ในกรณีที่ผู้รับตราส่งไม่มารับของจากผู้ขนส่ง ผู้ขนส่งได้จัดการอย่างหนึ่งอย่างใดแก่ของนั้นตามที่กำหนดไว้ในสัญญารับขนของทางทะเล หรือตามกฎหมายที่ใช้บังคับ หรือประเพณีทางการค้าที่ถือปฏิบัติกันอยู่ ณ ท่าปลายทางแล้ว หรือ</p>
+        <p class="maatra-line indent">(3) ผู้ขนส่งได้มอบของไว้กับเจ้าหน้าที่หรือบุคคลใด ๆ ซึ่งกฎหมายหรือกฎข้อบังคับที่ใช้อยู่ ณ ท่าปลายทางกำหนดให้ผู้ขนส่งต้องมอบของที่ขนถ่ายขึ้นจากเรือไว้กับเจ้าหน้าที่หรือบุคคลดังกล่าว</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m41">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 41</span><span class="maatra-title">นิยาม — การส่งมอบชักช้า</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">การส่งมอบชักช้าตามมาตรา 39 ได้แก่</p>
+        <p class="maatra-line indent">(1) ในกรณีที่ได้กำหนดเวลาส่งมอบไว้กับผู้ส่งของ ผู้ขนส่งไม่ได้ส่งมอบของภายในกำหนดเวลานั้น</p>
+        <p class="maatra-line indent">(2) ในกรณีที่ไม่ได้กำหนดเวลาส่งมอบไว้ ผู้ขนส่งไม่ได้ส่งมอบของภายในกำหนดเวลาอันควรที่ผู้ขนส่งจะส่งมอบตามหน้าที่อันพึงปฏิบัติได้  ทั้งนี้ โดยคำนึงถึงพฤติการณ์แห่งกรณีประกอบด้วย</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m42">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 42</span><span class="maatra-title">สิทธิเรียกค่าเสียหายเสมือนของสูญหายสิ้นเชิง — 60 วัน</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ถ้าเวลาได้ล่วงพ้นไปแล้วไม่น้อยกว่าหกสิบวันนับแต่วันสิ้นกำหนดส่งมอบหรือกำหนดเวลาอันควรส่งมอบตามมาตรา 41 (1) หรือ (2) แล้วแต่กรณี บุคคลซึ่งมีสิทธิเรียกค่าสินไหมทดแทนจะรับมอบของและเรียกค่าเสียหายอันเป็นผลจากการส่งมอบชักช้า หรือจะเรียกค่าสินไหมทดแทนเสมือนว่าของนั้นได้สูญหายสิ้นเชิงก็ได้ ในกรณีนี้ให้นำบทบัญญัติมาตรา 227 แห่งประมวลกฎหมายแพ่งและพาณิชย์มาใช้บังคับโดยอนุโลม</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m43">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 43</span><span class="maatra-title">ผู้ขนส่งรับผิดแทนผู้ขนส่งอื่น</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">แม้ว่าผู้ขนส่งจะได้มอบหมายให้ผู้ขนส่งอื่นทำการขนส่งของที่ตนรับขน ผู้ขนส่งก็ยังคงต้องรับผิดเพื่อการสูญหาย เสียหาย หรือส่งมอบชักช้าแห่งของนั้น และจะต้องรับผิดเพื่อการกระทำของผู้ขนส่งอื่นรวมทั้งลูกจ้างและตัวแทนของผู้ขนส่งอื่น ซึ่งได้กระทำไปภายในทางการที่จ้าง หรือภายในขอบอำนาจของการเป็นตัวแทนนั้นด้วย</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m44">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 44</span><span class="maatra-title">ความรับผิดของผู้ขนส่งอื่น</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ให้นำบทบัญญัติว่าด้วยความรับผิดของผู้ขนส่งมาใช้บังคับแก่ผู้ขนส่งอื่นเฉพาะการขนส่งในส่วนที่ผู้ขนส่งอื่นได้รับมอบหมายด้วย</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m45">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 45</span><span class="maatra-title">ลูกหนี้ร่วมกัน</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">เมื่อมีกรณีที่ผู้ขนส่งต้องรับผิดและผู้ขนส่งอื่นจะต้องรับผิดในกรณีเดียวกันนั้นด้วย ให้ผู้ขนส่งและผู้ขนส่งอื่นดังกล่าวเป็นลูกหนี้ร่วมกัน</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m46">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 46</span><span class="maatra-title">อายุความ — 1 ปี</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ภายใต้บังคับมาตรา 47 และมาตรา 48 สิทธิเรียกร้องเอาค่าเสียหายเพื่อการสูญหาย เสียหาย หรือส่งมอบชักช้าแห่งของที่รับขนตามสัญญารับขนของทางทะเล ถ้าไม่ได้ฟ้องคดีต่อศาลหรือเสนอข้อพิพาทให้อนุญาโตตุลาการชี้ขาดภายในหนึ่งปีนับแต่วันที่ผู้ขนส่งได้ส่งมอบของ หรือถ้าไม่มีการส่งมอบนับแต่วันที่ล่วงเลยกำหนดส่งมอบตามมาตรา 41 (1) หรือนับแต่วันที่ล่วงเลยกำหนดเวลาอันสมควรตามมาตรา 41 (2) ให้เป็นอันขาดอายุความ</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m47">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 47</span><span class="maatra-title">ข้อตกลงขยายอายุความ</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ก่อนอายุความตามมาตรา 46 จะครบบริบูรณ์ ถ้าฝ่ายที่ถูกเรียกร้องยินยอมโดยทำเป็นหนังสือลงลายมือชื่อฝ่ายที่ถูกเรียกร้องว่าจะไม่ยกอายุความขึ้นเป็นข้อต่อสู้ในกรณีที่ฝ่ายที่มีสิทธิเรียกร้องฟ้องคดีต่อศาลหรือเสนอข้อพิพาทให้อนุญาโตตุลาการชี้ขาด ความยินยอมนี้ให้ใช้บังคับได้</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m48">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 48</span><span class="maatra-title">สิทธิเรียกค่าเสียหายส่งมอบชักช้าสิ้นไป — 60 วัน</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">สิทธิเรียกร้องค่าเสียหายอันเป็นผลจากการส่งมอบชักช้าย่อมสิ้นไป ถ้าผู้รับตราส่งมิได้ส่งคำบอกกล่าวเป็นหนังสือแก่ผู้ขนส่งภายในหกสิบวันนับแต่วันที่ได้รับมอบของ</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m49">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 49</span><span class="maatra-title">ข้อสันนิษฐานการส่งมอบของในสภาพดี</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">เมื่อผู้รับตราส่งได้รับมอบของจากผู้ขนส่งหรือจากบุคคลตามมาตรา 40 (3) ไว้แล้ว ให้สันนิษฐานไว้ก่อนว่าผู้ขนส่งได้มอบของซึ่งมีสภาพ จำนวน น้ำหนัก และรายละเอียดอื่น ๆ ตรงตามที่ระบุไว้ในใบตราส่ง หรือถ้าไม่ได้ออกใบตราส่งให้ไว้แก่กันให้สันนิษฐานว่าได้ส่งมอบของซึ่งมีสภาพดี แล้วแต่กรณี เว้นแต่</p>
+        <p class="maatra-line indent">(1) ผู้รับตราส่งหรือบุคคลตามมาตรา 40 (3) และผู้ขนส่งได้ทำการสำรวจ หรือตรวจสภาพของร่วมกันและจดแจ้งการสูญหายหรือเสียหายไว้แล้วก่อนที่ผู้รับตราส่งจะรับมอบของ</p>
+        <p class="maatra-line indent">(2) ในกรณีที่ไม่มีการสำรวจหรือตรวจสภาพของร่วมกันตาม (1) ผู้รับตราส่งได้ส่งคำบอกกล่าวเป็นหนังสือแก่ผู้ขนส่ง ณ ท่าปลายทางก่อนรับมอบของตามวรรคหนึ่ง หรือภายในหนึ่งวันทำการถัดจากวันรับมอบของว่ามีของสูญหายหรือเสียหาย พร้อมทั้งแจ้งถึงสภาพการสูญหายหรือเสียหายนั้น ๆ ด้วย หรือในกรณีที่การสูญหาย หรือเสียหายไม่อาจพบหรือเห็นได้จากการตรวจสภาพภายนอกแห่งของนั้น ผู้รับตราส่งได้ส่งคำบอกกล่าวภายในสิบห้าวันนับแต่วันรับมอบของ</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m50">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 50</span><span class="maatra-title">วิธีการส่งคำบอกกล่าว</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ในกรณีที่จะต้องส่งคำบอกกล่าวแก่กันตามมาตรา 48 หรือมาตรา 49 (2) ถ้ามิได้ส่งคำบอกกล่าวโดยตรงแก่บุคคลที่จะเป็นผู้รับคำบอกกล่าวนั้นให้บังคับดังนี้</p>
+        <p class="maatra-line indent">(1) ถ้าได้ส่งคำบอกกล่าวให้แก่ตัวแทนผู้ขนส่ง หรือนายเรือ หรือเจ้าหน้าที่ประจำเรือซึ่งเป็นผู้ควบคุมเรือที่ผู้ขนส่งใช้ทำการขนส่ง ให้ถือว่าได้ส่งคำบอกกล่าวนั้นให้แก่ผู้ขนส่งแล้ว</p>
+        <p class="maatra-line indent">(2) ถ้าได้ส่งคำบอกกล่าวให้แก่ตัวแทนผู้ขนส่งอื่น หรือนายเรือหรือเจ้าหน้าที่ประจำเรือซึ่งเป็นผู้ควบคุมเรือที่ผู้ขนส่งอื่นใช้ทำการขนส่ง ให้ถือว่าได้ส่งคำบอกกล่าวนั้นให้แก่ผู้ขนส่งอื่นแล้ว</p>
+        <p class="maatra-line indent">(3) ถ้าผู้ขนส่งอื่นเป็นผู้ส่งมอบของตามมาตรา 40 การส่งคำบอกกล่าวแก่ผู้ขนส่งอื่นนั้นให้มีผลเช่นเดียวกับการส่งคำบอกกล่าวแก่ผู้ขนส่ง และการส่งคำบอกกล่าวแก่ผู้ขนส่งก็ให้มีผลเช่นเดียวกับการส่งให้แก่ผู้ขนส่งอื่นด้วย</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="phak-section" id="phak_5" style="animation-delay:0.25s">
+    <div class="phak-header" style="background:#1A4971">
+      <div class="phak-title-group"><h2 class="phak-title" style="color:#D4E5FF">หมวด 5</h2><span class="phak-subtitle" style="color:#90B4E0">ข้อยกเว้นความรับผิดของผู้ขนส่ง (มาตรา 51–57)</span></div>
+      <div class="stat-badge" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.3)"><span class="stat-num" style="color:#A8D0FF">7</span><span class="stat-label">มาตรา</span></div>
+    </div>
+    <div class="phak-body">
+      <div class="maatra-card" id="m51">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 51</span><span class="maatra-title">ข้อยกเว้น — ความบกพร่องสภาพเรือ</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ผู้ขนส่งไม่ต้องรับผิดเพื่อการสูญหาย เสียหาย หรือส่งมอบชักช้าอันเกิดขึ้นจากการไม่เป็นไปตามมาตรา 8 วรรคหนึ่ง ถ้าพิสูจน์ได้ว่าตนปฏิบัติหน้าที่ตามมาตรา 8 วรรคสอง หรือมาตรา 9 แล้ว</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m52">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 52</span><span class="maatra-title">ข้อยกเว้น 13 ประการ</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ผู้ขนส่งไม่ต้องรับผิดเพื่อการสูญหาย เสียหาย หรือส่งมอบชักช้า ถ้าพิสูจน์ได้ว่าการสูญหาย เสียหาย หรือส่งมอบชักช้านั้นเกิดขึ้นหรือเป็นผลจาก</p>
+        <p class="maatra-line indent">(1) เหตุสุดวิสัย</p>
+        <p class="maatra-line indent">(2) ภยันตรายหรืออุบัติเหตุแห่งท้องทะเลหรือน่านน้ำที่ใช้เดินเรือได้</p>
+        <p class="maatra-line indent">(3) การสงครามหรือการสู้รบของกองกำลังติดอาวุธ</p>
+        <p class="maatra-line indent">(4) สงครามกลางเมือง การจลาจล การก่อการร้าย หรือการก่อการวุ่นวายในบ้านเมือง</p>
+        <p class="maatra-line indent">(5) การยึด การจับ การหน่วงเหนี่ยวหรือการแทรกแซงด้วยประการใด ๆ ซึ่งกระทำต่อเรือ โดยผู้มีอำนาจปกครองรัฐหรือดินแดนหรือตามบทบัญญัติแห่งกฎหมาย แต่ทั้งนี้ ต้องไม่เป็นเหตุมาจากความผิดหรือประมาทเลินเล่อของผู้ขนส่ง</p>
+        <p class="maatra-line indent">(6) การใช้มาตรการป้องกันและปราบปรามโรคติดต่อ</p>
+        <p class="maatra-line indent">(7) การนัดหยุดงาน การปิดงานงดจ้าง การผละงาน หรือการจงใจทำงานล่าช้าที่ท่าเรือ ซึ่งการกระทำดังกล่าวเป็นอุปสรรคแก่การบรรทุกหรือขนถ่ายของหรือเป็นอุปสรรคแก่การที่เรือจะเข้าหรือออกจากท่าเรือนั้น</p>
+        <p class="maatra-line indent">(8) การกระทำของโจรสลัด</p>
+        <p class="maatra-line indent">(9) ความผิดของผู้ส่งของหรือผู้รับตราส่ง เช่น การบรรจุหีบห่อ หรือรวมมัดไม่มั่นคงแข็งแรงหรือไม่เหมาะสมกับสภาพแห่งของ การทำเครื่องหมายที่ของหรือหีบห่อไม่ชัดเจนหรือไม่เพียงพอ</p>
+        <p class="maatra-line indent">(10) สภาพแห่งของนั้นเอง</p>
+        <p class="maatra-line indent">(11) ความชำรุดบกพร่องของเรือที่แฝงอยู่ภายในซึ่งไม่อาจพบเห็นหรือทราบได้ด้วยการตรวจสอบอย่างระมัดระวังและโดยใช้ฝีมือเท่าที่เป็นธรรมดาและสมควรจะต้องใช้สำหรับผู้ประกอบอาชีพตรวจเรือ</p>
+        <p class="maatra-line indent">(12) ความผิดพลาดในการเดินเรืออันเกิดจากความบกพร่องในการปฏิบัติหน้าที่หรือตามคำสั่งของผู้นำร่อง</p>
+        <p class="maatra-line indent">(13) เหตุอื่นใดที่มิใช่ความผิดหรือประมาทเลินเล่อหรืออยู่ในความรู้เห็นของผู้ขนส่ง และมิใช่ความผิดหรือประมาทเลินเล่อของตัวแทนหรือลูกจ้างของผู้ขนส่ง</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m53">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 53</span><span class="maatra-title">ข้อยกเว้น — อัคคีภัย</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ผู้ขนส่งไม่ต้องรับผิดเพื่อการสูญหาย เสียหาย หรือส่งมอบชักช้า อันเกิดจากอัคคีภัย เว้นแต่ผู้ใช้สิทธิเรียกร้องจะพิสูจน์ได้ว่า อัคคีภัยนั้นเกิดขึ้นจากความผิด หรือประมาทเลินเล่อของผู้ขนส่งหรือตัวแทนหรือลูกจ้างของผู้ขนส่ง</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m54">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 54</span><span class="maatra-title">ข้อยกเว้น — มาตรการระงับอัคคีภัย</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ผู้ขนส่งไม่ต้องรับผิดเพื่อการสูญหาย เสียหาย หรือส่งมอบชักช้า อันเป็นผลจากการใช้มาตรการต่าง ๆ ที่พึงกระทำเพื่อระงับอัคคีภัย หรือหลีกเลี่ยงหรือบรรเทาผลเสียหายจากอัคคีภัย เว้นแต่ผู้ใช้สิทธิเรียกร้องจะพิสูจน์ได้ว่าเป็นความผิด หรือประมาทเลินเล่อของผู้ขนส่งหรือตัวแทนหรือลูกจ้างของผู้ขนส่งในการใช้มาตรการดังกล่าว</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m55">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 55</span><span class="maatra-title">ข้อยกเว้น — การช่วยชีวิตและทรัพย์สินในทะเล</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ผู้ขนส่งไม่ต้องรับผิดเพื่อการสูญหาย เสียหาย หรือส่งมอบชักช้า ถ้าพิสูจน์ได้ว่าการสูญหาย เสียหาย หรือส่งมอบชักช้านั้นเป็นผลจากการใช้มาตรการทั้งปวง เพื่อช่วยชีวิตมนุษย์ในทะเล หรือจากการใช้มาตรการอันสมควรเพื่อช่วยทรัพย์สินในทะเล แต่ผู้ขนส่งยังคงต้องรับผิดตามส่วนของตนในการเฉลี่ยความเสียหายทั่วไป ถ้ามี</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m56">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 56</span><span class="maatra-title">ข้อยกเว้น — การขนส่งสัตว์มีชีวิต</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ในการขนส่งสัตว์มีชีวิต ผู้ขนส่งไม่ต้องรับผิดเพื่อการสูญหาย เสียหาย หรือส่งมอบชักช้าอันเป็นผลจากภัยซึ่งมีลักษณะพิเศษที่มีประจำอยู่ในการขนส่งสัตว์มีชีวิตหรือจากสภาพของสัตว์นั้นเอง ถ้าพิสูจน์ได้ว่า</p>
+        <p class="maatra-line indent">(1) ผู้ขนส่งได้ปฏิบัติตามคำแนะนำเกี่ยวกับสัตว์นั้นโดยเฉพาะที่ผู้ส่งของได้ให้ไว้แก่ตนแล้ว และ</p>
+        <p class="maatra-line indent">(2) ในพฤติการณ์แห่งกรณีเช่นนั้น การสูญหาย เสียหาย หรือส่งมอบชักช้า อาจเกิดจากภัยหรือสภาพของสัตว์ดังกล่าวได้</p>
+        <p class="maatra-line">ความในวรรคหนึ่งมิให้ใช้บังคับถ้าพิสูจน์ได้ว่า การสูญหาย เสียหายหรือส่งมอบชักช้าไม่ว่าทั้งหมดหรือบางส่วน เป็นผลจากความผิดหรือประมาทเลินเล่อของผู้ขนส่งหรือตัวแทนหรือลูกจ้างของผู้ขนส่ง</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m57">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 57</span><span class="maatra-title">ของมีค่า — ต้องแจ้งราคา</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ถ้าของที่ขนส่งเป็นเงินตรา ธนาคารบัตร ตั๋วเงิน พันธบัตร ใบหุ้น ใบหุ้นกู้ ประทวนสินค้า อัญมณีหรือของมีค่าอย่างอื่น ผู้ขนส่งไม่ต้องรับผิดเพื่อการสูญหายหรือเสียหายแห่งของดังกล่าว เว้นแต่ผู้ส่งของจะได้แจ้งให้ผู้ขนส่งทราบถึงสภาพและราคาของนั้นในเวลาที่นำของมามอบให้</p>
+        <p class="maatra-line">ในกรณีที่แจ้งราคาของไว้ ให้ผู้ขนส่งรับผิดเพียงไม่เกินราคาที่แจ้งไว้นั้น</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="phak-section" id="phak_6" style="animation-delay:0.30s">
+    <div class="phak-header" style="background:#0E3460">
+      <div class="phak-title-group"><h2 class="phak-title" style="color:#D4E5FF">หมวด 6</h2><span class="phak-subtitle" style="color:#90B4E0">ข้อจำกัดความรับผิดของผู้ขนส่งและการคิดค่าเสียหาย (มาตรา 58–61)</span></div>
+      <div class="stat-badge" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.3)"><span class="stat-num" style="color:#A8D0FF">4</span><span class="stat-label">มาตรา</span></div>
+    </div>
+    <div class="phak-body">
+      <div class="maatra-card" id="m58">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 58</span><span class="maatra-title">วงเงินจำกัดความรับผิดของผู้ขนส่ง</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ภายใต้บังคับมาตรา 60 ในกรณีที่ของซึ่งผู้ขนส่งได้รับมอบหมายสูญหายหรือเสียหายไม่ว่าทั้งหมดหรือบางส่วน ให้จำกัดความรับผิดของผู้ขนส่งไว้เพียงหนึ่งหมื่นบาทต่อหนึ่งหน่วยการขนส่ง หรือกิโลกรัมละสามสิบบาทต่อน้ำหนักสุทธิแห่งของนั้น แล้วแต่เงินจำนวนใดจะมากกว่า</p>
+        <p class="maatra-line">ในกรณีที่คำนวณราคาของที่สูญหายหรือเสียหายได้ตามมาตรา 61 และปรากฏว่า ราคาของนั้นต่ำกว่าที่จำกัดความรับผิดไว้ตามวรรคหนึ่ง ให้ถือเอาตามราคาที่คำนวณได้นั้น</p>
+        <p class="maatra-line">ในกรณีที่มีการส่งมอบของชักช้า ให้จำกัดความรับผิดของผู้ขนส่งไว้เพียงสองเท่าครึ่งของค่าระวางแห่งของเฉพาะที่ส่งมอบชักช้า แต่รวมกันต้องไม่เกินค่าระวางทั้งหมดตามสัญญารับขนของทางทะเล</p>
+        <p class="maatra-line">ในกรณีที่ผู้ขนส่งต้องรับผิดทั้งตามวรรคหนึ่งและวรรคสามโดยมีหน่วยการขนส่งเดียวกันเป็นมูลแห่งความรับผิด ให้จำกัดความรับผิดของผู้ขนส่งไว้ไม่เกินจำนวนเงินที่กำหนดตามวรรคหนึ่ง</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m59">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 59</span><span class="maatra-title">หลักเกณฑ์การนับหน่วยการขนส่ง</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">ในการคำนวณว่าเงินจำนวนใดจะมากกว่าตามมาตรา 58 วรรคหนึ่ง ให้ใช้หลักเกณฑ์ดังต่อไปนี้</p>
+        <p class="maatra-line indent">(1) ในกรณีที่มีการรวมของหลายหน่วยการขนส่งเป็นหน่วยการขนส่งเดียวกัน ไม่ว่าจะมีการใช้ภาชนะขนส่งบรรจุหรือรองรับหรือไม่ก็ตาม ถ้าระบุจำนวนและลักษณะของหน่วยการขนส่งที่รวมกันนั้นไว้ในใบตราส่ง ให้ถือว่าของตามใบตราส่งนั้นมีจำนวนหน่วยการขนส่งตามที่ระบุไว้นั้น แต่ถ้ามิได้ระบุ ให้ถือว่าของทั้งหมดที่รวมเป็นหน่วยการขนส่งเดียวกันนั้นเป็นหนึ่งหน่วยการขนส่ง</p>
+        <p class="maatra-line indent">(2) ในกรณีที่ตัวภาชนะขนส่งสูญหายหรือเสียหาย ถ้าผู้ขนส่งไม่ได้เป็นเจ้าของหรือผู้จัดหาภาชนะขนส่งนั้น ให้ถือว่าภาชนะขนส่งอันหนึ่งเป็นของหนึ่งหน่วยการขนส่งอีกต่างหากจากของที่อยู่ในหรือบนภาชนะขนส่งนั้น</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m60">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 60</span><span class="maatra-title">กรณีที่ไม่นำข้อจำกัดความรับผิดมาใช้</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">การจำกัดความรับผิดของผู้ขนส่งตามมาตรา 58 มิให้ใช้บังคับแก่กรณีดังต่อไปนี้</p>
+        <p class="maatra-line indent">(1) การสูญหาย เสียหาย หรือส่งมอบชักช้าที่เกิดขึ้นนั้นเป็นผลจากการที่ผู้ขนส่งหรือตัวแทนหรือลูกจ้างของผู้ขนส่งกระทำหรืองดเว้นกระทำการโดยมีเจตนาที่จะให้เกิดการสูญหาย เสียหาย หรือส่งมอบชักช้า หรือโดยละเลยหรือไม่เอาใจใส่ ทั้งที่รู้ว่าการสูญหาย เสียหาย หรือส่งมอบชักช้านั้นอาจเกิดขึ้นได้</p>
+        <p class="maatra-line indent">(2) ผู้ส่งของและผู้ขนส่งตกลงกันกำหนดความรับผิดของผู้ขนส่งไว้มากกว่าที่กำหนดไว้ในมาตรา 58 โดยระบุไว้ในใบตราส่ง</p>
+        <p class="maatra-line indent">(3) ผู้ขนส่งได้จดแจ้งรายการใด ๆ ไว้ในใบตราส่งตามที่ผู้ส่งของแจ้ง หรือจัดให้โดยไม่บันทึกข้อสงวนเกี่ยวกับรายการนั้นไว้ในใบตราส่ง  ทั้งนี้ โดยมีเจตนาที่จะฉ้อฉลผู้รับตราส่งหรือบุคคลภายนอกซึ่งกระทำการโดยเชื่อรายการในใบตราส่งนั้น</p>
+        <p class="maatra-line indent">(4) ผู้ส่งของได้แจ้งราคาของที่ขนส่งให้ผู้ขนส่งทราบและผู้ขนส่งยอมรับ โดยแสดงราคาของนั้นไว้ในใบตราส่ง</p>
+        <p class="maatra-line">ในกรณีตาม (4) นี้ ถ้าราคาที่คำนวณได้ตามมาตรา 61 ต่ำกว่าราคาที่แสดงไว้ในใบตราส่ง ให้ผู้ขนส่งรับผิดเพียงเท่าราคาที่คำนวณได้นั้น และถ้าราคาที่คำนวณได้ตามมาตรา 61 สูงกว่าราคาที่แสดงไว้ในใบตราส่ง ให้ผู้ขนส่งรับผิดเพียงเท่าราคาที่แสดงไว้ในใบตราส่ง</p>
+        </div>
+      </div>
+      <div class="maatra-card" id="m61">
+        <div class="maatra-header"><span class="maatra-badge">มาตรา 61</span><span class="maatra-title">วิธีคำนวณราคาของที่สูญหายหรือเสียหาย</span></div>
+        <div class="maatra-body">
+        <p class="maatra-line">การคำนวณราคาของที่สูญหายหรือเสียหายตามมาตรา 58 ให้ใช้หลักเกณฑ์ดังนี้</p>
+        <p class="maatra-line indent">(1) ถ้าของสูญหายหรือเสียหายทั้งหมด ให้คำนวณเท่ากับราคาที่ของนั้นจะพึงมีในเวลาที่พึงส่งมอบ ณ ท่าปลายทาง</p>
+        <p class="maatra-line indent">(2) ถ้าของสูญหายหรือเสียหายบางส่วน ให้คำนวณตามส่วนโดยเทียบกับราคาของอย่างเดียวกันและคุณภาพเท่าเทียมกันที่ยังเหลืออยู่ในเวลาส่งมอบ ณ ท่าปลายทาง</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<a class="home-btn" href="../index.html" title="กลับหน้าหลัก" aria-label="กลับหน้าหลัก">&#x1F3E0;</a>
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#x2191;</button>
+
+<script>
+const backTop = document.getElementById('backTop');
+window.addEventListener('scroll', () => { backTop.classList.toggle('visible', window.scrollY > 400); });
+let searchTimer;
+function doSearch(q) { clearTimeout(searchTimer); searchTimer = setTimeout(() => execSearch(q), 200); }
+function execSearch(q) {
+  const cards = document.querySelectorAll('.maatra-card');
+  const noResults = document.getElementById('searchNoResults');
+  const countEl = document.getElementById('searchCount');
+  document.querySelectorAll('.search-highlight').forEach(el => { const parent = el.parentNode; parent.replaceChild(document.createTextNode(el.textContent), el); parent.normalize(); });
+  if (!q.trim()) {
+    cards.forEach(c => { c.classList.remove('hidden', 'highlight'); });
+    document.querySelectorAll('.phak-section').forEach(ps => ps.classList.remove('hidden'));
+    noResults.classList.add('hidden'); countEl.textContent = ''; return;
+  }
+  const qLower = q.toLowerCase(); let matchCount = 0;
+  cards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    if (text.includes(qLower)) { card.classList.remove('hidden'); card.classList.add('highlight'); highlightText(card, q); matchCount++; }
+    else { card.classList.add('hidden'); card.classList.remove('highlight'); }
+  });
+  document.querySelectorAll('.phak-section').forEach(ps => { const visible = ps.querySelectorAll('.maatra-card:not(.hidden)').length > 0; ps.classList.toggle('hidden', !visible); });
+  noResults.classList.toggle('hidden', matchCount > 0);
+  countEl.textContent = matchCount > 0 ? (matchCount + ' ผล') : '';
+}
+function highlightText(el, q) {
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+  const nodes = []; while (walker.nextNode()) nodes.push(walker.currentNode);
+  const regex = new RegExp(q.replace(/[.*+?^${}()|[\]\]/g, '\$&'), 'gi');
+  nodes.forEach(node => { if (node.nodeValue && regex.test(node.nodeValue)) { const span = document.createElement('span'); span.innerHTML = node.nodeValue.replace(regex, m => '<span class="search-highlight">' + m + '</span>'); const frag = document.createDocumentFragment(); while (span.firstChild) frag.appendChild(span.firstChild); node.parentNode.replaceChild(frag, node); } });
+}
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => { navigator.serviceWorker.register('../service-worker.js').catch(err => console.error('SW error:', err)); });
+}
+</script>
+</body>
+</html>
