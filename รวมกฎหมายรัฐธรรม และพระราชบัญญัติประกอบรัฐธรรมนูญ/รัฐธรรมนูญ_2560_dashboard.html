@@ -5,37 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>รัฐธรรมนูญแห่งราชอาณาจักรไทย พ.ศ. ๒๕๖๐ — Dashboard</title>
 <meta name="description" content="รัฐธรรมนูญแห่งราชอาณาจักรไทย พุทธศักราช 2560 ฉบับเต็มทุกมาตรา 16 หมวด 276 มาตรา">
-<link rel="manifest" href="../manifest.json">
-<meta name="theme-color" content="#3D5A3E">
+<link rel="manifest" href="../manifest.json"><meta name="theme-color" content="#3D5A3E">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="รธน. 2560">
-<meta name="mobile-web-app-capable" content="yes">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+Thai:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#E8E4D9;--bg2:#DDD9CE;--bg3:#F2EFE7;--sidebar:#DDD9CE;--border:#3D5A3E;--border-light:#C8C3B5;--text:#1E3120;--text-muted:#5A6E50;--text-dim:#8A9880;--accent1:#3D5A3E;--accent2:#5C7A3E;--gold:#B8860B;--gold-light:#D4A017;--radius:14px;--radius-sm:10px;--shadow-card:0 3px 0 0 #3D5A3E}
-html{scroll-behavior:smooth}
-body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;font-size:17px}
+:root{--bg:#E8E4D9;--bg2:#DDD9CE;--bg3:#F2EFE7;--border:#3D5A3E;--border-light:#C8C3B5;--text:#1E3120;--text-muted:#5A6E50;--text-dim:#8A9880;--accent1:#3D5A3E;--accent2:#5C7A3E;--gold:#B8860B;--gold-light:#D4A017;--radius:14px;--radius-sm:10px;--shadow-card:0 3px 0 0 #3D5A3E}
+html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;font-size:17px}
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg2)}::-webkit-scrollbar-thumb{background:var(--accent1);border-radius:3px}
 .hero{background:var(--bg);border-bottom:2px dashed var(--border-light);padding:56px 48px 44px;padding-top:calc(56px + env(safe-area-inset-top));text-align:center;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(61,90,62,0.04) 1px,transparent 1px);background-size:24px 24px;pointer-events:none}
-.hero-emblem{font-size:52px;margin-bottom:16px;display:block;filter:drop-shadow(0 2px 6px rgba(61,90,62,0.25))}
+.hero-emblem{font-size:52px;margin-bottom:16px;display:block}
 .hero-title{font-family:'Noto Serif Thai',serif;font-size:clamp(26px,4vw,46px);font-weight:700;color:var(--accent1);margin-bottom:10px;line-height:1.25}
-.hero-sub{color:var(--text-muted);font-family:'IBM Plex Mono',monospace;font-size:13px;margin-bottom:32px;letter-spacing:0.3px}
+.hero-sub{color:var(--text-muted);font-family:'IBM Plex Mono',monospace;font-size:13px;margin-bottom:32px}
 .hero-stats{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
 .hero-stat{background:var(--bg3);border:2px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-card);padding:14px 28px;text-align:center}
 .hero-stat-num{font-size:30px;font-weight:700;color:var(--accent1);display:block;font-family:'IBM Plex Mono',monospace}
 .hero-stat-label{font-size:12px;color:var(--text-muted);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:0.8px;margin-top:2px;display:block}
 .search-wrapper{max-width:580px;margin:0 auto;position:relative}
 .search-input{width:100%;padding:13px 20px 13px 46px;background:var(--bg3);border:2px solid var(--border);border-radius:50px;color:var(--text);font-size:16px;font-family:'Sarabun',sans-serif;outline:none;transition:all 0.25s;box-shadow:3px 3px 0 var(--border)}
-.search-input::placeholder{color:var(--text-dim)}
-.search-input:focus{background:#fff;box-shadow:4px 4px 0 var(--accent1)}
+.search-input::placeholder{color:var(--text-dim)}.search-input:focus{background:#fff;box-shadow:4px 4px 0 var(--accent1)}
 .search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:16px;pointer-events:none}
 .search-results-count{position:absolute;right:18px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:12px;font-family:'IBM Plex Mono',monospace}
-.nav-bar{background:var(--sidebar);border-bottom:2px solid var(--border-light);padding:10px 36px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.nav-bar{background:var(--bg2);border-bottom:2px solid var(--border-light);padding:10px 36px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .nav-label{font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-right:4px;white-space:nowrap;font-family:'IBM Plex Mono',monospace}
 .nav-pill{display:inline-block;padding:5px 14px;background:var(--bg3);border:1.5px solid var(--border);border-radius:50px;color:var(--accent1);text-decoration:none;font-size:13px;font-weight:600;white-space:nowrap;transition:all 0.2s;box-shadow:2px 2px 0 var(--border)}
 .nav-pill:hover{background:var(--accent1);color:var(--bg3);transform:translate(-1px,-1px);box-shadow:3px 3px 0 #1a2e1b}
@@ -50,23 +46,18 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 .maatra-card{background:var(--bg3);border:2px solid var(--border);border-radius:var(--radius-sm);margin-bottom:16px;overflow:hidden;transition:all 0.18s;box-shadow:3px 3px 0 var(--border);scroll-margin-top:80px}
 .maatra-card:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--border)}
 .maatra-card.highlight{border-color:var(--gold)!important;box-shadow:3px 3px 0 var(--gold)!important}
-.maatra-card.highlight .maatra-badge{background:var(--gold)!important;color:#fff!important;border-color:#8B6308!important}
+.maatra-card.highlight .maatra-badge{background:var(--gold)!important;color:#fff!important}
 .maatra-header{padding:10px 18px;background:var(--bg2);border-bottom:1.5px solid var(--border-light);display:flex;flex-wrap:wrap;align-items:center;gap:10px}
-.maatra-badge{background:var(--accent1);color:#E8F0E0;padding:4px 14px;border-radius:50px;font-size:13px;font-weight:700;white-space:nowrap;font-family:'IBM Plex Mono',monospace;border:1.5px solid #2A3E2B;letter-spacing:0.3px}
-.maatra-title{font-size:15px;font-weight:600;color:var(--text);letter-spacing:0.2px}
-.maatra-body{padding:18px 20px}
-.maatra-line{margin-bottom:14px;line-height:1.9;color:var(--text);font-size:17px}
-.maatra-line:last-child{margin-bottom:0}
+.maatra-badge{background:var(--accent1);color:#E8F0E0;padding:4px 14px;border-radius:50px;font-size:13px;font-weight:700;white-space:nowrap;font-family:'IBM Plex Mono',monospace;border:1.5px solid #2A3E2B}
+.maatra-title{font-size:15px;font-weight:600;color:var(--text)}
+.maatra-body{padding:18px 20px}.maatra-line{margin-bottom:14px;line-height:1.9;color:var(--text);font-size:17px}.maatra-line:last-child{margin-bottom:0}
 .search-highlight{background:rgba(212,160,23,0.3);color:#5A3800;border-radius:3px;padding:0 3px;font-weight:600}
-.hidden{display:none!important}
-.search-no-results{text-align:center;padding:60px 20px;color:var(--text-muted);font-size:17px;font-family:'IBM Plex Mono',monospace}
+.hidden{display:none!important}.search-no-results{text-align:center;padding:60px 20px;color:var(--text-muted);font-size:17px;font-family:'IBM Plex Mono',monospace}
 .back-top{position:fixed;bottom:calc(28px + env(safe-area-inset-bottom));right:28px;width:44px;height:44px;background:var(--accent1);color:#E8F0E0;border:2px solid #2A3E2B;border-radius:50%;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center;box-shadow:3px 3px 0 #2A3E2B;transition:all 0.2s;z-index:999}
-.back-top:hover{background:var(--accent2);transform:translate(-1px,-1px);box-shadow:4px 4px 0 #2A3E2B}
 .back-top.visible{display:flex}
-.home-btn{position:fixed;bottom:calc(28px + env(safe-area-inset-bottom));left:28px;width:44px;height:44px;background:var(--gold);color:#fff;border:2px solid #8B6308;border-radius:50%;text-decoration:none;font-size:18px;display:flex;align-items:center;justify-content:center;box-shadow:3px 3px 0 #8B6308;transition:all 0.2s;z-index:999}
-.home-btn:hover{background:var(--gold-light);transform:translate(-1px,-1px);box-shadow:4px 4px 0 #8B6308}
+.home-btn{position:fixed;bottom:calc(28px + env(safe-area-inset-bottom));left:28px;width:44px;height:44px;background:var(--gold);color:#fff;border:2px solid #8B6308;border-radius:50%;text-decoration:none;font-size:18px;display:flex;align-items:center;justify-content:center;box-shadow:3px 3px 0 #8B6308;z-index:999}
 @keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:768px){.hero{padding:36px 20px 30px;padding-top:calc(36px + env(safe-area-inset-top))}.nav-bar{padding:10px 16px}.phak-body{padding:14px}.phak-header{padding:18px 20px}}
+@media(max-width:768px){.hero{padding:36px 20px 30px;padding-top:calc(36px + env(safe-area-inset-top))}.nav-bar{padding:10px 16px}.phak-body{padding:14px}}
 </style>
 </head>
 <body>
@@ -81,15 +72,11 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
   </div>
   <div class="search-wrapper">
     <span class="search-icon">🔍</span>
-    <input type="text" class="search-input" id="searchInput"
-           placeholder="ค้นหามาตรา เช่น มาตรา 25 หรือ สิทธิเสรีภาพ..."
-           oninput="doSearch(this.value)">
+    <input type="text" class="search-input" id="searchInput" placeholder="ค้นหามาตรา เช่น มาตรา 25 หรือ สิทธิเสรีภาพ..." oninput="doSearch(this.value)">
     <span class="search-results-count" id="searchCount"></span>
   </div>
 </div>
-<nav class="nav-bar">
-  <span class="nav-label">ไปที่:</span>
-  <a href="#ch_1" class="nav-pill">หมวด 1 บททั่วไป</a>
+<nav class="nav-bar"><span class="nav-label">ไปที่:</span><a href="#ch_1" class="nav-pill">หมวด 1 บททั่วไป</a>
 <a href="#ch_2" class="nav-pill">หมวด 2 พระมหากษัตริย์</a>
 <a href="#ch_3" class="nav-pill">หมวด 3 สิทธิและเสรีภาพของปวงชนชาวไทย</a>
 <a href="#ch_4" class="nav-pill">หมวด 4 หน้าที่ของปวงชนชาวไทย</a>
@@ -105,7 +92,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <a href="#ch_14" class="nav-pill">หมวด 14 การปกครองส่วนท้องถิ่น</a>
 <a href="#ch_15" class="nav-pill">หมวด 15 การแก้ไขเพิ่มเติมรัฐธรรมนูญ</a>
 <a href="#ch_16" class="nav-pill">หมวด 16 การปฏิรูปประเทศ</a>
-
+<a href="#ch_99" class="nav-pill">บทเฉพาะกาล</a>
 </nav>
 <div class="main-container" id="mainContainer">
   <div id="searchNoResults" class="search-no-results hidden">ไม่พบผลลัพธ์สำหรับการค้นหานี้</div>
@@ -141,7 +128,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-3">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 3</span>
-    <span class="maatra-title">อำนาจอธิปไตยเป็นของปวงชนชาวไทย — ใช้ผ่านรัฐสภา ครม. ศาล</span>
+    <span class="maatra-title">อำนาจอธิปไตยเป็นของปวงชนชาวไทย — ใช้ผ่านรัฐสภา ครม. และศาล</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">อำนาจอธิปไตยเป็นของปวงชนชาวไทย พระมหากษัตริย์ผู้ทรงเป็นประมุข ทรงใช้อำนาจนั้นทางรัฐสภา คณะรัฐมนตรี และศาล ตามบทบัญญัติแห่งรัฐธรรมนูญ</p>
 <p class="maatra-line">รัฐสภา คณะรัฐมนตรี ศาล องค์กรอิสระ และหน่วยงานของรัฐ ต้องปฏิบัติหน้าที่ให้เป็นไปตามรัฐธรรมนูญ กฎหมาย และหลักนิติธรรม เพื่อประโยชน์ส่วนรวมของประเทศชาติและความผาสุกของประชาชนโดยรวม</p>
@@ -150,7 +137,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-4">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 4</span>
-    <span class="maatra-title">ศักดิ์ศรีความเป็นมนุษย์ สิทธิ เสรีภาพ และความเสมอภาค</span>
+    <span class="maatra-title">ศักดิ์ศรีความเป็นมนุษย์ สิทธิ เสรีภาพ และความเสมอภาคของบุคคล</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ศักดิ์ศรีความเป็นมนุษย์ สิทธิ เสรีภาพ และความเสมอภาคของบุคคลย่อมได้รับความคุ้มครอง</p>
 <p class="maatra-line">ปวงชนชาวไทยย่อมได้รับความคุ้มครองตามรัฐธรรมนูญเสมอกัน</p>
@@ -456,7 +443,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-34">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 34</span>
-    <span class="maatra-title">เสรีภาพในการแสดงความคิดเห็น พูด เขียน พิมพ์ และสื่อสาร</span>
+    <span class="maatra-title">เสรีภาพในการแสดงความคิดเห็น พูด เขียน พิมพ์ และเสรีภาพทางวิชาการ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">บุคคลย่อมมีเสรีภาพในการแสดงความคิดเห็น การพูด การเขียน การพิมพ์ การโฆษณา และการสื่อความหมายโดยวิธีอื่น การจำกัดเสรีภาพดังกล่าวจะกระทำมิได้ เว้นแต่โดยอาศัยอำนาจตามบทบัญญัติแห่งกฎหมายที่ตราขึ้นเฉพาะเพื่อรักษาความมั่นคงของรัฐ เพื่อคุ้มครองสิทธิหรือเสรีภาพของบุคคลอื่น เพื่อรักษาความสงบเรียบร้อยหรือศีลธรรมอันดีของประชาชน หรือเพื่อป้องกันสุขภาพของประชาชน</p>
 <p class="maatra-line">เสรีภาพทางวิชาการย่อมได้รับความคุ้มครอง แต่การใช้เสรีภาพนั้นต้องไม่ขัดต่อหน้าที่ของปวงชนชาวไทยหรือศีลธรรมอันดีของประชาชน และต้องเคารพและไม่ปิดกั้นความเห็นต่างของบุคคลอื่น</p>
@@ -549,7 +536,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-43">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 43</span>
-    <span class="maatra-title">สิทธิชุมชนอนุรักษ์ทรัพยากรธรรมชาติ ดูแลสิ่งแวดล้อม และภูมิปัญญา</span>
+    <span class="maatra-title">สิทธิชุมชนอนุรักษ์ทรัพยากรธรรมชาติ สิ่งแวดล้อม และภูมิปัญญา</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">บุคคลและชุมชนย่อมมีสิทธิ</p>
 <p class="maatra-line">(1) อนุรักษ์ ฟื้นฟู หรือส่งเสริมภูมิปัญญา ศิลปะ วัฒนธรรม ขนบธรรมเนียม และจารีตประเพณีอันดีงามทั้งของท้องถิ่นและของชาติ</p>
@@ -678,7 +665,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-52">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 52</span>
-    <span class="maatra-title">หน้าที่รัฐคุ้มครองและพัฒนาเด็ก เยาวชน สตรี ผู้สูงอายุ และคนพิการ</span>
+    <span class="maatra-title">หน้าที่รัฐคุ้มครองและพัฒนาเด็ก เยาวชน สตรี และผู้สูงอายุ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">รัฐต้องพิทักษ์รักษาไว้ซึ่งสถาบันพระมหากษัตริย์ เอกราช อธิปไตย บูรณภาพแห่งอาณาเขตและเขตที่ประเทศไทยมีสิทธิอธิปไตย เกียรติภูมิและผลประโยชน์ของชาติ ความมั่นคงของรัฐ และความสงบเรียบร้อยของประชาชน เพื่อประโยชน์แห่งการนี้ รัฐต้องจัดให้มีการทหาร การทูต และการข่าวกรองที่มีประสิทธิภาพ</p>
 <p class="maatra-line">กำลังทหารให้ใช้เพื่อประโยชน์ในการพัฒนาประเทศด้วย</p>
@@ -1184,7 +1171,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-101">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 101</span>
-    <span class="maatra-title">เหตุสิ้นสุดสมาชิกภาพ ส.ส. — ครบอายุสภา ลาออก ขาดคุณสมบัติ ย้ายพรรค</span>
+    <span class="maatra-title">เหตุสิ้นสุดสมาชิกภาพ ส.ส. — ครบอายุ ลาออก ขาดคุณสมบัติ ย้ายพรรค</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">สมาชิกภาพของสมาชิกสภาผู้แทนราษฎรสิ้นสุดลง เมื่อ</p>
 <p class="maatra-line">(1) ถึงคราวออกตามอายุของสภาผู้แทนราษฎร หรือมีการยุบสภาผู้แทนราษฎร</p>
@@ -1214,7 +1201,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-103">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 103</span>
-    <span class="maatra-title">คุณสมบัติผู้สมัคร ส.ว. — อายุ 40 ปีขึ้นไป มีประสบการณ์ในกลุ่มนั้นๆ</span>
+    <span class="maatra-title">คุณสมบัติผู้สมัคร ส.ว. — อายุ 40 ปีขึ้นไป มีประสบการณ์ในกลุ่มนั้น</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">พระมหากษัตริย์ทรงไว้ซึ่งพระราชอำนาจที่จะยุบสภาผู้แทนราษฎรเพื่อให้มีการเลือกตั้งสมาชิกสภาผู้แทนราษฎรใหม่เป็นการเลือกตั้งทั่วไป</p>
 <p class="maatra-line">การยุบสภาผู้แทนราษฎรให้กระทำโดยพระราชกฤษฎีกา และให้กระทำได้เพียงครั้งเดียวในเหตุการณ์เดียวกัน</p>
@@ -1267,7 +1254,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-108">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 108</span>
-    <span class="maatra-title">เอกสิทธิ์ของสมาชิกรัฐสภา — คำพูดในที่ประชุมไม่ถูกฟ้องคดีได้</span>
+    <span class="maatra-title">เอกสิทธิ์สมาชิกรัฐสภา — คำพูดในที่ประชุมไม่อาจถูกฟ้องคดี</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">สมาชิกวุฒิสภาต้องมีคุณสมบัติและไม่มีลักษณะต้องห้าม ดังต่อไปนี้</p>
 <p class="maatra-line">ก. คุณสมบัติ</p>
@@ -1290,7 +1277,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-109">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 109</span>
-    <span class="maatra-title">ห้ามจับ ค้น หรือคุมขัง ส.ส. ส.ว. ในระหว่างสมัยประชุมโดยไม่ได้รับอนุญาต</span>
+    <span class="maatra-title">ห้ามจับ ค้น หรือคุมขัง ส.ส. ส.ว. ในระหว่างสมัยประชุมโดยไม่รับอนุญาต</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">อายุของวุฒิสภามีกำหนดคราวละห้าปีนับแต่วันประกาศผลการเลือก</p>
 <p class="maatra-line">สมาชิกภาพของสมาชิกวุฒิสภาเริ่มตั้งแต่วันที่คณะกรรมการการเลือกตั้งประกาศผลการเลือก</p>
@@ -1627,7 +1614,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-140">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 140</span>
-    <span class="maatra-title">คณะรัฐมนตรีไม่เกิน 36 คน — นายกรัฐมนตรีและรัฐมนตรีอื่น</span>
+    <span class="maatra-title">สมาชิกสภาผู้แทนฯ มีสิทธิตั้งกระทู้ถามรัฐมนตรีเป็นหนังสือหรือวาจา</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">การจ่ายเงินแผ่นดิน จะกระทำได้เฉพาะที่ได้อนุญาตไว้ในกฎหมายว่าด้วยงบประมาณรายจ่าย กฎหมายว่าด้วยวิธีการงบประมาณ หรือกฎหมายเกี่ยวด้วยการโอนงบประมาณ กฎหมายว่าด้วยเงินคงคลัง หรือกฎหมายว่าด้วยวินัยการเงินการคลังของรัฐ เว้นแต่ในกรณีจำเป็นรีบด่วนจะจ่ายไปก่อนก็ได้ แต่ต้องเป็นไปตามหลักเกณฑ์และวิธีการที่กฎหมายบัญญัติ ในกรณีเช่นว่านี้ ต้องตั้งงบประมาณรายจ่ายชดใช้ในพระราชบัญญัติโอนงบประมาณรายจ่ายหรือพระราชบัญญัติงบประมาณรายจ่ายเพิ่มเติม หรือพระราชบัญญัติงบประมาณรายจ่ายประจำปีงบประมาณถัดไป</p>
 </div>
@@ -1635,7 +1622,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-141">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 141</span>
-    <span class="maatra-title">คุณสมบัติและลักษณะต้องห้ามของนายกรัฐมนตรี</span>
+    <span class="maatra-title">ส.ส. 1 ใน 5 มีสิทธิเสนอญัตติขอเปิดอภิปรายทั่วไปเพื่อลงมติไม่ไว้วางใจ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">งบประมาณรายจ่ายของแผ่นดินให้ทำเป็นพระราชบัญญัติ ถ้าพระราชบัญญัติงบประมาณรายจ่ายประจำปีงบประมาณออกไม่ทันปีงบประมาณใหม่ ให้ใช้กฎหมายว่าด้วยงบประมาณรายจ่ายในปีงบประมาณปีก่อนนั้นไปพลางก่อน</p>
 <p class="maatra-line">รัฐต้องจัดสรรงบประมาณให้เพียงพอกับการปฏิบัติหน้าที่โดยอิสระของรัฐสภา ศาล องค์กรอิสระ และองค์กรอัยการ  ทั้งนี้ ตามหลักเกณฑ์ที่บัญญัติไว้ในกฎหมายว่าด้วยวินัยการเงินการคลังของรัฐ ในกรณีที่เห็นว่างบประมาณที่ได้รับจัดสรรอาจไม่เพียงพอต่อการปฏิบัติหน้าที่ รัฐสภา ศาล องค์กรอิสระ หรือองค์กรอัยการจะยื่นคำขอแปรญัตติต่อคณะกรรมาธิการโดยตรงก็ได้</p>
@@ -1644,7 +1631,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-142">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 142</span>
-    <span class="maatra-title">ลักษณะต้องห้ามของรัฐมนตรี</span>
+    <span class="maatra-title">ส.ส. 1 ใน 10 มีสิทธิขอเปิดอภิปรายทั่วไปเพื่อซักถามโดยไม่ลงมติ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ในการเสนอร่างพระราชบัญญัติงบประมาณรายจ่ายประจำปีงบประมาณต้องแสดงแหล่งที่มาและประมาณการรายได้ ผลสัมฤทธิ์หรือประโยชน์ที่คาดว่าจะได้รับจากการจ่ายเงินและความสอดคล้องกับยุทธศาสตร์ชาติและแผนพัฒนาต่าง ๆ  ทั้งนี้ ตามหลักเกณฑ์ที่บัญญัติไว้ในกฎหมายว่าด้วยวินัยการเงินการคลังของรัฐ</p>
 </div>
@@ -1652,7 +1639,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-143">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 143</span>
-    <span class="maatra-title">ประธานสภาผู้แทนฯ นำรายชื่อนายกฯ ขึ้นทูลเกล้าฯ</span>
+    <span class="maatra-title">ร่าง พ.ร.บ. งบประมาณ — กรอบเวลาพิจารณาและขั้นตอนรายละเอียด</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ร่างพระราชบัญญัติงบประมาณรายจ่ายประจำปีงบประมาณ ร่างพระราชบัญญัติงบประมาณรายจ่ายเพิ่มเติม และร่างพระราชบัญญัติโอนงบประมาณรายจ่าย สภาผู้แทนราษฎรจะต้องพิจารณาให้แล้วเสร็จภายในหนึ่งร้อยห้าวันนับแต่วันที่ร่างพระราชบัญญัติดังกล่าวมาถึงสภาผู้แทนราษฎร</p>
 <p class="maatra-line">ถ้าสภาผู้แทนราษฎรพิจารณาร่างพระราชบัญญัตินั้นไม่แล้วเสร็จภายในกำหนดเวลาตามวรรคหนึ่ง ให้ถือว่าสภาผู้แทนราษฎรเห็นชอบกับร่างพระราชบัญญัตินั้น และให้เสนอร่างพระราชบัญญัติดังกล่าวต่อวุฒิสภาเพื่อพิจารณา</p>
@@ -1664,7 +1651,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-144">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 144</span>
-    <span class="maatra-title">สภาผู้แทนฯ เลือกนายกฯ จากบัญชีพรรค — ต้องได้เกินกึ่งหนึ่งของสมาชิก</span>
+    <span class="maatra-title">ห้ามแปรญัตติงบประมาณให้ตนเองหรือผู้อื่นได้ประโยชน์จากงบแผ่นดิน</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ในการพิจารณาร่างพระราชบัญญัติงบประมาณรายจ่ายประจำปีงบประมาณ ร่างพระราชบัญญัติงบประมาณรายจ่ายเพิ่มเติม และร่างพระราชบัญญัติโอนงบประมาณรายจ่าย สมาชิกสภาผู้แทนราษฎรจะแปรญัตติเปลี่ยนแปลงหรือแก้ไขเพิ่มเติมรายการหรือจำนวนในรายการมิได้ แต่อาจแปรญัตติในทางลดหรือตัดทอนรายจ่ายซึ่งมิใช่รายจ่ายตามข้อผูกพันอย่างใดอย่างหนึ่ง ดังต่อไปนี้</p>
 <p class="maatra-line">(1) เงินส่งใช้ต้นเงินกู้</p>
@@ -1680,7 +1667,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-145">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 145</span>
-    <span class="maatra-title">ครม. ถวายสัตย์ปฏิญาณต่อพระมหากษัตริย์ก่อนเข้ารับหน้าที่</span>
+    <span class="maatra-title">ร่าง พ.ร.บ. ที่ผ่านรัฐสภาแล้ว นายกฯ รอ 5 วันก่อนทูลเกล้าฯ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ร่างพระราชบัญญัติที่ได้รับความเห็นชอบของรัฐสภาแล้ว ให้นายกรัฐมนตรีรอไว้ห้าวันนับแต่วันที่ได้รับร่างพระราชบัญญัตินั้นจากรัฐสภา ถ้าไม่มีกรณีต้องดำเนินการตามมาตรา 148 ให้นำขึ้นทูลเกล้าทูลกระหม่อมถวายภายในยี่สิบวันนับแต่วันพ้นกำหนดเวลาดังกล่าว</p>
 </div>
@@ -1688,7 +1675,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-146">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 146</span>
-    <span class="maatra-title">ครม. แถลงนโยบายต่อรัฐสภาภายใน 15 วัน — ไม่ต้องขอมติ</span>
+    <span class="maatra-title">พระมหากษัตริย์ไม่ทรงเห็นชอบร่างกฎหมาย — รัฐสภาต้องปรึกษาใหม่</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ร่างพระราชบัญญัติใด พระมหากษัตริย์ไม่ทรงเห็นชอบด้วยและพระราชทานคืนมายังรัฐสภา หรือเมื่อพ้นเก้าสิบวันแล้วมิได้พระราชทานคืนมา รัฐสภาจะต้องปรึกษาร่างพระราชบัญญัตินั้นใหม่ ถ้ารัฐสภามีมติยืนยันตามเดิมด้วยคะแนนเสียงไม่น้อยกว่าสองในสามของจำนวนสมาชิกทั้งหมดเท่าที่มีอยู่ของทั้งสองสภาแล้ว ให้นายกรัฐมนตรีนำร่างพระราชบัญญัตินั้นขึ้นทูลเกล้าทูลกระหม่อมถวายอีกครั้งหนึ่ง เมื่อพระมหากษัตริย์มิได้ทรงลงพระปรมาภิไธยพระราชทานคืนมาภายในสามสิบวัน ให้นายกรัฐมนตรีนำพระราชบัญญัตินั้นประกาศในราชกิจจานุเบกษาใช้บังคับเป็นกฎหมายได้เสมือนหนึ่งว่าพระมหากษัตริย์ได้ทรงลงพระปรมาภิไธยแล้ว</p>
 </div>
@@ -1696,7 +1683,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-147">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 147</span>
-    <span class="maatra-title">ครม. บริหารราชการตามรัฐธรรมนูญ กฎหมาย นโยบาย และยุทธศาสตร์ชาติ</span>
+    <span class="maatra-title">ร่างกฎหมายค้างเมื่อสภาสิ้นอายุหรือถูกยุบ — ตกไปหรือรอใหม่</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ในกรณีที่อายุของสภาผู้แทนราษฎรสิ้นสุดลงหรือมีการยุบสภาผู้แทนราษฎร ร่างรัฐธรรมนูญแก้ไขเพิ่มเติมหรือร่างพระราชบัญญัติที่รัฐสภายังมิได้ให้ความเห็นชอบ หรือที่รัฐสภาให้ความเห็นชอบแล้วแต่พระมหากษัตริย์ไม่ทรงเห็นชอบด้วย หรือเมื่อพ้นเก้าสิบวันแล้วมิได้พระราชทานคืนมา ให้เป็นอันตกไป</p>
 <p class="maatra-line">บรรดาร่างรัฐธรรมนูญแก้ไขเพิ่มเติมหรือร่างพระราชบัญญัติที่รัฐสภายังมิได้ให้ความเห็นชอบที่ตกไปตามวรรคหนึ่ง ถ้าคณะรัฐมนตรีที่ตั้งขึ้นใหม่ภายหลังการเลือกตั้งทั่วไปร้องขอต่อรัฐสภาเพื่อให้รัฐสภา สภาผู้แทนราษฎร หรือวุฒิสภา แล้วแต่กรณี พิจารณาต่อไป ถ้ารัฐสภาเห็นชอบด้วยก็ให้รัฐสภา สภาผู้แทนราษฎร หรือวุฒิสภา แล้วแต่กรณี พิจารณาต่อไปได้ แต่คณะรัฐมนตรีต้องร้องขอภายในหกสิบวันนับแต่วันเรียกประชุมรัฐสภาครั้งแรกภายหลังการเลือกตั้งทั่วไป</p>
@@ -1705,7 +1692,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-148">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 148</span>
-    <span class="maatra-title">รัฐมนตรีรับผิดชอบงานกระทรวงและมีอำนาจสั่งราชการในกระทรวง</span>
+    <span class="maatra-title">สมาชิกรัฐสภาร้องขอให้ศาลรัฐธรรมนูญตรวจสอบร่างกฎหมายก่อนทูลเกล้าฯ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ก่อนที่นายกรัฐมนตรีจะนำร่างพระราชบัญญัติใดขึ้นทูลเกล้าทูลกระหม่อมถวายเพื่อพระมหากษัตริย์ทรงลงพระปรมาภิไธยตามมาตรา 81</p>
 <p class="maatra-line">(1) หากสมาชิกสภาผู้แทนราษฎร สมาชิกวุฒิสภา หรือสมาชิกของทั้งสองสภารวมกันมีจำนวนไม่น้อยกว่าหนึ่งในสิบของจำนวนสมาชิกทั้งหมดเท่าที่มีอยู่ของทั้งสองสภา เห็นว่าร่างพระราชบัญญัติดังกล่าวมีข้อความขัดหรือแย้งต่อรัฐธรรมนูญ หรือตราขึ้นโดยไม่ถูกต้องตามบทบัญญัติแห่งรัฐธรรมนูญ ให้เสนอความเห็นต่อประธานสภาผู้แทนราษฎร ประธานวุฒิสภา หรือประธานรัฐสภา แล้วแต่กรณี แล้วให้ประธานแห่งสภาที่ได้รับความเห็นดังกล่าวส่งความเห็นนั้นไปยังศาลรัฐธรรมนูญเพื่อวินิจฉัย และแจ้งให้นายกรัฐมนตรีทราบโดยไม่ชักช้า</p>
@@ -1718,7 +1705,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-149">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 149</span>
-    <span class="maatra-title">การรักษาราชการแทนนายกฯ และรัฐมนตรีเมื่อปฏิบัติหน้าที่ไม่ได้</span>
+    <span class="maatra-title">นำหลักเกณฑ์ ม.148 มาใช้กับร่างข้อบังคับการประชุมสภาด้วย</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ให้นำความในมาตรา 148 มาใช้บังคับแก่ร่างข้อบังคับการประชุมสภาผู้แทนราษฎร ร่างข้อบังคับการประชุมวุฒิสภา และร่างข้อบังคับการประชุมรัฐสภาที่สภาผู้แทนราษฎร วุฒิสภา หรือรัฐสภา แล้วแต่กรณี ให้ความเห็นชอบแล้ว ก่อนนำไปประกาศในราชกิจจานุเบกษาด้วยโดยอนุโลม</p>
 </div>
@@ -1726,7 +1713,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-150">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 150</span>
-    <span class="maatra-title">พระบรมราชโองการทุกฉบับต้องมีรัฐมนตรีลงนามรับสนอง</span>
+    <span class="maatra-title">สมาชิกสภาผู้แทนฯ และ ส.ว. มีสิทธิตั้งกระทู้ถามรัฐมนตรีได้</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">สมาชิกสภาผู้แทนราษฎรหรือสมาชิกวุฒิสภามีสิทธิตั้งกระทู้ถามรัฐมนตรีในเรื่องใดเกี่ยวกับงานในหน้าที่โดยจะถามเป็นหนังสือหรือด้วยวาจาก็ได้ ตามข้อบังคับการประชุมแห่งสภานั้น ๆ ซึ่งอย่างน้อยต้องกำหนดให้มีการตั้งกระทู้ถามด้วยวาจาโดยไม่ต้องแจ้งล่วงหน้าไว้ด้วย</p>
 <p class="maatra-line">รัฐมนตรีย่อมมีสิทธิที่จะไม่ตอบกระทู้เมื่อคณะรัฐมนตรีเห็นว่าเรื่องนั้นยังไม่ควรเปิดเผยเพราะเกี่ยวกับความปลอดภัยหรือประโยชน์สำคัญของแผ่นดิน</p>
@@ -1735,7 +1722,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-151">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 151</span>
-    <span class="maatra-title">ห้ามรัฐมนตรีเป็น ส.ส. ส.ว. สมาชิกท้องถิ่น หรือข้าราชการประจำ</span>
+    <span class="maatra-title">ส.ส. 1 ใน 5 เสนอญัตติขอเปิดอภิปรายเพื่อลงมติไม่ไว้วางใจนายกฯ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">สมาชิกสภาผู้แทนราษฎรจำนวนไม่น้อยกว่าหนึ่งในห้าของจำนวนสมาชิกทั้งหมดเท่าที่มีอยู่ของสภาผู้แทนราษฎร มีสิทธิเข้าชื่อเสนอญัตติขอเปิดอภิปรายทั่วไปเพื่อลงมติไม่ไว้วางใจรัฐมนตรีเป็นรายบุคคลหรือทั้งคณะ</p>
 <p class="maatra-line">เมื่อได้มีการเสนอญัตติตามวรรคหนึ่งแล้ว จะมีการยุบสภาผู้แทนราษฎรมิได้ เว้นแต่จะมีการถอนญัตติหรือการลงมตินั้นไม่ได้คะแนนเสียงตามวรรคสี่</p>
@@ -1747,7 +1734,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-152">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 152</span>
-    <span class="maatra-title">ห้ามรัฐมนตรีดำเนินการขัดผลประโยชน์รัฐหรือแสวงหาผลประโยชน์ส่วนตัว</span>
+    <span class="maatra-title">ส.ส. 1 ใน 10 ขอเปิดอภิปรายทั่วไปซักถามรัฐมนตรีโดยไม่ลงมติ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">สมาชิกสภาผู้แทนราษฎรจำนวนไม่น้อยกว่าหนึ่งในสิบของจำนวนสมาชิกทั้งหมดเท่าที่มีอยู่ของสภาผู้แทนราษฎร จะเข้าชื่อกันเพื่อเสนอญัตติขอเปิดอภิปรายทั่วไปเพื่อซักถามข้อเท็จจริงหรือเสนอแนะปัญหาต่อคณะรัฐมนตรี โดยไม่มีการลงมติก็ได้</p>
 </div>
@@ -1755,7 +1742,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-153">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 153</span>
-    <span class="maatra-title">เหตุพ้นจากตำแหน่งของนายกฯ และรัฐมนตรี — ลาออก ขาดคุณสมบัติ ถูกถอดถอน</span>
+    <span class="maatra-title">ส.ว. 1 ใน 3 ขอเปิดอภิปรายทั่วไปให้ ครม. แถลงโดยไม่ลงมติ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">สมาชิกวุฒิสภาจำนวนไม่น้อยกว่าหนึ่งในสามของจำนวนสมาชิกทั้งหมดเท่าที่มีอยู่ของวุฒิสภา มีสิทธิเข้าชื่อขอเปิดอภิปรายทั่วไปในวุฒิสภาเพื่อให้คณะรัฐมนตรีแถลงข้อเท็จจริงหรือชี้แจงปัญหาสำคัญเกี่ยวกับการบริหารราชการแผ่นดินโดยไม่มีการลงมติ</p>
 </div>
@@ -1763,7 +1750,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-154">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 154</span>
-    <span class="maatra-title">ครม. รักษาการหลังพ้นตำแหน่ง — ห้ามดำเนินการที่มีผลผูกพัน</span>
+    <span class="maatra-title">การเสนอญัตติขอเปิดอภิปรายทั่วไปกระทำได้ปีละหนึ่งครั้ง</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">การเสนอญัตติขอเปิดอภิปรายทั่วไปตามมาตรา 151 มาตรา 152 หรือมาตรา 153 แล้วแต่กรณี ให้กระทำได้ปีละหนึ่งครั้ง</p>
 <p class="maatra-line">ความในวรรคหนึ่งไม่ใช้บังคับแก่การเปิดอภิปรายทั่วไปตามมาตรา 151 ที่สิ้นสุดลงด้วยมติให้ผ่านระเบียบวาระเปิดอภิปรายนั้นไป</p>
@@ -1772,7 +1759,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-155">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 155</span>
-    <span class="maatra-title">นายกรัฐมนตรีดำรงตำแหน่งรวมแล้วไม่เกิน 8 ปี</span>
+    <span class="maatra-title">การประชุมร่วม ครม.-รัฐสภา กรณีมีปัญหาสำคัญด้านความมั่นคงหรือเศรษฐกิจ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ในกรณีที่มีปัญหาสำคัญเกี่ยวกับความมั่นคงปลอดภัยหรือเศรษฐกิจของประเทศสมควรที่จะปรึกษาหารือร่วมกันระหว่างรัฐสภาและคณะรัฐมนตรี ผู้นำฝ่ายค้านในสภาผู้แทนราษฎรจะแจ้งไปยังประธานรัฐสภาขอให้มีการเปิดอภิปรายทั่วไปในที่ประชุมรัฐสภาก็ได้ ในกรณีนี้ ประธานรัฐสภาต้องดำเนินการให้มีการประชุมภายในสิบห้าวันนับแต่วันที่ได้รับการแจ้ง แต่รัฐสภาจะลงมติในปัญหาที่อภิปรายมิได้</p>
 <p class="maatra-line">การประชุมตามวรรคหนึ่งให้ประชุมลับ และคณะรัฐมนตรีมีหน้าที่ต้องเข้าร่วมประชุมด้วย</p>
@@ -1781,7 +1768,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-156">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 156</span>
-    <span class="maatra-title">ห้ามรัฐมนตรีถือหุ้นหรือเป็นหุ้นส่วนในธุรกิจเกินที่กำหนด</span>
+    <span class="maatra-title">กรณีที่รัฐสภาต้องประชุมร่วมกัน — 6 กรณีที่บัญญัติไว้</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ในกรณีต่อไปนี้ ให้รัฐสภาประชุมร่วมกัน</p>
 <p class="maatra-line">(1) การให้ความเห็นชอบในการแต่งตั้งผู้สำเร็จราชการแทนพระองค์ตามมาตรา 17</p>
@@ -1805,7 +1792,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-157">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 157</span>
-    <span class="maatra-title">รัฐมนตรีรับมรดกหุ้นต้องโอนให้นิติบุคคลภายใน 30 วัน</span>
+    <span class="maatra-title">ข้อบังคับการประชุมรัฐสภาใช้บังคับในการประชุมร่วม</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ในการประชุมร่วมกันของรัฐสภาให้ใช้ข้อบังคับการประชุมรัฐสภา ในระหว่างที่ยังไม่มีข้อบังคับการประชุมรัฐสภา ให้ใช้ข้อบังคับการประชุมสภาผู้แทนราษฎรโดยอนุโลมไปพลางก่อน</p>
 <p class="maatra-line">ในการประชุมร่วมกันของรัฐสภา ให้นำบทที่ใช้แก่สภาทั้งสองมาใช้บังคับโดยอนุโลม เว้นแต่ในเรื่องการตั้งคณะกรรมาธิการ กรรมาธิการซึ่งตั้งจากผู้ซึ่งเป็นสมาชิกของแต่ละสภาจะต้องมีจำนวนตามหรือใกล้เคียงกับอัตราส่วนของจำนวนสมาชิกของแต่ละสภา</p>
@@ -1830,7 +1817,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-158">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 158</span>
-    <span class="maatra-title">ห้ามรัฐมนตรีเป็นคู่สัญญากับรัฐ รับสัมปทาน หรือรับประโยชน์จากรัฐ</span>
+    <span class="maatra-title">คณะรัฐมนตรีไม่เกิน 36 คน — นายกรัฐมนตรีและรัฐมนตรีอีกไม่เกิน 35 คน</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">พระมหากษัตริย์ทรงแต่งตั้งนายกรัฐมนตรีและรัฐมนตรีอื่นอีกไม่เกินสามสิบห้าคนประกอบเป็นคณะรัฐมนตรี มีหน้าที่บริหารราชการแผ่นดินตามหลักความรับผิดชอบร่วมกัน</p>
 <p class="maatra-line">นายกรัฐมนตรีต้องแต่งตั้งจากบุคคลซึ่งสภาผู้แทนราษฎรให้ความเห็นชอบตามมาตรา 159</p>
@@ -1841,7 +1828,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-159">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 159</span>
-    <span class="maatra-title">ห้ามรัฐมนตรีใช้ตำแหน่งแสวงหาประโยชน์ให้ตนเองหรือพวกพ้อง</span>
+    <span class="maatra-title">สภาผู้แทนฯ เลือกนายกฯ จากบัญชีพรรค — ต้องได้เกินกึ่งหนึ่งของสมาชิก</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ให้สภาผู้แทนราษฎรพิจารณาให้ความเห็นชอบบุคคลซึ่งสมควรได้รับแต่งตั้งเป็นนายกรัฐมนตรีจากบุคคลซึ่งมีคุณสมบัติและไม่มีลักษณะต้องห้ามตามมาตรา 160 และเป็นผู้มีชื่ออยู่ในบัญชีรายชื่อที่พรรคการเมืองแจ้งไว้ตามมาตรา 88 เฉพาะจากบัญชีรายชื่อของพรรคการเมืองที่มีสมาชิกได้รับเลือกเป็นสมาชิกสภาผู้แทนราษฎรไม่น้อยกว่าร้อยละห้าของจำนวนสมาชิกทั้งหมดเท่าที่มีอยู่ของสภาผู้แทนราษฎร</p>
 <p class="maatra-line">การเสนอชื่อตามวรรคหนึ่งต้องมีสมาชิกรับรองไม่น้อยกว่าหนึ่งในสิบของจำนวนสมาชิกทั้งหมดเท่าที่มีอยู่ของสภาผู้แทนราษฎร</p>
@@ -1851,7 +1838,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-160">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 160</span>
-    <span class="maatra-title">ศาลพิจารณาพิพากษาในพระปรมาภิไธยพระมหากษัตริย์ — ผู้พิพากษาอิสระ</span>
+    <span class="maatra-title">คุณสมบัติและลักษณะต้องห้ามของรัฐมนตรี</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">รัฐมนตรีต้อง</p>
 <p class="maatra-line">(1) มีสัญชาติไทยโดยการเกิด</p>
@@ -1867,7 +1854,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-161">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 161</span>
-    <span class="maatra-title">ห้ามตั้งศาลพิเศษเพื่อพิจารณาคดีใดเป็นการเฉพาะ</span>
+    <span class="maatra-title">รัฐมนตรีต้องถวายสัตย์ปฏิญาณต่อพระมหากษัตริย์ก่อนเข้ารับหน้าที่</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ก่อนเข้ารับหน้าที่ รัฐมนตรีต้องถวายสัตย์ปฏิญาณต่อพระมหากษัตริย์ด้วยถ้อยคำ ดังต่อไปนี้</p>
 <p class="maatra-line">“ข้าพระพุทธเจ้า (ชื่อผู้ปฏิญาณ) ขอถวายสัตย์ปฏิญาณว่า ข้าพระพุทธเจ้าจะจงรักภักดีต่อพระมหากษัตริย์ และจะปฏิบัติหน้าที่ด้วยความซื่อสัตย์สุจริต เพื่อประโยชน์ของประเทศและประชาชน ทั้งจะรักษาไว้และปฏิบัติตามซึ่งรัฐธรรมนูญแห่งราชอาณาจักรไทยทุกประการ”</p>
@@ -1877,7 +1864,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-162">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 162</span>
-    <span class="maatra-title">ศาลยุติธรรมมีอำนาจพิจารณาคดีทั่วไป ยกเว้นที่กฎหมายกำหนดไว้</span>
+    <span class="maatra-title">ครม. ต้องแถลงนโยบายต่อรัฐสภาภายใน 15 วัน — ไม่ต้องขอมติ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">คณะรัฐมนตรีที่จะเข้าบริหารราชการแผ่นดินต้องแถลงนโยบายต่อรัฐสภา ซึ่งต้องสอดคล้องกับหน้าที่ของรัฐ แนวนโยบายแห่งรัฐ และยุทธศาสตร์ชาติ และต้องชี้แจงแหล่งที่มาของรายได้ที่จะนำมาใช้จ่ายในการดำเนินนโยบาย โดยไม่มีการลงมติความไว้วางใจ  ทั้งนี้ ภายในสิบห้าวันนับแต่วันเข้ารับหน้าที่</p>
 <p class="maatra-line">ก่อนแถลงนโยบายต่อรัฐสภาตามวรรคหนึ่ง หากมีกรณีที่สำคัญและจำเป็นเร่งด่วน ซึ่งหากปล่อยให้เนิ่นช้าไปจะกระทบต่อประโยชน์สำคัญของแผ่นดิน คณะรัฐมนตรีที่เข้ารับหน้าที่จะดำเนินการไปพลางก่อนเพียงเท่าที่จำเป็นก็ได้</p>
@@ -1886,7 +1873,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-163">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 163</span>
-    <span class="maatra-title">ศาลปกครองพิจารณาคดีพิพาทระหว่างประชาชนกับหน่วยงานของรัฐ</span>
+    <span class="maatra-title">รัฐมนตรีมีสิทธิเข้าประชุมและแถลงข้อเท็จจริงในสภา แต่ไม่มีสิทธิออกเสียง</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">รัฐมนตรีย่อมมีสิทธิเข้าประชุมและแถลงข้อเท็จจริงหรือแสดงความคิดเห็นในที่ประชุมสภาแต่ไม่มีสิทธิออกเสียงลงคะแนน เว้นแต่เป็นการออกเสียงลงคะแนนในสภาผู้แทนราษฎรในกรณีที่รัฐมนตรีผู้นั้นเป็นสมาชิกสภาผู้แทนราษฎรด้วย และให้นำเอกสิทธิ์ที่บัญญัติไว้ในมาตรา 124 มาใช้บังคับโดยอนุโลม</p>
 </div>
@@ -1894,7 +1881,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-164">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 164</span>
-    <span class="maatra-title">ศาลทหารพิจารณาคดีที่เกี่ยวกับความผิดทางทหาร</span>
+    <span class="maatra-title">ครม. บริหารราชการตามรัฐธรรมนูญ กฎหมาย นโยบาย และยุทธศาสตร์ชาติ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ในการบริหารราชการแผ่นดิน คณะรัฐมนตรีต้องดำเนินการตามบทบัญญัติแห่งรัฐธรรมนูญ กฎหมาย และนโยบายที่ได้แถลงไว้ต่อรัฐสภา และต้องปฏิบัติตามหลักเกณฑ์ดังต่อไปนี้ด้วย</p>
 <p class="maatra-line">(1) ปฏิบัติหน้าที่และใช้อำนาจด้วยความซื่อสัตย์ สุจริต เสียสละ เปิดเผย และมีความรอบคอบและระมัดระวังในการดำเนินกิจการต่าง ๆ เพื่อประโยชน์สูงสุดของประเทศและประชาชนส่วนรวม</p>
@@ -1907,7 +1894,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-165">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 165</span>
-    <span class="maatra-title">ศาลชำนัญพิเศษ — จัดตั้งตามกฎหมาย เช่น ศาลเยาวชน ศาลแรงงาน ศาลภาษี</span>
+    <span class="maatra-title">การประชุมร่วม ครม.-รัฐสภา กรณีมีปัญหาสำคัญด้านการบริหาร</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ในกรณีที่มีปัญหาสำคัญเกี่ยวกับการบริหารราชการแผ่นดินที่คณะรัฐมนตรีเห็นสมควรจะฟังความคิดเห็นของสมาชิกสภาผู้แทนราษฎรและสมาชิกวุฒิสภา นายกรัฐมนตรีจะแจ้งไปยังประธานรัฐสภาขอให้มีการเปิดอภิปรายทั่วไปในที่ประชุมร่วมกันของรัฐสภาก็ได้ ในกรณีเช่นว่านี้ รัฐสภาจะลงมติในปัญหาที่อภิปรายมิได้</p>
 </div>
@@ -1915,7 +1902,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-166">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 166</span>
-    <span class="maatra-title">ผู้พิพากษาพิจารณาพิพากษาโดยอิสระตามกฎหมายและความยุติธรรม</span>
+    <span class="maatra-title">รัฐมนตรีรับผิดชอบงานกระทรวงและมีอำนาจสั่งราชการในกระทรวง</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ในกรณีที่มีเหตุอันสมควร คณะรัฐมนตรีจะขอให้มีการออกเสียงประชามติในเรื่องใดอันมิใช่เรื่องที่ขัดหรือแย้งต่อรัฐธรรมนูญหรือเรื่องที่เกี่ยวกับตัวบุคคลหรือคณะบุคคลใดก็ได้  ทั้งนี้ ตามที่กฎหมายบัญญัติ</p>
 </div>
@@ -1923,7 +1910,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-167">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 167</span>
-    <span class="maatra-title">การโยกย้ายผู้พิพากษาต้องได้รับความเห็นชอบจากองค์กรตุลาการ</span>
+    <span class="maatra-title">การรักษาราชการแทนนายกฯ และรัฐมนตรีเมื่อปฏิบัติหน้าที่ไม่ได้</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">รัฐมนตรีทั้งคณะพ้นจากตำแหน่ง เมื่อ</p>
 <p class="maatra-line">(1) ความเป็นรัฐมนตรีของนายกรัฐมนตรีสิ้นสุดลงตามมาตรา 170</p>
@@ -1936,7 +1923,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-168">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 168</span>
-    <span class="maatra-title">รัฐจัดสรรงบประมาณให้ศาลเพียงพอ — ศาลขอแปรญัตติได้โดยตรง</span>
+    <span class="maatra-title">พระบรมราชโองการทุกฉบับต้องมีรัฐมนตรีลงนามรับสนอง</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ให้คณะรัฐมนตรีที่พ้นจากตำแหน่งอยู่ปฏิบัติหน้าที่ต่อไปภายใต้เงื่อนไข ดังต่อไปนี้</p>
 <p class="maatra-line">(1) ในกรณีพ้นจากตำแหน่งตามมาตรา 167 (1) (2) หรือ (3) ให้อยู่ปฏิบัติหน้าที่ต่อไปจนกว่าคณะรัฐมนตรีที่ตั้งขึ้นใหม่จะเข้ารับหน้าที่ เว้นแต่ในกรณีที่นายกรัฐมนตรีพ้นจากตำแหน่งตามมาตรา 167 (1) เพราะเหตุขาดคุณสมบัติหรือมีลักษณะต้องห้ามตามมาตรา 98 หรือมาตรา 160 (4) หรือ (5) นายกรัฐมนตรีจะอยู่ปฏิบัติหน้าที่ต่อไปมิได้</p>
@@ -1947,7 +1934,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-169">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 169</span>
-    <span class="maatra-title">ห้ามฝ่ายบริหารและนิติบัญญัติแทรกแซงการพิจารณาคดีของศาล</span>
+    <span class="maatra-title">ห้ามรัฐมนตรีเป็น ส.ส. ส.ว. สมาชิกท้องถิ่น หรือข้าราชการประจำ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">คณะรัฐมนตรีที่พ้นจากตำแหน่งตามมาตรา 167 (2) และต้องปฏิบัติหน้าที่ต่อไปตามมาตรา 168 ต้องปฏิบัติหน้าที่ตามเงื่อนไข ดังต่อไปนี้</p>
 <p class="maatra-line">(1) ไม่กระทำการอันมีผลเป็นการอนุมัติงานหรือโครงการ หรือมีผลเป็นการสร้างความผูกพันต่อคณะรัฐมนตรีชุดต่อไป เว้นแต่ที่กำหนดไว้แล้วในงบประมาณรายจ่ายประจำปี</p>
@@ -1959,7 +1946,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-170">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 170</span>
-    <span class="maatra-title">คณะกรรมการตุลาการสรรหา แต่งตั้ง โยกย้าย และกำกับดูแลผู้พิพากษา</span>
+    <span class="maatra-title">ห้ามรัฐมนตรีดำเนินการขัดผลประโยชน์รัฐหรือแสวงหาผลประโยชน์ส่วนตัว</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ความเป็นรัฐมนตรีสิ้นสุดลงเฉพาะตัว เมื่อ</p>
 <p class="maatra-line">(1) ตาย</p>
@@ -1975,7 +1962,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-171">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 171</span>
-    <span class="maatra-title">สำนักงานศาลยุติธรรม ศาลปกครอง ศาลทหาร — อิสระในการบริหาร</span>
+    <span class="maatra-title">เหตุพ้นจากตำแหน่งของนายกฯ และรัฐมนตรี — ลาออก ขาดคุณสมบัติ ถูกถอดถอน</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">พระมหากษัตริย์ทรงไว้ซึ่งพระราชอำนาจในการให้รัฐมนตรีพ้นจากความเป็นรัฐมนตรีตามที่นายกรัฐมนตรีถวายคำแนะนำ</p>
 </div>
@@ -1983,7 +1970,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-172">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 172</span>
-    <span class="maatra-title">ศาลรัฐธรรมนูญ — ตุลาการ 9 คน วาระ 9 ปี ดำรงตำแหน่งได้ครั้งเดียว</span>
+    <span class="maatra-title">ครม. รักษาการหลังพ้นตำแหน่ง — ห้ามดำเนินการที่มีผลผูกพัน</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ในกรณีเพื่อประโยชน์ในอันที่จะรักษาความปลอดภัยของประเทศ ความปลอดภัยสาธารณะ ความมั่นคงในทางเศรษฐกิจของประเทศ หรือป้องปัดภัยพิบัติสาธารณะ พระมหากษัตริย์จะทรงตราพระราชกำหนดให้ใช้บังคับดังเช่นพระราชบัญญัติก็ได้</p>
 <p class="maatra-line">การตราพระราชกำหนดตามวรรคหนึ่ง ให้กระทำได้เฉพาะเมื่อคณะรัฐมนตรีเห็นว่าเป็นกรณีฉุกเฉินที่มีความจำเป็นรีบด่วนอันมิอาจจะหลีกเลี่ยงได้</p>
@@ -1997,7 +1984,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-173">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 173</span>
-    <span class="maatra-title">กระบวนการสรรหาตุลาการรัฐธรรมนูญจากสายตุลาการและผู้ทรงคุณวุฒิ</span>
+    <span class="maatra-title">นายกรัฐมนตรีดำรงตำแหน่งรวมแล้วไม่เกิน 8 ปี</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ก่อนที่สภาผู้แทนราษฎรหรือวุฒิสภาจะได้อนุมัติพระราชกำหนดใด สมาชิกสภาผู้แทนราษฎรหรือสมาชิกวุฒิสภาจำนวนไม่น้อยกว่าหนึ่งในห้าของจำนวนสมาชิกทั้งหมดเท่าที่มีอยู่ของแต่ละสภา มีสิทธิเข้าชื่อเสนอความเห็นต่อประธานแห่งสภาที่ตนเป็นสมาชิกว่าพระราชกำหนดนั้นไม่เป็นไปตามมาตรา 172 วรรคหนึ่ง และให้ประธานแห่งสภานั้นส่งความเห็นไปยังศาลรัฐธรรมนูญภายในสามวันนับแต่วันที่ได้รับความเห็นเพื่อวินิจฉัย และให้รอการพิจารณาพระราชกำหนดนั้นไว้ก่อนจนกว่าจะได้รับแจ้งคำวินิจฉัยของศาลรัฐธรรมนูญ</p>
 <p class="maatra-line">ให้ศาลรัฐธรรมนูญมีคำวินิจฉัยภายในหกสิบวันนับแต่วันที่ได้รับเรื่อง และให้ศาลรัฐธรรมนูญแจ้งคำวินิจฉัยนั้นไปยังประธานแห่งสภาที่ส่งความเห็นนั้นมา</p>
@@ -2008,7 +1995,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-174">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 174</span>
-    <span class="maatra-title">คุณสมบัติตุลาการรัฐธรรมนูญ — อายุ 45-68 ปี ประสบการณ์กฎหมายสูง</span>
+    <span class="maatra-title">ห้ามรัฐมนตรีถือหุ้นหรือเป็นหุ้นส่วนในธุรกิจเกินที่กำหนด</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ในกรณีที่มีความจำเป็นต้องมีกฎหมายเกี่ยวด้วยภาษีอากรหรือเงินตราซึ่งจะต้องได้รับการพิจารณาโดยด่วนและลับเพื่อรักษาประโยชน์ของแผ่นดิน พระมหากษัตริย์จะทรงตราพระราชกำหนดให้ใช้บังคับดังเช่นพระราชบัญญัติก็ได้</p>
 <p class="maatra-line">ให้นำความในมาตรา 172 วรรคสาม วรรคสี่ วรรคห้า วรรคหก และวรรคเจ็ด มาใช้บังคับแก่พระราชกำหนดที่ได้ตราขึ้นตามวรรคหนึ่งโดยอนุโลม แต่ถ้าเป็นการตราขึ้นในระหว่างสมัยประชุม จะต้องนำเสนอต่อสภาผู้แทนราษฎรภายในสามวันนับแต่วันถัดจากวันประกาศในราชกิจจานุเบกษา</p>
@@ -2017,7 +2004,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-175">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 175</span>
-    <span class="maatra-title">ลักษณะต้องห้ามของตุลาการรัฐธรรมนูญ</span>
+    <span class="maatra-title">รัฐมนตรีรับมรดกหุ้นต้องโอนให้นิติบุคคลภายใน 30 วัน</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">พระมหากษัตริย์ทรงไว้ซึ่งพระราชอำนาจในการตราพระราชกฤษฎีกาโดยไม่ขัดต่อกฎหมาย</p>
 </div>
@@ -2025,7 +2012,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-176">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 176</span>
-    <span class="maatra-title">ตุลาการรัฐธรรมนูญดำรงตำแหน่งได้เพียงวาระเดียว</span>
+    <span class="maatra-title">ห้ามรัฐมนตรีเป็นคู่สัญญากับรัฐ รับสัมปทาน หรือรับประโยชน์จากรัฐ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">พระมหากษัตริย์ทรงไว้ซึ่งพระราชอำนาจในการประกาศใช้และเลิกใช้กฎอัยการศึก</p>
 <p class="maatra-line">ในกรณีที่มีความจำเป็นต้องประกาศใช้กฎอัยการศึกเฉพาะแห่งเป็นการรีบด่วน เจ้าหน้าที่ฝ่ายทหารย่อมกระทำได้ตามกฎหมายว่าด้วยกฎอัยการศึก</p>
@@ -2034,7 +2021,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-177">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 177</span>
-    <span class="maatra-title">การพ้นจากตำแหน่งของตุลาการรัฐธรรมนูญ</span>
+    <span class="maatra-title">ห้ามรัฐมนตรีใช้ตำแหน่งแสวงหาประโยชน์ให้ตนเองหรือพวกพ้อง</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">พระมหากษัตริย์ทรงไว้ซึ่งพระราชอำนาจในการประกาศสงครามเมื่อได้รับความเห็นชอบของรัฐสภา</p>
 <p class="maatra-line">มติให้ความเห็นชอบของรัฐสภาต้องมีคะแนนเสียงไม่น้อยกว่าสองในสามของจำนวนสมาชิกทั้งหมดเท่าที่มีอยู่ของทั้งสองสภา</p>
@@ -2043,7 +2030,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-178">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 178</span>
-    <span class="maatra-title">วุฒิสภาถอดถอนตุลาการรัฐธรรมนูญได้ด้วยคะแนนไม่น้อยกว่า 3 ใน 5</span>
+    <span class="maatra-title">วุฒิสภาเปิดอภิปรายทั่วไปเพื่อลงมติถอดถอนนายกฯ หรือรัฐมนตรี</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">พระมหากษัตริย์ทรงไว้ซึ่งพระราชอำนาจในการทำหนังสือสัญญาสันติภาพ สัญญาสงบศึก และสัญญาอื่นกับนานาประเทศหรือกับองค์การระหว่างประเทศ</p>
 <p class="maatra-line">หนังสือสัญญาใดมีบทเปลี่ยนแปลงอาณาเขตไทย หรือเขตพื้นที่นอกอาณาเขตซึ่งประเทศไทยมีสิทธิอธิปไตยหรือมีเขตอำนาจตามหนังสือสัญญาหรือตามกฎหมายระหว่างประเทศหรือจะต้องออกพระราชบัญญัติเพื่อให้การเป็นไปตามหนังสือสัญญา และหนังสือสัญญาอื่นที่อาจมีผลกระทบต่อความมั่นคงทางเศรษฐกิจ สังคม หรือการค้าหรือการลงทุนของประเทศอย่างกว้างขวาง ต้องได้รับความเห็นชอบของรัฐสภา  ในการนี้ รัฐสภาต้องพิจารณาให้แล้วเสร็จภายในหกสิบวันนับแต่วันที่ได้รับเรื่อง หากรัฐสภาพิจารณาไม่แล้วเสร็จภายในกำหนดเวลาดังกล่าว ให้ถือว่ารัฐสภาให้ความเห็นชอบ</p>
@@ -2055,7 +2042,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-179">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 179</span>
-    <span class="maatra-title">การดำเนินคดีอาญาตุลาการรัฐธรรมนูญต้องได้รับความเห็นชอบ</span>
+    <span class="maatra-title">ส.ส. เสียงข้างมากผ่านญัตติอภิปรายไม่ไว้วางใจรัฐมนตรีเป็นรายบุคคล</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">พระมหากษัตริย์ทรงไว้ซึ่งพระราชอำนาจในการพระราชทานอภัยโทษ</p>
 </div>
@@ -2063,7 +2050,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-180">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 180</span>
-    <span class="maatra-title">อำนาจหน้าที่ศาลรัฐธรรมนูญ — วินิจฉัยความชอบด้วยรัฐธรรมนูญ</span>
+    <span class="maatra-title">การยื่นถอดถอน ส.ส. หรือ ส.ว. ที่กระทำการขัดต่อรัฐธรรมนูญ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">พระมหากษัตริย์ทรงแต่งตั้งข้าราชการฝ่ายทหารและฝ่ายพลเรือนตำแหน่งปลัดกระทรวง อธิบดี และเทียบเท่า และทรงให้พ้นจากตำแหน่ง เว้นแต่กรณีที่พ้นจากตำแหน่งเพราะความตาย เกษียณอายุ หรือพ้นจากราชการเพราะถูกลงโทษ</p>
 </div>
@@ -2071,7 +2058,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-181">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 181</span>
-    <span class="maatra-title">ขั้นตอนการส่งเรื่องและวิธีพิจารณาของศาลรัฐธรรมนูญ</span>
+    <span class="maatra-title">ห้ามรัฐมนตรีและ ส.ส. รับเงิน ทรัพย์สิน หรือผลประโยชน์จากรัฐโดยมิชอบ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ข้าราชการและพนักงานของรัฐซึ่งมีตำแหน่งหรือเงินเดือนประจำและมิใช่ข้าราชการการเมือง จะเป็นข้าราชการการเมืองหรือผู้ดำรงตำแหน่งทางการเมืองอื่นมิได้</p>
 </div>
@@ -2079,7 +2066,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-182">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 182</span>
-    <span class="maatra-title">คำวินิจฉัยศาลรัฐธรรมนูญผูกพันทุกองค์กรทั้งรัฐสภา ครม. และศาล</span>
+    <span class="maatra-title">การดำเนินคดีอาญา ส.ส. ส.ว. หรือรัฐมนตรี ต้องผ่านกระบวนการพิเศษ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">บทกฎหมาย พระราชหัตถเลขา และพระบรมราชโองการอันเกี่ยวกับราชการแผ่นดินต้องมีรัฐมนตรีลงนามรับสนองพระบรมราชโองการ เว้นแต่ที่มีบัญญัติไว้เป็นอย่างอื่นในรัฐธรรมนูญ</p>
 </div>
@@ -2087,7 +2074,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-183">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 183</span>
-    <span class="maatra-title">การตรวจสอบร่าง พ.ร.บ. ก่อนทูลเกล้าฯ ว่าขัดรัฐธรรมนูญหรือไม่</span>
+    <span class="maatra-title">การปฏิบัติตามรัฐธรรมนูญของ ส.ส. ส.ว. รัฐมนตรี และเจ้าหน้าที่รัฐ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">เงินประจำตำแหน่งและประโยชน์ตอบแทนอย่างอื่นขององคมนตรี ประธานและรองประธานสภาผู้แทนราษฎร ประธานและรองประธานวุฒิสภา ผู้นำฝ่ายค้านในสภาผู้แทนราษฎร สมาชิกสภาผู้แทนราษฎร และสมาชิกวุฒิสภา ให้กำหนดโดยพระราชกฤษฎีกา</p>
 <p class="maatra-line">บำเหน็จบำนาญหรือประโยชน์ตอบแทนอย่างอื่นขององคมนตรีซึ่งพ้นจากตำแหน่ง ให้กำหนดโดยพระราชกฤษฎีกา</p>
@@ -2112,7 +2099,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-184">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 184</span>
-    <span class="maatra-title">ประชาชนร้องต่อศาลรัฐธรรมนูญได้เมื่อสิทธิเสรีภาพตามรัฐธรรมนูญถูกละเมิด</span>
+    <span class="maatra-title">ศาลพิจารณาพิพากษาในพระปรมาภิไธยพระมหากษัตริย์ — ผู้พิพากษาอิสระ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">สมาชิกสภาผู้แทนราษฎรและสมาชิกวุฒิสภาต้อง</p>
 <p class="maatra-line">(1) ไม่ดำรงตำแหน่งหรือหน้าที่ใดในหน่วยราชการ หน่วยงานของรัฐหรือรัฐวิสาหกิจหรือตำแหน่งสมาชิกสภาท้องถิ่นหรือผู้บริหารท้องถิ่น</p>
@@ -2126,7 +2113,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-185">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 185</span>
-    <span class="maatra-title">องค์ประชุมไม่น้อยกว่า 7 คน — คำวินิจฉัยต้องได้เสียงข้างมาก</span>
+    <span class="maatra-title">ห้ามตั้งศาลพิเศษเพื่อพิจารณาคดีใดเป็นการเฉพาะ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">สมาชิกสภาผู้แทนราษฎรหรือสมาชิกวุฒิสภาต้องไม่ใช้สถานะหรือตำแหน่งการเป็นสมาชิกสภาผู้แทนราษฎรหรือสมาชิกวุฒิสภากระทำการใด ๆ อันมีลักษณะที่เป็นการก้าวก่ายหรือแทรกแซงเพื่อประโยชน์ของตนเอง ของผู้อื่น หรือของพรรคการเมือง ไม่ว่าโดยทางตรงหรือทางอ้อมในเรื่องดังต่อไปนี้</p>
 <p class="maatra-line">(1) การปฏิบัติราชการหรือการดำเนินงานในหน้าที่ประจำของข้าราชการ พนักงานหรือลูกจ้างของหน่วยราชการ หน่วยงานของรัฐ รัฐวิสาหกิจ กิจการที่รัฐถือหุ้นใหญ่ หรือราชการส่วนท้องถิ่น</p>
@@ -2137,7 +2124,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-186">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 186</span>
-    <span class="maatra-title">บทบัญญัติที่ขัดรัฐธรรมนูญสิ้นผลใช้บังคับ แต่ไม่กระทบคดีที่ถึงที่สุดแล้ว</span>
+    <span class="maatra-title">ศาลยุติธรรมมีอำนาจพิจารณาคดีทั่วไป ยกเว้นที่กฎหมายกำหนดไว้</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ให้นำความในมาตรา 184 มาใช้บังคับแก่รัฐมนตรีด้วยโดยอนุโลม เว้นแต่กรณี ดังต่อไปนี้</p>
 <p class="maatra-line">(1) การดำรงตำแหน่งหรือการดำเนินการที่กฎหมายบัญญัติให้เป็นหน้าที่หรืออำนาจของรัฐมนตรี</p>
@@ -2148,7 +2135,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-187">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 187</span>
-    <span class="maatra-title">คณะกรรมการการเลือกตั้ง (กกต.) 7 คน — กำกับดูแลการเลือกตั้งทั้งปวง</span>
+    <span class="maatra-title">ศาลปกครองพิจารณาคดีพิพาทระหว่างประชาชนกับหน่วยงานของรัฐ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">รัฐมนตรีต้องไม่เป็นหุ้นส่วนหรือผู้ถือหุ้นในห้างหุ้นส่วนหรือบริษัทหรือไม่คงไว้ซึ่งความเป็นหุ้นส่วนหรือผู้ถือหุ้นในห้างหุ้นส่วนหรือบริษัทต่อไปตามจำนวนที่กฎหมายบัญญัติ และต้องไม่เป็นลูกจ้างของบุคคลใด</p>
 <p class="maatra-line">ในกรณีที่รัฐมนตรีผู้ใดประสงค์จะได้รับประโยชน์จากกรณีตามวรรคหนึ่งต่อไป ให้แจ้งประธานกรรมการป้องกันและปราบปรามการทุจริตแห่งชาติทราบภายในสามสิบวันนับแต่วันที่ได้รับแต่งตั้ง และให้โอนหุ้นในห้างหุ้นส่วนหรือบริษัทดังกล่าวให้แก่นิติบุคคลซึ่งจัดการทรัพย์สินเพื่อประโยชน์ของผู้อื่น  ทั้งนี้ ตามที่กฎหมายบัญญัติ</p>
@@ -2175,7 +2162,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-188">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 188</span>
-    <span class="maatra-title">กระบวนการสรรหาและแต่งตั้ง กกต. โดยคณะกรรมการสรรหา</span>
+    <span class="maatra-title">ศาลทหารพิจารณาคดีที่เกี่ยวกับความผิดทางทหาร</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">การพิจารณาพิพากษาอรรถคดีเป็นอำนาจของศาล ซึ่งต้องดำเนินการให้เป็นไปตามกฎหมาย และในพระปรมาภิไธยพระมหากษัตริย์</p>
 <p class="maatra-line">ผู้พิพากษาและตุลาการย่อมมีอิสระในการพิจารณาพิพากษาอรรถคดีตามรัฐธรรมนูญและกฎหมายให้เป็นไปโดยรวดเร็ว เป็นธรรม และปราศจากอคติทั้งปวง</p>
@@ -2184,7 +2171,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-189">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 189</span>
-    <span class="maatra-title">คุณสมบัติและลักษณะต้องห้ามของ กกต.</span>
+    <span class="maatra-title">ศาลชำนัญพิเศษ — จัดตั้งตามกฎหมาย เช่น ศาลเยาวชน ศาลแรงงาน ศาลภาษี</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">บรรดาศาลทั้งหลายจะตั้งขึ้นได้แต่โดยพระราชบัญญัติ</p>
 <p class="maatra-line">การตั้งศาลขึ้นใหม่หรือกำหนดวิธีพิจารณาเพื่อพิจารณาพิพากษาคดีใดคดีหนึ่งหรือที่มีข้อหาฐานใดฐานหนึ่งโดยเฉพาะแทนศาลที่มีตามกฎหมายสำหรับพิจารณาพิพากษาคดีนั้น ๆ จะกระทำมิได้</p>
@@ -2193,7 +2180,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-190">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 190</span>
-    <span class="maatra-title">วาระ กกต. 7 ปี — ดำรงตำแหน่งได้วาระเดียว</span>
+    <span class="maatra-title">ผู้พิพากษาพิจารณาพิพากษาโดยอิสระตามกฎหมายและความยุติธรรม</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">พระมหากษัตริย์ทรงแต่งตั้งและให้ผู้พิพากษาและตุลาการพ้นจากตำแหน่ง แต่ในกรณีที่พ้นจากตำแหน่งเพราะความตาย เกษียณอายุ ตามวาระ หรือพ้นจากราชการเพราะถูกลงโทษให้นำความกราบบังคมทูลเพื่อทรงทราบ</p>
 </div>
@@ -2201,7 +2188,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-191">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 191</span>
-    <span class="maatra-title">อำนาจ กกต. — สืบสวน วินิจฉัย เพิกถอนสิทธิ และสั่งให้เลือกตั้งใหม่</span>
+    <span class="maatra-title">การโยกย้ายผู้พิพากษาต้องได้รับความเห็นชอบจากองค์กรตุลาการ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ก่อนเข้ารับหน้าที่ ผู้พิพากษาและตุลาการต้องถวายสัตย์ปฏิญาณต่อพระมหากษัตริย์ด้วยถ้อยคำ ดังต่อไปนี้</p>
 <p class="maatra-line">“ข้าพระพุทธเจ้า (ชื่อผู้ปฏิญาณ) ขอถวายสัตย์ปฏิญาณว่า ข้าพระพุทธเจ้าจะจงรักภักดีต่อพระมหากษัตริย์ และจะปฏิบัติหน้าที่ในพระปรมาภิไธยด้วยความซื่อสัตย์สุจริตโดยปราศจากอคติทั้งปวงเพื่อให้เกิดความยุติธรรมแก่ประชาชน และความสงบสุขแห่งราชอาณาจักร ทั้งจะรักษาไว้และปฏิบัติตามซึ่งการปกครองระบอบประชาธิปไตยอันมีพระมหากษัตริย์ทรงเป็นประมุขตามรัฐธรรมนูญแห่งราชอาณาจักรไทยและกฎหมายทุกประการ”</p>
@@ -2210,7 +2197,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-192">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 192</span>
-    <span class="maatra-title">อำนาจ กกต. — ยุบพรรค เพิกถอนสิทธิสมัคร และส่งอัยการดำเนินคดี</span>
+    <span class="maatra-title">รัฐจัดสรรงบประมาณให้ศาลเพียงพอ — ศาลขอแปรญัตติได้โดยตรง</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ในกรณีที่มีปัญหาเกี่ยวกับหน้าที่และอำนาจระหว่างศาลยุติธรรม ศาลปกครอง หรือศาลทหาร ให้พิจารณาวินิจฉัยชี้ขาดโดยคณะกรรมการซึ่งประกอบด้วยประธานศาลฎีกาเป็นประธาน ประธานศาลปกครองสูงสุด หัวหน้าสำนักตุลาการทหาร และผู้ทรงคุณวุฒิอื่นอีกไม่เกินสี่คนตามที่กฎหมายบัญญัติเป็นกรรมการ</p>
 <p class="maatra-line">หลักเกณฑ์และวิธีการชี้ขาดปัญหาเกี่ยวกับหน้าที่และอำนาจระหว่างศาลตามวรรคหนึ่ง ให้เป็นไปตามที่กฎหมายบัญญัติ</p>
@@ -2219,7 +2206,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-193">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 193</span>
-    <span class="maatra-title">ผู้ตรวจการแผ่นดิน 3 คน — รับเรื่องร้องเรียน ตรวจสอบความไม่ชอบธรรม</span>
+    <span class="maatra-title">ห้ามฝ่ายบริหารและนิติบัญญัติแทรกแซงการพิจารณาคดีของศาล</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ให้แต่ละศาล ยกเว้นศาลทหาร มีหน่วยงานที่รับผิดชอบงานธุรการที่มีความเป็นอิสระในการบริหารงานบุคคล การงบประมาณ และการดำเนินการอื่น โดยให้มีหัวหน้าหน่วยงานคนหนึ่งเป็นผู้บังคับบัญชาขึ้นตรงต่อประธานของแต่ละศาล  ทั้งนี้ ตามที่กฎหมายบัญญัติ</p>
 <p class="maatra-line">ให้ศาลยุติธรรมและศาลปกครองมีระบบเงินเดือนและค่าตอบแทนเป็นการเฉพาะตามความเหมาะสมตามที่กฎหมายบัญญัติ</p>
@@ -2228,7 +2215,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-194">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 194</span>
-    <span class="maatra-title">มาตรฐานทางจริยธรรมสำหรับผู้ดำรงตำแหน่งในองค์กรอิสระ</span>
+    <span class="maatra-title">คณะกรรมการตุลาการสรรหา แต่งตั้ง โยกย้าย และกำกับดูแลผู้พิพากษา</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ศาลยุติธรรมมีอำนาจพิจารณาพิพากษาคดีทั้งปวง เว้นแต่คดีที่รัฐธรรมนูญหรือกฎหมายบัญญัติให้อยู่ในอำนาจของศาลอื่น</p>
 <p class="maatra-line">การจัดตั้ง วิธีพิจารณาคดี และการดำเนินงานของศาลยุติธรรมให้เป็นไปตามกฎหมายว่าด้วยการนั้น</p>
@@ -2237,7 +2224,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-195">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 195</span>
-    <span class="maatra-title">กระบวนการสรรหาผู้ตรวจการแผ่นดิน</span>
+    <span class="maatra-title">สำนักงานศาลยุติธรรม ศาลปกครอง ศาลทหาร — อิสระในการบริหาร</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ให้มีแผนกคดีอาญาของผู้ดำรงตำแหน่งทางการเมืองในศาลฎีกา โดยองค์คณะผู้พิพากษาประกอบด้วยผู้พิพากษาในศาลฎีกาซึ่งดำรงตำแหน่งไม่ต่ำกว่าผู้พิพากษาศาลฎีกาหรือผู้พิพากษาอาวุโสซึ่งเคยดำรงตำแหน่งไม่ต่ำกว่าผู้พิพากษาศาลฎีกา ซึ่งได้รับคัดเลือกโดยที่ประชุมใหญ่ศาลฎีกาจำนวนไม่น้อยกว่าห้าคนแต่ไม่เกินเก้าคนตามที่บัญญัติไว้ในพระราชบัญญัติประกอบรัฐธรรมนูญว่าด้วยวิธีพิจารณาคดีอาญาของผู้ดำรงตำแหน่งทางการเมือง โดยให้เลือกเป็นรายคดี</p>
 <p class="maatra-line">ศาลฎีกาแผนกคดีอาญาของผู้ดำรงตำแหน่งทางการเมืองมีอำนาจพิจารณาพิพากษาคดีตามที่บัญญัติไว้ในรัฐธรรมนูญ</p>
@@ -2251,7 +2238,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-196">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 196</span>
-    <span class="maatra-title">คุณสมบัติและลักษณะต้องห้ามของผู้ตรวจการแผ่นดิน</span>
+    <span class="maatra-title">ศาลรัฐธรรมนูญ — ตุลาการ 9 คน วาระ 7 ปี ดำรงตำแหน่งได้ครั้งเดียว</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">การบริหารงานบุคคลเกี่ยวกับผู้พิพากษาศาลยุติธรรมต้องมีความเป็นอิสระและดำเนินการโดยคณะกรรมการตุลาการศาลยุติธรรม ซึ่งประกอบด้วยประธานศาลฎีกาเป็นประธานและกรรมการผู้ทรงคุณวุฒิซึ่งเป็นข้าราชการตุลาการในแต่ละชั้นศาล และผู้ทรงคุณวุฒิซึ่งไม่เป็นหรือเคยเป็นข้าราชการตุลาการ บรรดาที่ได้รับเลือกจากข้าราชการตุลาการไม่เกินสองคน  ทั้งนี้ ตามที่กฎหมายบัญญัติ</p>
 </div>
@@ -2259,7 +2246,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-197">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 197</span>
-    <span class="maatra-title">อำนาจผู้ตรวจการแผ่นดิน — รับร้องเรียน เสนอแก้กฎหมาย ส่งศาลรัฐธรรมนูญ</span>
+    <span class="maatra-title">กระบวนการสรรหาตุลาการรัฐธรรมนูญจากสายตุลาการและผู้ทรงคุณวุฒิ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ศาลปกครองมีอำนาจพิจารณาพิพากษาคดีปกครองอันเนื่องมาจากการใช้อำนาจทางปกครองตามกฎหมายหรือเนื่องมาจากการดำเนินกิจการทางปกครอง  ทั้งนี้ ตามที่กฎหมายบัญญัติ</p>
 <p class="maatra-line">ให้มีศาลปกครองสูงสุดและศาลปกครองชั้นต้น</p>
@@ -2270,7 +2257,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-198">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 198</span>
-    <span class="maatra-title">คณะกรรมการ ป.ป.ช. 9 คน — ไต่สวนทุจริตผู้ดำรงตำแหน่งสาธารณะ</span>
+    <span class="maatra-title">คณะกรรมการสรรหาตุลาการรัฐธรรมนูญ — องค์ประกอบและอำนาจหน้าที่</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">การบริหารงานบุคคลเกี่ยวกับตุลาการศาลปกครองต้องมีความเป็นอิสระและดำเนินการโดยคณะกรรมการตุลาการศาลปกครองซึ่งประกอบด้วยประธานศาลปกครองสูงสุดเป็นประธานและกรรมการผู้ทรงคุณวุฒิซึ่งเป็นตุลาการในศาลปกครอง และผู้ทรงคุณวุฒิซึ่งไม่เป็นหรือเคยเป็นตุลาการในศาลปกครองไม่เกินสองคน บรรดาที่ได้รับเลือกจากข้าราชการตุลาการศาลปกครอง  ทั้งนี้ ตามที่กฎหมายบัญญัติ</p>
 </div>
@@ -2278,7 +2265,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-199">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 199</span>
-    <span class="maatra-title">กระบวนการสรรหาและแต่งตั้ง ป.ป.ช.</span>
+    <span class="maatra-title">ผู้ได้รับเลือกเป็นตุลาการรัฐธรรมนูญต้องพ้นจากตำแหน่งอื่นก่อน</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ศาลทหารมีอำนาจพิจารณาพิพากษาคดีอาญาที่ผู้กระทำความผิดเป็นบุคคลซึ่งอยู่ในอำนาจศาลทหารและคดีอื่น  ทั้งนี้ ตามที่กฎหมายบัญญัติ</p>
 <p class="maatra-line">การจัดตั้ง วิธีพิจารณาคดี และการดำเนินงานของศาลทหาร ตลอดจนการแต่งตั้งและการให้ตุลาการศาลทหารพ้นจากตำแหน่ง ให้เป็นไปตามที่กฎหมายบัญญัติ</p>
@@ -2303,7 +2290,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-200">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 200</span>
-    <span class="maatra-title">คุณสมบัติและลักษณะต้องห้ามของ ป.ป.ช.</span>
+    <span class="maatra-title">วุฒิสภาลงมติให้ความเห็นชอบผู้ได้รับการสรรหาเป็นตุลาการรัฐธรรมนูญ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ศาลรัฐธรรมนูญประกอบด้วยตุลาการศาลรัฐธรรมนูญจำนวนเก้าคนซึ่งพระมหากษัตริย์ทรงแต่งตั้งจากบุคคล ดังต่อไปนี้</p>
 <p class="maatra-line">(1) ผู้พิพากษาในศาลฎีกาซึ่งดำรงตำแหน่งไม่ต่ำกว่าผู้พิพากษาหัวหน้าคณะในศาลฎีกามาแล้วไม่น้อยกว่าสามปี ซึ่งได้รับคัดเลือกโดยที่ประชุมใหญ่ศาลฎีกา จำนวนสามคน</p>
@@ -2318,7 +2305,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-201">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 201</span>
-    <span class="maatra-title">อำนาจ ป.ป.ช. — ไต่สวน ตรวจสอบทรัพย์สิน ป้องกันและปราบปรามทุจริต</span>
+    <span class="maatra-title">คุณสมบัติตุลาการรัฐธรรมนูญ — อายุ 45-68 ปี ประสบการณ์กฎหมายสูง</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ตุลาการศาลรัฐธรรมนูญต้องมีคุณสมบัติดังต่อไปนี้ด้วย</p>
 <p class="maatra-line">(1) มีสัญชาติไทยโดยการเกิด</p>
@@ -2331,7 +2318,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-202">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 202</span>
-    <span class="maatra-title">ผลเมื่อ ป.ป.ช. ชี้มูล — ถูกพักงาน ส่งอัยการสูงสุด และเผยแพร่รายงาน</span>
+    <span class="maatra-title">ลักษณะต้องห้ามของตุลาการรัฐธรรมนูญ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ตุลาการศาลรัฐธรรมนูญต้องไม่มีลักษณะต้องห้าม ดังต่อไปนี้</p>
 <p class="maatra-line">(1) เป็นหรือเคยเป็นตุลาการศาลรัฐธรรมนูญหรือผู้ดำรงตำแหน่งในองค์กรอิสระใด</p>
@@ -2349,7 +2336,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-203">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 203</span>
-    <span class="maatra-title">คณะกรรมการตรวจเงินแผ่นดิน (สตง.) — ตรวจสอบการใช้งบประมาณแผ่นดิน</span>
+    <span class="maatra-title">คุณสมบัติและลักษณะต้องห้ามของตุลาการรัฐธรรมนูญ (เพิ่มเติม)</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">เมื่อมีกรณีที่จะต้องสรรหาผู้สมควรได้รับการแต่งตั้งเป็นตุลาการศาลรัฐธรรมนูญ ให้เป็นหน้าที่และอำนาจของคณะกรรมการสรรหา ซึ่งประกอบด้วย</p>
 <p class="maatra-line">(1) ประธานศาลฎีกา เป็นประธานกรรมการ</p>
@@ -2366,7 +2353,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-204">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 204</span>
-    <span class="maatra-title">กระบวนการสรรหาและแต่งตั้งคณะกรรมการ สตง.</span>
+    <span class="maatra-title">กระบวนการเสนอรายชื่อตุลาการรัฐธรรมนูญต่อวุฒิสภา</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ผู้ได้รับการคัดเลือกหรือสรรหาเพื่อแต่งตั้งให้ดำรงตำแหน่งตุลาการศาลรัฐธรรมนูญต้องได้รับความเห็นชอบจากวุฒิสภาด้วยคะแนนเสียงไม่น้อยกว่ากึ่งหนึ่งของจำนวนสมาชิกทั้งหมดเท่าที่มีอยู่ของวุฒิสภา</p>
 <p class="maatra-line">ในกรณีที่วุฒิสภาไม่ให้ความเห็นชอบผู้ได้รับการสรรหาหรือคัดเลือกรายใด ให้ดำเนินการสรรหาหรือคัดเลือกบุคคลใหม่แทนผู้นั้น แล้วเสนอต่อวุฒิสภาเพื่อให้ความเห็นชอบต่อไป</p>
@@ -2377,7 +2364,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-205">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 205</span>
-    <span class="maatra-title">คุณสมบัติและวาระของคณะกรรมการ สตง.</span>
+    <span class="maatra-title">ผู้ได้รับความเห็นชอบที่ยังดำรงตำแหน่งอื่นต้องลาออกก่อนรับตำแหน่ง</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ผู้ได้รับความเห็นชอบจากวุฒิสภาให้เป็นตุลาการศาลรัฐธรรมนูญโดยที่ยังมิได้พ้นจากตำแหน่งตามมาตรา 202 (6) (7) หรือ (8) หรือยังประกอบวิชาชีพตาม (9) อยู่ ต้องแสดงหลักฐานว่าได้ลาออกหรือเลิกประกอบวิชาชีพตามมาตรา 202 (6) (7) (8) หรือ (9) แล้ว ต่อประธานวุฒิสภาภายในเวลาที่ประธานวุฒิสภากำหนด ซึ่งต้องเป็นเวลาก่อนที่ประธานวุฒิสภาจะนำความกราบบังคมทูลตามมาตรา 204 วรรคสี่ ในกรณีที่ไม่แสดงหลักฐานภายในกำหนดเวลาดังกล่าว ให้ถือว่าผู้นั้นสละสิทธิและให้ดำเนินการคัดเลือกหรือสรรหาใหม่</p>
 </div>
@@ -2385,7 +2372,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-206">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 206</span>
-    <span class="maatra-title">อำนาจ สตง. — ตรวจสอบ รายงาน และเปิดเผยการใช้จ่ายงบประมาณแผ่นดิน</span>
+    <span class="maatra-title">ตุลาการเลือกกันเองเป็นประธานศาลรัฐธรรมนูญ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ในการพิจารณาให้ความเห็นชอบตามมาตรา 204 ถ้ามีผู้ได้รับความเห็นชอบจากวุฒิสภาจำนวนไม่น้อยกว่าเจ็ดคน ให้ผู้ได้รับความเห็นชอบเลือกกันเองให้คนหนึ่งเป็นประธานศาลรัฐธรรมนูญแล้วแจ้งผลให้ประธานวุฒิสภาทราบโดยไม่ต้องรอให้มีผู้ได้รับความเห็นชอบครบเก้าคน และเมื่อโปรดเกล้าโปรดกระหม่อมแต่งตั้งแล้ว ให้ศาลรัฐธรรมนูญดำเนินการตามหน้าที่และอำนาจต่อไปพลางก่อนได้ โดยในระหว่างนั้น ให้ถือว่าศาลรัฐธรรมนูญประกอบด้วยตุลาการศาลรัฐธรรมนูญเท่าที่มีอยู่</p>
 </div>
@@ -2393,7 +2380,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-207">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 207</span>
-    <span class="maatra-title">คณะกรรมการสิทธิมนุษยชนแห่งชาติ (กสม.) 7 คน</span>
+    <span class="maatra-title">วาระตุลาการรัฐธรรมนูญ 7 ปี — ดำรงตำแหน่งได้เพียงวาระเดียว</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ตุลาการศาลรัฐธรรมนูญมีวาระการดำรงตำแหน่งเจ็ดปีนับแต่วันที่พระมหากษัตริย์ทรงแต่งตั้ง และให้ดำรงตำแหน่งได้เพียงวาระเดียว</p>
 </div>
@@ -2401,7 +2388,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-208">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 208</span>
-    <span class="maatra-title">กระบวนการสรรหาและแต่งตั้งกรรมการ กสม.</span>
+    <span class="maatra-title">เหตุพ้นจากตำแหน่งของตุลาการรัฐธรรมนูญ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">นอกจากการพ้นจากตำแหน่งตามวาระ ตุลาการศาลรัฐธรรมนูญพ้นจากตำแหน่งเมื่อ</p>
 <p class="maatra-line">(1) ขาดคุณสมบัติตามมาตรา 201 หรือมีลักษณะต้องห้ามตามมาตรา 202</p>
@@ -2419,7 +2406,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-209">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 209</span>
-    <span class="maatra-title">คุณสมบัติและลักษณะต้องห้ามของ กสม.</span>
+    <span class="maatra-title">กรณีตุลาการน้อยกว่า 7 คน — ประธานศาลฎีกาและปกครองส่งผู้แทน</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ในระหว่างที่ตุลาการศาลรัฐธรรมนูญพ้นจากตำแหน่งก่อนวาระและยังไม่มีการแต่งตั้งตุลาการศาลรัฐธรรมนูญแทนตำแหน่งที่ว่าง ให้ตุลาการศาลรัฐธรรมนูญเท่าที่เหลืออยู่ปฏิบัติหน้าที่ต่อไปได้</p>
 <p class="maatra-line">บทบัญญัติตามวรรคหนึ่งมิให้ใช้บังคับกรณีมีตุลาการศาลรัฐธรรมนูญเหลืออยู่ไม่ถึงเจ็ดคน</p>
@@ -2428,7 +2415,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-210">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 210</span>
-    <span class="maatra-title">อำนาจ กสม. — ตรวจสอบ ส่งเสริม รายงาน และเสนอแก้ไขการคุ้มครองสิทธิ</span>
+    <span class="maatra-title">อำนาจหน้าที่ศาลรัฐธรรมนูญ — วินิจฉัยความชอบด้วยรัฐธรรมนูญ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ศาลรัฐธรรมนูญมีหน้าที่และอำนาจ ดังต่อไปนี้</p>
 <p class="maatra-line">(1) พิจารณาวินิจฉัยความชอบด้วยรัฐธรรมนูญของกฎหมายหรือร่างกฎหมาย</p>
@@ -2441,7 +2428,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-211">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 211</span>
-    <span class="maatra-title">คณะกรรมการสรรหาองค์กรอิสระ — ผู้พิพากษาสูงสุดและผู้ทรงคุณวุฒิ 7 คน</span>
+    <span class="maatra-title">องค์ประชุมไม่น้อยกว่า 7 คน — คำวินิจฉัยต้องได้เสียงข้างมาก</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">องค์คณะของตุลาการศาลรัฐธรรมนูญในการนั่งพิจารณาและในการทำคำวินิจฉัยต้องประกอบด้วยตุลาการศาลรัฐธรรมนูญไม่น้อยกว่าเจ็ดคน</p>
 <p class="maatra-line">คำวินิจฉัยของศาลรัฐธรรมนูญให้ถือเสียงข้างมาก เว้นแต่รัฐธรรมนูญจะบัญญัติไว้เป็นอย่างอื่น</p>
@@ -2452,7 +2439,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-212">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 212</span>
-    <span class="maatra-title">คุณสมบัติกรรมการสรรหา — ห้ามดำรงตำแหน่งทางการเมืองหรือสังกัดพรรค</span>
+    <span class="maatra-title">ศาลที่พิจารณาคดีส่งเรื่องให้ศาลรัฐธรรมนูญวินิจฉัยก่อนใช้บทบัญญัติ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ในการที่ศาลจะใช้บทบัญญัติแห่งกฎหมายบังคับแก่คดีใด ถ้าศาลเห็นเองหรือคู่ความโต้แย้งพร้อมด้วยเหตุผลว่าบทบัญญัติแห่งกฎหมายนั้นต้องด้วยมาตรา 5 และยังไม่มีคำวินิจฉัยของศาลรัฐธรรมนูญในส่วนที่เกี่ยวกับบทบัญญัตินั้น ให้ศาลส่งความเห็นเช่นว่านั้นต่อศาลรัฐธรรมนูญเพื่อวินิจฉัย ในระหว่างนั้น ให้ศาลดำเนินการพิจารณาต่อไปได้แต่ให้รอการพิพากษาคดีไว้ชั่วคราวจนกว่าจะมีคำวินิจฉัยของศาลรัฐธรรมนูญ</p>
 <p class="maatra-line">ในกรณีที่ศาลรัฐธรรมนูญเห็นว่าคำโต้แย้งของคู่ความตามวรรคหนึ่ง ไม่เป็นสาระอันควรได้รับการวินิจฉัย ศาลรัฐธรรมนูญจะไม่รับเรื่องดังกล่าวไว้พิจารณาก็ได้</p>
@@ -2462,7 +2449,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-213">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 213</span>
-    <span class="maatra-title">วิธีการสรรหา — เปิดรับสมัคร ตรวจสอบ คัดเลือก เสนอ 3 รายต่อตำแหน่ง</span>
+    <span class="maatra-title">ประชาชนร้องต่อศาลรัฐธรรมนูญได้เมื่อสิทธิเสรีภาพตามรัฐธรรมนูญถูกละเมิด</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">บุคคลซึ่งถูกละเมิดสิทธิหรือเสรีภาพที่รัฐธรรมนูญคุ้มครองไว้มีสิทธิยื่นคำร้องต่อศาลรัฐธรรมนูญเพื่อมีคำวินิจฉัยว่าการกระทำนั้นขัดหรือแย้งต่อรัฐธรรมนูญ  ทั้งนี้ ตามหลักเกณฑ์ วิธีการ และเงื่อนไขที่บัญญัติไว้ในพระราชบัญญัติประกอบรัฐธรรมนูญว่าด้วยวิธีพิจารณาของศาลรัฐธรรมนูญ</p>
 </div>
@@ -2470,7 +2457,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-214">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 214</span>
-    <span class="maatra-title">วุฒิสภาลงมติเลือกผู้สมควรดำรงตำแหน่งองค์กรอิสระ</span>
+    <span class="maatra-title">กรณีตุลาการต้องหยุดปฏิบัติหน้าที่ — ประธานศาลฎีกาและปกครองส่งแทน</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ในกรณีที่ตุลาการศาลรัฐธรรมนูญต้องหยุดปฏิบัติหน้าที่ตามมาตรา 235 วรรคสาม และมีตุลาการศาลรัฐธรรมนูญเหลืออยู่ไม่ถึงเจ็ดคน ให้ประธานศาลฎีกาและประธานศาลปกครองสูงสุดร่วมกันแต่งตั้งบุคคลซึ่งมีคุณสมบัติและไม่มีลักษณะต้องห้ามเช่นเดียวกับตุลาการศาลรัฐธรรมนูญทำหน้าที่เป็นตุลาการศาลรัฐธรรมนูญเป็นการชั่วคราวให้ครบเก้าคน โดยให้ผู้ซึ่งได้รับแต่งตั้งทำหน้าที่ในฐานะตุลาการศาลรัฐธรรมนูญได้จนกว่าตุลาการศาลรัฐธรรมนูญที่ตนทำหน้าที่แทนจะปฏิบัติหน้าที่ได้ หรือจนกว่าจะมีการแต่งตั้งผู้ดำรงตำแหน่งแทน</p>
 </div>
@@ -2494,7 +2481,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-215">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 215</span>
-    <span class="maatra-title">การตรวจสอบคุณสมบัติก่อนนำความกราบบังคมทูลโปรดเกล้าฯ แต่งตั้ง</span>
+    <span class="maatra-title">องค์กรอิสระมีความเป็นอิสระในการปฏิบัติหน้าที่ตามรัฐธรรมนูญและกฎหมาย</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">องค์กรอิสระเป็นองค์กรที่จัดตั้งขึ้นให้มีความอิสระในการปฏิบัติหน้าที่ ให้เป็นไปตามรัฐธรรมนูญและกฎหมาย</p>
 <p class="maatra-line">การปฏิบัติหน้าที่และการใช้อำนาจขององค์กรอิสระต้องเป็นไปโดยสุจริต เที่ยงธรรม กล้าหาญ และปราศจากอคติทั้งปวงในการใช้ดุลพินิจ</p>
@@ -2503,7 +2490,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-216">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 216</span>
-    <span class="maatra-title">วาระองค์กรอิสระ 7 ปี — ดำรงตำแหน่งได้วาระเดียว ไม่นับวาระที่ไม่ครบ</span>
+    <span class="maatra-title">คุณสมบัติและลักษณะต้องห้ามทั่วไปของผู้ดำรงตำแหน่งในองค์กรอิสระ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">นอกจากคุณสมบัติและลักษณะต้องห้ามตามที่บัญญัติไว้เป็นการเฉพาะในส่วนที่ว่าด้วยองค์กรอิสระแต่ละองค์กรแล้ว ผู้ดำรงตำแหน่งในองค์กรอิสระต้องมีคุณสมบัติและไม่มีลักษณะต้องห้ามทั่วไปดังต่อไปนี้ด้วย</p>
 <p class="maatra-line">(1) มีอายุไม่ต่ำกว่าสี่สิบห้าปี แต่ไม่เกินเจ็ดสิบปี</p>
@@ -2514,7 +2501,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-217">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 217</span>
-    <span class="maatra-title">แต่ละองค์กรอิสระมีสำนักงานเป็นอิสระในการบริหารงาน</span>
+    <span class="maatra-title">การสรรหาผู้ดำรงตำแหน่งในองค์กรอิสระ — คณะกรรมการสรรหาเป็นผู้ดำเนินการ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">เมื่อมีกรณีที่จะต้องสรรหาผู้สมควรได้รับการแต่งตั้งเป็นผู้ดำรงตำแหน่งในองค์กรอิสระนอกจากคณะกรรมการสิทธิมนุษยชนแห่งชาติ ให้เป็นหน้าที่และอำนาจของคณะกรรมการสรรหาตามมาตรา 203 ที่จะดำเนินการสรรหา เว้นแต่กรรมการสรรหาตามมาตรา 203 (4) ให้ประกอบด้วยบุคคลซึ่งแต่งตั้งโดยศาลรัฐธรรมนูญและองค์กรอิสระที่มิใช่องค์กรอิสระที่ต้องมีการสรรหา</p>
 <p class="maatra-line">ให้นำความในมาตรา 203 มาตรา 204 มาตรา 205 และมาตรา 206 มาใช้บังคับแก่การสรรหาตามวรรคหนึ่งโดยอนุโลม</p>
@@ -2523,7 +2510,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-218">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 218</span>
-    <span class="maatra-title">การพ้นจากตำแหน่งและการสรรหาผู้ดำรงตำแหน่งแทนในองค์กรอิสระ</span>
+    <span class="maatra-title">เหตุพ้นจากตำแหน่งของผู้ดำรงตำแหน่งในองค์กรอิสระ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">นอกจากการพ้นจากตำแหน่งตามวาระ ผู้ดำรงตำแหน่งในองค์กรอิสระพ้นจากตำแหน่งเมื่อ</p>
 <p class="maatra-line">(1) ตาย</p>
@@ -2536,7 +2523,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-219">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 219</span>
-    <span class="maatra-title">องค์กรอัยการมีอิสระในการพิจารณาสั่งคดีและกำกับดูแลตนเอง</span>
+    <span class="maatra-title">ศาลรัฐธรรมนูญและองค์กรอิสระร่วมกันกำหนดมาตรฐานทางจริยธรรม</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ให้ศาลรัฐธรรมนูญและองค์กรอิสระร่วมกันกำหนดมาตรฐานทางจริยธรรมขึ้นใช้บังคับแก่ตุลาการศาลรัฐธรรมนูญและผู้ดำรงตำแหน่งในองค์กรอิสระ รวมทั้งผู้ว่าการตรวจเงินแผ่นดินและหัวหน้าหน่วยงานธุรการของศาลรัฐธรรมนูญและองค์กรอิสระ และเมื่อประกาศในราชกิจจานุเบกษาแล้วให้ใช้บังคับได้  ทั้งนี้ มาตรฐานทางจริยธรรมดังกล่าวต้องครอบคลุมถึงการรักษาเกียรติภูมิและผลประโยชน์ของชาติ และต้องระบุให้ชัดแจ้งด้วยว่าการฝ่าฝืนหรือไม่ปฏิบัติตามมาตรฐานทางจริยธรรมใดมีลักษณะร้ายแรง</p>
 <p class="maatra-line">ในการจัดทำมาตรฐานทางจริยธรรมตามวรรคหนึ่ง ให้รับฟังความคิดเห็นของสภาผู้แทนราษฎร วุฒิสภา และคณะรัฐมนตรี ประกอบด้วย และเมื่อประกาศใช้บังคับแล้วให้ใช้บังคับแก่สมาชิกสภาผู้แทนราษฎร สมาชิกวุฒิสภา และคณะรัฐมนตรีด้วย แต่ไม่ห้ามสภาผู้แทนราษฎร วุฒิสภา หรือคณะรัฐมนตรีที่จะกำหนดจริยธรรมเพิ่มขึ้นให้เหมาะสมกับการปฏิบัติหน้าที่ของตน แต่ต้องไม่ขัดหรือแย้งกับมาตรฐานทางจริยธรรมตามวรรคหนึ่ง และให้ประกาศในราชกิจจานุเบกษา</p>
@@ -2545,7 +2532,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-220">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 220</span>
-    <span class="maatra-title">หลักการจัดระบบองค์กรปกครองส่วนท้องถิ่นตามหลักการกระจายอำนาจ</span>
+    <span class="maatra-title">องค์กรอิสระแต่ละแห่งมีสำนักงานอิสระรับผิดชอบงานธุรการ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ให้องค์กรอิสระแต่ละแห่ง นอกจากคณะกรรมการตรวจเงินแผ่นดิน มีหน่วยงานที่รับผิดชอบงานธุรการ ดำเนินการ และอำนวยความสะดวก เพื่อให้องค์กรอิสระบรรลุภารกิจและหน้าที่ตามที่กำหนดไว้ในรัฐธรรมนูญ กฎหมาย และเป็นไปตามมติหรือแนวทางที่องค์กรอิสระกำหนด โดยให้มีหัวหน้าหน่วยงานคนหนึ่งซึ่งแต่งตั้งโดยความเห็นชอบขององค์กรอิสระแต่ละองค์กรเป็นผู้รับผิดชอบการบริหารงานของหน่วยงานนั้น รับผิดชอบขึ้นตรงต่อองค์กรอิสระ  ทั้งนี้ ตามที่กฎหมายบัญญัติ</p>
 </div>
@@ -2553,7 +2540,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-221">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 221</span>
-    <span class="maatra-title">ผู้บริหารท้องถิ่นและสภาท้องถิ่นมาจากการเลือกตั้งของประชาชน</span>
+    <span class="maatra-title">องค์กรอิสระร่วมมือและช่วยเหลือกัน — แจ้งเรื่องให้องค์กรอื่นดำเนินการได้</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ในการปฏิบัติหน้าที่ ให้องค์กรอิสระร่วมมือและช่วยเหลือกันเพื่อให้บรรลุเป้าหมายในการปฏิบัติหน้าที่ของแต่ละองค์กร และถ้าองค์กรอิสระใดเห็นว่ามีผู้กระทำการอันไม่ชอบด้วยกฎหมายแต่อยู่ในหน้าที่และอำนาจขององค์กรอิสระอื่น ให้แจ้งองค์กรอิสระนั้นทราบเพื่อดำเนินการตามหน้าที่และอำนาจต่อไป</p>
 </div>
@@ -2561,7 +2548,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-222">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 222</span>
-    <span class="maatra-title">อปท. มีอำนาจจัดบริการสาธารณะ — ห้ามรัฐแทรกแซงโดยไม่ชอบด้วยกฎหมาย</span>
+    <span class="maatra-title">คณะกรรมการการเลือกตั้ง (กกต.) 7 คน — กำกับดูแลการเลือกตั้งทั้งปวง</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">คณะกรรมการการเลือกตั้งประกอบด้วยกรรมการจำนวนเจ็ดคนซึ่งพระมหากษัตริย์ทรงแต่งตั้งตามคำแนะนำของวุฒิสภา จากบุคคลดังต่อไปนี้</p>
 <p class="maatra-line">(1) ผู้มีความรู้ความเชี่ยวชาญในสาขาวิชาการต่าง ๆ ที่จะยังประโยชน์แก่การบริหารและจัดการการเลือกตั้งให้เป็นไปโดยสุจริตและเที่ยงธรรม และมีความซื่อสัตย์สุจริตเป็นที่ประจักษ์ ซึ่งได้รับการสรรหาจากคณะกรรมการสรรหา จำนวนห้าคน</p>
@@ -2572,7 +2559,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-223">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 223</span>
-    <span class="maatra-title">การกระจายอำนาจและรายได้ให้ท้องถิ่นเพิ่มขึ้นตามหลักเกณฑ์ที่กฎหมายกำหนด</span>
+    <span class="maatra-title">วาระ กกต. 7 ปี — ดำรงตำแหน่งได้วาระเดียว</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">กรรมการการเลือกตั้งมีวาระการดำรงตำแหน่งเจ็ดปีนับแต่วันที่พระมหากษัตริย์ทรงแต่งตั้ง และให้ดำรงตำแหน่งได้เพียงวาระเดียว</p>
 <p class="maatra-line">ในระหว่างที่กรรมการการเลือกตั้งพ้นจากตำแหน่งก่อนวาระ และยังไม่มีการแต่งตั้งกรรมการการเลือกตั้งแทนตำแหน่งที่ว่าง ให้คณะกรรมการการเลือกตั้งเท่าที่เหลืออยู่ปฏิบัติหน้าที่ต่อไปได้ แต่ถ้ามีกรรมการการเลือกตั้งเหลืออยู่ไม่ถึงสี่คนให้กระทำได้แต่เฉพาะการที่จำเป็นอันไม่อาจหลีกเลี่ยงได้</p>
@@ -2581,7 +2568,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-224">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 224</span>
-    <span class="maatra-title">รัฐกำกับดูแล อปท. ได้เฉพาะที่กฎหมายบัญญัติ ต้องสัดส่วนกับเหตุ</span>
+    <span class="maatra-title">อำนาจ กกต. — จัดการเลือกตั้ง สืบสวน วินิจฉัย และสั่งให้เลือกตั้งใหม่</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ให้คณะกรรมการการเลือกตั้งมีหน้าที่และอำนาจ ดังต่อไปนี้</p>
 <p class="maatra-line">(1) จัดหรือดำเนินการให้มีการจัดการเลือกตั้งสมาชิกสภาผู้แทนราษฎร การเลือกสมาชิกวุฒิสภา การเลือกตั้งสมาชิกสภาท้องถิ่นและผู้บริหารท้องถิ่น และการออกเสียงประชามติ</p>
@@ -2597,7 +2584,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-225">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 225</span>
-    <span class="maatra-title">กรุงเทพมหานครและพัทยาเป็นรูปแบบการปกครองท้องถิ่นพิเศษ</span>
+    <span class="maatra-title">อำนาจ กกต. — เพิกถอนสิทธิสมัคร ยุบพรรค และส่งอัยการดำเนินคดี</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ก่อนประกาศผลการเลือกตั้งหรือการเลือก ถ้ามีหลักฐานอันควรเชื่อได้ว่าการเลือกตั้งหรือการเลือกนั้นมิได้เป็นไปโดยสุจริตหรือเที่ยงธรรม ให้คณะกรรมการการเลือกตั้งมีอำนาจสั่งให้มีการเลือกตั้งหรือการเลือกใหม่ในหน่วยเลือกตั้งหรือเขตเลือกตั้งนั้น ถ้าผู้กระทำการนั้นเป็นผู้สมัครรับเลือกตั้งหรือผู้สมัครรับเลือก แล้วแต่กรณี หรือรู้เห็นกับการกระทำของบุคคลอื่น ให้คณะกรรมการการเลือกตั้งสั่งระงับสิทธิสมัครรับเลือกตั้งของผู้นั้นไว้เป็นการชั่วคราวตามมาตรา 224 (4)</p>
 <p class="maatra-line">คำสั่งตามวรรคหนึ่ง ให้เป็นที่สุด</p>
@@ -2606,7 +2593,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-226">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 226</span>
-    <span class="maatra-title">สมาชิกสภาท้องถิ่นต้องมาจากการเลือกตั้งโดยตรง</span>
+    <span class="maatra-title">ผู้ตรวจการแผ่นดิน 3 คน — รับเรื่องร้องเรียน ตรวจสอบความไม่ชอบธรรม</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">เมื่อมีการดำเนินการตามมาตรา 225 หรือภายหลังการประกาศผลการเลือกตั้งหรือการเลือกแล้ว มีหลักฐานอันควรเชื่อได้ว่าผู้สมัครรับเลือกตั้งหรือผู้สมัครรับเลือกผู้ใดกระทำการทุจริตในการเลือกตั้งหรือการเลือกหรือรู้เห็นกับการกระทำของบุคคลอื่น ให้คณะกรรมการการเลือกตั้งยื่นคำร้องต่อศาลฎีกาเพื่อสั่งเพิกถอนสิทธิสมัครรับเลือกตั้ง หรือเพิกถอนสิทธิเลือกตั้งของผู้นั้น</p>
 <p class="maatra-line">การพิจารณาของศาลฎีกาตามวรรคหนึ่ง ให้นำสำนวนการสืบสวนหรือไต่สวนของคณะกรรมการการเลือกตั้งเป็นหลักในการพิจารณา และเพื่อประโยชน์แห่งความยุติธรรม ให้ศาลมีอำนาจสั่งไต่สวนข้อเท็จจริงและพยานหลักฐานเพิ่มเติมได้</p>
@@ -2620,7 +2607,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-227">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 227</span>
-    <span class="maatra-title">ความโปร่งใส ตรวจสอบได้ และการมีส่วนร่วมของประชาชนในกิจการท้องถิ่น</span>
+    <span class="maatra-title">อำนาจผู้ตรวจการแผ่นดิน — รับร้องเรียน เสนอแก้กฎหมาย ส่งศาลรัฐธรรมนูญ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ในระหว่างที่พระราชกฤษฎีกาให้มีการเลือกตั้งสมาชิกสภาผู้แทนราษฎรหรือการเลือกสมาชิกวุฒิสภา หรือเมื่อประกาศให้มีการออกเสียงประชามติ มีผลใช้บังคับ ห้ามมิให้จับ คุมขัง หรือหมายเรียกตัวกรรมการการเลือกตั้งไปสอบสวน เว้นแต่ได้รับอนุญาตจากคณะกรรมการการเลือกตั้ง หรือในกรณีที่จับในขณะกระทำความผิด</p>
 <p class="maatra-line">ในกรณีที่มีการจับกรรมการการเลือกตั้งในขณะกระทำความผิด หรือจับหรือคุมขังกรรมการการเลือกตั้งในกรณีอื่น ให้รายงานต่อประธานกรรมการการเลือกตั้งโดยด่วน และให้ประธานกรรมการการเลือกตั้งมีอำนาจสั่งให้ปล่อยผู้ถูกจับได้ แต่ถ้าประธานกรรมการการเลือกตั้งเป็นผู้ถูกจับหรือคุมขังให้เป็นอำนาจของคณะกรรมการการเลือกตั้งเท่าที่มีอยู่เป็นผู้ดำเนินการ</p>
@@ -2629,7 +2616,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-228">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 228</span>
-    <span class="maatra-title">สิทธิประชาชนเสนอข้อบัญญัติท้องถิ่นและถอดถอนผู้บริหารท้องถิ่น</span>
+    <span class="maatra-title">คณะกรรมการ ป.ป.ช. 9 คน — ไต่สวนทุจริตผู้ดำรงตำแหน่งสาธารณะ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ผู้ตรวจการแผ่นดินมีจำนวนสามคนซึ่งพระมหากษัตริย์ทรงแต่งตั้งตามคำแนะนำของวุฒิสภา จากผู้ซึ่งได้รับการสรรหาโดยคณะกรรมการสรรหา</p>
 <p class="maatra-line">ผู้ซึ่งได้รับการสรรหาต้องเป็นผู้มีความซื่อสัตย์สุจริตเป็นที่ประจักษ์ และมีความรู้ ความเชี่ยวชาญ และประสบการณ์เกี่ยวกับการบริหารราชการแผ่นดินไม่ต่ำกว่าอธิบดีหรือหัวหน้าส่วนราชการที่เทียบเท่าหรือหัวหน้าหน่วยงานของรัฐที่เทียบได้ไม่ต่ำกว่ากรมตามที่คณะกรรมการสรรหาประกาศกำหนด โดยต้องดำรงตำแหน่งดังกล่าวเป็นเวลาไม่น้อยกว่าห้าปี จำนวนสองคน และเป็นผู้มีประสบการณ์ในการดำเนินกิจการอันเป็นสาธารณะมาแล้วไม่น้อยกว่ายี่สิบปี จำนวนหนึ่งคน</p>
@@ -2638,7 +2625,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-229">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 229</span>
-    <span class="maatra-title">ห้ามแก้ไขรัฐธรรมนูญให้เปลี่ยนรูปแบบรัฐหรือระบอบประชาธิปไตย</span>
+    <span class="maatra-title">คุณสมบัติและวาระของ ป.ป.ช.</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ผู้ตรวจการแผ่นดินมีวาระการดำรงตำแหน่งเจ็ดปีนับแต่วันที่พระมหากษัตริย์ทรงแต่งตั้ง และให้ดำรงตำแหน่งได้เพียงวาระเดียว</p>
 </div>
@@ -2646,7 +2633,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-230">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 230</span>
-    <span class="maatra-title">กระบวนการแก้ไขรัฐธรรมนูญ — 3 วาระ ต้องผ่าน ส.ว. ไม่น้อยกว่า 1 ใน 3</span>
+    <span class="maatra-title">อำนาจ ป.ป.ช. — ไต่สวน ตรวจสอบทรัพย์สิน ป้องกันและปราบปรามทุจริต</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ผู้ตรวจการแผ่นดินมีหน้าที่และอำนาจ ดังต่อไปนี้</p>
 <p class="maatra-line">(1) เสนอแนะต่อหน่วยงานของรัฐที่เกี่ยวข้องเพื่อให้มีการปรับปรุงกฎหมาย กฎ ข้อบังคับ ระเบียบ หรือคำสั่ง หรือขั้นตอนการปฏิบัติงานใด ๆ บรรดาที่ก่อให้เกิดความเดือดร้อนหรือความไม่เป็นธรรมแก่ประชาชน หรือเป็นภาระแก่ประชาชนโดยไม่จำเป็นหรือเกินสมควรแก่เหตุ</p>
@@ -2659,7 +2646,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-231">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 231</span>
-    <span class="maatra-title">เป้าหมายการปฏิรูปประเทศ — ประชาชนมีคุณภาพชีวิตดี สังคมสงบ ยั่งยืน</span>
+    <span class="maatra-title">ผลเมื่อ ป.ป.ช. ชี้มูล — ถูกพักงาน ส่งอัยการสูงสุด และเผยแพร่รายงาน</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ในการปฏิบัติหน้าที่ตามมาตรา 230 ผู้ตรวจการแผ่นดินอาจเสนอเรื่องต่อศาลรัฐธรรมนูญหรือศาลปกครองได้เมื่อเห็นว่ามีกรณี ดังต่อไปนี้</p>
 <p class="maatra-line">(1) บทบัญญัติแห่งกฎหมายใดมีปัญหาเกี่ยวกับความชอบด้วยรัฐธรรมนูญ ให้เสนอเรื่องพร้อมด้วยความเห็นต่อศาลรัฐธรรมนูญ และให้ศาลรัฐธรรมนูญพิจารณาวินิจฉัยโดยไม่ชักช้า  ทั้งนี้ ตามพระราชบัญญัติประกอบรัฐธรรมนูญว่าด้วยวิธีพิจารณาของศาลรัฐธรรมนูญ</p>
@@ -2669,7 +2656,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-232">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 232</span>
-    <span class="maatra-title">แนวทางการปฏิรูปด้านการเมือง เศรษฐกิจ บริหารราชการ กฎหมาย และสังคม</span>
+    <span class="maatra-title">คณะกรรมการตรวจเงินแผ่นดิน (สตง.) — ตรวจสอบการใช้งบประมาณแผ่นดิน</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">คณะกรรมการป้องกันและปราบปรามการทุจริตแห่งชาติประกอบด้วยกรรมการจำนวนเก้าคน ซึ่งพระมหากษัตริย์ทรงแต่งตั้งตามคำแนะนำของวุฒิสภาจากผู้ซึ่งได้รับการสรรหาโดยคณะกรรมการสรรหา</p>
 <p class="maatra-line">ผู้ซึ่งได้รับการสรรหาต้องเป็นผู้มีความซื่อสัตย์สุจริตเป็นที่ประจักษ์ มีความรู้ ความเชี่ยวชาญ และประสบการณ์ด้านกฎหมาย บัญชี เศรษฐศาสตร์ การบริหารราชการแผ่นดิน หรือการอื่นใดอันเป็นประโยชน์ต่อการป้องกันและปราบปรามการทุจริต และต้องมีคุณสมบัติอย่างหนึ่งอย่างใด ดังต่อไปนี้ด้วย</p>
@@ -2686,7 +2673,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-233">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 233</span>
-    <span class="maatra-title">การปฏิรูปด้านกฎหมาย — ยกเลิกที่ล้าสมัย ทำให้เข้าถึงง่าย ทันสมัย</span>
+    <span class="maatra-title">คุณสมบัติและวาระของคณะกรรมการ สตง.</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">กรรมการป้องกันและปราบปรามการทุจริตแห่งชาติมีวาระการดำรงตำแหน่งเจ็ดปีนับแต่วันที่พระมหากษัตริย์ทรงแต่งตั้ง และให้ดำรงตำแหน่งได้เพียงวาระเดียว</p>
 <p class="maatra-line">ในระหว่างที่กรรมการป้องกันและปราบปรามการทุจริตแห่งชาติพ้นจากตำแหน่งก่อนวาระและยังไม่มีการแต่งตั้งกรรมการแทนตำแหน่งที่ว่าง ให้กรรมการเท่าที่เหลืออยู่ปฏิบัติหน้าที่ต่อไปได้ เว้นแต่จะมีกรรมการเหลืออยู่ไม่ถึงห้าคน</p>
@@ -2695,7 +2682,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-234">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 234</span>
-    <span class="maatra-title">การปฏิรูปด้านกระบวนการยุติธรรม — รวดเร็ว เป็นธรรม ทุกคนเข้าถึงได้</span>
+    <span class="maatra-title">อำนาจ สตง. — ตรวจสอบ รายงาน และเปิดเผยการใช้จ่ายงบประมาณแผ่นดิน</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">คณะกรรมการป้องกันและปราบปรามการทุจริตแห่งชาติมีหน้าที่และอำนาจ ดังต่อไปนี้</p>
 <p class="maatra-line">(1) ไต่สวนและมีความเห็นกรณีมีการกล่าวหาว่าผู้ดำรงตำแหน่งทางการเมือง ตุลาการศาลรัฐธรรมนูญ ผู้ดำรงตำแหน่งในองค์กรอิสระ หรือผู้ว่าการตรวจเงินแผ่นดิน ผู้ใดมีพฤติการณ์ร่ำรวยผิดปกติ ทุจริตต่อหน้าที่ หรือจงใจปฏิบัติหน้าที่หรือใช้อำนาจขัดต่อบทบัญญัติแห่งรัฐธรรมนูญหรือกฎหมาย หรือฝ่าฝืนหรือไม่ปฏิบัติตามมาตรฐานทางจริยธรรมอย่างร้ายแรง เพื่อดำเนินการต่อไปตามรัฐธรรมนูญหรือตามพระราชบัญญัติประกอบรัฐธรรมนูญว่าด้วยการป้องกันและปราบปรามการทุจริต</p>
@@ -2708,7 +2695,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-235">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 235</span>
-    <span class="maatra-title">การปฏิรูปด้านการศึกษา — สร้างพลเมืองคุณภาพสูงและมีคุณธรรม</span>
+    <span class="maatra-title">คณะกรรมการสิทธิมนุษยชนแห่งชาติ (กสม.) 7 คน</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ภายใต้บังคับมาตรา 236 ในกรณีที่มีเหตุอันควรสงสัยหรือมีการกล่าวหาว่าผู้ดำรงตำแหน่งทางการเมืองเฉพาะที่บัญญัติไว้ในพระราชบัญญัติประกอบรัฐธรรมนูญว่าด้วยการป้องกันและปราบปรามการทุจริต ตุลาการศาลรัฐธรรมนูญ ผู้ดำรงตำแหน่งในองค์กรอิสระ หรือผู้ว่าการตรวจเงินแผ่นดินผู้ใดมีพฤติการณ์ตามมาตรา 234 (1) ให้คณะกรรมการป้องกันและปราบปรามการทุจริตแห่งชาติไต่สวนข้อเท็จจริง และหากมีมติด้วยคะแนนเสียงไม่น้อยกว่ากึ่งหนึ่งของกรรมการทั้งหมดเท่าที่มีอยู่เห็นว่าผู้นั้นมีพฤติการณ์หรือกระทำความผิดตามที่ไต่สวนให้ดำเนินการดังต่อไปนี้</p>
 <p class="maatra-line">(1) ถ้าเป็นกรณีฝ่าฝืนหรือไม่ปฏิบัติตามมาตรฐานทางจริยธรรมอย่างร้ายแรง ให้เสนอเรื่องต่อศาลฎีกาเพื่อวินิจฉัย  ทั้งนี้ ให้นำความในมาตรา 226 วรรคเจ็ด มาใช้บังคับแก่การพิจารณาพิพากษาของศาลฎีกาโดยอนุโลม</p>
@@ -2724,7 +2711,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-236">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 236</span>
-    <span class="maatra-title">การปฏิรูปด้านเศรษฐกิจ — สาธารณูปโภค ที่ดิน การแข่งขัน เกษตรกร</span>
+    <span class="maatra-title">คุณสมบัติและวาระของกรรมการ กสม.</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">สมาชิกสภาผู้แทนราษฎร สมาชิกวุฒิสภา หรือสมาชิกของทั้งสองสภาจำนวนไม่น้อยกว่าหนึ่งในห้าของจำนวนสมาชิกทั้งหมดเท่าที่มีอยู่ของทั้งสองสภาหรือประชาชนผู้มีสิทธิเลือกตั้งจำนวนไม่น้อยกว่าสองหมื่นคน มีสิทธิเข้าชื่อกล่าวหาว่ากรรมการป้องกันและปราบปรามการทุจริตแห่งชาติผู้ใดกระทำการตามมาตรา 234 (1) โดยยื่นต่อประธานรัฐสภาพร้อมด้วยหลักฐานตามสมควร หากประธานรัฐสภาเห็นว่ามีเหตุอันควรสงสัยว่ามีการกระทำตามที่ถูกกล่าวหา ให้ประธานรัฐสภาเสนอเรื่องไปยังประธานศาลฎีกาเพื่อตั้งคณะผู้ไต่สวนอิสระจากผู้ซึ่งมีความเป็นกลางทางการเมืองและมีความซื่อสัตย์สุจริตเป็นที่ประจักษ์ เพื่อไต่สวนหาข้อเท็จจริง</p>
 <p class="maatra-line">คุณสมบัติ ลักษณะต้องห้าม หน้าที่และอำนาจ วิธีการไต่สวน ระยะเวลาการไต่สวนและการดำเนินการอื่นที่จำเป็นของคณะผู้ไต่สวนอิสระ ให้เป็นไปตามที่กฎหมายบัญญัติ</p>
@@ -2733,7 +2720,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-237">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 237</span>
-    <span class="maatra-title">การปฏิรูปด้านสาธารณสุข — ทุกคนเข้าถึง บริการมีคุณภาพ ส่งเสริมสุขภาพ</span>
+    <span class="maatra-title">อำนาจ กสม. — ตรวจสอบ ส่งเสริม รายงาน และเสนอแก้ไขการคุ้มครองสิทธิ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">เมื่อดำเนินการไต่สวนแล้วเสร็จ ให้คณะผู้ไต่สวนอิสระดำเนินการดังต่อไปนี้</p>
 <p class="maatra-line">(1) ถ้าเห็นว่าข้อกล่าวหาไม่มีมูลให้สั่งยุติเรื่อง และให้คำสั่งดังกล่าวเป็นที่สุด</p>
@@ -2744,7 +2731,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-238">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 238</span>
-    <span class="maatra-title">การปฏิรูปด้านสื่อสารมวลชน — เสรี เป็นกลาง มีคุณภาพ คุ้มครองประชาชน</span>
+    <span class="maatra-title">กระบวนการถอดถอนผู้ดำรงตำแหน่งในองค์กรอิสระโดยวุฒิสภา</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">คณะกรรมการตรวจเงินแผ่นดินประกอบด้วยกรรมการจำนวนเจ็ดคนซึ่งพระมหากษัตริย์ทรงแต่งตั้งตามคำแนะนำของวุฒิสภา จากผู้ซึ่งได้รับการสรรหาโดยคณะกรรมการสรรหา</p>
 <p class="maatra-line">ผู้ซึ่งได้รับการสรรหาต้องเป็นผู้มีความซื่อสัตย์สุจริตเป็นที่ประจักษ์ มีความรู้ ความเชี่ยวชาญ และประสบการณ์เกี่ยวกับการตรวจเงินแผ่นดิน กฎหมาย การบัญชี การตรวจสอบภายใน การเงินการคลัง และด้านอื่นที่เป็นประโยชน์ต่อการตรวจเงินแผ่นดิน  ทั้งนี้ เป็นเวลาไม่น้อยกว่าสิบปี</p>
@@ -2753,7 +2740,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-239">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 239</span>
-    <span class="maatra-title">การปฏิรูปด้านสังคม — ขจัดความเหลื่อมล้ำ เสริมสร้างโอกาสที่เท่าเทียม</span>
+    <span class="maatra-title">การดำเนินคดีอาญาผู้ดำรงตำแหน่งในองค์กรอิสระ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">กรรมการตรวจเงินแผ่นดินมีวาระการดำรงตำแหน่งเจ็ดปีนับแต่วันที่พระมหากษัตริย์ทรงแต่งตั้ง และให้ดำรงตำแหน่งได้เพียงวาระเดียว</p>
 </div>
@@ -2761,7 +2748,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-240">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 240</span>
-    <span class="maatra-title">การปฏิรูปด้านพลังงาน — ใช้ประหยัด เป็นธรรม และเป็นมิตรกับสิ่งแวดล้อม</span>
+    <span class="maatra-title">ห้ามผู้ดำรงตำแหน่งในองค์กรอิสระรับเงินหรือผลประโยชน์จากรัฐโดยมิชอบ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">คณะกรรมการตรวจเงินแผ่นดินมีหน้าที่และอำนาจ ดังต่อไปนี้</p>
 <p class="maatra-line">(1) วางนโยบายการตรวจเงินแผ่นดิน</p>
@@ -2776,7 +2763,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-241">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 241</span>
-    <span class="maatra-title">คณะกรรมการปฏิรูปประเทศ — ติดตาม เร่งรัด รายงานทุก 3 เดือน</span>
+    <span class="maatra-title">ป.ป.ช. มีอำนาจไต่สวนตุลาการและผู้ดำรงตำแหน่งในองค์กรอิสระ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ให้มีผู้ว่าการตรวจเงินแผ่นดินคนหนึ่งซึ่งพระมหากษัตริย์ทรงแต่งตั้งตามคำแนะนำของวุฒิสภาโดยได้รับการเสนอชื่อจากคณะกรรมการตรวจเงินแผ่นดิน</p>
 <p class="maatra-line">ผู้ว่าการตรวจเงินแผ่นดินต้องมีคุณสมบัติและไม่มีลักษณะต้องห้ามเช่นเดียวกับกรรมการตรวจเงินแผ่นดิน</p>
@@ -2787,7 +2774,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-242">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 242</span>
-    <span class="maatra-title">การปฏิรูปตำรวจ — คณะกรรมการพิเศษตรวจสอบโครงสร้างและอำนาจหน้าที่</span>
+    <span class="maatra-title">ป.ป.ช. ตรวจสอบทรัพย์สินและหนี้สินของผู้ดำรงตำแหน่งสาธารณะ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ให้ผู้ว่าการตรวจเงินแผ่นดินปฏิบัติหน้าที่โดยเที่ยงธรรม เป็นกลาง และปราศจากอคติทั้งปวงในการใช้ดุลพินิจ โดยมีหน้าที่และอำนาจดังต่อไปนี้</p>
 <p class="maatra-line">(1) ตรวจเงินแผ่นดินตามนโยบายการตรวจเงินแผ่นดินและหลักเกณฑ์มาตรฐานเกี่ยวกับการตรวจเงินแผ่นดินที่คณะกรรมการตรวจเงินแผ่นดินกำหนด และตามกฎหมายว่าด้วยวินัยการเงินการคลังของรัฐ</p>
@@ -2799,7 +2786,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-243">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 243</span>
-    <span class="maatra-title">การปฏิรูปการศึกษา — คณะกรรมการอิสระศึกษาและเสนอร่างกฎหมาย</span>
+    <span class="maatra-title">วุฒิสภาพิจารณาถอดถอนตุลาการศาลรัฐธรรมนูญหรือผู้ดำรงตำแหน่งองค์กรอิสระ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ให้ผู้ว่าการตรวจเงินแผ่นดินมีความเป็นอิสระในการปฏิบัติหน้าที่โดยรับผิดชอบต่อคณะกรรมการตรวจเงินแผ่นดิน และเป็นผู้บังคับบัญชาสูงสุดของหน่วยธุรการของคณะกรรมการตรวจเงินแผ่นดิน</p>
 <p class="maatra-line">วาระการดำรงตำแหน่ง การพ้นจากตำแหน่ง และการปฏิบัติหน้าที่ของผู้ว่าการตรวจเงินแผ่นดิน ให้เป็นไปตามพระราชบัญญัติประกอบรัฐธรรมนูญว่าด้วยการตรวจเงินแผ่นดิน</p>
@@ -2808,7 +2795,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-244">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 244</span>
-    <span class="maatra-title">คณะองคมนตรีชุดปัจจุบันดำรงตำแหน่งต่อไปตามรัฐธรรมนูญฉบับนี้</span>
+    <span class="maatra-title">ศาลฎีกาแผนกคดีอาญาของผู้ดำรงตำแหน่งทางการเมืองพิจารณาคดี ป.ป.ช.</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ในกรณีที่มีหลักฐานอันควรเชื่อได้ว่าการใช้จ่ายเงินแผ่นดินมีพฤติการณ์อันเป็นการทุจริตต่อหน้าที่ จงใจปฏิบัติหน้าที่หรือใช้อำนาจขัดต่อบทบัญญัติแห่งรัฐธรรมนูญหรือกฎหมาย หรืออาจทำให้การเลือกตั้งมิได้เป็นไปโดยสุจริตหรือเที่ยงธรรม และเป็นกรณีที่ผู้ว่าการตรวจเงินแผ่นดินไม่มีอำนาจจะดำเนินการใดได้ ให้ผู้ว่าการตรวจเงินแผ่นดินแจ้งคณะกรรมการป้องกันและปราบปรามการทุจริตแห่งชาติ คณะกรรมการการเลือกตั้ง หรือหน่วยงานอื่นที่เกี่ยวข้อง แล้วแต่กรณี เพื่อทราบและดำเนินการตามหน้าที่และอำนาจต่อไป</p>
 <p class="maatra-line">ในการดำเนินการของคณะกรรมการป้องกันและปราบปรามการทุจริตแห่งชาติ คณะกรรมการการเลือกตั้ง หรือหน่วยงานอื่นตามที่ได้รับแจ้งตามวรรคหนึ่ง ให้ถือว่าเอกสารและหลักฐานที่ผู้ว่าการตรวจเงินแผ่นดินตรวจสอบหรือจัดทำขึ้นเป็นส่วนหนึ่งของสำนวนการสอบสวนของคณะกรรมการป้องกันและปราบปรามการทุจริตแห่งชาติ คณะกรรมการการเลือกตั้ง หรือของหน่วยงานอื่นนั้น แล้วแต่กรณี</p>
@@ -2817,7 +2804,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-245">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 245</span>
-    <span class="maatra-title">สนช. ทำหน้าที่รัฐสภา สภาผู้แทนฯ และวุฒิสภาจนกว่าจะมีสภาใหม่</span>
+    <span class="maatra-title">บทเฉพาะกาลขององค์กรอิสระ — กำหนดการส่งรายงานต่อรัฐสภา</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">เพื่อประโยชน์ในการระงับหรือยับยั้งความเสียหายที่อาจเกิดขึ้นแก่การเงินการคลังของรัฐ ให้ผู้ว่าการตรวจเงินแผ่นดินเสนอผลการตรวจสอบการกระทำที่ไม่เป็นไปตามกฎหมายว่าด้วยวินัยการเงินการคลังของรัฐและอาจก่อให้เกิดความเสียหายแก่การเงินการคลังของรัฐอย่างร้ายแรง ต่อคณะกรรมการตรวจเงินแผ่นดินเพื่อพิจารณา</p>
 <p class="maatra-line">ในกรณีที่คณะกรรมการตรวจเงินแผ่นดินเห็นพ้องด้วยกับผลการตรวจสอบดังกล่าว ให้ปรึกษาหารือร่วมกับคณะกรรมการการเลือกตั้งและคณะกรรมการป้องกันและปราบปรามการทุจริตแห่งชาติ หากที่ประชุมร่วมเห็นพ้องกับผลการตรวจสอบนั้น ให้ร่วมกันมีหนังสือแจ้งสภาผู้แทนราษฎร วุฒิสภา และคณะรัฐมนตรีเพื่อทราบโดยไม่ชักช้า และให้เปิดเผยผลการตรวจสอบดังกล่าวต่อประชาชนเพื่อทราบด้วย</p>
@@ -2826,7 +2813,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-246">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 246</span>
-    <span class="maatra-title">คณะรัฐมนตรีชุดปัจจุบันดำรงตำแหน่งต่อไปจนกว่าจะมีคณะรัฐมนตรีใหม่</span>
+    <span class="maatra-title">อัยการมีอิสระในการพิจารณาสั่งคดีและมีองค์กรปกครองตนเอง</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">คณะกรรมการสิทธิมนุษยชนแห่งชาติประกอบด้วยกรรมการจำนวนเจ็ดคนซึ่งพระมหากษัตริย์ทรงแต่งตั้งตามคำแนะนำของวุฒิสภาจากผู้ซึ่งได้รับการสรรหา</p>
 <p class="maatra-line">ผู้ซึ่งได้รับการสรรหาต้องมีความรู้และประสบการณ์ด้านการคุ้มครองสิทธิและเสรีภาพของประชาชนเป็นกลางทางการเมือง และมีความซื่อสัตย์สุจริตเป็นที่ประจักษ์</p>
@@ -2837,7 +2824,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-247">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 247</span>
-    <span class="maatra-title">คสช. ดำรงตำแหน่งต่อไปจนกว่ารัฐบาลใหม่หลังเลือกตั้งครั้งแรกจะเข้ารับหน้าที่</span>
+    <span class="maatra-title">กระบวนการเสนองบประมาณของสำนักงานอัยการสูงสุด</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">คณะกรรมการสิทธิมนุษยชนแห่งชาติมีหน้าที่และอำนาจ ดังต่อไปนี้</p>
 <p class="maatra-line">(1) ตรวจสอบและรายงานข้อเท็จจริงที่ถูกต้องเกี่ยวกับการละเมิดสิทธิมนุษยชนทุกกรณีโดยไม่ล่าช้า และเสนอแนะมาตรการหรือแนวทางที่เหมาะสมในการป้องกันหรือแก้ไขการละเมิดสิทธิมนุษยชน รวมทั้งการเยียวยาผู้ได้รับความเสียหายจากการละเมิดสิทธิมนุษยชนต่อหน่วยงานของรัฐหรือเอกชนที่เกี่ยวข้อง</p>
@@ -2869,7 +2856,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-248">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 248</span>
-    <span class="maatra-title">สภาขับเคลื่อนการปฏิรูปประเทศดำเนินงานต่อไปจนกว่าจะมีกฎหมายปฏิรูป</span>
+    <span class="maatra-title">อัยการมีอิสระในการพิจารณาสั่งคดี — มีองค์กรกำกับดูแลตนเอง</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">องค์กรอัยการมีหน้าที่และอำนาจตามที่บัญญัติไว้ในรัฐธรรมนูญและกฎหมาย</p>
 <p class="maatra-line">พนักงานอัยการมีอิสระในการพิจารณาสั่งคดีและการปฏิบัติหน้าที่ให้เป็นไปโดยรวดเร็ว เที่ยงธรรม และปราศจากอคติทั้งปวง และไม่ให้ถือว่าเป็นคำสั่งทางปกครอง</p>
@@ -2896,7 +2883,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-249">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 249</span>
-    <span class="maatra-title">กรรมการร่างรัฐธรรมนูญจัดทำ พ.ร.บ. ประกอบรัฐธรรมนูญ 10 ฉบับให้แล้วเสร็จ</span>
+    <span class="maatra-title">หลักการกระจายอำนาจและส่งเสริมการปกครองท้องถิ่นโดยอิสระ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ภายใต้บังคับมาตรา 1 ให้มีการจัดการปกครองส่วนท้องถิ่นตามหลักแห่งการปกครองตนเองตามเจตนารมณ์ของประชาชนในท้องถิ่น  ทั้งนี้ ตามวิธีการและรูปแบบองค์กรปกครองส่วนท้องถิ่นที่กฎหมายบัญญัติ</p>
 <p class="maatra-line">การจัดตั้งองค์กรปกครองส่วนท้องถิ่นในรูปแบบใดให้คำนึงถึงเจตนารมณ์ของประชาชนในท้องถิ่นและความสามารถในการปกครองตนเองในด้านรายได้ จำนวนและความหนาแน่นของประชากร และพื้นที่ที่ต้องรับผิดชอบ ประกอบกัน</p>
@@ -2905,7 +2892,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-250">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 250</span>
-    <span class="maatra-title">จัดให้มีการเลือกตั้ง ส.ส. ให้แล้วเสร็จภายใน 150 วันนับแต่ พ.ร.บ. ประกอบฯ ใช้บังคับ</span>
+    <span class="maatra-title">ผู้บริหารท้องถิ่นและสภาท้องถิ่นมาจากการเลือกตั้งของประชาชน</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">องค์กรปกครองส่วนท้องถิ่นมีหน้าที่และอำนาจดูแลและจัดทำบริการสาธารณะและกิจกรรมสาธารณะเพื่อประโยชน์ของประชาชนในท้องถิ่นตามหลักการพัฒนาอย่างยั่งยืน รวมทั้งส่งเสริมและสนับสนุนการจัดการศึกษาให้แก่ประชาชนในท้องถิ่น  ทั้งนี้ ตามที่กฎหมายบัญญัติ</p>
 <p class="maatra-line">การจัดทำบริการสาธารณะและกิจกรรมสาธารณะใดที่สมควรให้เป็นหน้าที่และอำนาจโดยเฉพาะขององค์กรปกครองส่วนท้องถิ่นแต่ละรูปแบบ หรือให้องค์กรปกครองส่วนท้องถิ่นเป็นหน่วยงานหลักในการดำเนินการใด ให้เป็นไปตามที่กฎหมายบัญญัติซึ่งต้องสอดคล้องกับรายได้ขององค์กรปกครองส่วนท้องถิ่นตามวรรคสี่ และกฎหมายดังกล่าวอย่างน้อยต้องมีบทบัญญัติเกี่ยวกับกลไกและขั้นตอนในการกระจายหน้าที่และอำนาจ ตลอดจนงบประมาณและบุคลากรที่เกี่ยวกับหน้าที่และอำนาจดังกล่าวของส่วนราชการให้แก่องค์กรปกครองส่วนท้องถิ่นด้วย</p>
@@ -2917,7 +2904,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-251">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 251</span>
-    <span class="maatra-title">วุฒิสภาวาระเริ่มแรก 250 คน — พระมหากษัตริย์แต่งตั้งตามคำแนะนำ คสช.</span>
+    <span class="maatra-title">อปท. มีอำนาจจัดบริการสาธารณะ — ห้ามรัฐแทรกแซงโดยไม่ชอบด้วยกฎหมาย</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">การบริหารงานบุคคลขององค์กรปกครองส่วนท้องถิ่นให้เป็นไปตามที่กฎหมายบัญญัติซึ่งต้องใช้ระบบคุณธรรมและต้องคำนึงถึงความเหมาะสมและความจำเป็นของแต่ละท้องถิ่นและองค์กรปกครองส่วนท้องถิ่นแต่ละรูปแบบ การจัดให้มีมาตรฐานที่สอดคล้องกันเพื่อให้สามารถพัฒนาร่วมกันหรือการสับเปลี่ยนบุคลากรระหว่างองค์กรปกครองส่วนท้องถิ่นด้วยกันได้</p>
 </div>
@@ -2925,7 +2912,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-252">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 252</span>
-    <span class="maatra-title">วุฒิสภาวาระแรกมีอำนาจพิเศษติดตามและเร่งรัดการปฏิรูปประเทศ</span>
+    <span class="maatra-title">การกระจายอำนาจและรายได้ให้ท้องถิ่นเพิ่มขึ้นตามที่กฎหมายกำหนด</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">สมาชิกสภาท้องถิ่นต้องมาจากการเลือกตั้ง</p>
 <p class="maatra-line">ผู้บริหารท้องถิ่นให้มาจากการเลือกตั้งหรือมาจากความเห็นชอบของสภาท้องถิ่นหรือในกรณีองค์กรปกครองส่วนท้องถิ่นรูปแบบพิเศษ จะให้มาโดยวิธีอื่นก็ได้ แต่ต้องคำนึงถึงการมีส่วนร่วมของประชาชนด้วย  ทั้งนี้ ตามที่กฎหมายบัญญัติ</p>
@@ -2935,7 +2922,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-253">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 253</span>
-    <span class="maatra-title">การพิจารณาร่าง พ.ร.บ. ที่ถูกยับยั้งในช่วงวุฒิสภาวาระเริ่มแรก</span>
+    <span class="maatra-title">รัฐกำกับดูแล อปท. ได้เฉพาะที่กฎหมายบัญญัติ ต้องสัดส่วนกับเหตุ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ในการดำเนินงาน ให้องค์กรปกครองส่วนท้องถิ่น สภาท้องถิ่น และผู้บริหารท้องถิ่นเปิดเผยข้อมูลและรายงานผลการดำเนินงานให้ประชาชนทราบ รวมตลอดทั้งมีกลไกให้ประชาชนในท้องถิ่นมีส่วนร่วมด้วย  ทั้งนี้ ตามหลักเกณฑ์และวิธีการที่กฎหมายบัญญัติ</p>
 </div>
@@ -2943,7 +2930,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-254">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 254</span>
-    <span class="maatra-title">5 ปีแรก — รัฐสภาร่วมกันโหวตเลือกนายกรัฐมนตรี</span>
+    <span class="maatra-title">กรุงเทพมหานครและพัทยาเป็นรูปแบบการปกครองท้องถิ่นพิเศษ</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ประชาชนผู้มีสิทธิเลือกตั้งในองค์กรปกครองส่วนท้องถิ่นมีสิทธิเข้าชื่อกันเพื่อเสนอข้อบัญญัติหรือเพื่อถอดถอนสมาชิกสภาท้องถิ่น หรือผู้บริหารท้องถิ่นได้ตามหลักเกณฑ์ วิธีการ และเงื่อนไขที่กฎหมายบัญญัติ</p>
 </div>
@@ -2967,7 +2954,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-255">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 255</span>
-    <span class="maatra-title">ตุลาการและผู้ดำรงตำแหน่งในองค์กรอิสระชุดปัจจุบันยังคงอยู่ในตำแหน่ง</span>
+    <span class="maatra-title">ห้ามแก้ไขรัฐธรรมนูญให้เปลี่ยนรูปแบบรัฐหรือระบอบประชาธิปไตย</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">การแก้ไขเพิ่มเติมรัฐธรรมนูญที่เป็นการเปลี่ยนแปลงการปกครองระบอบประชาธิปไตยอันมีพระมหากษัตริย์ทรงเป็นประมุข หรือเปลี่ยนแปลงรูปแบบของรัฐ จะกระทำมิได้</p>
 </div>
@@ -2975,7 +2962,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-256">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 256</span>
-    <span class="maatra-title">กสทช. ชุดปัจจุบันเป็นองค์กรตาม ม.60 วรรคสาม ครม. ต้องแก้กฎหมายให้สอดคล้อง</span>
+    <span class="maatra-title">กระบวนการแก้ไขรัฐธรรมนูญ — 3 วาระ ต้องผ่าน ส.ว. ไม่น้อยกว่า 1 ใน 3</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ภายใต้บังคับมาตรา 255 การแก้ไขเพิ่มเติมรัฐธรรมนูญ ให้กระทำได้ตามหลักเกณฑ์และวิธีการ ดังต่อไปนี้</p>
 <p class="maatra-line">(1) ญัตติขอแก้ไขเพิ่มเติมต้องมาจากคณะรัฐมนตรี หรือจากสมาชิกสภาผู้แทนราษฎรจำนวนไม่น้อยกว่าหนึ่งในห้าของจำนวนสมาชิกทั้งหมดเท่าที่มีอยู่ของสภาผู้แทนราษฎร หรือจากสมาชิกสภาผู้แทนราษฎรและสมาชิกวุฒิสภาจำนวนไม่น้อยกว่าหนึ่งในห้าของจำนวนสมาชิกทั้งหมดเท่าที่มีอยู่ของทั้งสองสภาหรือจากประชาชนผู้มีสิทธิเลือกตั้งจำนวนไม่น้อยกว่าห้าหมื่นคนตามกฎหมายว่าด้วยการเข้าชื่อเสนอกฎหมาย</p>
@@ -2999,7 +2986,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
     </div>
     <div class="phak-stats">
       <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
-        <span class="stat-num" style="color:#D4EAA0">23</span>
+        <span class="stat-num" style="color:#D4EAA0">5</span>
         <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
       </div>
     </div>
@@ -3008,7 +2995,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-257">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 257</span>
-    <span class="maatra-title">ครม. จัดให้มีกฎหมายยุทธศาสตร์ชาติภายใน 120 วันนับแต่ประกาศใช้รัฐธรรมนูญ</span>
+    <span class="maatra-title">เป้าหมายการปฏิรูปประเทศ — ประชาชนมีคุณภาพชีวิตดี สังคมสงบ ยั่งยืน</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">การปฏิรูปประเทศตามหมวดนี้ต้องดำเนินการเพื่อบรรลุเป้าหมาย ดังต่อไปนี้</p>
 <p class="maatra-line">(1) ประเทศชาติมีความสงบเรียบร้อย มีความสามัคคีปรองดอง มีการพัฒนาอย่างยั่งยืนตามหลักปรัชญาของเศรษฐกิจพอเพียง และมีความสมดุลระหว่างการพัฒนาด้านวัตถุกับการพัฒนาด้านจิตใจ</p>
@@ -3019,7 +3006,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-258">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 258</span>
-    <span class="maatra-title">ศาลรัฐธรรมนูญและองค์กรอิสระต้องจัดทำมาตรฐานจริยธรรมภายใน 1 ปี</span>
+    <span class="maatra-title">แนวทางการปฏิรูปด้านการเมือง เศรษฐกิจ บริหารราชการ กฎหมาย และสังคม</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ให้ดำเนินการปฏิรูปประเทศอย่างน้อยในด้านต่าง ๆ ให้เกิดผล ดังต่อไปนี้</p>
 <p class="maatra-line">ก. ด้านการเมือง</p>
@@ -3065,7 +3052,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-259">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 259</span>
-    <span class="maatra-title">ครม. เสนอกฎหมายตาม ม.196, 198, 248 วรรคสาม ต่อ สนช. ภายใน 1 ปี</span>
+    <span class="maatra-title">คณะกรรมการปฏิรูปประเทศ — ติดตาม เร่งรัด รายงานทุก 3 เดือน</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ภายใต้บังคับมาตรา 260 และมาตรา 261 การปฏิรูปประเทศตามหมวดนี้ให้เป็นไปตามกฎหมายว่าด้วยแผนและขั้นตอนการดำเนินการปฏิรูปประเทศซึ่งอย่างน้อยต้องมีวิธีการจัดทำแผน การมีส่วนร่วมของประชาชนและหน่วยงานที่เกี่ยวข้อง ขั้นตอนในการดำเนินการปฏิรูปประเทศ การวัดผลการดำเนินการ และระยะเวลาดำเนินการปฏิรูปประเทศทุกด้าน ซึ่งต้องกำหนดให้เริ่มดำเนินการปฏิรูปในแต่ละด้านภายในหนึ่งปีนับแต่วันประกาศใช้รัฐธรรมนูญนี้รวมตลอดทั้งผลสัมฤทธิ์ที่คาดหวังว่าจะบรรลุในระยะเวลาห้าปี</p>
 <p class="maatra-line">ให้ดำเนินการตรากฎหมายตามวรรคหนึ่ง และประกาศใช้บังคับภายในหนึ่งร้อยยี่สิบวันนับแต่วันประกาศใช้รัฐธรรมนูญนี้</p>
@@ -3075,7 +3062,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <div class="maatra-card" id="มาตรา-260">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 260</span>
-    <span class="maatra-title">การปฏิรูปตำรวจ — คณะกรรมการพิเศษตรวจสอบโครงสร้างและอำนาจตำรวจ</span>
+    <span class="maatra-title">การปฏิรูปตำรวจ — คณะกรรมการพิเศษตรวจสอบโครงสร้างและอำนาจหน้าที่</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ในการแก้ไขปรับปรุงกฎหมายตามมาตรา 258 ง. ด้านกระบวนการยุติธรรม (4) ให้มีคณะกรรมการคณะหนึ่งซึ่งคณะรัฐมนตรีแต่งตั้ง ประกอบด้วย</p>
 <p class="maatra-line">(1) ผู้ทรงคุณวุฒิซึ่งมีความรู้ความซื่อสัตย์สุจริตและเที่ยงธรรมเป็นที่ประจักษ์และไม่เคยเป็นข้าราชการตำรวจมาก่อน เป็นประธาน</p>
@@ -3095,10 +3082,26 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <p class="maatra-line">ให้คณะรัฐมนตรีแต่งตั้งคณะกรรมการตามวรรคหนึ่งให้แล้วเสร็จภายในหกสิบวันนับแต่วันประกาศใช้รัฐธรรมนูญนี้ และให้คณะกรรมการดำเนินการศึกษาและจัดทำข้อเสนอแนะและร่างกฎหมายให้แล้วเสร็จและเสนอต่อคณะรัฐมนตรีภายในสองปีนับแต่วันที่ได้รับการแต่งตั้ง</p>
 </div>
 </div>
+
+  </div>
+</section>
+<section class="phak-section" id="ch_99">
+  <div class="phak-header" style="background:#2D4A2E">
+    <div class="phak-title-group">
+      <h2 class="phak-title" style="color:#E8F0E0">บทเฉพาะกาล</h2>
+    </div>
+    <div class="phak-stats">
+      <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
+        <span class="stat-num" style="color:#B8D890">18</span>
+        <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+      </div>
+    </div>
+  </div>
+  <div class="phak-body">
 <div class="maatra-card" id="มาตรา-262">
   <div class="maatra-header">
     <span class="maatra-badge">มาตรา 262</span>
-    <span class="maatra-title">คณะองคมนตรีชุดปัจจุบันดำรงตำแหน่งต่อไปตามรัฐธรรมนูญนี้</span>
+    <span class="maatra-title">คณะองคมนตรีชุดปัจจุบันดำรงตำแหน่งต่อไปตามรัฐธรรมนูญฉบับนี้</span>
   </div>
   <div class="maatra-body"><p class="maatra-line">ให้คณะองคมนตรีซึ่งดำรงตำแหน่งอยู่ในวันก่อนวันประกาศใช้รัฐธรรมนูญนี้เป็นคณะองคมนตรีตามบทบัญญัติแห่งรัฐธรรมนูญนี้</p>
 </div>
@@ -3307,34 +3310,9 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <script>
 window.addEventListener('scroll',function(){document.getElementById('backTop').classList.toggle('visible',window.scrollY>400)});
 function escReg(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}
-function doSearch(q){
-  q=q.trim();
-  const cards=document.querySelectorAll('.maatra-card');
-  const sections=document.querySelectorAll('.phak-section');
-  const noRes=document.getElementById('searchNoResults');
-  const countEl=document.getElementById('searchCount');
-  if(!q){cards.forEach(c=>{c.classList.remove('hidden','highlight');restoreText(c)});sections.forEach(s=>s.classList.remove('hidden'));noRes.classList.add('hidden');countEl.textContent='';return}
-  const ql=q.toLowerCase();let matched=0;
-  cards.forEach(card=>{
-    const badge=card.querySelector('.maatra-badge');
-    const title=card.querySelector('.maatra-title');
-    const lines=card.querySelectorAll('.maatra-line');
-    const allText=(badge?badge.textContent:'')+(title?' '+title.textContent:'')+' '+Array.from(lines).map(l=>l.textContent).join(' ');
-    if(allText.toLowerCase().includes(ql)){card.classList.remove('hidden');card.classList.add('highlight');highlightText(card,q);matched++}
-    else{card.classList.add('hidden');card.classList.remove('highlight');restoreText(card)}
-  });
-  sections.forEach(sec=>{const visible=sec.querySelectorAll('.maatra-card:not(.hidden)').length;sec.classList.toggle('hidden',visible===0)});
-  noRes.classList.toggle('hidden',matched>0);
-  countEl.textContent=matched>0?matched+' ผล':'';
-}
-function highlightText(card,q){
-  const lines=card.querySelectorAll('.maatra-line');
-  lines.forEach(el=>{const orig=el.dataset.orig||el.textContent;el.dataset.orig=orig;const reg=new RegExp('('+escReg(q)+')','gi');el.innerHTML=orig.replace(reg,'<mark class="search-highlight">$1</mark>')})
-}
-function restoreText(card){
-  const lines=card.querySelectorAll('.maatra-line');
-  lines.forEach(el=>{if(el.dataset.orig)el.textContent=el.dataset.orig})
-}
+function doSearch(q){q=q.trim();const cards=document.querySelectorAll('.maatra-card');const sections=document.querySelectorAll('.phak-section');const noRes=document.getElementById('searchNoResults');const countEl=document.getElementById('searchCount');if(!q){cards.forEach(c=>{c.classList.remove('hidden','highlight');restoreText(c)});sections.forEach(s=>s.classList.remove('hidden'));noRes.classList.add('hidden');countEl.textContent='';return}const ql=q.toLowerCase();let matched=0;cards.forEach(card=>{const badge=card.querySelector('.maatra-badge');const title=card.querySelector('.maatra-title');const lines=card.querySelectorAll('.maatra-line');const allText=(badge?badge.textContent:'')+(title?' '+title.textContent:'')+' '+Array.from(lines).map(l=>l.textContent).join(' ');if(allText.toLowerCase().includes(ql)){card.classList.remove('hidden');card.classList.add('highlight');highlightText(card,q);matched++}else{card.classList.add('hidden');card.classList.remove('highlight');restoreText(card)}});sections.forEach(sec=>{const visible=sec.querySelectorAll('.maatra-card:not(.hidden)').length;sec.classList.toggle('hidden',visible===0)});noRes.classList.toggle('hidden',matched>0);countEl.textContent=matched>0?matched+' ผล':'';}
+function highlightText(card,q){const lines=card.querySelectorAll('.maatra-line');lines.forEach(el=>{const orig=el.dataset.orig||el.textContent;el.dataset.orig=orig;const reg=new RegExp('('+escReg(q)+')','gi');el.innerHTML=orig.replace(reg,'<mark class="search-highlight">$1</mark>')})}
+function restoreText(card){const lines=card.querySelectorAll('.maatra-line');lines.forEach(el=>{if(el.dataset.orig)el.textContent=el.dataset.orig})}
 if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('../service-worker.js').catch(()=>{})})}
 </script>
 </body>
