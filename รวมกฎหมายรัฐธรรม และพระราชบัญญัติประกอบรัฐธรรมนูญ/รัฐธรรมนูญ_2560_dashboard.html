@@ -2,7 +2,7 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
-<title>รัฐธรรมนูญแห่งราชอาณาจักรไทย พ.ศ. ๒๕๖๐ — Dashboard</title>
+<title>รัฐธรรมนูญแห่งราชอาณาจักรไทย พ.ศ. ๒๕๖٠ — Dashboard</title>
 <meta name="description" content="รัฐธรรมนูญแห่งราชอาณาจักรไทย พุทธศักราช 2560 ฉบับเต็ม 16 หมวด 276 มาตรา">
 <link rel="manifest" href="../manifest.json"><meta name="theme-color" content="#3D5A3E">
 <link rel="icon" href="../icons/icon-192.png"><link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
@@ -32,17 +32,26 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 .nav-pill:hover{background:var(--accent1);color:var(--bg3);transform:translate(-1px,-1px);box-shadow:3px 3px 0 #1a2e1b}
 .main-container{max-width:1060px;margin:0 auto;padding:40px 24px 80px}
 .phak-section{margin-bottom:48px;border-radius:var(--radius);overflow:hidden;border:2.5px solid var(--border);box-shadow:4px 4px 0 var(--border);background:var(--bg3);animation:fadeInUp .45s ease both}
-.phak-header{padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.phak-header{padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;cursor:pointer;user-select:none;transition:background 0.2s}
+.phak-header-right{display:flex;align-items:center;gap:14px}
 .phak-title{font-family:'Noto Serif Thai',serif;font-size:22px;font-weight:700}
 .stat-badge{text-align:center;padding:10px 20px;border-radius:var(--radius-sm);border:1.5px solid;min-width:90px}
 .stat-num{font-size:28px;font-weight:700;display:block;font-family:'IBM Plex Mono',monospace}.stat-label{font-size:11px;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.5px}
+.phak-chevron{font-size:16px;transition:transform 0.25s ease;display:inline-block}
+.phak-section.collapsed .phak-chevron{transform:rotate(-90deg)}
+.phak-section.collapsed .phak-body{display:none}
 .phak-body{background:var(--bg);padding:24px}
-/* ── ส่วน ─────────────────────────────── */
-.suan-block{margin-bottom:24px;border-radius:var(--radius-sm);overflow:hidden;border:1.5px solid var(--border);box-shadow:3px 3px 0 var(--border)}
-.suan-header{display:flex;align-items:center;gap:10px;padding:11px 18px;background:linear-gradient(135deg,var(--bg2) 0%,var(--bg3) 100%);border-bottom:2px solid var(--accent1)}
+/* ── ส่วน & Toggle ─────────────────────────────── */
+.suan-block{margin-bottom:24px;border-radius:var(--radius-sm);overflow:hidden;border:1.5px solid var(--border);box-shadow:3px 3px 0 var(--border);transition:all 0.2s}
+.suan-header{width:100%;display:flex;align-items:center;gap:10px;padding:11px 18px;background:linear-gradient(135deg,var(--bg2) 0%,var(--bg3) 100%);border:none;border-bottom:2px solid var(--accent1);cursor:pointer;user-select:none;text-align:left;font-family:inherit;color:inherit;transition:background 0.2s}
+.suan-header:hover{background:var(--bg2)}
 .suan-icon{font-size:16px;color:var(--gold);font-family:'IBM Plex Mono',monospace;font-weight:700;opacity:.9}
 .suan-title{font-family:'Noto Serif Thai',serif;font-size:16px;font-weight:600;color:var(--accent1);flex:1}
 .suan-count{font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--text-dim);background:var(--bg);border:1px solid var(--border-light);border-radius:50px;padding:2px 10px;white-space:nowrap}
+.suan-chevron{font-size:12px;color:var(--accent1);transition:transform 0.25s ease;margin-left:4px}
+.suan-block.collapsed .suan-chevron{transform:rotate(-90deg)}
+.suan-block.collapsed .suan-header{border-bottom:none}
+.suan-block.collapsed .suan-body{display:none}
 .suan-body{background:var(--bg);padding:16px}
 /* ── มาตรา card ─────────────────────────── */
 .maatra-card{background:var(--bg3);border:2px solid var(--border);border-radius:var(--radius-sm);margin-bottom:12px;overflow:hidden;transition:all .18s;box-shadow:3px 3px 0 var(--border);scroll-margin-top:80px}
@@ -68,7 +77,7 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 <div class="hero">
   <span class="hero-emblem">🏛️</span>
   <h1 class="hero-title">รัฐธรรมนูญแห่งราชอาณาจักรไทย</h1>
-  <p class="hero-sub">พุทธศักราช ๒๕๖๐ · ประกาศใช้ 6 เมษายน พ.ศ. 2560</p>
+  <p class="hero-sub">พุทธศักราช ๒๕๖0 · ประกาศใช้ 6 เมษายน พ.ศ. 2560</p>
   <div class="hero-stats">
     <div class="hero-stat"><span class="hero-stat-num">16</span><span class="hero-stat-label">หมวด</span></div>
     <div class="hero-stat"><span class="hero-stat-num">276</span><span class="hero-stat-label">มาตรา</span></div>
@@ -101,11 +110,16 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 <div class="main-container" id="mainContainer">
   <div id="searchNoResults" class="search-no-results hidden">ไม่พบผลลัพธ์สำหรับการค้นหานี้</div>
   <section class="phak-section" id="ch_1">
-  <div class="phak-header" style="background:#3D5A3E">
-    <h2 class="phak-title" style="color:#E8F0E0">หมวด 1 บททั่วไป</h2>
-    <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
-      <span class="stat-num" style="color:#D4EAA0">5</span>
-      <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+  <div class="phak-header" style="background:#3D5A3E" onclick="togglePhak('ch_1')">
+    <div class="phak-title-group">
+      <h2 class="phak-title" style="color:#E8F0E0">หมวด 1 บททั่วไป</h2>
+    </div>
+    <div class="phak-header-right">
+      <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
+        <span class="stat-num" style="color:#D4EAA0">5</span>
+        <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+      </div>
+      <span class="phak-chevron" style="color:#E8F0E0">▼</span>
     </div>
   </div>
   <div class="phak-body"><div class="maatra-card" id="มาตรา-1"><div class="maatra-header"><span class="maatra-badge">มาตรา 1</span><span class="maatra-title">ราชอาณาจักรไทยเป็นอันหนึ่งอันเดียว แบ่งแยกมิได้</span></div><div class="maatra-body"><p class="maatra-line">ประเทศไทยเป็นราชอาณาจักรอันหนึ่งอันเดียว จะแบ่งแยกมิได้</p>
@@ -124,11 +138,16 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 </div>
 </section>
 <section class="phak-section" id="ch_2">
-  <div class="phak-header" style="background:#2D4A2E">
-    <h2 class="phak-title" style="color:#E8F0E0">หมวด 2 พระมหากษัตริย์</h2>
-    <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
-      <span class="stat-num" style="color:#B8D890">19</span>
-      <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+  <div class="phak-header" style="background:#2D4A2E" onclick="togglePhak('ch_2')">
+    <div class="phak-title-group">
+      <h2 class="phak-title" style="color:#E8F0E0">หมวด 2 พระมหากษัตริย์</h2>
+    </div>
+    <div class="phak-header-right">
+      <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
+        <span class="stat-num" style="color:#B8D890">19</span>
+        <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+      </div>
+      <span class="phak-chevron" style="color:#E8F0E0">▼</span>
     </div>
   </div>
   <div class="phak-body"><div class="maatra-card" id="มาตรา-6"><div class="maatra-header"><span class="maatra-badge">มาตรา 6</span><span class="maatra-title">พระมหากษัตริย์ดำรงในฐานะที่เคารพสักการะ ล่วงละเมิดมิได้</span></div><div class="maatra-body"><p class="maatra-line">องค์พระมหากษัตริย์ทรงดำรงอยู่ในฐานะอันเป็นที่เคารพสักการะ ผู้ใดจะละเมิดมิได้</p>
@@ -187,11 +206,16 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 </div>
 </section>
 <section class="phak-section" id="ch_3">
-  <div class="phak-header" style="background:#4A3D28">
-    <h2 class="phak-title" style="color:#F0E8D8">หมวด 3 สิทธิและเสรีภาพของปวงชนชาวไทย</h2>
-    <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
-      <span class="stat-num" style="color:#DBC090">25</span>
-      <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+  <div class="phak-header" style="background:#4A3D28" onclick="togglePhak('ch_3')">
+    <div class="phak-title-group">
+      <h2 class="phak-title" style="color:#F0E8D8">หมวด 3 สิทธิและเสรีภาพของปวงชนชาวไทย</h2>
+    </div>
+    <div class="phak-header-right">
+      <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
+        <span class="stat-num" style="color:#DBC090">25</span>
+        <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+      </div>
+      <span class="phak-chevron" style="color:#F0E8D8">▼</span>
     </div>
   </div>
   <div class="phak-body"><div class="maatra-card" id="มาตรา-25"><div class="maatra-header"><span class="maatra-badge">มาตรา 25</span><span class="maatra-title">สิทธิเสรีภาพที่ไม่ถูกห้ามย่อมได้รับความคุ้มครองตามรัฐธรรมนูญ</span></div><div class="maatra-body"><p class="maatra-line">สิทธิและเสรีภาพของปวงชนชาวไทย นอกจากที่บัญญัติคุ้มครองไว้เป็นการเฉพาะในรัฐธรรมนูญแล้ว การใดที่มิได้ห้ามหรือจำกัดไว้ในรัฐธรรมนูญหรือในกฎหมายอื่น บุคคลย่อมมีสิทธิและเสรีภาพที่จะทำการนั้นได้และได้รับความคุ้มครองตามรัฐธรรมนูญ ตราบเท่าที่การใช้สิทธิหรือเสรีภาพเช่นว่านั้นไม่กระทบกระเทือนหรือเป็นอันตรายต่อความมั่นคงของรัฐ ความสงบเรียบร้อยหรือศีลธรรมอันดีของประชาชน และไม่ละเมิดสิทธิหรือเสรีภาพของบุคคลอื่น</p>
@@ -300,11 +324,16 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 </div>
 </section>
 <section class="phak-section" id="ch_4">
-  <div class="phak-header" style="background:#3D5A3E">
-    <h2 class="phak-title" style="color:#E8F0E0">หมวด 4 หน้าที่ของปวงชนชาวไทย</h2>
-    <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
-      <span class="stat-num" style="color:#D4EAA0">1</span>
-      <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+  <div class="phak-header" style="background:#3D5A3E" onclick="togglePhak('ch_4')">
+    <div class="phak-title-group">
+      <h2 class="phak-title" style="color:#E8F0E0">หมวด 4 หน้าที่ของปวงชนชาวไทย</h2>
+    </div>
+    <div class="phak-header-right">
+      <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
+        <span class="stat-num" style="color:#D4EAA0">1</span>
+        <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+      </div>
+      <span class="phak-chevron" style="color:#E8F0E0">▼</span>
     </div>
   </div>
   <div class="phak-body"><div class="maatra-card" id="มาตรา-50"><div class="maatra-header"><span class="maatra-badge">มาตรา 50</span><span class="maatra-title">หน้าที่ชาวไทย — ปกป้องชาติ รักษากฎหมาย เสียภาษี ใช้สิทธิเลือกตั้ง</span></div><div class="maatra-body"><p class="maatra-line">บุคคลมีหน้าที่ ดังต่อไปนี้</p>
@@ -322,11 +351,16 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 </div>
 </section>
 <section class="phak-section" id="ch_5">
-  <div class="phak-header" style="background:#2D4A2E">
-    <h2 class="phak-title" style="color:#E8F0E0">หมวด 5 หน้าที่ของรัฐ</h2>
-    <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
-      <span class="stat-num" style="color:#B8D890">13</span>
-      <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+  <div class="phak-header" style="background:#2D4A2E" onclick="togglePhak('ch_5')">
+    <div class="phak-title-group">
+      <h2 class="phak-title" style="color:#E8F0E0">หมวด 5 หน้าที่ของรัฐ</h2>
+    </div>
+    <div class="phak-header-right">
+      <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
+        <span class="stat-num" style="color:#B8D890">13</span>
+        <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+      </div>
+      <span class="phak-chevron" style="color:#E8F0E0">▼</span>
     </div>
   </div>
   <div class="phak-body"><div class="maatra-card" id="มาตรา-51"><div class="maatra-header"><span class="maatra-badge">มาตรา 51</span><span class="maatra-title">หน้าที่รัฐพิทักษ์สถาบันกษัตริย์ เอกราช และบูรณภาพของประเทศ</span></div><div class="maatra-body"><p class="maatra-line">การใดที่รัฐธรรมนูญบัญญัติให้เป็นหน้าที่ของรัฐตามหมวดนี้ ถ้าการนั้นเป็นการทำเพื่อให้เกิดประโยชน์แก่ประชาชนโดยตรง ย่อมเป็นสิทธิของประชาชนและชุมชนที่จะติดตามและเร่งรัดให้รัฐดำเนินการ รวมตลอดทั้งฟ้องร้องหน่วยงานของรัฐที่เกี่ยวข้อง เพื่อจัดให้ประชาชนหรือชุมชนได้รับประโยชน์นั้นตามหลักเกณฑ์และวิธีการที่กฎหมายบัญญัติ</p>
@@ -376,11 +410,16 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 </div>
 </section>
 <section class="phak-section" id="ch_6">
-  <div class="phak-header" style="background:#4A3D28">
-    <h2 class="phak-title" style="color:#F0E8D8">หมวด 6 แนวนโยบายแห่งรัฐ</h2>
-    <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
-      <span class="stat-num" style="color:#DBC090">15</span>
-      <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+  <div class="phak-header" style="background:#4A3D28" onclick="togglePhak('ch_6')">
+    <div class="phak-title-group">
+      <h2 class="phak-title" style="color:#F0E8D8">หมวด 6 แนวนโยบายแห่งรัฐ</h2>
+    </div>
+    <div class="phak-header-right">
+      <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
+        <span class="stat-num" style="color:#DBC090">15</span>
+        <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+      </div>
+      <span class="phak-chevron" style="color:#F0E8D8">▼</span>
     </div>
   </div>
   <div class="phak-body"><div class="maatra-card" id="มาตรา-64"><div class="maatra-header"><span class="maatra-badge">มาตรา 64</span><span class="maatra-title">แนวนโยบายแห่งรัฐผูกพันฝ่ายนิติบัญญัติและบริหารในการตรากฎหมาย</span></div><div class="maatra-body"><p class="maatra-line">บทบัญญัติในหมวดนี้เป็นแนวทางให้รัฐดำเนินการตรากฎหมายและกำหนดนโยบายในการบริหารราชการแผ่นดิน</p>
@@ -437,14 +476,26 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 </div>
 </section>
 <section class="phak-section" id="ch_7">
-  <div class="phak-header" style="background:#3D5A3E">
-    <h2 class="phak-title" style="color:#E8F0E0">หมวด 7 รัฐสภา</h2>
-    <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
-      <span class="stat-num" style="color:#D4EAA0">76</span>
-      <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+  <div class="phak-header" style="background:#3D5A3E" onclick="togglePhak('ch_7')">
+    <div class="phak-title-group">
+      <h2 class="phak-title" style="color:#E8F0E0">หมวด 7 รัฐสภา</h2>
+    </div>
+    <div class="phak-header-right">
+      <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
+        <span class="stat-num" style="color:#D4EAA0">76</span>
+        <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+      </div>
+      <span class="phak-chevron" style="color:#E8F0E0">▼</span>
     </div>
   </div>
-  <div class="phak-body"><div class="suan-block"><div class="suan-header"><span class="suan-icon">§</span><span class="suan-title">ส่วนที่ 1 บททั่วไป</span><span class="suan-count">4 มาตรา</span></div><div class="suan-body"><div class="maatra-card" id="มาตรา-79"><div class="maatra-header"><span class="maatra-badge">มาตรา 79</span><span class="maatra-title">รัฐสภาประกอบด้วยสองสภา — ห้ามดำรงตำแหน่งทั้งสองพร้อมกัน</span></div><div class="maatra-body"><p class="maatra-line">รัฐสภาประกอบด้วยสภาผู้แทนราษฎรและวุฒิสภา</p>
+  <div class="phak-body"><div class="suan-block" id="suan_sec_1">
+  <button type="button" class="suan-header" onclick="toggleSuan('suan_sec_1')" aria-expanded="true">
+    <span class="suan-icon">§</span>
+    <span class="suan-title">ส่วนที่ 1 บททั่วไป</span>
+    <span class="suan-count">4 มาตรา</span>
+    <span class="suan-chevron">▼</span>
+  </button>
+  <div class="suan-body"><div class="maatra-card" id="มาตรา-79"><div class="maatra-header"><span class="maatra-badge">มาตรา 79</span><span class="maatra-title">รัฐสภาประกอบด้วยสองสภา — ห้ามดำรงตำแหน่งทั้งสองพร้อมกัน</span></div><div class="maatra-body"><p class="maatra-line">รัฐสภาประกอบด้วยสภาผู้แทนราษฎรและวุฒิสภา</p>
 <p class="maatra-line">รัฐสภาจะประชุมร่วมกันหรือแยกกัน ย่อมเป็นไปตามบทบัญญัติแห่งรัฐธรรมนูญ</p>
 <p class="maatra-line">บุคคลจะเป็นสมาชิกสภาผู้แทนราษฎรและสมาชิกวุฒิสภาในขณะเดียวกันมิได้</p>
 </div></div>
@@ -463,8 +514,16 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 <p class="maatra-line">มิให้นับสมาชิกสภาผู้แทนราษฎรหรือสมาชิกวุฒิสภาซึ่งหยุดปฏิบัติหน้าที่ตามวรรคสองเป็นจำนวนสมาชิกทั้งหมดเท่าที่มีอยู่ของสภาผู้แทนราษฎรหรือวุฒิสภา</p>
 <p class="maatra-line">ในกรณีที่คณะกรรมการการเลือกตั้งเห็นว่าสมาชิกภาพของสมาชิกสภาผู้แทนราษฎรหรือสมาชิกวุฒิสภาคนใดคนหนึ่งมีเหตุสิ้นสุดลงตามวรรคหนึ่ง ให้ส่งเรื่องไปยังศาลรัฐธรรมนูญเพื่อวินิจฉัยตามวรรคหนึ่งได้ด้วย</p>
 </div></div>
-</div></div>
-<div class="suan-block"><div class="suan-header"><span class="suan-icon">§</span><span class="suan-title">ส่วนที่ 2 สภาผู้แทนราษฎร</span><span class="suan-count">21 มาตรา</span></div><div class="suan-body"><div class="maatra-card" id="มาตรา-84"><div class="maatra-header"><span class="maatra-badge">มาตรา 84</span><span class="maatra-title">เมื่อได้ ส.ส. ครบ 95% เรียกประชุมรัฐสภาได้ก่อนครบ 500 คน</span></div><div class="maatra-body"><p class="maatra-line">ในการเลือกตั้งทั่วไป เมื่อมีสมาชิกสภาผู้แทนราษฎรได้รับเลือกตั้งถึงร้อยละเก้าสิบห้าของจำนวนสมาชิกสภาผู้แทนราษฎรทั้งหมดแล้ว หากมีความจำเป็นจะต้องเรียกประชุมรัฐสภาก็ให้ดำเนินการเรียกประชุมรัฐสภาได้ โดยให้ถือว่าสภาผู้แทนราษฎรประกอบด้วยสมาชิกเท่าที่มีอยู่แต่ต้องดำเนินการให้มีสมาชิกสภาผู้แทนราษฎรให้ครบตามจำนวนตามมาตรา 83 โดยเร็ว ในกรณีเช่นนี้ ให้สมาชิกสภาผู้แทนราษฎรดังกล่าวอยู่ในตำแหน่งได้เพียงเท่าอายุของสภาผู้แทนราษฎรที่เหลืออยู่</p>
+</div>
+</div>
+<div class="suan-block" id="suan_sec_2">
+  <button type="button" class="suan-header" onclick="toggleSuan('suan_sec_2')" aria-expanded="true">
+    <span class="suan-icon">§</span>
+    <span class="suan-title">ส่วนที่ 2 สภาผู้แทนราษฎร</span>
+    <span class="suan-count">21 มาตรา</span>
+    <span class="suan-chevron">▼</span>
+  </button>
+  <div class="suan-body"><div class="maatra-card" id="มาตรา-84"><div class="maatra-header"><span class="maatra-badge">มาตรา 84</span><span class="maatra-title">เมื่อได้ ส.ส. ครบ 95% เรียกประชุมรัฐสภาได้ก่อนครบ 500 คน</span></div><div class="maatra-body"><p class="maatra-line">ในการเลือกตั้งทั่วไป เมื่อมีสมาชิกสภาผู้แทนราษฎรได้รับเลือกตั้งถึงร้อยละเก้าสิบห้าของจำนวนสมาชิกสภาผู้แทนราษฎรทั้งหมดแล้ว หากมีความจำเป็นจะต้องเรียกประชุมรัฐสภาก็ให้ดำเนินการเรียกประชุมรัฐสภาได้ โดยให้ถือว่าสภาผู้แทนราษฎรประกอบด้วยสมาชิกเท่าที่มีอยู่แต่ต้องดำเนินการให้มีสมาชิกสภาผู้แทนราษฎรให้ครบตามจำนวนตามมาตรา 83 โดยเร็ว ในกรณีเช่นนี้ ให้สมาชิกสภาผู้แทนราษฎรดังกล่าวอยู่ในตำแหน่งได้เพียงเท่าอายุของสภาผู้แทนราษฎรที่เหลืออยู่</p>
 </div></div>
 <div class="maatra-card" id="มาตรา-85"><div class="maatra-header"><span class="maatra-badge">มาตรา 85</span><span class="maatra-title">ส.ส. แบ่งเขต — 1 เขต 1 คน ผู้ชนะต้องได้คะแนนเกิน No Vote</span></div><div class="maatra-body"><p class="maatra-line">สมาชิกสภาผู้แทนราษฎรซึ่งมาจากการเลือกตั้งแบบแบ่งเขตเลือกตั้ง ให้ใช้วิธีออกเสียงลงคะแนนโดยตรงและลับ โดยให้แต่ละเขตเลือกตั้งมีสมาชิกสภาผู้แทนราษฎรได้เขตละหนึ่งคนและผู้มีสิทธิเลือกตั้งมีสิทธิออกเสียงลงคะแนนเลือกตั้งได้คนละหนึ่งคะแนน โดยจะลงคะแนนเลือกผู้สมัครรับเลือกตั้งผู้ใด หรือจะลงคะแนนไม่เลือกผู้ใดเลยก็ได้</p>
 <p class="maatra-line">ให้ผู้สมัครรับเลือกตั้งซึ่งได้รับคะแนนสูงสุดและมีคะแนนสูงกว่าคะแนนเสียงที่ไม่เลือกผู้ใดเป็นผู้ได้รับเลือกตั้ง</p>
@@ -585,8 +644,16 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 <p class="maatra-line">ให้ประธานสภาผู้แทนราษฎรเป็นผู้ลงนามรับสนองพระบรมราชโองการแต่งตั้งผู้นำฝ่ายค้านในสภาผู้แทนราษฎร</p>
 <p class="maatra-line">ผู้นำฝ่ายค้านในสภาผู้แทนราษฎรย่อมพ้นจากตำแหน่งเมื่อขาดคุณสมบัติตามวรรคหนึ่ง หรือเมื่อมีเหตุตามมาตรา 118 (1) (2) (3) หรือ (4) ในกรณีเช่นนี้ พระมหากษัตริย์จะได้ทรงแต่งตั้งผู้นำฝ่ายค้านในสภาผู้แทนราษฎรแทนตำแหน่งที่ว่าง</p>
 </div></div>
-</div></div>
-<div class="suan-block"><div class="suan-header"><span class="suan-icon">§</span><span class="suan-title">ส่วนที่ 3 วุฒิสภา</span><span class="suan-count">7 มาตรา</span></div><div class="suan-body"><div class="maatra-card" id="มาตรา-107"><div class="maatra-header"><span class="maatra-badge">มาตรา 107</span><span class="maatra-title">การเลือกประธานและรองประธานสภาผู้แทนฯ และวุฒิสภา</span></div><div class="maatra-body"><p class="maatra-line">วุฒิสภาประกอบด้วยสมาชิกจำนวนสองร้อยคน ซึ่งมาจากการเลือกกันเองของบุคคลซึ่งมีความรู้ ความเชี่ยวชาญ ประสบการณ์ อาชีพ ลักษณะ หรือประโยชน์ร่วมกัน หรือทำงานหรือเคยทำงานด้านต่าง ๆ ที่หลากหลายของสังคม โดยในการแบ่งกลุ่มต้องแบ่งในลักษณะที่ทำให้ประชาชนซึ่งมีสิทธิสมัครรับเลือกทุกคนสามารถอยู่ในกลุ่มใดกลุ่มหนึ่งได้</p>
+</div>
+</div>
+<div class="suan-block" id="suan_sec_3">
+  <button type="button" class="suan-header" onclick="toggleSuan('suan_sec_3')" aria-expanded="true">
+    <span class="suan-icon">§</span>
+    <span class="suan-title">ส่วนที่ 3 วุฒิสภา</span>
+    <span class="suan-count">7 มาตรา</span>
+    <span class="suan-chevron">▼</span>
+  </button>
+  <div class="suan-body"><div class="maatra-card" id="มาตรา-107"><div class="maatra-header"><span class="maatra-badge">มาตรา 107</span><span class="maatra-title">การเลือกประธานและรองประธานสภาผู้แทนฯ และวุฒิสภา</span></div><div class="maatra-body"><p class="maatra-line">วุฒิสภาประกอบด้วยสมาชิกจำนวนสองร้อยคน ซึ่งมาจากการเลือกกันเองของบุคคลซึ่งมีความรู้ ความเชี่ยวชาญ ประสบการณ์ อาชีพ ลักษณะ หรือประโยชน์ร่วมกัน หรือทำงานหรือเคยทำงานด้านต่าง ๆ ที่หลากหลายของสังคม โดยในการแบ่งกลุ่มต้องแบ่งในลักษณะที่ทำให้ประชาชนซึ่งมีสิทธิสมัครรับเลือกทุกคนสามารถอยู่ในกลุ่มใดกลุ่มหนึ่งได้</p>
 <p class="maatra-line">การแบ่งกลุ่ม จำนวนกลุ่ม และคุณสมบัติของบุคคลในแต่ละกลุ่ม การสมัครและรับสมัคร หลักเกณฑ์และวิธีการเลือกกันเอง การได้รับเลือก จำนวนสมาชิกวุฒิสภาที่จะพึงมีจากแต่ละกลุ่ม การขึ้นบัญชีสำรอง การเลื่อนบุคคลจากบัญชีสำรองขึ้นดำรงตำแหน่งแทน และมาตรการอื่นใดที่จำเป็นเพื่อให้การเลือกกันเองเป็นไปโดยสุจริตและเที่ยงธรรม ให้เป็นไปตามพระราชบัญญัติประกอบรัฐธรรมนูญว่าด้วยการได้มาซึ่งสมาชิกวุฒิสภา และเพื่อประโยชน์ในการดำเนินการให้การเลือกดังกล่าวเป็นไปโดยสุจริตและเที่ยงธรรม จะกำหนดมิให้ผู้สมัครในแต่ละกลุ่มเลือกบุคคลในกลุ่มเดียวกัน หรือจะกำหนดให้มีการคัดกรองผู้สมัครรับเลือกด้วยวิธีการอื่นใดที่ผู้สมัครรับเลือกมีส่วนร่วมในการคัดกรองก็ได้</p>
 <p class="maatra-line">การดำเนินการตามวรรคสอง ให้ดำเนินการตั้งแต่ระดับอำเภอ ระดับจังหวัด และระดับประเทศเพื่อให้สมาชิกวุฒิสภาเป็นผู้แทนปวงชนชาวไทยในระดับประเทศ</p>
 <p class="maatra-line">ในกรณีที่ตำแหน่งสมาชิกวุฒิสภามีจำนวนไม่ครบตามวรรคหนึ่ง ไม่ว่าเพราะเหตุตำแหน่งว่างลงหรือด้วยเหตุอื่นใดอันมิใช่เพราะเหตุถึงคราวออกตามอายุของวุฒิสภา และไม่มีรายชื่อบุคคลที่สำรองไว้เหลืออยู่ ให้วุฒิสภาประกอบด้วยสมาชิกวุฒิสภาเท่าที่มีอยู่ แต่ในกรณีที่มีสมาชิกวุฒิสภาเหลืออยู่ไม่ถึงกึ่งหนึ่งของจำนวนสมาชิกวุฒิสภาทั้งหมดและอายุของวุฒิสภาเหลืออยู่เกินหนึ่งปี ให้ดำเนินการเลือกสมาชิกวุฒิสภาขึ้นแทนภายในหกสิบวันนับแต่วันที่วุฒิสภามีสมาชิกเหลืออยู่ไม่ถึงกึ่งหนึ่ง ในกรณีเช่นว่านี้ ให้ผู้ได้รับเลือกดังกล่าวอยู่ในตำแหน่งได้เพียงเท่าอายุของวุฒิสภาที่เหลืออยู่</p>
@@ -629,8 +696,16 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 </div></div>
 <div class="maatra-card" id="มาตรา-113"><div class="maatra-header"><span class="maatra-badge">มาตรา 113</span><span class="maatra-title">คณะกรรมาธิการสามัญและวิสามัญ — สอบหาข้อเท็จจริงและเรียกพยานได้</span></div><div class="maatra-body"><p class="maatra-line">สมาชิกวุฒิสภาต้องไม่ฝักใฝ่หรือยอมตนอยู่ใต้อาณัติของพรรคการเมืองใด ๆ</p>
 </div></div>
-</div></div>
-<div class="suan-block"><div class="suan-header"><span class="suan-icon">§</span><span class="suan-title">ส่วนที่ 4 บทที่ใช้แก่สภาทั้งสอง</span><span class="suan-count">42 มาตรา</span></div><div class="suan-body"><div class="maatra-card" id="มาตรา-114"><div class="maatra-header"><span class="maatra-badge">มาตรา 114</span><span class="maatra-title">กฎหมายประกอบรัฐธรรมนูญ 10 ฉบับที่ต้องมี</span></div><div class="maatra-body"><p class="maatra-line">สมาชิกสภาผู้แทนราษฎรและสมาชิกวุฒิสภาย่อมเป็นผู้แทนปวงชนชาวไทยไม่อยู่ในความผูกมัดแห่งอาณัติมอบหมาย หรือความครอบงำใด ๆ และต้องปฏิบัติหน้าที่ด้วยความซื่อสัตย์สุจริตเพื่อประโยชน์ส่วนรวมของประเทศชาติและความผาสุกของประชาชนโดยรวม โดยปราศจากการขัดกันแห่งผลประโยชน์</p>
+</div>
+</div>
+<div class="suan-block" id="suan_sec_4">
+  <button type="button" class="suan-header" onclick="toggleSuan('suan_sec_4')" aria-expanded="true">
+    <span class="suan-icon">§</span>
+    <span class="suan-title">ส่วนที่ 4 บทที่ใช้แก่สภาทั้งสอง</span>
+    <span class="suan-count">42 มาตรา</span>
+    <span class="suan-chevron">▼</span>
+  </button>
+  <div class="suan-body"><div class="maatra-card" id="มาตรา-114"><div class="maatra-header"><span class="maatra-badge">มาตรา 114</span><span class="maatra-title">กฎหมายประกอบรัฐธรรมนูญ 10 ฉบับที่ต้องมี</span></div><div class="maatra-body"><p class="maatra-line">สมาชิกสภาผู้แทนราษฎรและสมาชิกวุฒิสภาย่อมเป็นผู้แทนปวงชนชาวไทยไม่อยู่ในความผูกมัดแห่งอาณัติมอบหมาย หรือความครอบงำใด ๆ และต้องปฏิบัติหน้าที่ด้วยความซื่อสัตย์สุจริตเพื่อประโยชน์ส่วนรวมของประเทศชาติและความผาสุกของประชาชนโดยรวม โดยปราศจากการขัดกันแห่งผลประโยชน์</p>
 </div></div>
 <div class="maatra-card" id="มาตรา-115"><div class="maatra-header"><span class="maatra-badge">มาตรา 115</span><span class="maatra-title">ผู้มีสิทธิเสนอร่าง พ.ร.บ. ประกอบรัฐธรรมนูญ — ครม. หรือ ส.ส. 1 ใน 10</span></div><div class="maatra-body"><p class="maatra-line">ก่อนเข้ารับหน้าที่ สมาชิกสภาผู้แทนราษฎรและสมาชิกวุฒิสภาต้องปฏิญาณตนในที่ประชุมแห่งสภาที่ตนเป็นสมาชิกด้วยถ้อยคำ ดังต่อไปนี้</p>
 <p class="maatra-line">“ข้าพเจ้า (ชื่อผู้ปฏิญาณ) ขอปฏิญาณว่า ข้าพเจ้าจะปฏิบัติหน้าที่ด้วยความซื่อสัตย์สุจริตเพื่อประโยชน์ของประเทศและประชาชน ทั้งจะรักษาไว้และปฏิบัติตามซึ่งรัฐธรรมนูญแห่งราชอาณาจักรไทยทุกประการ”</p>
@@ -819,8 +894,16 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 <div class="maatra-card" id="มาตรา-155"><div class="maatra-header"><span class="maatra-badge">มาตรา 155</span><span class="maatra-title">การประชุมร่วม ครม.-รัฐสภา กรณีมีปัญหาสำคัญด้านความมั่นคงหรือเศรษฐกิจ</span></div><div class="maatra-body"><p class="maatra-line">ในกรณีที่มีปัญหาสำคัญเกี่ยวกับความมั่นคงปลอดภัยหรือเศรษฐกิจของประเทศสมควรที่จะปรึกษาหารือร่วมกันระหว่างรัฐสภาและคณะรัฐมนตรี ผู้นำฝ่ายค้านในสภาผู้แทนราษฎรจะแจ้งไปยังประธานรัฐสภาขอให้มีการเปิดอภิปรายทั่วไปในที่ประชุมรัฐสภาก็ได้ ในกรณีนี้ ประธานรัฐสภาต้องดำเนินการให้มีการประชุมภายในสิบห้าวันนับแต่วันที่ได้รับการแจ้ง แต่รัฐสภาจะลงมติในปัญหาที่อภิปรายมิได้</p>
 <p class="maatra-line">การประชุมตามวรรคหนึ่งให้ประชุมลับ และคณะรัฐมนตรีมีหน้าที่ต้องเข้าร่วมประชุมด้วย</p>
 </div></div>
-</div></div>
-<div class="suan-block"><div class="suan-header"><span class="suan-icon">§</span><span class="suan-title">ส่วนที่ 5 การประชุมร่วมกันของรัฐสภา</span><span class="suan-count">2 มาตรา</span></div><div class="suan-body"><div class="maatra-card" id="มาตรา-156"><div class="maatra-header"><span class="maatra-badge">มาตรา 156</span><span class="maatra-title">กรณีที่รัฐสภาต้องประชุมร่วมกัน — 6 กรณีที่บัญญัติไว้</span></div><div class="maatra-body"><p class="maatra-line">ในกรณีต่อไปนี้ ให้รัฐสภาประชุมร่วมกัน</p>
+</div>
+</div>
+<div class="suan-block" id="suan_sec_5">
+  <button type="button" class="suan-header" onclick="toggleSuan('suan_sec_5')" aria-expanded="true">
+    <span class="suan-icon">§</span>
+    <span class="suan-title">ส่วนที่ 5 การประชุมร่วมกันของรัฐสภา</span>
+    <span class="suan-count">2 มาตรา</span>
+    <span class="suan-chevron">▼</span>
+  </button>
+  <div class="suan-body"><div class="maatra-card" id="มาตรา-156"><div class="maatra-header"><span class="maatra-badge">มาตรา 156</span><span class="maatra-title">กรณีที่รัฐสภาต้องประชุมร่วมกัน — 6 กรณีที่บัญญัติไว้</span></div><div class="maatra-body"><p class="maatra-line">ในกรณีต่อไปนี้ ให้รัฐสภาประชุมร่วมกัน</p>
 <p class="maatra-line">(1) การให้ความเห็นชอบในการแต่งตั้งผู้สำเร็จราชการแทนพระองค์ตามมาตรา 17</p>
 <p class="maatra-line">(2) การปฏิญาณตนของผู้สำเร็จราชการแทนพระองค์ต่อรัฐสภาตามมาตรา 19</p>
 <p class="maatra-line">(3) การรับทราบการแก้ไขเพิ่มเติมกฎมณเฑียรบาลว่าด้วยการสืบราชสันตติวงศ์ พระพุทธศักราช 2467 ตามมาตรา 20</p>
@@ -841,15 +924,21 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 <div class="maatra-card" id="มาตรา-157"><div class="maatra-header"><span class="maatra-badge">มาตรา 157</span><span class="maatra-title">ข้อบังคับการประชุมรัฐสภาใช้บังคับในการประชุมร่วม</span></div><div class="maatra-body"><p class="maatra-line">ในการประชุมร่วมกันของรัฐสภาให้ใช้ข้อบังคับการประชุมรัฐสภา ในระหว่างที่ยังไม่มีข้อบังคับการประชุมรัฐสภา ให้ใช้ข้อบังคับการประชุมสภาผู้แทนราษฎรโดยอนุโลมไปพลางก่อน</p>
 <p class="maatra-line">ในการประชุมร่วมกันของรัฐสภา ให้นำบทที่ใช้แก่สภาทั้งสองมาใช้บังคับโดยอนุโลม เว้นแต่ในเรื่องการตั้งคณะกรรมาธิการ กรรมาธิการซึ่งตั้งจากผู้ซึ่งเป็นสมาชิกของแต่ละสภาจะต้องมีจำนวนตามหรือใกล้เคียงกับอัตราส่วนของจำนวนสมาชิกของแต่ละสภา</p>
 </div></div>
-</div></div>
+</div>
+</div>
 </div>
 </section>
 <section class="phak-section" id="ch_8">
-  <div class="phak-header" style="background:#2D4A2E">
-    <h2 class="phak-title" style="color:#E8F0E0">หมวด 8 คณะรัฐมนตรี</h2>
-    <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
-      <span class="stat-num" style="color:#B8D890">26</span>
-      <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+  <div class="phak-header" style="background:#2D4A2E" onclick="togglePhak('ch_8')">
+    <div class="phak-title-group">
+      <h2 class="phak-title" style="color:#E8F0E0">หมวด 8 คณะรัฐมนตรี</h2>
+    </div>
+    <div class="phak-header-right">
+      <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
+        <span class="stat-num" style="color:#B8D890">26</span>
+        <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+      </div>
+      <span class="phak-chevron" style="color:#E8F0E0">▼</span>
     </div>
   </div>
   <div class="phak-body"><div class="maatra-card" id="มาตรา-158"><div class="maatra-header"><span class="maatra-badge">มาตรา 158</span><span class="maatra-title">คณะรัฐมนตรีไม่เกิน 36 คน — นายกรัฐมนตรีและรัฐมนตรีอีกไม่เกิน 35 คน</span></div><div class="maatra-body"><p class="maatra-line">พระมหากษัตริย์ทรงแต่งตั้งนายกรัฐมนตรีและรัฐมนตรีอื่นอีกไม่เกินสามสิบห้าคนประกอบเป็นคณะรัฐมนตรี มีหน้าที่บริหารราชการแผ่นดินตามหลักความรับผิดชอบร่วมกัน</p>
@@ -965,11 +1054,16 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 </div>
 </section>
 <section class="phak-section" id="ch_9">
-  <div class="phak-header" style="background:#4A3D28">
-    <h2 class="phak-title" style="color:#F0E8D8">หมวด 9 การขัดกันแห่งผลประโยชน์</h2>
-    <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
-      <span class="stat-num" style="color:#DBC090">4</span>
-      <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+  <div class="phak-header" style="background:#4A3D28" onclick="togglePhak('ch_9')">
+    <div class="phak-title-group">
+      <h2 class="phak-title" style="color:#F0E8D8">หมวด 9 การขัดกันแห่งผลประโยชน์</h2>
+    </div>
+    <div class="phak-header-right">
+      <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
+        <span class="stat-num" style="color:#DBC090">4</span>
+        <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+      </div>
+      <span class="phak-chevron" style="color:#F0E8D8">▼</span>
     </div>
   </div>
   <div class="phak-body"><div class="maatra-card" id="มาตรา-184"><div class="maatra-header"><span class="maatra-badge">มาตรา 184</span><span class="maatra-title">ศาลพิจารณาพิพากษาในพระปรมาภิไธยพระมหากษัตริย์ — ผู้พิพากษาอิสระ</span></div><div class="maatra-body"><p class="maatra-line">สมาชิกสภาผู้แทนราษฎรและสมาชิกวุฒิสภาต้อง</p>
@@ -998,14 +1092,26 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 </div>
 </section>
 <section class="phak-section" id="ch_10">
-  <div class="phak-header" style="background:#3D5A3E">
-    <h2 class="phak-title" style="color:#E8F0E0">หมวด 10 ศาล</h2>
-    <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
-      <span class="stat-num" style="color:#D4EAA0">12</span>
-      <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+  <div class="phak-header" style="background:#3D5A3E" onclick="togglePhak('ch_10')">
+    <div class="phak-title-group">
+      <h2 class="phak-title" style="color:#E8F0E0">หมวด 10 ศาล</h2>
+    </div>
+    <div class="phak-header-right">
+      <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
+        <span class="stat-num" style="color:#D4EAA0">12</span>
+        <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+      </div>
+      <span class="phak-chevron" style="color:#E8F0E0">▼</span>
     </div>
   </div>
-  <div class="phak-body"><div class="suan-block"><div class="suan-header"><span class="suan-icon">§</span><span class="suan-title">ส่วนที่ 1 บททั่วไป</span><span class="suan-count">6 มาตรา</span></div><div class="suan-body"><div class="maatra-card" id="มาตรา-188"><div class="maatra-header"><span class="maatra-badge">มาตรา 188</span><span class="maatra-title">ศาลทหารพิจารณาคดีที่เกี่ยวกับความผิดทางทหาร</span></div><div class="maatra-body"><p class="maatra-line">การพิจารณาพิพากษาอรรถคดีเป็นอำนาจของศาล ซึ่งต้องดำเนินการให้เป็นไปตามกฎหมาย และในพระปรมาภิไธยพระมหากษัตริย์</p>
+  <div class="phak-body"><div class="suan-block" id="suan_sec_6">
+  <button type="button" class="suan-header" onclick="toggleSuan('suan_sec_6')" aria-expanded="true">
+    <span class="suan-icon">§</span>
+    <span class="suan-title">ส่วนที่ 1 บททั่วไป</span>
+    <span class="suan-count">6 มาตรา</span>
+    <span class="suan-chevron">▼</span>
+  </button>
+  <div class="suan-body"><div class="maatra-card" id="มาตรา-188"><div class="maatra-header"><span class="maatra-badge">มาตรา 188</span><span class="maatra-title">ศาลทหารพิจารณาคดีที่เกี่ยวกับความผิดทางทหาร</span></div><div class="maatra-body"><p class="maatra-line">การพิจารณาพิพากษาอรรถคดีเป็นอำนาจของศาล ซึ่งต้องดำเนินการให้เป็นไปตามกฎหมาย และในพระปรมาภิไธยพระมหากษัตริย์</p>
 <p class="maatra-line">ผู้พิพากษาและตุลาการย่อมมีอิสระในการพิจารณาพิพากษาอรรถคดีตามรัฐธรรมนูญและกฎหมายให้เป็นไปโดยรวดเร็ว เป็นธรรม และปราศจากอคติทั้งปวง</p>
 </div></div>
 <div class="maatra-card" id="มาตรา-189"><div class="maatra-header"><span class="maatra-badge">มาตรา 189</span><span class="maatra-title">ศาลชำนัญพิเศษ — จัดตั้งตามกฎหมาย เช่น ศาลเยาวชน ศาลแรงงาน ศาลภาษี</span></div><div class="maatra-body"><p class="maatra-line">บรรดาศาลทั้งหลายจะตั้งขึ้นได้แต่โดยพระราชบัญญัติ</p>
@@ -1022,8 +1128,16 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 <div class="maatra-card" id="มาตรา-193"><div class="maatra-header"><span class="maatra-badge">มาตรา 193</span><span class="maatra-title">ห้ามฝ่ายบริหารและนิติบัญญัติแทรกแซงการพิจารณาคดีของศาล</span></div><div class="maatra-body"><p class="maatra-line">ให้แต่ละศาล ยกเว้นศาลทหาร มีหน่วยงานที่รับผิดชอบงานธุรการที่มีความเป็นอิสระในการบริหารงานบุคคล การงบประมาณ และการดำเนินการอื่น โดยให้มีหัวหน้าหน่วยงานคนหนึ่งเป็นผู้บังคับบัญชาขึ้นตรงต่อประธานของแต่ละศาล  ทั้งนี้ ตามที่กฎหมายบัญญัติ</p>
 <p class="maatra-line">ให้ศาลยุติธรรมและศาลปกครองมีระบบเงินเดือนและค่าตอบแทนเป็นการเฉพาะตามความเหมาะสมตามที่กฎหมายบัญญัติ</p>
 </div></div>
-</div></div>
-<div class="suan-block"><div class="suan-header"><span class="suan-icon">§</span><span class="suan-title">ส่วนที่ 2 ศาลยุติธรรม</span><span class="suan-count">3 มาตรา</span></div><div class="suan-body"><div class="maatra-card" id="มาตรา-194"><div class="maatra-header"><span class="maatra-badge">มาตรา 194</span><span class="maatra-title">คณะกรรมการตุลาการสรรหา แต่งตั้ง โยกย้าย และกำกับดูแลผู้พิพากษา</span></div><div class="maatra-body"><p class="maatra-line">ศาลยุติธรรมมีอำนาจพิจารณาพิพากษาคดีทั้งปวง เว้นแต่คดีที่รัฐธรรมนูญหรือกฎหมายบัญญัติให้อยู่ในอำนาจของศาลอื่น</p>
+</div>
+</div>
+<div class="suan-block" id="suan_sec_7">
+  <button type="button" class="suan-header" onclick="toggleSuan('suan_sec_7')" aria-expanded="true">
+    <span class="suan-icon">§</span>
+    <span class="suan-title">ส่วนที่ 2 ศาลยุติธรรม</span>
+    <span class="suan-count">3 มาตรา</span>
+    <span class="suan-chevron">▼</span>
+  </button>
+  <div class="suan-body"><div class="maatra-card" id="มาตรา-194"><div class="maatra-header"><span class="maatra-badge">มาตรา 194</span><span class="maatra-title">คณะกรรมการตุลาการสรรหา แต่งตั้ง โยกย้าย และกำกับดูแลผู้พิพากษา</span></div><div class="maatra-body"><p class="maatra-line">ศาลยุติธรรมมีอำนาจพิจารณาพิพากษาคดีทั้งปวง เว้นแต่คดีที่รัฐธรรมนูญหรือกฎหมายบัญญัติให้อยู่ในอำนาจของศาลอื่น</p>
 <p class="maatra-line">การจัดตั้ง วิธีพิจารณาคดี และการดำเนินงานของศาลยุติธรรมให้เป็นไปตามกฎหมายว่าด้วยการนั้น</p>
 </div></div>
 <div class="maatra-card" id="มาตรา-195"><div class="maatra-header"><span class="maatra-badge">มาตรา 195</span><span class="maatra-title">สำนักงานศาลยุติธรรม ศาลปกครอง ศาลทหาร — อิสระในการบริหาร</span></div><div class="maatra-body"><p class="maatra-line">ให้มีแผนกคดีอาญาของผู้ดำรงตำแหน่งทางการเมืองในศาลฎีกา โดยองค์คณะผู้พิพากษาประกอบด้วยผู้พิพากษาในศาลฎีกาซึ่งดำรงตำแหน่งไม่ต่ำกว่าผู้พิพากษาศาลฎีกาหรือผู้พิพากษาอาวุโสซึ่งเคยดำรงตำแหน่งไม่ต่ำกว่าผู้พิพากษาศาลฎีกา ซึ่งได้รับคัดเลือกโดยที่ประชุมใหญ่ศาลฎีกาจำนวนไม่น้อยกว่าห้าคนแต่ไม่เกินเก้าคนตามที่บัญญัติไว้ในพระราชบัญญัติประกอบรัฐธรรมนูญว่าด้วยวิธีพิจารณาคดีอาญาของผู้ดำรงตำแหน่งทางการเมือง โดยให้เลือกเป็นรายคดี</p>
@@ -1036,27 +1150,49 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 </div></div>
 <div class="maatra-card" id="มาตรา-196"><div class="maatra-header"><span class="maatra-badge">มาตรา 196</span><span class="maatra-title">ศาลรัฐธรรมนูญ — ตุลาการ 9 คน วาระ 7 ปี ดำรงตำแหน่งได้ครั้งเดียว</span></div><div class="maatra-body"><p class="maatra-line">การบริหารงานบุคคลเกี่ยวกับผู้พิพากษาศาลยุติธรรมต้องมีความเป็นอิสระและดำเนินการโดยคณะกรรมการตุลาการศาลยุติธรรม ซึ่งประกอบด้วยประธานศาลฎีกาเป็นประธานและกรรมการผู้ทรงคุณวุฒิซึ่งเป็นข้าราชการตุลาการในแต่ละชั้นศาล และผู้ทรงคุณวุฒิซึ่งไม่เป็นหรือเคยเป็นข้าราชการตุลาการ บรรดาที่ได้รับเลือกจากข้าราชการตุลาการไม่เกินสองคน  ทั้งนี้ ตามที่กฎหมายบัญญัติ</p>
 </div></div>
-</div></div>
-<div class="suan-block"><div class="suan-header"><span class="suan-icon">§</span><span class="suan-title">ส่วนที่ 3 ศาลปกครอง</span><span class="suan-count">2 มาตรา</span></div><div class="suan-body"><div class="maatra-card" id="มาตรา-197"><div class="maatra-header"><span class="maatra-badge">มาตรา 197</span><span class="maatra-title">กระบวนการสรรหาตุลาการรัฐธรรมนูญจากสายตุลาการและผู้ทรงคุณวุฒิ</span></div><div class="maatra-body"><p class="maatra-line">ศาลปกครองมีอำนาจพิจารณาพิพากษาคดีปกครองอันเนื่องมาจากการใช้อำนาจทางปกครองตามกฎหมายหรือเนื่องมาจากการดำเนินกิจการทางปกครอง  ทั้งนี้ ตามที่กฎหมายบัญญัติ</p>
+</div>
+</div>
+<div class="suan-block" id="suan_sec_8">
+  <button type="button" class="suan-header" onclick="toggleSuan('suan_sec_8')" aria-expanded="true">
+    <span class="suan-icon">§</span>
+    <span class="suan-title">ส่วนที่ 3 ศาลปกครอง</span>
+    <span class="suan-count">2 มาตรา</span>
+    <span class="suan-chevron">▼</span>
+  </button>
+  <div class="suan-body"><div class="maatra-card" id="มาตรา-197"><div class="maatra-header"><span class="maatra-badge">มาตรา 197</span><span class="maatra-title">กระบวนการสรรหาตุลาการรัฐธรรมนูญจากสายตุลาการและผู้ทรงคุณวุฒิ</span></div><div class="maatra-body"><p class="maatra-line">ศาลปกครองมีอำนาจพิจารณาพิพากษาคดีปกครองอันเนื่องมาจากการใช้อำนาจทางปกครองตามกฎหมายหรือเนื่องมาจากการดำเนินกิจการทางปกครอง  ทั้งนี้ ตามที่กฎหมายบัญญัติ</p>
 <p class="maatra-line">ให้มีศาลปกครองสูงสุดและศาลปกครองชั้นต้น</p>
 <p class="maatra-line">อำนาจศาลปกครองตามวรรคหนึ่ง ไม่รวมถึงการวินิจฉัยชี้ขาดขององค์กรอิสระซึ่งเป็นการใช้อำนาจโดยตรงตามรัฐธรรมนูญขององค์กรอิสระนั้น ๆ</p>
 <p class="maatra-line">การจัดตั้ง วิธีพิจารณาคดี และการดำเนินงานของศาลปกครองให้เป็นไปตามกฎหมายว่าด้วยการนั้น</p>
 </div></div>
 <div class="maatra-card" id="มาตรา-198"><div class="maatra-header"><span class="maatra-badge">มาตรา 198</span><span class="maatra-title">คณะกรรมการสรรหาตุลาการรัฐธรรมนูญ — องค์ประกอบและอำนาจหน้าที่</span></div><div class="maatra-body"><p class="maatra-line">การบริหารงานบุคคลเกี่ยวกับตุลาการศาลปกครองต้องมีความเป็นอิสระและดำเนินการโดยคณะกรรมการตุลาการศาลปกครองซึ่งประกอบด้วยประธานศาลปกครองสูงสุดเป็นประธานและกรรมการผู้ทรงคุณวุฒิซึ่งเป็นตุลาการในศาลปกครอง และผู้ทรงคุณวุฒิซึ่งไม่เป็นหรือเคยเป็นตุลาการในศาลปกครองไม่เกินสองคน บรรดาที่ได้รับเลือกจากข้าราชการตุลาการศาลปกครอง  ทั้งนี้ ตามที่กฎหมายบัญญัติ</p>
 </div></div>
-</div></div>
-<div class="suan-block"><div class="suan-header"><span class="suan-icon">§</span><span class="suan-title">ส่วนที่ 4 ศาลทหาร</span><span class="suan-count">1 มาตรา</span></div><div class="suan-body"><div class="maatra-card" id="มาตรา-199"><div class="maatra-header"><span class="maatra-badge">มาตรา 199</span><span class="maatra-title">ผู้ได้รับเลือกเป็นตุลาการรัฐธรรมนูญต้องพ้นจากตำแหน่งอื่นก่อน</span></div><div class="maatra-body"><p class="maatra-line">ศาลทหารมีอำนาจพิจารณาพิพากษาคดีอาญาที่ผู้กระทำความผิดเป็นบุคคลซึ่งอยู่ในอำนาจศาลทหารและคดีอื่น  ทั้งนี้ ตามที่กฎหมายบัญญัติ</p>
+</div>
+</div>
+<div class="suan-block" id="suan_sec_9">
+  <button type="button" class="suan-header" onclick="toggleSuan('suan_sec_9')" aria-expanded="true">
+    <span class="suan-icon">§</span>
+    <span class="suan-title">ส่วนที่ 4 ศาลทหาร</span>
+    <span class="suan-count">1 มาตรา</span>
+    <span class="suan-chevron">▼</span>
+  </button>
+  <div class="suan-body"><div class="maatra-card" id="มาตรา-199"><div class="maatra-header"><span class="maatra-badge">มาตรา 199</span><span class="maatra-title">ผู้ได้รับเลือกเป็นตุลาการรัฐธรรมนูญต้องพ้นจากตำแหน่งอื่นก่อน</span></div><div class="maatra-body"><p class="maatra-line">ศาลทหารมีอำนาจพิจารณาพิพากษาคดีอาญาที่ผู้กระทำความผิดเป็นบุคคลซึ่งอยู่ในอำนาจศาลทหารและคดีอื่น  ทั้งนี้ ตามที่กฎหมายบัญญัติ</p>
 <p class="maatra-line">การจัดตั้ง วิธีพิจารณาคดี และการดำเนินงานของศาลทหาร ตลอดจนการแต่งตั้งและการให้ตุลาการศาลทหารพ้นจากตำแหน่ง ให้เป็นไปตามที่กฎหมายบัญญัติ</p>
 </div></div>
-</div></div>
+</div>
+</div>
 </div>
 </section>
 <section class="phak-section" id="ch_11">
-  <div class="phak-header" style="background:#2D4A2E">
-    <h2 class="phak-title" style="color:#E8F0E0">หมวด 11 ศาลรัฐธรรมนูญ</h2>
-    <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
-      <span class="stat-num" style="color:#B8D890">15</span>
-      <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+  <div class="phak-header" style="background:#2D4A2E" onclick="togglePhak('ch_11')">
+    <div class="phak-title-group">
+      <h2 class="phak-title" style="color:#E8F0E0">หมวด 11 ศาลรัฐธรรมนูญ</h2>
+    </div>
+    <div class="phak-header-right">
+      <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
+        <span class="stat-num" style="color:#B8D890">15</span>
+        <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+      </div>
+      <span class="phak-chevron" style="color:#E8F0E0">▼</span>
     </div>
   </div>
   <div class="phak-body"><div class="maatra-card" id="มาตรา-200"><div class="maatra-header"><span class="maatra-badge">มาตรา 200</span><span class="maatra-title">วุฒิสภาลงมติให้ความเห็นชอบผู้ได้รับการสรรหาเป็นตุลาการรัฐธรรมนูญ</span></div><div class="maatra-body"><p class="maatra-line">ศาลรัฐธรรมนูญประกอบด้วยตุลาการศาลรัฐธรรมนูญจำนวนเก้าคนซึ่งพระมหากษัตริย์ทรงแต่งตั้งจากบุคคล ดังต่อไปนี้</p>
@@ -1147,14 +1283,26 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 </div>
 </section>
 <section class="phak-section" id="ch_12">
-  <div class="phak-header" style="background:#4A3D28">
-    <h2 class="phak-title" style="color:#F0E8D8">หมวด 12 องค์กรอิสระ</h2>
-    <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
-      <span class="stat-num" style="color:#DBC090">33</span>
-      <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+  <div class="phak-header" style="background:#4A3D28" onclick="togglePhak('ch_12')">
+    <div class="phak-title-group">
+      <h2 class="phak-title" style="color:#F0E8D8">หมวด 12 องค์กรอิสระ</h2>
+    </div>
+    <div class="phak-header-right">
+      <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
+        <span class="stat-num" style="color:#DBC090">33</span>
+        <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+      </div>
+      <span class="phak-chevron" style="color:#F0E8D8">▼</span>
     </div>
   </div>
-  <div class="phak-body"><div class="suan-block"><div class="suan-header"><span class="suan-icon">§</span><span class="suan-title">ส่วนที่ 1 บททั่วไป</span><span class="suan-count">7 มาตรา</span></div><div class="suan-body"><div class="maatra-card" id="มาตรา-215"><div class="maatra-header"><span class="maatra-badge">มาตรา 215</span><span class="maatra-title">องค์กรอิสระมีความเป็นอิสระในการปฏิบัติหน้าที่ตามรัฐธรรมนูญและกฎหมาย</span></div><div class="maatra-body"><p class="maatra-line">องค์กรอิสระเป็นองค์กรที่จัดตั้งขึ้นให้มีความอิสระในการปฏิบัติหน้าที่ ให้เป็นไปตามรัฐธรรมนูญและกฎหมาย</p>
+  <div class="phak-body"><div class="suan-block" id="suan_sec_10">
+  <button type="button" class="suan-header" onclick="toggleSuan('suan_sec_10')" aria-expanded="true">
+    <span class="suan-icon">§</span>
+    <span class="suan-title">ส่วนที่ 1 บททั่วไป</span>
+    <span class="suan-count">7 มาตรา</span>
+    <span class="suan-chevron">▼</span>
+  </button>
+  <div class="suan-body"><div class="maatra-card" id="มาตรา-215"><div class="maatra-header"><span class="maatra-badge">มาตรา 215</span><span class="maatra-title">องค์กรอิสระมีความเป็นอิสระในการปฏิบัติหน้าที่ตามรัฐธรรมนูญและกฎหมาย</span></div><div class="maatra-body"><p class="maatra-line">องค์กรอิสระเป็นองค์กรที่จัดตั้งขึ้นให้มีความอิสระในการปฏิบัติหน้าที่ ให้เป็นไปตามรัฐธรรมนูญและกฎหมาย</p>
 <p class="maatra-line">การปฏิบัติหน้าที่และการใช้อำนาจขององค์กรอิสระต้องเป็นไปโดยสุจริต เที่ยงธรรม กล้าหาญ และปราศจากอคติทั้งปวงในการใช้ดุลพินิจ</p>
 </div></div>
 <div class="maatra-card" id="มาตรา-216"><div class="maatra-header"><span class="maatra-badge">มาตรา 216</span><span class="maatra-title">คุณสมบัติและลักษณะต้องห้ามทั่วไปของผู้ดำรงตำแหน่งในองค์กรอิสระ</span></div><div class="maatra-body"><p class="maatra-line">นอกจากคุณสมบัติและลักษณะต้องห้ามตามที่บัญญัติไว้เป็นการเฉพาะในส่วนที่ว่าด้วยองค์กรอิสระแต่ละองค์กรแล้ว ผู้ดำรงตำแหน่งในองค์กรอิสระต้องมีคุณสมบัติและไม่มีลักษณะต้องห้ามทั่วไปดังต่อไปนี้ด้วย</p>
@@ -1179,8 +1327,16 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 </div></div>
 <div class="maatra-card" id="มาตรา-221"><div class="maatra-header"><span class="maatra-badge">มาตรา 221</span><span class="maatra-title">องค์กรอิสระร่วมมือและช่วยเหลือกัน — แจ้งเรื่องให้องค์กรอื่นดำเนินการได้</span></div><div class="maatra-body"><p class="maatra-line">ในการปฏิบัติหน้าที่ ให้องค์กรอิสระร่วมมือและช่วยเหลือกันเพื่อให้บรรลุเป้าหมายในการปฏิบัติหน้าที่ของแต่ละองค์กร และถ้าองค์กรอิสระใดเห็นว่ามีผู้กระทำการอันไม่ชอบด้วยกฎหมายแต่อยู่ในหน้าที่และอำนาจขององค์กรอิสระอื่น ให้แจ้งองค์กรอิสระนั้นทราบเพื่อดำเนินการตามหน้าที่และอำนาจต่อไป</p>
 </div></div>
-</div></div>
-<div class="suan-block"><div class="suan-header"><span class="suan-icon">§</span><span class="suan-title">ส่วนที่ 2 คณะกรรมการการเลือกตั้ง</span><span class="suan-count">6 มาตรา</span></div><div class="suan-body"><div class="maatra-card" id="มาตรา-222"><div class="maatra-header"><span class="maatra-badge">มาตรา 222</span><span class="maatra-title">คณะกรรมการการเลือกตั้ง (กกต.) 7 คน — กำกับดูแลการเลือกตั้งทั้งปวง</span></div><div class="maatra-body"><p class="maatra-line">คณะกรรมการการเลือกตั้งประกอบด้วยกรรมการจำนวนเจ็ดคนซึ่งพระมหากษัตริย์ทรงแต่งตั้งตามคำแนะนำของวุฒิสภา จากบุคคลดังต่อไปนี้</p>
+</div>
+</div>
+<div class="suan-block" id="suan_sec_11">
+  <button type="button" class="suan-header" onclick="toggleSuan('suan_sec_11')" aria-expanded="true">
+    <span class="suan-icon">§</span>
+    <span class="suan-title">ส่วนที่ 2 คณะกรรมการการเลือกตั้ง</span>
+    <span class="suan-count">6 มาตรา</span>
+    <span class="suan-chevron">▼</span>
+  </button>
+  <div class="suan-body"><div class="maatra-card" id="มาตรา-222"><div class="maatra-header"><span class="maatra-badge">มาตรา 222</span><span class="maatra-title">คณะกรรมการการเลือกตั้ง (กกต.) 7 คน — กำกับดูแลการเลือกตั้งทั้งปวง</span></div><div class="maatra-body"><p class="maatra-line">คณะกรรมการการเลือกตั้งประกอบด้วยกรรมการจำนวนเจ็ดคนซึ่งพระมหากษัตริย์ทรงแต่งตั้งตามคำแนะนำของวุฒิสภา จากบุคคลดังต่อไปนี้</p>
 <p class="maatra-line">(1) ผู้มีความรู้ความเชี่ยวชาญในสาขาวิชาการต่าง ๆ ที่จะยังประโยชน์แก่การบริหารและจัดการการเลือกตั้งให้เป็นไปโดยสุจริตและเที่ยงธรรม และมีความซื่อสัตย์สุจริตเป็นที่ประจักษ์ ซึ่งได้รับการสรรหาจากคณะกรรมการสรรหา จำนวนห้าคน</p>
 <p class="maatra-line">(2) ผู้มีความรู้ ความเชี่ยวชาญ และประสบการณ์ด้านกฎหมาย มีความซื่อสัตย์สุจริตเป็นที่ประจักษ์และเคยดำรงตำแหน่งไม่ต่ำกว่าอธิบดีผู้พิพากษา หรือตำแหน่งไม่ต่ำกว่าอธิบดีอัยการมาแล้วเป็นเวลาไม่น้อยกว่าห้าปี ซึ่งได้รับการคัดเลือกจากที่ประชุมใหญ่ศาลฎีกา จำนวนสองคน</p>
 <p class="maatra-line">ผู้ซึ่งจะได้รับการสรรหาเป็นกรรมการการเลือกตั้งตาม (1) ต้องมีคุณสมบัติตามมาตรา 232 (2) (3) (4) (5) (6) หรือ (7) หรือเป็นผู้ทำงานหรือเคยทำงานในภาคประชาสังคมมาแล้วเป็นเวลาไม่น้อยกว่ายี่สิบปี  ทั้งนี้ ตามที่คณะกรรมการสรรหาประกาศกำหนด</p>
@@ -1212,8 +1368,16 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 <div class="maatra-card" id="มาตรา-227"><div class="maatra-header"><span class="maatra-badge">มาตรา 227</span><span class="maatra-title">อำนาจผู้ตรวจการแผ่นดิน — รับร้องเรียน เสนอแก้กฎหมาย ส่งศาลรัฐธรรมนูญ</span></div><div class="maatra-body"><p class="maatra-line">ในระหว่างที่พระราชกฤษฎีกาให้มีการเลือกตั้งสมาชิกสภาผู้แทนราษฎรหรือการเลือกสมาชิกวุฒิสภา หรือเมื่อประกาศให้มีการออกเสียงประชามติ มีผลใช้บังคับ ห้ามมิให้จับ คุมขัง หรือหมายเรียกตัวกรรมการการเลือกตั้งไปสอบสวน เว้นแต่ได้รับอนุญาตจากคณะกรรมการการเลือกตั้ง หรือในกรณีที่จับในขณะกระทำความผิด</p>
 <p class="maatra-line">ในกรณีที่มีการจับกรรมการการเลือกตั้งในขณะกระทำความผิด หรือจับหรือคุมขังกรรมการการเลือกตั้งในกรณีอื่น ให้รายงานต่อประธานกรรมการการเลือกตั้งโดยด่วน และให้ประธานกรรมการการเลือกตั้งมีอำนาจสั่งให้ปล่อยผู้ถูกจับได้ แต่ถ้าประธานกรรมการการเลือกตั้งเป็นผู้ถูกจับหรือคุมขังให้เป็นอำนาจของคณะกรรมการการเลือกตั้งเท่าที่มีอยู่เป็นผู้ดำเนินการ</p>
 </div></div>
-</div></div>
-<div class="suan-block"><div class="suan-header"><span class="suan-icon">§</span><span class="suan-title">ส่วนที่ 3 ผู้ตรวจการแผ่นดิน</span><span class="suan-count">4 มาตรา</span></div><div class="suan-body"><div class="maatra-card" id="มาตรา-228"><div class="maatra-header"><span class="maatra-badge">มาตรา 228</span><span class="maatra-title">คณะกรรมการ ป.ป.ช. 9 คน — ไต่สวนทุจริตผู้ดำรงตำแหน่งสาธารณะ</span></div><div class="maatra-body"><p class="maatra-line">ผู้ตรวจการแผ่นดินมีจำนวนสามคนซึ่งพระมหากษัตริย์ทรงแต่งตั้งตามคำแนะนำของวุฒิสภา จากผู้ซึ่งได้รับการสรรหาโดยคณะกรรมการสรรหา</p>
+</div>
+</div>
+<div class="suan-block" id="suan_sec_12">
+  <button type="button" class="suan-header" onclick="toggleSuan('suan_sec_12')" aria-expanded="true">
+    <span class="suan-icon">§</span>
+    <span class="suan-title">ส่วนที่ 3 ผู้ตรวจการแผ่นดิน</span>
+    <span class="suan-count">4 มาตรา</span>
+    <span class="suan-chevron">▼</span>
+  </button>
+  <div class="suan-body"><div class="maatra-card" id="มาตรา-228"><div class="maatra-header"><span class="maatra-badge">มาตรา 228</span><span class="maatra-title">คณะกรรมการ ป.ป.ช. 9 คน — ไต่สวนทุจริตผู้ดำรงตำแหน่งสาธารณะ</span></div><div class="maatra-body"><p class="maatra-line">ผู้ตรวจการแผ่นดินมีจำนวนสามคนซึ่งพระมหากษัตริย์ทรงแต่งตั้งตามคำแนะนำของวุฒิสภา จากผู้ซึ่งได้รับการสรรหาโดยคณะกรรมการสรรหา</p>
 <p class="maatra-line">ผู้ซึ่งได้รับการสรรหาต้องเป็นผู้มีความซื่อสัตย์สุจริตเป็นที่ประจักษ์ และมีความรู้ ความเชี่ยวชาญ และประสบการณ์เกี่ยวกับการบริหารราชการแผ่นดินไม่ต่ำกว่าอธิบดีหรือหัวหน้าส่วนราชการที่เทียบเท่าหรือหัวหน้าหน่วยงานของรัฐที่เทียบได้ไม่ต่ำกว่ากรมตามที่คณะกรรมการสรรหาประกาศกำหนด โดยต้องดำรงตำแหน่งดังกล่าวเป็นเวลาไม่น้อยกว่าห้าปี จำนวนสองคน และเป็นผู้มีประสบการณ์ในการดำเนินกิจการอันเป็นสาธารณะมาแล้วไม่น้อยกว่ายี่สิบปี จำนวนหนึ่งคน</p>
 </div></div>
 <div class="maatra-card" id="มาตรา-229"><div class="maatra-header"><span class="maatra-badge">มาตรา 229</span><span class="maatra-title">คุณสมบัติและวาระของ ป.ป.ช.</span></div><div class="maatra-body"><p class="maatra-line">ผู้ตรวจการแผ่นดินมีวาระการดำรงตำแหน่งเจ็ดปีนับแต่วันที่พระมหากษัตริย์ทรงแต่งตั้ง และให้ดำรงตำแหน่งได้เพียงวาระเดียว</p>
@@ -1229,8 +1393,16 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 <p class="maatra-line">(1) บทบัญญัติแห่งกฎหมายใดมีปัญหาเกี่ยวกับความชอบด้วยรัฐธรรมนูญ ให้เสนอเรื่องพร้อมด้วยความเห็นต่อศาลรัฐธรรมนูญ และให้ศาลรัฐธรรมนูญพิจารณาวินิจฉัยโดยไม่ชักช้า  ทั้งนี้ ตามพระราชบัญญัติประกอบรัฐธรรมนูญว่าด้วยวิธีพิจารณาของศาลรัฐธรรมนูญ</p>
 <p class="maatra-line">(2) กฎ คำสั่ง หรือการกระทำอื่นใดของหน่วยงานของรัฐหรือเจ้าหน้าที่ของรัฐ มีปัญหาเกี่ยวกับความชอบด้วยรัฐธรรมนูญหรือกฎหมาย ให้เสนอเรื่องพร้อมด้วยความเห็นต่อศาลปกครองและให้ศาลปกครองพิจารณาวินิจฉัยโดยไม่ชักช้า  ทั้งนี้ ตามกฎหมายว่าด้วยการจัดตั้งศาลปกครองและวิธีพิจารณาคดีปกครอง</p>
 </div></div>
-</div></div>
-<div class="suan-block"><div class="suan-header"><span class="suan-icon">§</span><span class="suan-title">ส่วนที่ 4 คณะกรรมการป้องกันและปราบปรามการทุจริตแห่งชาติ</span><span class="suan-count">6 มาตรา</span></div><div class="suan-body"><div class="maatra-card" id="มาตรา-232"><div class="maatra-header"><span class="maatra-badge">มาตรา 232</span><span class="maatra-title">คณะกรรมการตรวจเงินแผ่นดิน (สตง.) — ตรวจสอบการใช้งบประมาณแผ่นดิน</span></div><div class="maatra-body"><p class="maatra-line">คณะกรรมการป้องกันและปราบปรามการทุจริตแห่งชาติประกอบด้วยกรรมการจำนวนเก้าคน ซึ่งพระมหากษัตริย์ทรงแต่งตั้งตามคำแนะนำของวุฒิสภาจากผู้ซึ่งได้รับการสรรหาโดยคณะกรรมการสรรหา</p>
+</div>
+</div>
+<div class="suan-block" id="suan_sec_13">
+  <button type="button" class="suan-header" onclick="toggleSuan('suan_sec_13')" aria-expanded="true">
+    <span class="suan-icon">§</span>
+    <span class="suan-title">ส่วนที่ 4 คณะกรรมการป้องกันและปราบปรามการทุจริตแห่งชาติ</span>
+    <span class="suan-count">6 มาตรา</span>
+    <span class="suan-chevron">▼</span>
+  </button>
+  <div class="suan-body"><div class="maatra-card" id="มาตรา-232"><div class="maatra-header"><span class="maatra-badge">มาตรา 232</span><span class="maatra-title">คณะกรรมการตรวจเงินแผ่นดิน (สตง.) — ตรวจสอบการใช้งบประมาณแผ่นดิน</span></div><div class="maatra-body"><p class="maatra-line">คณะกรรมการป้องกันและปราบปรามการทุจริตแห่งชาติประกอบด้วยกรรมการจำนวนเก้าคน ซึ่งพระมหากษัตริย์ทรงแต่งตั้งตามคำแนะนำของวุฒิสภาจากผู้ซึ่งได้รับการสรรหาโดยคณะกรรมการสรรหา</p>
 <p class="maatra-line">ผู้ซึ่งได้รับการสรรหาต้องเป็นผู้มีความซื่อสัตย์สุจริตเป็นที่ประจักษ์ มีความรู้ ความเชี่ยวชาญ และประสบการณ์ด้านกฎหมาย บัญชี เศรษฐศาสตร์ การบริหารราชการแผ่นดิน หรือการอื่นใดอันเป็นประโยชน์ต่อการป้องกันและปราบปรามการทุจริต และต้องมีคุณสมบัติอย่างหนึ่งอย่างใด ดังต่อไปนี้ด้วย</p>
 <p class="maatra-line">(1) รับราชการหรือเคยรับราชการในตำแหน่งไม่ต่ำกว่าอธิบดีผู้พิพากษา อธิบดีศาลปกครองชั้นต้น ตุลาการพระธรรมนูญหัวหน้าศาลทหารกลาง หรืออธิบดีอัยการมาแล้วไม่น้อยกว่าห้าปี</p>
 <p class="maatra-line">(2) รับราชการหรือเคยรับราชการในตำแหน่งไม่ต่ำกว่าอธิบดีหรือหัวหน้าส่วนราชการที่เทียบเท่ามาแล้วไม่น้อยกว่าห้าปี</p>
@@ -1269,8 +1441,16 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 <p class="maatra-line">(2) ถ้าเห็นว่าผู้ถูกกล่าวหาฝ่าฝืนหรือไม่ปฏิบัติตามมาตรฐานทางจริยธรรมอย่างร้ายแรงให้เสนอเรื่องต่อศาลฎีกาเพื่อวินิจฉัย โดยให้นำความในมาตรา 235 วรรคสาม วรรคสี่ และวรรคหกมาใช้บังคับโดยอนุโลม</p>
 <p class="maatra-line">(3) ถ้าเห็นว่าผู้ถูกกล่าวหามีพฤติการณ์ตามที่ถูกกล่าวหา และมิใช่กรณีตาม (2) ให้ส่งสำนวนการไต่สวนไปยังอัยการสูงสุดเพื่อดำเนินการฟ้องคดีต่อศาลฎีกาแผนกคดีอาญาของผู้ดำรงตำแหน่งทางการเมือง และให้นำความในมาตรา 235 วรรคสาม วรรคสี่ และวรรคห้า มาใช้บังคับโดยอนุโลม</p>
 </div></div>
-</div></div>
-<div class="suan-block"><div class="suan-header"><span class="suan-icon">§</span><span class="suan-title">ส่วนที่ 5 คณะกรรมการตรวจเงินแผ่นดิน</span><span class="suan-count">8 มาตรา</span></div><div class="suan-body"><div class="maatra-card" id="มาตรา-238"><div class="maatra-header"><span class="maatra-badge">มาตรา 238</span><span class="maatra-title">กระบวนการถอดถอนผู้ดำรงตำแหน่งในองค์กรอิสระโดยวุฒิสภา</span></div><div class="maatra-body"><p class="maatra-line">คณะกรรมการตรวจเงินแผ่นดินประกอบด้วยกรรมการจำนวนเจ็ดคนซึ่งพระมหากษัตริย์ทรงแต่งตั้งตามคำแนะนำของวุฒิสภา จากผู้ซึ่งได้รับการสรรหาโดยคณะกรรมการสรรหา</p>
+</div>
+</div>
+<div class="suan-block" id="suan_sec_14">
+  <button type="button" class="suan-header" onclick="toggleSuan('suan_sec_14')" aria-expanded="true">
+    <span class="suan-icon">§</span>
+    <span class="suan-title">ส่วนที่ 5 คณะกรรมการตรวจเงินแผ่นดิน</span>
+    <span class="suan-count">8 มาตรา</span>
+    <span class="suan-chevron">▼</span>
+  </button>
+  <div class="suan-body"><div class="maatra-card" id="มาตรา-238"><div class="maatra-header"><span class="maatra-badge">มาตรา 238</span><span class="maatra-title">กระบวนการถอดถอนผู้ดำรงตำแหน่งในองค์กรอิสระโดยวุฒิสภา</span></div><div class="maatra-body"><p class="maatra-line">คณะกรรมการตรวจเงินแผ่นดินประกอบด้วยกรรมการจำนวนเจ็ดคนซึ่งพระมหากษัตริย์ทรงแต่งตั้งตามคำแนะนำของวุฒิสภา จากผู้ซึ่งได้รับการสรรหาโดยคณะกรรมการสรรหา</p>
 <p class="maatra-line">ผู้ซึ่งได้รับการสรรหาต้องเป็นผู้มีความซื่อสัตย์สุจริตเป็นที่ประจักษ์ มีความรู้ ความเชี่ยวชาญ และประสบการณ์เกี่ยวกับการตรวจเงินแผ่นดิน กฎหมาย การบัญชี การตรวจสอบภายใน การเงินการคลัง และด้านอื่นที่เป็นประโยชน์ต่อการตรวจเงินแผ่นดิน  ทั้งนี้ เป็นเวลาไม่น้อยกว่าสิบปี</p>
 </div></div>
 <div class="maatra-card" id="มาตรา-239"><div class="maatra-header"><span class="maatra-badge">มาตรา 239</span><span class="maatra-title">การดำเนินคดีอาญาผู้ดำรงตำแหน่งในองค์กรอิสระ</span></div><div class="maatra-body"><p class="maatra-line">กรรมการตรวจเงินแผ่นดินมีวาระการดำรงตำแหน่งเจ็ดปีนับแต่วันที่พระมหากษัตริย์ทรงแต่งตั้ง และให้ดำรงตำแหน่งได้เพียงวาระเดียว</p>
@@ -1304,8 +1484,16 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 <div class="maatra-card" id="มาตรา-245"><div class="maatra-header"><span class="maatra-badge">มาตรา 245</span><span class="maatra-title">บทเฉพาะกาลขององค์กรอิสระ — กำหนดการส่งรายงานต่อรัฐสภา</span></div><div class="maatra-body"><p class="maatra-line">เพื่อประโยชน์ในการระงับหรือยับยั้งความเสียหายที่อาจเกิดขึ้นแก่การเงินการคลังของรัฐ ให้ผู้ว่าการตรวจเงินแผ่นดินเสนอผลการตรวจสอบการกระทำที่ไม่เป็นไปตามกฎหมายว่าด้วยวินัยการเงินการคลังของรัฐและอาจก่อให้เกิดความเสียหายแก่การเงินการคลังของรัฐอย่างร้ายแรง ต่อคณะกรรมการตรวจเงินแผ่นดินเพื่อพิจารณา</p>
 <p class="maatra-line">ในกรณีที่คณะกรรมการตรวจเงินแผ่นดินเห็นพ้องด้วยกับผลการตรวจสอบดังกล่าว ให้ปรึกษาหารือร่วมกับคณะกรรมการการเลือกตั้งและคณะกรรมการป้องกันและปราบปรามการทุจริตแห่งชาติ หากที่ประชุมร่วมเห็นพ้องกับผลการตรวจสอบนั้น ให้ร่วมกันมีหนังสือแจ้งสภาผู้แทนราษฎร วุฒิสภา และคณะรัฐมนตรีเพื่อทราบโดยไม่ชักช้า และให้เปิดเผยผลการตรวจสอบดังกล่าวต่อประชาชนเพื่อทราบด้วย</p>
 </div></div>
-</div></div>
-<div class="suan-block"><div class="suan-header"><span class="suan-icon">§</span><span class="suan-title">ส่วนที่ 6 คณะกรรมการสิทธิมนุษยชนแห่งชาติ</span><span class="suan-count">2 มาตรา</span></div><div class="suan-body"><div class="maatra-card" id="มาตรา-246"><div class="maatra-header"><span class="maatra-badge">มาตรา 246</span><span class="maatra-title">อัยการมีอิสระในการพิจารณาสั่งคดีและมีองค์กรปกครองตนเอง</span></div><div class="maatra-body"><p class="maatra-line">คณะกรรมการสิทธิมนุษยชนแห่งชาติประกอบด้วยกรรมการจำนวนเจ็ดคนซึ่งพระมหากษัตริย์ทรงแต่งตั้งตามคำแนะนำของวุฒิสภาจากผู้ซึ่งได้รับการสรรหา</p>
+</div>
+</div>
+<div class="suan-block" id="suan_sec_15">
+  <button type="button" class="suan-header" onclick="toggleSuan('suan_sec_15')" aria-expanded="true">
+    <span class="suan-icon">§</span>
+    <span class="suan-title">ส่วนที่ 6 คณะกรรมการสิทธิมนุษยชนแห่งชาติ</span>
+    <span class="suan-count">2 มาตรา</span>
+    <span class="suan-chevron">▼</span>
+  </button>
+  <div class="suan-body"><div class="maatra-card" id="มาตรา-246"><div class="maatra-header"><span class="maatra-badge">มาตรา 246</span><span class="maatra-title">อัยการมีอิสระในการพิจารณาสั่งคดีและมีองค์กรปกครองตนเอง</span></div><div class="maatra-body"><p class="maatra-line">คณะกรรมการสิทธิมนุษยชนแห่งชาติประกอบด้วยกรรมการจำนวนเจ็ดคนซึ่งพระมหากษัตริย์ทรงแต่งตั้งตามคำแนะนำของวุฒิสภาจากผู้ซึ่งได้รับการสรรหา</p>
 <p class="maatra-line">ผู้ซึ่งได้รับการสรรหาต้องมีความรู้และประสบการณ์ด้านการคุ้มครองสิทธิและเสรีภาพของประชาชนเป็นกลางทางการเมือง และมีความซื่อสัตย์สุจริตเป็นที่ประจักษ์</p>
 <p class="maatra-line">กรรมการสิทธิมนุษยชนแห่งชาติมีวาระการดำรงตำแหน่งเจ็ดปีนับแต่วันที่พระมหากษัตริย์ทรงแต่งตั้ง และให้ดำรงตำแหน่งได้เพียงวาระเดียว</p>
 <p class="maatra-line">คุณสมบัติ ลักษณะต้องห้าม การสรรหา และการพ้นจากตำแหน่งของคณะกรรมการสิทธิมนุษยชนแห่งชาติ ให้เป็นไปตามพระราชบัญญัติประกอบรัฐธรรมนูญว่าด้วยคณะกรรมการสิทธิมนุษยชนแห่งชาติ  ทั้งนี้ บทบัญญัติเกี่ยวกับการสรรหาต้องกำหนดให้ผู้แทนองค์กรเอกชนด้านสิทธิมนุษยชนมีส่วนร่วมในการสรรหาด้วย</p>
@@ -1320,15 +1508,21 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 <p class="maatra-line">เมื่อรับทราบรายงานตาม (1) และ (2) หรือข้อเสนอแนะตาม (3) ให้คณะรัฐมนตรีดำเนินการปรับปรุงแก้ไขตามความเหมาะสมโดยเร็ว กรณีใดไม่อาจดำเนินการได้หรือต้องใช้เวลาในการดำเนินการ ให้แจ้งเหตุผลให้คณะกรรมการสิทธิมนุษยชนแห่งชาติทราบโดยไม่ชักช้า</p>
 <p class="maatra-line">ในการปฏิบัติหน้าที่ คณะกรรมการสิทธิมนุษยชนแห่งชาติต้องคำนึงถึงความผาสุกของประชาชนชาวไทยและผลประโยชน์ส่วนรวมของชาติเป็นสำคัญด้วย</p>
 </div></div>
-</div></div>
+</div>
+</div>
 </div>
 </section>
 <section class="phak-section" id="ch_13">
-  <div class="phak-header" style="background:#3D5A3E">
-    <h2 class="phak-title" style="color:#E8F0E0">หมวด 13 องค์กรอัยการ</h2>
-    <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
-      <span class="stat-num" style="color:#D4EAA0">1</span>
-      <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+  <div class="phak-header" style="background:#3D5A3E" onclick="togglePhak('ch_13')">
+    <div class="phak-title-group">
+      <h2 class="phak-title" style="color:#E8F0E0">หมวด 13 องค์กรอัยการ</h2>
+    </div>
+    <div class="phak-header-right">
+      <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
+        <span class="stat-num" style="color:#D4EAA0">1</span>
+        <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+      </div>
+      <span class="phak-chevron" style="color:#E8F0E0">▼</span>
     </div>
   </div>
   <div class="phak-body"><div class="maatra-card" id="มาตรา-248"><div class="maatra-header"><span class="maatra-badge">มาตรา 248</span><span class="maatra-title">อัยการมีอิสระในการพิจารณาสั่งคดี — มีองค์กรกำกับดูแลตนเอง</span></div><div class="maatra-body"><p class="maatra-line">องค์กรอัยการมีหน้าที่และอำนาจตามที่บัญญัติไว้ในรัฐธรรมนูญและกฎหมาย</p>
@@ -1339,11 +1533,16 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 </div>
 </section>
 <section class="phak-section" id="ch_14">
-  <div class="phak-header" style="background:#2D4A2E">
-    <h2 class="phak-title" style="color:#E8F0E0">หมวด 14 การปกครองส่วนท้องถิ่น</h2>
-    <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
-      <span class="stat-num" style="color:#B8D890">6</span>
-      <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+  <div class="phak-header" style="background:#2D4A2E" onclick="togglePhak('ch_14')">
+    <div class="phak-title-group">
+      <h2 class="phak-title" style="color:#E8F0E0">หมวด 14 การปกครองส่วนท้องถิ่น</h2>
+    </div>
+    <div class="phak-header-right">
+      <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
+        <span class="stat-num" style="color:#B8D890">6</span>
+        <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+      </div>
+      <span class="phak-chevron" style="color:#E8F0E0">▼</span>
     </div>
   </div>
   <div class="phak-body"><div class="maatra-card" id="มาตรา-249"><div class="maatra-header"><span class="maatra-badge">มาตรา 249</span><span class="maatra-title">หลักการกระจายอำนาจและส่งเสริมการปกครองท้องถิ่นโดยอิสระ</span></div><div class="maatra-body"><p class="maatra-line">ภายใต้บังคับมาตรา 1 ให้มีการจัดการปกครองส่วนท้องถิ่นตามหลักแห่งการปกครองตนเองตามเจตนารมณ์ของประชาชนในท้องถิ่น  ทั้งนี้ ตามวิธีการและรูปแบบองค์กรปกครองส่วนท้องถิ่นที่กฎหมายบัญญัติ</p>
@@ -1368,11 +1567,16 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 </div>
 </section>
 <section class="phak-section" id="ch_15">
-  <div class="phak-header" style="background:#4A3D28">
-    <h2 class="phak-title" style="color:#F0E8D8">หมวด 15 การแก้ไขเพิ่มเติมรัฐธรรมนูญ</h2>
-    <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
-      <span class="stat-num" style="color:#DBC090">2</span>
-      <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+  <div class="phak-header" style="background:#4A3D28" onclick="togglePhak('ch_15')">
+    <div class="phak-title-group">
+      <h2 class="phak-title" style="color:#F0E8D8">หมวด 15 การแก้ไขเพิ่มเติมรัฐธรรมนูญ</h2>
+    </div>
+    <div class="phak-header-right">
+      <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
+        <span class="stat-num" style="color:#DBC090">2</span>
+        <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+      </div>
+      <span class="phak-chevron" style="color:#F0E8D8">▼</span>
     </div>
   </div>
   <div class="phak-body"><div class="maatra-card" id="มาตรา-255"><div class="maatra-header"><span class="maatra-badge">มาตรา 255</span><span class="maatra-title">ห้ามแก้ไขรัฐธรรมนูญให้เปลี่ยนรูปแบบรัฐหรือระบอบประชาธิปไตย</span></div><div class="maatra-body"><p class="maatra-line">การแก้ไขเพิ่มเติมรัฐธรรมนูญที่เป็นการเปลี่ยนแปลงการปกครองระบอบประชาธิปไตยอันมีพระมหากษัตริย์ทรงเป็นประมุข หรือเปลี่ยนแปลงรูปแบบของรัฐ จะกระทำมิได้</p>
@@ -1391,11 +1595,16 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 </div>
 </section>
 <section class="phak-section" id="ch_16">
-  <div class="phak-header" style="background:#3D5A3E">
-    <h2 class="phak-title" style="color:#E8F0E0">หมวด 16 การปฏิรูปประเทศ</h2>
-    <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
-      <span class="stat-num" style="color:#D4EAA0">5</span>
-      <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+  <div class="phak-header" style="background:#3D5A3E" onclick="togglePhak('ch_16')">
+    <div class="phak-title-group">
+      <h2 class="phak-title" style="color:#E8F0E0">หมวด 16 การปฏิรูปประเทศ</h2>
+    </div>
+    <div class="phak-header-right">
+      <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
+        <span class="stat-num" style="color:#D4EAA0">5</span>
+        <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+      </div>
+      <span class="phak-chevron" style="color:#E8F0E0">▼</span>
     </div>
   </div>
   <div class="phak-body"><div class="maatra-card" id="มาตรา-257"><div class="maatra-header"><span class="maatra-badge">มาตรา 257</span><span class="maatra-title">เป้าหมายการปฏิรูปประเทศ — ประชาชนมีคุณภาพชีวิตดี สังคมสงบ ยั่งยืน</span></div><div class="maatra-body"><p class="maatra-line">การปฏิรูปประเทศตามหมวดนี้ต้องดำเนินการเพื่อบรรลุเป้าหมาย ดังต่อไปนี้</p>
@@ -1461,11 +1670,16 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 </div>
 </section>
 <section class="phak-section" id="ch_99">
-  <div class="phak-header" style="background:#2D4A2E">
-    <h2 class="phak-title" style="color:#E8F0E0">บทเฉพาะกาล</h2>
-    <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
-      <span class="stat-num" style="color:#B8D890">18</span>
-      <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+  <div class="phak-header" style="background:#2D4A2E" onclick="togglePhak('ch_99')">
+    <div class="phak-title-group">
+      <h2 class="phak-title" style="color:#E8F0E0">บทเฉพาะกาล</h2>
+    </div>
+    <div class="phak-header-right">
+      <div class="stat-badge" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)">
+        <span class="stat-num" style="color:#B8D890">18</span>
+        <span class="stat-label" style="color:rgba(255,255,255,0.6)">มาตรา</span>
+      </div>
+      <span class="phak-chevron" style="color:#E8F0E0">▼</span>
     </div>
   </div>
   <div class="phak-body"><div class="maatra-card" id="มาตรา-262"><div class="maatra-header"><span class="maatra-badge">มาตรา 262</span><span class="maatra-title">คณะองคมนตรีชุดปัจจุบันดำรงตำแหน่งต่อไปตามรัฐธรรมนูญฉบับนี้</span></div><div class="maatra-body"><p class="maatra-line">ให้คณะองคมนตรีซึ่งดำรงตำแหน่งอยู่ในวันก่อนวันประกาศใช้รัฐธรรมนูญนี้เป็นคณะองคมนตรีตามบทบัญญัติแห่งรัฐธรรมนูญนี้</p>
@@ -1570,17 +1784,42 @@ html{scroll-behavior:smooth}body{font-family:'Sarabun',sans-serif;background:var
 <button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 <script>
 window.addEventListener('scroll',()=>document.getElementById('backTop').classList.toggle('visible',scrollY>400));
+function togglePhak(id){
+  const sec=document.getElementById(id);
+  if(!sec) return;
+  sec.classList.toggle('collapsed');
+}
+function toggleSuan(id){
+  const block=document.getElementById(id);
+  if(!block) return;
+  block.classList.toggle('collapsed');
+  const btn=block.querySelector('.suan-header');
+  if(btn) btn.setAttribute('aria-expanded', !block.classList.contains('collapsed'));
+}
 function escReg(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}
 function doSearch(q){
   q=q.trim();
   const cards=document.querySelectorAll('.maatra-card'),sections=document.querySelectorAll('.phak-section'),suans=document.querySelectorAll('.suan-block');
   const noRes=document.getElementById('searchNoResults'),countEl=document.getElementById('searchCount');
-  if(!q){cards.forEach(c=>{c.classList.remove('hidden','highlight');restoreText(c)});sections.forEach(s=>s.classList.remove('hidden'));suans.forEach(s=>s.classList.remove('hidden'));noRes.classList.add('hidden');countEl.textContent='';return}
+  if(!q){
+    cards.forEach(c=>{c.classList.remove('hidden','highlight');restoreText(c)});
+    sections.forEach(s=>s.classList.remove('hidden'));
+    suans.forEach(s=>s.classList.remove('hidden'));
+    noRes.classList.add('hidden');countEl.textContent='';return
+  }
   const ql=q.toLowerCase();let matched=0;
   cards.forEach(card=>{
     const txt=(card.querySelector('.maatra-badge')||{}).textContent+' '+(card.querySelector('.maatra-title')||{}).textContent+' '+[...card.querySelectorAll('.maatra-line')].map(l=>l.textContent).join(' ');
-    if(txt.toLowerCase().includes(ql)){card.classList.remove('hidden');card.classList.add('highlight');highlightText(card,q);matched++}
-    else{card.classList.add('hidden');card.classList.remove('highlight');restoreText(card)}
+    if(txt.toLowerCase().includes(ql)){
+      card.classList.remove('hidden');card.classList.add('highlight');highlightText(card,q);matched++;
+      // Auto expand parent section and chapter if matched
+      let pSuan = card.closest('.suan-block');
+      if(pSuan) pSuan.classList.remove('collapsed');
+      let pPhak = card.closest('.phak-section');
+      if(pPhak) pPhak.classList.remove('collapsed');
+    } else {
+      card.classList.add('hidden');card.classList.remove('highlight');restoreText(card)
+    }
   });
   suans.forEach(s=>s.classList.toggle('hidden',!s.querySelectorAll('.maatra-card:not(.hidden)').length));
   sections.forEach(s=>s.classList.toggle('hidden',!s.querySelectorAll('.maatra-card:not(.hidden)').length));
@@ -1588,6 +1827,23 @@ function doSearch(q){
 }
 function highlightText(card,q){[...card.querySelectorAll('.maatra-line')].forEach(el=>{const orig=el.dataset.orig||el.textContent;el.dataset.orig=orig;el.innerHTML=orig.replace(new RegExp('('+escReg(q)+')','gi'),'<mark class="search-highlight">$1</mark>')})}
 function restoreText(card){[...card.querySelectorAll('.maatra-line')].forEach(el=>{if(el.dataset.orig)el.textContent=el.dataset.orig})}
+
+// Auto expand when clicking nav pills or hash navigation
+window.addEventListener('hashchange', expandHashTarget);
+function expandHashTarget(){
+  const hash = window.location.hash;
+  if(!hash) return;
+  const target = document.querySelector(hash);
+  if(target){
+    if(target.classList.contains('phak-section')) target.classList.remove('collapsed');
+    if(target.classList.contains('suan-block')) target.classList.remove('collapsed');
+    let pSuan = target.closest('.suan-block');
+    if(pSuan) pSuan.classList.remove('collapsed');
+    let pPhak = target.closest('.phak-section');
+    if(pPhak) pPhak.classList.remove('collapsed');
+  }
+}
+
 if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('../service-worker.js').catch(()=>{}));
 </script>
 </body>
