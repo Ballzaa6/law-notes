@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>พระราชบัญญัติวิธีปฏิบัติราชการทางปกครอง พ.ศ. 2539 - Dashboard</title>
+<meta name="description" content="พ.ร.บ. วิธีปฏิบัติราชการทางปกครอง พ.ศ. 2539 แบ่งหมวด/ส่วนตามต้นฉบับ">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#1B4F72">
+<link rel="icon" href="../icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="กม.ปกครอง">
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Noto+Serif+Thai:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--bg:#E4EAF0;--bg2:#D8E0EA;--bg3:#EEF2F8;--border:#1B4F72;--border-light:#A8BECC;--text:#0D1B2A;--text-muted:#1A5276;--text-dim:#2471A3;--accent1:#1B4F72;--accent2:#154360;--gold:#B7770D;--gold-light:#D4A017;--radius:14px;--radius-sm:10px;--shadow:0 3px 0 0 #1B4F72;}
+html{scroll-behavior:smooth;}
+body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;}
+::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:var(--bg2);}::-webkit-scrollbar-thumb{background:var(--accent1);border-radius:3px;}
+.hero{background:var(--bg);border-bottom:2px dashed var(--border-light);padding:52px 48px 40px;padding-top:calc(52px + env(safe-area-inset-top));text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(27,79,114,0.06) 1px,transparent 1px);background-size:24px 24px;pointer-events:none;}
+.hero-emblem{font-size:48px;margin-bottom:14px;display:block;filter:drop-shadow(0 2px 6px rgba(27,79,114,0.25));}
+.hero-title{font-family:'Noto Serif Thai',serif;font-size:clamp(22px,4vw,38px);font-weight:700;color:var(--accent1);margin-bottom:8px;line-height:1.3;}
+.hero-sub{color:var(--text-muted);font-size:14.5px;margin-bottom:28px;}
+.hero-stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:32px;}
+.hero-stat{background:var(--bg3);border:2px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:12px 24px;text-align:center;}
+.hero-stat-num{font-size:28px;font-weight:700;color:var(--accent1);display:block;font-family:'IBM Plex Mono',monospace;}
+.hero-stat-label{font-size:11px;color:var(--text-muted);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:0.8px;margin-top:2px;display:block;}
+.search-wrapper{max-width:560px;margin:0 auto;position:relative;}
+.search-input{width:100%;padding:12px 20px 12px 44px;background:var(--bg3);border:2px solid var(--border);border-radius:50px;color:var(--text);font-size:15.5px;font-family:'Sarabun',sans-serif;outline:none;transition:all .25s;box-shadow:3px 3px 0 var(--border);}
+.search-input::placeholder{color:var(--text-dim);}
+.search-input:focus{background:#fff;box-shadow:4px 4px 0 var(--accent1);}
+.search-icon{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:15px;pointer-events:none;}
+.search-count{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:12px;font-family:'IBM Plex Mono',monospace;}
+.nav-bar{background:var(--bg2);border-bottom:2px solid var(--border-light);padding:10px 32px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.nav-left{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav-label{font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;font-family:'IBM Plex Mono',monospace;}
+.nav-pill{display:inline-block;padding:5px 14px;background:var(--bg3);border:1.5px solid var(--border);border-radius:50px;color:var(--accent1);text-decoration:none;font-size:13px;font-weight:700;white-space:nowrap;transition:all .2s;box-shadow:2px 2px 0 var(--border);}
+.nav-pill:hover{background:var(--accent1);color:var(--bg3);transform:translate(-1px,-1px);box-shadow:3px 3px 0 #0A2740;}
+.nav-btn{padding:5px 13px;background:var(--bg3);border:1.5px solid var(--border);border-radius:50px;color:var(--accent1);font-size:12.5px;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:2px 2px 0 var(--border);font-family:'Sarabun',sans-serif;}
+.nav-btn:hover{background:var(--accent2);color:#fff;transform:translate(-1px,-1px);}
+.container{max-width:1040px;margin:0 auto;padding:36px 22px 80px;}
+.group-section{margin-bottom:32px;border:2.5px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--bg3);box-shadow:4px 4px 0 var(--border);animation:fadeUp .4s ease both;}
+.group-header{padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px;cursor:pointer;user-select:none;background:var(--accent1);transition:filter .2s;}
+.group-header:hover{filter:brightness(1.1);}
+.group-title{font-family:'Noto Serif Thai',serif;font-size:18px;font-weight:700;color:#E8F4FF;flex:1;}
+.group-meta{display:flex;align-items:center;gap:10px;}
+.group-count{background:rgba(255,255,255,0.18);color:#E8F4FF;padding:3px 12px;border-radius:50px;font-size:12px;font-weight:600;font-family:'IBM Plex Mono',monospace;border:1px solid rgba(255,255,255,0.3);}
+.group-toggle{font-size:14px;color:#E8F4FF;transition:transform .3s;font-weight:bold;}
+.group-section.open .group-toggle{transform:rotate(180deg);}
+.group-body{display:none;padding:20px;}
+.group-section.open .group-body{display:block;}
+.sub-group{margin-bottom:16px;border:2px solid var(--border-light);border-radius:var(--radius-sm);overflow:hidden;background:var(--bg);box-shadow:2px 2px 0 var(--border-light);}
+.sub-group-header{padding:11px 18px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;background:var(--bg2);border-bottom:2px solid transparent;transition:background .2s;}
+.sub-group-header:hover{background:rgba(27,79,114,0.1);}
+.sub-group.open .sub-group-header{border-bottom:2px solid var(--border-light);}
+.sub-group-title{font-weight:700;font-size:15.5px;color:var(--accent1);font-family:'Noto Serif Thai',serif;}
+.sub-group-meta{display:flex;align-items:center;gap:8px;}
+.sub-count{background:var(--accent1);color:#E8F4FF;padding:2px 10px;border-radius:50px;font-size:11.5px;font-weight:600;font-family:'IBM Plex Mono',monospace;}
+.sub-toggle{color:var(--accent1);transition:transform .3s;font-size:12px;font-weight:bold;}
+.sub-group.open .sub-toggle{transform:rotate(180deg);}
+.sub-body{display:none;padding:16px;}
+.sub-group.open .sub-body{display:block;}
+.maatra-card{background:var(--bg3);border:2px solid var(--border);border-radius:var(--radius-sm);margin-bottom:14px;overflow:hidden;transition:all .18s;box-shadow:3px 3px 0 var(--border);}
+.maatra-card:last-child{margin-bottom:0;}
+.maatra-card:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--border);}
+.maatra-card.highlight{border-color:var(--gold)!important;box-shadow:3px 3px 0 var(--gold)!important;}
+.maatra-card.highlight .maatra-badge{background:var(--gold)!important;border-color:#8B6308!important;}
+.maatra-header{padding:9px 16px;background:var(--bg2);border-bottom:1.5px solid var(--border-light);display:flex;flex-wrap:wrap;align-items:center;gap:9px;}
+.maatra-badge{background:var(--accent1);color:#E8F4FF;padding:3px 13px;border-radius:50px;font-size:12.5px;font-weight:700;white-space:nowrap;font-family:'IBM Plex Mono',monospace;border:1.5px solid #0A2740;}
+.maatra-title{font-size:14.5px;font-weight:600;color:var(--text);}
+.maatra-body{padding:16px 18px;}
+.maatra-line{margin-bottom:11px;line-height:1.9;color:var(--text);font-size:16px;}
+.maatra-line.indent{padding-left:22px;margin-bottom:7px;}
+.maatra-line:last-child{margin-bottom:0;}
+.search-highlight{background:rgba(183,119,13,0.28);color:#5A3800;border-radius:3px;padding:0 3px;font-weight:600;}
+.hidden{display:none!important;}
+.no-results{text-align:center;padding:50px 20px;color:var(--text-muted);font-size:16px;font-family:'IBM Plex Mono',monospace;}
+.back-top{position:fixed;bottom:calc(26px + env(safe-area-inset-bottom));right:26px;width:42px;height:42px;background:var(--accent1);color:#E8F4FF;border:2px solid #0A2740;border-radius:50%;cursor:pointer;font-size:17px;display:none;align-items:center;justify-content:center;box-shadow:3px 3px 0 #0A2740;transition:all .2s;z-index:999;}
+.back-top:hover{background:var(--accent2);transform:translate(-1px,-1px);}
+.back-top.visible{display:flex;}
+.home-btn{position:fixed;bottom:calc(26px + env(safe-area-inset-bottom));left:26px;width:42px;height:42px;background:var(--gold);color:#fff;border:2px solid #8B6308;border-radius:50%;text-decoration:none;font-size:17px;display:flex;align-items:center;justify-content:center;box-shadow:3px 3px 0 #8B6308;transition:all .2s;z-index:999;}
+.home-btn:hover{background:var(--gold-light);transform:translate(-1px,-1px);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:768px){.hero{padding:32px 18px 26px;padding-top:calc(32px + env(safe-area-inset-top));}.nav-bar{padding:8px 14px;flex-direction:column;align-items:flex-start;gap:10px;}.group-body{padding:12px;}.sub-body{padding:12px;}.maatra-line.indent{padding-left:14px;}}
+
+.hero-accent{background:linear-gradient(135deg,#154360,#0A2740);padding:10px 24px;border-radius:50px;display:inline-block;margin-bottom:18px;}
+.hero-accent-text{color:#C8E6FF;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;}
+</style>
+</head>
+<body>
+<div class="hero">
+  <span class="hero-emblem">📋</span>
+  <div class="hero-accent"><span class="hero-accent-text">พ.ศ. 2539</span></div>
+  <h1 class="hero-title">พระราชบัญญัติวิธีปฏิบัติราชการทางปกครอง พ.ศ. 2539</h1>
+  <p class="hero-sub">หลักเกณฑ์คำสั่งทางปกครอง การอุทธรณ์ การบังคับ และการแจ้งคำสั่ง</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><span class="hero-stat-num">113</span><span class="hero-stat-label">มาตรา</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">14</span><span class="hero-stat-label">หมวด/กลุ่ม</span></div>
+  </div>
+  <div class="search-wrapper">
+    <span class="search-icon">🔍</span>
+    <input type="text" class="search-input" id="searchInput" placeholder="ค้นหามาตรา..." oninput="doSearch(this.value)">
+    <span class="search-count" id="cnt"></span>
+  </div>
+</div>
+<nav class="nav-bar">
+  <div class="nav-left">
+    <a href="index.html" class="nav-pill">← รวมกฎหมายปกครอง</a>
+    <span class="nav-label">|</span>
+    <a href="#g_act_admin_proc_0" class="nav-pill">บทเบื้องต้น</a>
+    <a href="#g_act_admin_proc_1" class="nav-pill">หมวด 1 คณะกรรมการวิธีป…</a>
+    <a href="#g_act_admin_proc_2" class="nav-pill">ส่วนที่ 1 เจ้าหน้าที่</a>
+    <a href="#g_act_admin_proc_3" class="nav-pill">ส่วนที่ 2 คู่กรณี</a>
+    <a href="#g_act_admin_proc_4" class="nav-pill">ส่วนที่ 3 การพิจารณา</a>
+    <a href="#g_act_admin_proc_5" class="nav-pill">ส่วนที่ 4 รูปแบบและผลข…</a>
+    <a href="#g_act_admin_proc_6" class="nav-pill">ส่วนที่ 5 การอุทธรณ์คำ…</a>
+    <a href="#g_act_admin_proc_7" class="nav-pill">ส่วนที่ 6 การเพิกถอนคำ…</a>
+    <a href="#g_act_admin_proc_8" class="nav-pill">ส่วนที่ 7 การขอให้พิจา…</a>
+    <a href="#g_act_admin_proc_9" class="nav-pill">ส่วนที่ 8 การบังคับทาง…</a>
+    <a href="#g_act_admin_proc_10" class="nav-pill">หมวด 3 ระยะเวลาและอายุ…</a>
+    <a href="#g_act_admin_proc_11" class="nav-pill">หมวด 4 การแจ้ง</a>
+    <a href="#g_act_admin_proc_12" class="nav-pill">หมวด 5 คณะกรรมการที่มี…</a>
+    <a href="#g_act_admin_proc_13" class="nav-pill">บทเฉพาะกาล</a>
+  </div>
+  <div style="display:flex;gap:6px;">
+    <button class="nav-btn" onclick="expandAll()">📂 ขยาย</button>
+    <button class="nav-btn" onclick="collapseAll()">📁 พับ</button>
+  </div>
+</nav>
+<div class="container">
+  <div id="noRes" class="no-results hidden">ไม่พบผลการค้นหา</div>
+  <div class="group-section open" id="g_act_admin_proc_0" style="animation-delay:0.0s;">
+    <div class="group-header" onclick="toggleGroup('g_act_admin_proc_0')">
+      <span class="group-title">บทเบื้องต้น (ม.1–6)</span>
+      <div class="group-meta">
+        <span class="group-count">6 มาตรา</span>
+        <span class="group-toggle">▼</span>
+      </div>
+    </div>
+    <div class="group-body" id="g_act_admin_proc_0-body">
+          <div class="maatra-card" id="m_act_admin_proc_1">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 1</span>
+              <span class="maatra-title">ชื่อพระราชบัญญัติ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">พระราชบัญญัตินี้เรียกว่า “พระราชบัญญัติวิธีปฏิบัติราชการทางปกครอง พ.ศ. 2539”</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_2">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 2</span>
+              <span class="maatra-title">วันใช้บังคับ (180 วันหลังประกาศ)</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">พระราชบัญญัตินี้ให้ใช้บังคับเมื่อพ้นกำหนดหนึ่งร้อยแปดสิบวันนับแต่วันถัดจากวันประกาศในราชกิจจานุเบกษาเป็นต้นไป</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_3">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 3</span>
+              <span class="maatra-title">ขอบเขตการใช้บังคับ: ยกเว้นกฎหมายที่มีมาตรฐานสูงกว่า</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">วิธีปฏิบัติราชการทางปกครองตามกฎหมายต่าง ๆ ให้เป็นไปตามที่กำหนดในพระราชบัญญัตินี้ เว้นแต่ในกรณีที่กฎหมายใดกำหนดวิธีปฏิบัติราชการทางปกครองเรื่องใดไว้โดยเฉพาะและมีหลักเกณฑ์ที่ประกันความเป็นธรรมหรือมีมาตรฐานในการปฏิบัติราชการไม่ต่ำกว่าหลักเกณฑ์ที่กำหนดในพระราชบัญญัตินี้</p>
+            <p class="maatra-line">ความในวรรคหนึ่งมิให้ใช้บังคับกับขั้นตอนและระยะเวลาอุทธรณ์หรือโต้แย้งที่กำหนดในกฎหมาย</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_4">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 4</span>
+              <span class="maatra-title">ข้อยกเว้น: กิจการที่ไม่ใช้พ.ร.บ.นี้บังคับ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">พระราชบัญญัตินี้มิให้ใช้บังคับแก่</p>
+            <p class="maatra-line indent">(1) รัฐสภาและคณะรัฐมนตรี</p>
+            <p class="maatra-line indent">(2) องค์กรที่ใช้อำนาจตามรัฐธรรมนูญโดยเฉพาะ</p>
+            <p class="maatra-line indent">(3) การพิจารณาของนายกรัฐมนตรีหรือรัฐมนตรีในงานทางนโยบายโดยตรง</p>
+            <p class="maatra-line indent">(4) การพิจารณาพิพากษาคดีของศาลและการดำเนินงานของเจ้าหน้าที่ในกระบวนการพิจารณาคดี การบังคับคดี และการวางทรัพย์</p>
+            <p class="maatra-line indent">(5) การพิจารณาวินิจฉัยเรื่องร้องทุกข์และการสั่งการตามกฎหมายว่าด้วยคณะกรรมการกฤษฎีกา</p>
+            <p class="maatra-line indent">(6) การดำเนินงานเกี่ยวกับนโยบายการต่างประเทศ</p>
+            <p class="maatra-line indent">(7) การดำเนินงานเกี่ยวกับราชการทหารหรือเจ้าหน้าที่ซึ่งปฏิบัติหน้าที่ทางยุทธการร่วมกับทหารในการป้องกันและรักษาความมั่นคงของราชอาณาจักรจากภัยคุกคามทั้งภายนอกและภายในประเทศ</p>
+            <p class="maatra-line indent">(8) การดำเนินงานตามกระบวนการยุติธรรมทางอาญา</p>
+            <p class="maatra-line indent">(9) การดำเนินกิจการขององค์การทางศาสนา</p>
+            <p class="maatra-line">การยกเว้นไม่ให้นำบทบัญญัติแห่งพระราชบัญญัตินี้มาใช้บังคับแก่การดำเนินกิจการใดหรือกับหน่วยงานใดนอกจากที่กำหนดไว้ในวรรคหนึ่ง ให้ตราเป็นพระราชกฤษฎีกาตามข้อเสนอของคณะกรรมการวิธีปฏิบัติราชการทางปกครอง</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_5">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 5</span>
+              <span class="maatra-title">นิยามคำสำคัญ: คำสั่งทางปกครอง กฎ เจ้าหน้าที่ คู่กรณี</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ในพระราชบัญญัตินี้</p>
+            <p class="maatra-line">“วิธีปฏิบัติราชการทางปกครอง” หมายความว่า การเตรียมการและการดำเนินการของเจ้าหน้าที่เพื่อจัดให้มีคำสั่งทางปกครองหรือกฎ และรวมถึงการดำเนินการใด ๆ ในทางปกครองตามพระราชบัญญัตินี้</p>
+            <p class="maatra-line">“การพิจารณาทางปกครอง” หมายความว่า การเตรียมการและการดำเนินการของเจ้าหน้าที่เพื่อจัดให้มีคำสั่งทางปกครอง</p>
+            <p class="maatra-line">“คำสั่งทางปกครอง” หมายความว่า</p>
+            <p class="maatra-line indent">(1) การใช้อำนาจตามกฎหมายของเจ้าหน้าที่ที่มีผลเป็นการสร้างนิติสัมพันธ์ขึ้นระหว่างบุคคลในอันที่จะก่อ เปลี่ยนแปลง โอน สงวน ระงับ หรือมีผลกระทบต่อสถานภาพของสิทธิหรือหน้าที่ของบุคคล ไม่ว่าจะเป็นการถาวรหรือชั่วคราว เช่น การสั่งการ การอนุญาต การอนุมัติ การวินิจฉัยอุทธรณ์ การรับรอง และการรับจดทะเบียน แต่ไม่หมายความรวมถึงการออกกฎ</p>
+            <p class="maatra-line indent">(2) การอื่นที่กำหนดในกฎกระทรวง</p>
+            <p class="maatra-line">“กฎ” หมายความว่า พระราชกฤษฎีกา กฎกระทรวง ประกาศกระทรวง ข้อบัญญัติท้องถิ่น ระเบียบ ข้อบังคับ หรือบทบัญญัติอื่นที่มีผลบังคับเป็นการทั่วไป โดยไม่มุ่งหมายให้ใช้บังคับแก่กรณีใดหรือบุคคลใดเป็นการเฉพาะ</p>
+            <p class="maatra-line">“คณะกรรมการวินิจฉัยข้อพิพาท” หมายความว่า คณะกรรมการที่จัดตั้งขึ้นตามกฎหมายที่มีการจัดองค์กรและวิธีพิจารณาสำหรับการวินิจฉัยชี้ขาดสิทธิและหน้าที่ตามกฎหมาย</p>
+            <p class="maatra-line">“เจ้าหน้าที่” หมายความว่า บุคคล คณะบุคคล หรือนิติบุคคล ซึ่งใช้อำนาจหรือได้รับมอบให้ใช้อำนาจทางปกครองของรัฐในการดำเนินการอย่างหนึ่งอย่างใดตามกฎหมาย ไม่ว่าจะเป็นการจัดตั้งขึ้นในระบบราชการ รัฐวิสาหกิจหรือกิจการอื่นของรัฐหรือไม่ก็ตาม</p>
+            <p class="maatra-line">“คู่กรณี” หมายความว่า ผู้ยื่นคำขอหรือผู้คัดค้านคำขอ ผู้อยู่ในบังคับหรือจะอยู่ในบังคับของคำสั่งทางปกครอง และผู้ซึ่งได้เข้ามาในกระบวนการพิจารณาทางปกครองเนื่องจากสิทธิของผู้นั้นจะถูกกระทบกระเทือนจากผลของคำสั่งทางปกครอง</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_6">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 6</span>
+              <span class="maatra-title">นายกรัฐมนตรีรักษาการและออกกฎกระทรวง</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ให้นายกรัฐมนตรีรักษาการตามพระราชบัญญัตินี้ และให้มีอำนาจออกกฎกระทรวงและประกาศ เพื่อปฏิบัติการตามพระราชบัญญัตินี้</p>
+            <p class="maatra-line">กฎกระทรวงและประกาศนั้น เมื่อประกาศในราชกิจจานุเบกษาแล้ว ให้ใช้บังคับได้</p>
+            </div>
+          </div>
+    </div>
+  </div>
+  <div class="group-section " id="g_act_admin_proc_1" style="animation-delay:0.08s;">
+    <div class="group-header" onclick="toggleGroup('g_act_admin_proc_1')">
+      <span class="group-title">หมวด 1 คณะกรรมการวิธีปฏิบัติราชการทางปกครอง (ม.7–11)</span>
+      <div class="group-meta">
+        <span class="group-count">5 มาตรา</span>
+        <span class="group-toggle">▼</span>
+      </div>
+    </div>
+    <div class="group-body" id="g_act_admin_proc_1-body">
+          <div class="maatra-card" id="m_act_admin_proc_7">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 7</span>
+              <span class="maatra-title">องค์ประกอบคณะกรรมการวิธีปฏิบัติราชการทางปกครอง</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ให้มีคณะกรรมการคณะหนึ่งเรียกว่า “คณะกรรมการวิธีปฏิบัติราชการทางปกครอง” ประกอบด้วยประธานกรรมการคนหนึ่ง ปลัดสำนักนายกรัฐมนตรี ปลัดกระทรวงมหาดไทย เลขาธิการคณะรัฐมนตรี เลขาธิการคณะกรรมการข้าราชการพลเรือน เลขาธิการคณะกรรมการกฤษฎีกา และผู้ทรงคุณวุฒิอีกไม่น้อยกว่าห้าคนแต่ไม่เกินเก้าคนเป็นกรรมการ</p>
+            <p class="maatra-line">ให้คณะรัฐมนตรีแต่งตั้งประธานกรรมการและกรรมการผู้ทรงคุณวุฒิ โดยแต่งตั้งจากผู้ซึ่งมีความเชี่ยวชาญในทางนิติศาสตร์ รัฐประศาสนศาสตร์ รัฐศาสตร์ สังคมศาสตร์ หรือการบริหารราชการแผ่นดิน แต่ผู้นั้นต้องไม่เป็นผู้ดำรงตำแหน่งทางการเมือง</p>
+            <p class="maatra-line">ให้เลขาธิการคณะกรรมการกฤษฎีกาแต่งตั้งข้าราชการของสำนักงานคณะกรรมการกฤษฎีกาเป็นเลขานุการและผู้ช่วยเลขานุการ</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_8">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 8</span>
+              <span class="maatra-title">วาระ 3 ปีของกรรมการผู้ทรงคุณวุฒิ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ให้กรรมการซึ่งคณะรัฐมนตรีแต่งตั้งมีวาระดำรงตำแหน่งคราวละสามปี กรรมการซึ่งพ้นจากตำแหน่งอาจได้รับแต่งตั้งอีกได้</p>
+            <p class="maatra-line">ในกรณีที่กรรมการพ้นจากตำแหน่งตามวาระ แต่ยังมิได้แต่งตั้งกรรมการใหม่ ให้กรรมการนั้นปฏิบัติหน้าที่ไปพลางก่อนจนกว่าจะได้แต่งตั้งกรรมการใหม่</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_9">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 9</span>
+              <span class="maatra-title">เหตุพ้นจากตำแหน่งของกรรมการ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">นอกจากการพ้นจากตำแหน่งตามวาระตามมาตรา 8 กรรมการซึ่งคณะรัฐมนตรีแต่งตั้งพ้นจากตำแหน่งเมื่อคณะรัฐมนตรีมีมติให้ออกหรือเมื่อมีเหตุหนึ่งเหตุใดตามมาตรา 76</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_10">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 10</span>
+              <span class="maatra-title">สำนักงานคณะกรรมการกฤษฎีกาเป็นเลขานุการ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ให้สำนักงานคณะกรรมการกฤษฎีกาทำหน้าที่เป็นสำนักงานเลขานุการของคณะกรรมการวิธีปฏิบัติราชการทางปกครอง รับผิดชอบงานธุรการ งานประชุม การศึกษาหาข้อมูลและกิจการต่าง ๆ ที่เกี่ยวกับงานของคณะกรรมการวิธีปฏิบัติราชการทางปกครอง</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_11">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 11</span>
+              <span class="maatra-title">อำนาจหน้าที่ของคณะกรรมการวิธีปฏิบัติราชการทางปกครอง</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">คณะกรรมการวิธีปฏิบัติราชการทางปกครองมีอำนาจหน้าที่ ดังต่อไปนี้</p>
+            <p class="maatra-line indent">(1) สอดส่องดูแลและให้คำแนะนำเกี่ยวกับการดำเนินงานของเจ้าหน้าที่ในการปฏิบัติตามพระราชบัญญัตินี้</p>
+            <p class="maatra-line indent">(2) ให้คำปรึกษาแก่เจ้าหน้าที่เกี่ยวกับการปฏิบัติตามพระราชบัญญัตินี้ ตามที่บุคคลดังกล่าวร้องขอ  ทั้งนี้ ตามหลักเกณฑ์ที่คณะกรรมการวิธีปฏิบัติราชการทางปกครองกำหนด</p>
+            <p class="maatra-line indent">(3) มีหนังสือเรียกให้เจ้าหน้าที่หรือบุคคลอื่นใดมาชี้แจงหรือแสดงความเห็นประกอบการพิจารณาได้</p>
+            <p class="maatra-line indent">(4) เสนอแนะในการตราพระราชกฤษฎีกาและการออกกฎกระทรวงหรือประกาศตามพระราชบัญญัตินี้</p>
+            <p class="maatra-line indent">(5) จัดทำรายงานเกี่ยวกับการปฏิบัติตามพระราชบัญญัตินี้เสนอคณะรัฐมนตรีเป็นครั้งคราวตามความเหมาะสมแต่อย่างน้อยปีละหนึ่งครั้ง เพื่อพัฒนาและปรับปรุงการปฏิบัติราชการทางปกครองให้เป็นไปโดยมีความเป็นธรรมและมีประสิทธิภาพยิ่งขึ้น</p>
+            <p class="maatra-line indent">(6) เรื่องอื่นตามที่คณะรัฐมนตรีหรือนายกรัฐมนตรีมอบหมาย</p>
+            </div>
+          </div>
+    </div>
+  </div>
+  <div class="group-section " id="g_act_admin_proc_2" style="animation-delay:0.16s;">
+    <div class="group-header" onclick="toggleGroup('g_act_admin_proc_2')">
+      <span class="group-title">ส่วนที่ 1 เจ้าหน้าที่ (ม.12–20)</span>
+      <div class="group-meta">
+        <span class="group-count">9 มาตรา</span>
+        <span class="group-toggle">▼</span>
+      </div>
+    </div>
+    <div class="group-body" id="g_act_admin_proc_2-body">
+          <div class="maatra-card" id="m_act_admin_proc_12">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 12</span>
+              <span class="maatra-title">คำสั่งทางปกครองต้องออกโดยเจ้าหน้าที่มีอำนาจ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">คำสั่งทางปกครองจะต้องกระทำโดยเจ้าหน้าที่ซึ่งมีอำนาจหน้าที่ในเรื่องนั้น</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_13">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 13</span>
+              <span class="maatra-title">เหตุห้ามเจ้าหน้าที่พิจารณาทางปกครอง: ผลประโยชน์ขัดแย้ง</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">เจ้าหน้าที่ดังต่อไปนี้จะทำการพิจารณาทางปกครองไม่ได้</p>
+            <p class="maatra-line indent">(1) เป็นคู่กรณีเอง</p>
+            <p class="maatra-line indent">(2) เป็นคู่หมั้นหรือคู่สมรสของคู่กรณี</p>
+            <p class="maatra-line indent">(3) เป็นญาติของคู่กรณี คือ เป็นบุพการีหรือผู้สืบสันดานไม่ว่าชั้นใด ๆ หรือเป็นพี่น้องหรือลูกพี่ลูกน้องนับได้เพียงภายในสามชั้น หรือเป็นญาติเกี่ยวพันทางแต่งงานนับได้เพียงสองชั้น</p>
+            <p class="maatra-line indent">(4) เป็นหรือเคยเป็นผู้แทนโดยชอบธรรมหรือผู้พิทักษ์หรือผู้แทนหรือตัวแทนของคู่กรณี</p>
+            <p class="maatra-line indent">(5) เป็นเจ้าหนี้หรือลูกหนี้ หรือเป็นนายจ้างของคู่กรณี</p>
+            <p class="maatra-line indent">(6) กรณีอื่นตามที่กำหนดในกฎกระทรวง</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_14">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 14</span>
+              <span class="maatra-title">ขั้นตอนเมื่อเจ้าหน้าที่ต้องหยุดพิจารณาและแจ้งผู้บังคับบัญชา</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">เมื่อมีกรณีตามมาตรา 13 หรือคู่กรณีคัดค้านว่าเจ้าหน้าที่ผู้ใดเป็นบุคคลตามมาตรา 13 ให้เจ้าหน้าที่ผู้นั้นหยุดการพิจารณาเรื่องไว้ก่อน และแจ้งให้ผู้บังคับบัญชาเหนือตนขึ้นไปชั้นหนึ่งทราบ เพื่อที่ผู้บังคับบัญชาดังกล่าวจะได้มีคำสั่งต่อไป</p>
+            <p class="maatra-line">การยื่นคำคัดค้าน การพิจารณาคำคัดค้าน และการสั่งให้เจ้าหน้าที่อื่นเข้าปฏิบัติหน้าที่แทนผู้ที่ถูกคัดค้านให้เป็นไปตามหลักเกณฑ์และวิธีการที่กำหนดในกฎกระทรวง</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_15">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 15</span>
+              <span class="maatra-title">การคัดค้านกรรมการในคณะกรรมการที่มีอำนาจพิจารณา</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">เมื่อมีกรณีตามมาตรา 13 หรือคู่กรณีคัดค้านว่ากรรมการในคณะกรรมการที่มีอำนาจพิจารณาทางปกครองคณะใดมีลักษณะดังกล่าว ให้ประธานกรรมการเรียกประชุมคณะกรรมการเพื่อพิจารณาเหตุคัดค้านนั้น ในการประชุมดังกล่าวกรรมการผู้ถูกคัดค้านเมื่อได้ชี้แจงข้อเท็จจริงและตอบข้อซักถามแล้วต้องออกจากที่ประชุม</p>
+            <p class="maatra-line">ถ้าคณะกรรมการที่มีอำนาจพิจารณาทางปกครองคณะใดมีผู้ถูกคัดค้านในระหว่างที่กรรมการผู้ถูกคัดค้านต้องออกจากที่ประชุม ให้ถือว่าคณะกรรมการคณะนั้นประกอบด้วยกรรมการทุกคนที่ไม่ถูกคัดค้าน</p>
+            <p class="maatra-line">ถ้าที่ประชุมมีมติให้กรรมการผู้ถูกคัดค้านปฏิบัติหน้าที่ต่อไปด้วยคะแนนเสียงไม่น้อยกว่าสองในสามของกรรมการที่ไม่ถูกคัดค้าน ก็ให้กรรมการผู้นั้นปฏิบัติหน้าที่ต่อไปได้ มติดังกล่าวให้กระทำโดยวิธีลงคะแนนลับและให้เป็นที่สุด</p>
+            <p class="maatra-line">การยื่นคำคัดค้านและการพิจารณาคำคัดค้านให้เป็นไปตามหลักเกณฑ์และวิธีการที่กำหนดในกฎกระทรวง</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_16">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 16</span>
+              <span class="maatra-title">เหตุอื่นที่ทำให้เจ้าหน้าที่ไม่อาจพิจารณาได้อย่างเป็นกลาง</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ในกรณีมีเหตุอื่นใดนอกจากที่บัญญัติไว้ในมาตรา 13 เกี่ยวกับเจ้าหน้าที่หรือกรรมการในคณะกรรมการที่มีอำนาจพิจารณาทางปกครองซึ่งมีสภาพร้ายแรงอันอาจทำให้การพิจารณาทางปกครองไม่เป็นกลาง เจ้าหน้าที่หรือกรรมการผู้นั้นจะทำการพิจารณาทางปกครองในเรื่องนั้นไม่ได้</p>
+            <p class="maatra-line">ในกรณีตามวรรคหนึ่ง ให้ดำเนินการดังนี้</p>
+            <p class="maatra-line indent">(1) ถ้าผู้นั้นเห็นเองว่าตนมีกรณีดังกล่าว ให้ผู้นั้นหยุดการพิจารณาเรื่องไว้ก่อนและแจ้งให้ผู้บังคับบัญชาเหนือตนขึ้นไปชั้นหนึ่งหรือประธานกรรมการทราบ แล้วแต่กรณี</p>
+            <p class="maatra-line indent">(2) ถ้ามีคู่กรณีคัดค้านว่าผู้นั้นมีเหตุดังกล่าว หากผู้นั้นเห็นว่าตนไม่มีเหตุตามที่คัดค้านนั้น ผู้นั้นจะทำการพิจารณาเรื่องต่อไปก็ได้แต่ต้องแจ้งให้ผู้บังคับบัญชาเหนือตนขึ้นไปชั้นหนึ่งหรือประธานกรรมการทราบ แล้วแต่กรณี</p>
+            <p class="maatra-line indent">(3) ให้ผู้บังคับบัญชาของผู้นั้นหรือคณะกรรมการที่มีอำนาจพิจารณาทางปกครองซึ่งผู้นั้นเป็นกรรมการอยู่มีคำสั่งหรือมีมติโดยไม่ชักช้า แล้วแต่กรณี ว่าผู้นั้นมีอำนาจในการพิจารณาทางปกครองในเรื่องนั้นหรือไม่</p>
+            <p class="maatra-line">ให้นำบทบัญญัติมาตรา 14 วรรคสอง และมาตรา 15 วรรคสอง วรรคสาม และวรรคสี่มาใช้บังคับโดยอนุโลม</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_17">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 17</span>
+              <span class="maatra-title">การกระทำก่อนหยุดพิจารณายังคงมีผลเว้นแต่จะดำเนินการใหม่</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">การกระทำใด ๆ ของเจ้าหน้าที่หรือกรรมการในคณะกรรมการที่มีอำนาจพิจารณาทางปกครองที่ได้กระทำไปก่อนหยุดการพิจารณาตามมาตรา 14 และมาตรา 16 ย่อมไม่เสียไป เว้นแต่เจ้าหน้าที่ผู้เข้าปฏิบัติหน้าที่แทนผู้ถูกคัดค้านหรือคณะกรรมการที่มีอำนาจพิจารณาทางปกครอง แล้วแต่กรณี จะเห็นสมควรดำเนินการส่วนหนึ่งส่วนใดเสียใหม่ก็ได้</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_18">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 18</span>
+              <span class="maatra-title">ยกเว้นกฎการถอนตัวในกรณีเร่งด่วนหรือไม่มีผู้แทน</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">บทบัญญัติมาตรา 13 ถึงมาตรา 16 ไม่ให้นำมาใช้บังคับกับกรณีที่มีความจำเป็นเร่งด่วน หากปล่อยให้ล่าช้าไปจะเสียหายต่อประโยชน์สาธารณะหรือสิทธิของบุคคลจะเสียหายโดยไม่มีทางแก้ไขได้ หรือไม่มีเจ้าหน้าที่อื่นปฏิบัติหน้าที่แทนผู้นั้นได้</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_19">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 19</span>
+              <span class="maatra-title">การพ้นจากตำแหน่งภายหลังไม่กระทบการกระทำที่ผ่านมา</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ถ้าปรากฏภายหลังว่าเจ้าหน้าที่หรือกรรมการในคณะกรรมการที่มีอำนาจพิจารณาทางปกครองใดขาดคุณสมบัติหรือมีลักษณะต้องห้ามหรือการแต่งตั้งไม่ชอบด้วยกฎหมาย อันเป็นเหตุให้ผู้นั้นต้องพ้นจากตำแหน่งการพ้นจากตำแหน่งเช่นว่านี้ไม่กระทบกระเทือนถึงการใดที่ผู้นั้นได้ปฏิบัติไปตามอำนาจหน้าที่</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_20">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 20</span>
+              <span class="maatra-title">ความหมายของผู้บังคับบัญชาเหนือในกรณีพิเศษ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ผู้บังคับบัญชาเหนือตนขึ้นไปชั้นหนึ่งตามมาตรา 14 และมาตรา 16 ให้หมายความรวมถึง ผู้ซึ่งกฎหมายกำหนดให้มีอำนาจกำกับหรือควบคุมดูแลสำหรับกรณีของเจ้าหน้าที่ที่ไม่มีผู้บังคับบัญชาโดยตรง และนายกรัฐมนตรีสำหรับกรณีที่เจ้าหน้าที่ผู้นั้นเป็นรัฐมนตรี</p>
+            </div>
+          </div>
+    </div>
+  </div>
+  <div class="group-section " id="g_act_admin_proc_3" style="animation-delay:0.24s;">
+    <div class="group-header" onclick="toggleGroup('g_act_admin_proc_3')">
+      <span class="group-title">ส่วนที่ 2 คู่กรณี (ม.21–25)</span>
+      <div class="group-meta">
+        <span class="group-count">5 มาตรา</span>
+        <span class="group-toggle">▼</span>
+      </div>
+    </div>
+    <div class="group-body" id="g_act_admin_proc_3-body">
+          <div class="maatra-card" id="m_act_admin_proc_21">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 21</span>
+              <span class="maatra-title">สิทธิเป็นคู่กรณีในการพิจารณาทางปกครอง</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">บุคคลธรรมดา คณะบุคคล หรือนิติบุคคล อาจเป็นคู่กรณีในการพิจารณาทางปกครองได้ตามขอบเขตที่สิทธิของตนถูกกระทบกระเทือนหรืออาจถูกกระทบกระเทือนโดยมิอาจหลีกเลี่ยงได้</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_22">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 22</span>
+              <span class="maatra-title">คุณสมบัติผู้มีความสามารถกระทำการในกระบวนการ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ผู้มีความสามารถกระทำการในกระบวนการพิจารณาทางปกครองได้ จะต้องเป็น</p>
+            <p class="maatra-line indent">(1) ผู้ซึ่งบรรลุนิติภาวะ</p>
+            <p class="maatra-line indent">(2) ผู้ซึ่งมีบทกฎหมายเฉพาะกำหนดให้มีความสามารถกระทำการในเรื่องที่กำหนดได้ แม้ผู้นั้นจะยังไม่บรรลุนิติภาวะหรือความสามารถถูกจำกัดตามประมวลกฎหมายแพ่งและพาณิชย์</p>
+            <p class="maatra-line indent">(3) นิติบุคคลหรือคณะบุคคลตามมาตรา 21 โดยผู้แทนหรือตัวแทน แล้วแต่กรณี</p>
+            <p class="maatra-line indent">(4) ผู้ซึ่งมีประกาศของนายกรัฐมนตรีหรือผู้ซึ่งนายกรัฐมนตรีมอบหมายในราชกิจจานุเบกษากำหนดให้มีความสามารถกระทำการในเรื่องที่กำหนดได้ แม้ผู้นั้นจะยังไม่บรรลุนิติภาวะหรือความสามารถถูกจำกัดตามประมวลกฎหมายแพ่งและพาณิชย์</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_23">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 23</span>
+              <span class="maatra-title">สิทธินำทนายความเข้าร่วมการพิจารณา</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ในการพิจารณาทางปกครองที่คู่กรณีต้องมาปรากฏตัวต่อหน้าเจ้าหน้าที่ คู่กรณีมีสิทธินำทนายความหรือที่ปรึกษาของตนเข้ามาในการพิจารณาทางปกครองได้</p>
+            <p class="maatra-line">การใดที่ทนายความหรือที่ปรึกษาได้ทำลงต่อหน้าคู่กรณีให้ถือว่าเป็นการกระทำของคู่กรณี เว้นแต่คู่กรณีจะได้คัดค้านเสียแต่ในขณะนั้น</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_24">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 24</span>
+              <span class="maatra-title">การแต่งตั้งผู้กระทำการแทนคู่กรณี</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">คู่กรณีอาจมีหนังสือแต่งตั้งให้บุคคลหนึ่งบุคคลใดซึ่งบรรลุนิติภาวะกระทำการอย่างหนึ่งอย่างใดตามที่กำหนดแทนตนในกระบวนการพิจารณาทางปกครองใด ๆ ได้  ในการนี้เจ้าหน้าที่จะดำเนินกระบวนพิจารณาทางปกครองกับตัวคู่กรณีได้เฉพาะเมื่อเป็นเรื่องที่ผู้นั้นมีหน้าที่โดยตรงที่จะต้องทำการนั้นด้วยตนเองและต้องแจ้งให้ผู้ได้รับการแต่งตั้งให้กระทำการแทนทราบด้วย</p>
+            <p class="maatra-line">หากปรากฏว่าผู้ได้รับการแต่งตั้งให้กระทำการแทนผู้ใดไม่ทราบข้อเท็จจริงในเรื่องนั้นเพียงพอหรือมีเหตุไม่ควรไว้วางใจในความสามารถของบุคคลดังกล่าวให้เจ้าหน้าที่แจ้งให้คู่กรณีทราบโดยไม่ชักช้า</p>
+            <p class="maatra-line">การแต่งตั้งให้กระทำการแทนไม่ถือว่าสิ้นสุดลงเพราะความตายของคู่กรณีหรือการที่ความสามารถหรือความเป็นผู้แทนของคู่กรณีเปลี่ยนแปลงไป เว้นแต่ผู้สืบสิทธิตามกฎหมายของคู่กรณีหรือคู่กรณีจะถอนการแต่งตั้งดังกล่าว</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_25">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 25</span>
+              <span class="maatra-title">ตัวแทนร่วมเมื่อมีคู่กรณีเกินห้าสิบคน</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ในกรณีที่มีการยื่นคำขอโดยมีผู้ลงชื่อร่วมกันเกินห้าสิบคนหรือมีคู่กรณีเกินห้าสิบคนยื่นคำขอที่มีข้อความอย่างเดียวกันหรือทำนองเดียวกัน ถ้าในคำขอมีการระบุให้บุคคลใดเป็นตัวแทนของบุคคลดังกล่าวหรือมีข้อความเป็นปริยายให้เข้าใจได้เช่นนั้น ให้ถือว่าผู้ที่ถูกระบุชื่อดังกล่าวเป็นตัวแทนร่วมของคู่กรณีเหล่านั้น</p>
+            <p class="maatra-line">ในกรณีที่มีคู่กรณีเกินห้าสิบคนยื่นคำขอให้มีคำสั่งทางปกครองในเรื่องเดียวกัน โดยไม่มีการกำหนดให้บุคคลใดเป็นตัวแทนร่วมของตนตามวรรคหนึ่ง ให้เจ้าหน้าที่ในเรื่องนั้นแต่งตั้งบุคคลที่คู่กรณีฝ่ายข้างมากเห็นชอบเป็นตัวแทนร่วมของบุคคลดังกล่าว ในกรณีนี้ให้นำมาตรา 24 วรรคสอง และวรรคสาม มาใช้บังคับโดยอนุโลม</p>
+            <p class="maatra-line">ตัวแทนร่วมตามวรรคหนึ่งหรือวรรคสองต้องเป็นบุคคลธรรมดา</p>
+            <p class="maatra-line">คู่กรณีจะบอกเลิกการให้ตัวแทนร่วมดำเนินการแทนตนเมื่อใดก็ได้แต่ต้องมีหนังสือแจ้งให้เจ้าหน้าที่ทราบและดำเนินการใด ๆ ในกระบวนการพิจารณาทางปกครองต่อไปด้วยตนเอง</p>
+            <p class="maatra-line">ตัวแทนร่วมจะบอกเลิกการเป็นตัวแทนเมื่อใดก็ได้ แต่ต้องมีหนังสือแจ้งให้เจ้าหน้าที่ทราบกับต้องแจ้งให้คู่กรณีทุกรายทราบด้วย</p>
+            </div>
+          </div>
+    </div>
+  </div>
+  <div class="group-section " id="g_act_admin_proc_4" style="animation-delay:0.32s;">
+    <div class="group-header" onclick="toggleGroup('g_act_admin_proc_4')">
+      <span class="group-title">ส่วนที่ 3 การพิจารณา (ม.26–33)</span>
+      <div class="group-meta">
+        <span class="group-count">8 มาตรา</span>
+        <span class="group-toggle">▼</span>
+      </div>
+    </div>
+    <div class="group-body" id="g_act_admin_proc_4-body">
+          <div class="maatra-card" id="m_act_admin_proc_26">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 26</span>
+              <span class="maatra-title">เอกสารต้องจัดทำเป็นภาษาไทยและวันยื่นเอกสาร</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">เอกสารที่ยื่นต่อเจ้าหน้าที่ให้จัดทำเป็นภาษาไทย ถ้าเป็นเอกสารที่ทำขึ้นเป็นภาษาต่างประเทศ ให้คู่กรณีจัดทำคำแปลเป็นภาษาไทยที่มีการรับรองความถูกต้องมาให้ภายในระยะเวลาที่เจ้าหน้าที่กำหนด ในกรณีนี้ให้ถือว่าเอกสารดังกล่าวได้ยื่นต่อเจ้าหน้าที่ในวันที่เจ้าหน้าที่ได้รับคำแปลนั้น เว้นแต่เจ้าหน้าที่จะยอมรับเอกสารที่ทำขึ้นเป็นภาษาต่างประเทศ และในกรณีนี้ให้ถือว่าวันที่ได้ยื่นเอกสารฉบับที่ทำขึ้นเป็นภาษาต่างประเทศเป็นวันที่เจ้าหน้าที่ได้รับเอกสารดังกล่าว</p>
+            <p class="maatra-line">การรับรองความถูกต้องของคำแปลเป็นภาษาไทยหรือการยอมรับเอกสารที่ทำขึ้นเป็นภาษาต่างประเทศ ให้เป็นไปตามหลักเกณฑ์และวิธีการที่กำหนดในกฎกระทรวง</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_27">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 27</span>
+              <span class="maatra-title">หน้าที่แจ้งสิทธิและตรวจสอบความครบถ้วนของคำขอ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ให้เจ้าหน้าที่แจ้งสิทธิและหน้าที่ในกระบวนการพิจารณาทางปกครองให้คู่กรณีทราบตามความจำเป็นแก่กรณี</p>
+            <p class="maatra-line">เมื่อมีผู้ยื่นคำขอเพื่อให้เจ้าหน้าที่มีคำสั่งทางปกครอง ให้เป็นหน้าที่ของเจ้าหน้าที่ผู้รับคำขอที่จะต้องดำเนินการตรวจสอบความถูกต้องของคำขอและความครบถ้วนของเอกสาร บรรดาที่มีกฎหมายหรือกฎกำหนดให้ต้องยื่นมาพร้อมกับคำขอ หากคำขอไม่ถูกต้อง ให้เจ้าหน้าที่ดังกล่าวแนะนำให้ผู้ยื่นคำขอดำเนินการแก้ไขเพิ่มเติมเสียให้ถูกต้อง และหากมีเอกสารใดไม่ครบถ้วนให้แจ้งให้ผู้ยื่นคำขอทราบทันทีหรือภายในไม่เกินเจ็ดวันนับแต่วันที่ได้รับคำขอ ในการแจ้งดังกล่าวให้เจ้าหน้าที่ทำเป็นหนังสือลงลายมือชื่อของผู้รับคำขอและระบุรายการเอกสารที่ไม่ถูกต้องหรือยังไม่ครบถ้วนให้ผู้ยื่นคำขอทราบพร้อมทั้งบันทึกการแจ้งดังกล่าวไว้ในกระบวนพิจารณาจัดทำคำสั่งทางปกครองนั้นด้วย</p>
+            <p class="maatra-line">เมื่อผู้ยื่นคำขอได้แก้ไขคำขอหรือจัดส่งเอกสารตามที่ระบุในการแจ้งตามวรรคสองครบถ้วนแล้วเจ้าหน้าที่จะปฏิเสธไม่ดำเนินการตามคำขอเพราะเหตุยังขาดเอกสารอีกมิได้ เว้นแต่มีความจำเป็นเพื่อปฏิบัติให้ถูกต้องตามกฎหมายหรือกฎและได้รับความเห็นชอบจากผู้บังคับบัญชาเหนือตนขึ้นไปชั้นหนึ่งตามมาตรา 20 ในกรณีเช่นนั้นให้ผู้บังคับบัญชาดังกล่าวดำเนินการตรวจสอบข้อเท็จจริงโดยพลัน หากเห็นว่าเป็นความบกพร่องของเจ้าหน้าที่ให้ดำเนินการทางวินัยต่อไป</p>
+            <p class="maatra-line">ผู้ยื่นคำขอต้องดำเนินการแก้ไขหรือส่งเอกสารเพิ่มเติมต่อเจ้าหน้าที่ภายในเวลาที่เจ้าหน้าที่กำหนดหรือภายในเวลาที่เจ้าหน้าที่อนุญาตให้ขยายออกไป เมื่อพ้นกำหนดเวลาดังกล่าวแล้ว หากผู้ยื่นคำขอไม่แก้ไขหรือส่งเอกสารเพิ่มเติมให้ครบถ้วน ให้ถือว่าผู้ยื่นคำขอไม่ประสงค์ที่จะให้เจ้าหน้าที่ดำเนินการตามคำขอต่อไป ในกรณีเช่นนั้นให้เจ้าหน้าที่ส่งเอกสารคืนให้ผู้ยื่นคำขอพร้อมทั้งแจ้งสิทธิในการอุทธรณ์ให้ผู้ยื่นคำขอทราบ และบันทึกการดำเนินการดังกล่าวไว้</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_28">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 28</span>
+              <span class="maatra-title">เจ้าหน้าที่ตรวจสอบข้อเท็จจริงได้เองโดยอิสระ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ในการพิจารณาทางปกครอง เจ้าหน้าที่อาจตรวจสอบข้อเท็จจริงได้ตามความเหมาะสมในเรื่องนั้น ๆ โดยไม่ต้องผูกพันอยู่กับคำขอหรือพยานหลักฐานของคู่กรณี</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_29">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 29</span>
+              <span class="maatra-title">หน้าที่แสวงหาพยานหลักฐานและสิทธิได้รับค่าป่วยการ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">เจ้าหน้าที่ต้องพิจารณาพยานหลักฐานที่ตนเห็นว่าจำเป็นแก่การพิสูจน์ข้อเท็จจริง  ในการนี้ ให้รวมถึงการดำเนินการดังต่อไปนี้</p>
+            <p class="maatra-line indent">(1) แสวงหาพยานหลักฐานทุกอย่างที่เกี่ยวข้อง</p>
+            <p class="maatra-line indent">(2) รับฟังพยานหลักฐาน คำชี้แจง หรือความเห็นของคู่กรณีหรือของพยานบุคคลหรือพยานผู้เชี่ยวชาญที่คู่กรณีกล่าวอ้าง เว้นแต่เจ้าหน้าที่เห็นว่าเป็นการกล่าวอ้างที่ไม่จำเป็น ฟุ่มเฟือยหรือเพื่อประวิงเวลา</p>
+            <p class="maatra-line indent">(3) ขอข้อเท็จจริงหรือความเห็นจากคู่กรณี พยานบุคคล หรือพยานผู้เชี่ยวชาญ</p>
+            <p class="maatra-line indent">(4) ขอให้ผู้ครอบครองเอกสารส่งเอกสารที่เกี่ยวข้อง</p>
+            <p class="maatra-line indent">(5) ออกไปตรวจสถานที่</p>
+            <p class="maatra-line">คู่กรณีต้องให้ความร่วมมือกับเจ้าหน้าที่ในการพิสูจน์ข้อเท็จจริง และมีหน้าที่แจ้งพยานหลักฐานที่ตนทราบแก่เจ้าหน้าที่</p>
+            <p class="maatra-line">พยานหรือพยานผู้เชี่ยวชาญที่เจ้าหน้าที่เรียกมาให้ถ้อยคำหรือทำความเห็นมีสิทธิได้รับค่าป่วยการตามหลักเกณฑ์และวิธีการที่กำหนดในกฎกระทรวง</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_30">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 30</span>
+              <span class="maatra-title">สิทธิคู่กรณีรับรู้ข้อเท็จจริงและโต้แย้งก่อนมีคำสั่ง</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ในกรณีที่คำสั่งทางปกครองอาจกระทบถึงสิทธิของคู่กรณี เจ้าหน้าที่ต้องให้คู่กรณีมีโอกาสที่จะได้ทราบข้อเท็จจริงอย่างเพียงพอและมีโอกาสได้โต้แย้งและแสดงพยานหลักฐานของตน</p>
+            <p class="maatra-line">ความในวรรคหนึ่งมิให้นำมาใช้บังคับในกรณีดังต่อไปนี้ เว้นแต่เจ้าหน้าที่จะเห็นสมควรปฏิบัติเป็นอย่างอื่น</p>
+            <p class="maatra-line indent">(1) เมื่อมีความจำเป็นรีบด่วนหากปล่อยให้เนิ่นช้าไปจะก่อให้เกิดความเสียหายอย่างร้ายแรงแก่ผู้หนึ่งผู้ใดหรือจะกระทบต่อประโยชน์สาธารณะ</p>
+            <p class="maatra-line indent">(2) เมื่อจะมีผลทำให้ระยะเวลาที่กฎหมายหรือกฎกำหนดไว้ในการทำคำสั่งทางปกครองต้องล่าช้าออกไป</p>
+            <p class="maatra-line indent">(3) เมื่อเป็นข้อเท็จจริงที่คู่กรณีนั้นเองได้ให้ไว้ในคำขอ คำให้การหรือคำแถลง</p>
+            <p class="maatra-line indent">(4) เมื่อโดยสภาพเห็นได้ชัดในตัวว่าการให้โอกาสดังกล่าวไม่อาจกระทำได้</p>
+            <p class="maatra-line indent">(5) เมื่อเป็นมาตรการบังคับทางปกครอง</p>
+            <p class="maatra-line indent">(6) กรณีอื่นตามที่กำหนดในกฎกระทรวง</p>
+            <p class="maatra-line">ห้ามมิให้เจ้าหน้าที่ให้โอกาสตามวรรคหนึ่ง ถ้าจะก่อให้เกิดผลเสียหายอย่างร้ายแรงต่อประโยชน์สาธารณะ</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_31">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 31</span>
+              <span class="maatra-title">สิทธิตรวจดูเอกสารและการจัดทำสำเนา</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">คู่กรณีมีสิทธิขอตรวจดูเอกสารที่จำเป็นต้องรู้เพื่อการโต้แย้งหรือชี้แจงหรือป้องกันสิทธิของตนได้ แต่ถ้ายังไม่ได้ทำคำสั่งทางปกครองในเรื่องนั้น คู่กรณีไม่มีสิทธิขอตรวจดูเอกสารอันเป็นต้นร่างคำวินิจฉัย</p>
+            <p class="maatra-line">การตรวจดูเอกสาร ค่าใช้จ่ายในการตรวจดูเอกสาร หรือการจัดทำสำเนาเอกสารให้เป็นไปตามหลักเกณฑ์และวิธีการที่กำหนดในกฎกระทรวง</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_32">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 32</span>
+              <span class="maatra-title">หลักเกณฑ์การตรวจดูเอกสารที่ห้ามเปิดเผย</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">เจ้าหน้าที่อาจไม่อนุญาตให้ตรวจดูเอกสารหรือพยานหลักฐานได้ ถ้าเป็นกรณีที่ต้องรักษาไว้เป็นความลับ</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_33">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 33</span>
+              <span class="maatra-title">ระยะเวลาดำเนินการตามคำขอและแจ้งผลล่าช้า</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">เพื่อประโยชน์ในการอำนวยความสะดวกแก่ประชาชน ความประหยัดและความมีประสิทธิภาพในการดำเนินงานของรัฐ ให้คณะรัฐมนตรีวางระเบียบกำหนดหลักเกณฑ์และวิธีการเพื่อให้เจ้าหน้าที่กำหนดเวลาสำหรับการพิจารณาทางปกครองขึ้นไว้ตามความเหมาะสมแก่กรณี  ทั้งนี้ เท่าที่ไม่ขัดหรือแย้งกับกฎหมายหรือกฎในเรื่องนั้น</p>
+            <p class="maatra-line">ในกรณีที่การดำเนินงานในเรื่องใดจะต้องผ่านการพิจารณาของเจ้าหน้าที่มากกว่าหนึ่งราย เจ้าหน้าที่ที่เกี่ยวข้องมีหน้าที่ต้องประสานงานกันในการกำหนดเวลาเพื่อการดำเนินงานในเรื่องนั้น</p>
+            </div>
+          </div>
+    </div>
+  </div>
+  <div class="group-section " id="g_act_admin_proc_5" style="animation-delay:0.4s;">
+    <div class="group-header" onclick="toggleGroup('g_act_admin_proc_5')">
+      <span class="group-title">ส่วนที่ 4 รูปแบบและผลของคำสั่งทางปกครอง (ม.34–43)</span>
+      <div class="group-meta">
+        <span class="group-count">11 มาตรา</span>
+        <span class="group-toggle">▼</span>
+      </div>
+    </div>
+    <div class="group-body" id="g_act_admin_proc_5-body">
+          <div class="maatra-card" id="m_act_admin_proc_34">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 34</span>
+              <span class="maatra-title">รูปแบบคำสั่งทางปกครอง: เป็นหนังสือหรือวาจา</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">คำสั่งทางปกครองอาจทำเป็นหนังสือหรือวาจาหรือโดยการสื่อความหมายในรูปแบบอื่นก็ได้ แต่ต้องมีข้อความหรือความหมายที่ชัดเจนเพียงพอที่จะเข้าใจได้</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_35">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 35</span>
+              <span class="maatra-title">องค์ประกอบคำสั่งทางปกครองเป็นหนังสือที่ต้องมี</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ในกรณีที่คำสั่งทางปกครองเป็นคำสั่งด้วยวาจา ถ้าผู้รับคำสั่งนั้นร้องขอและการร้องขอได้กระทำโดยมีเหตุอันสมควรภายในเจ็ดวันนับแต่วันที่มีคำสั่งดังกล่าว เจ้าหน้าที่ผู้ออกคำสั่งต้องยืนยันคำสั่งนั้นเป็นหนังสือ</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_36">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 36</span>
+              <span class="maatra-title">คำสั่งทางปกครองที่ออกด้วยวาจา: ขอเป็นหนังสือได้</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">คำสั่งทางปกครองที่ทำเป็นหนังสืออย่างน้อยต้องระบุ วัน เดือน และปีที่ทำคำสั่ง ชื่อและตำแหน่งของเจ้าหน้าที่ผู้ทำคำสั่ง พร้อมทั้งมีลายมือชื่อของเจ้าหน้าที่ผู้ทำคำสั่งนั้น</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_37">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 37</span>
+              <span class="maatra-title">เงื่อนไขที่แนบท้ายในคำสั่งทางปกครอง</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">คำสั่งทางปกครองที่ทำเป็นหนังสือและการยืนยันคำสั่งทางปกครองเป็นหนังสือต้องจัดให้มีเหตุผลไว้ด้วย และเหตุผลนั้นอย่างน้อยต้องประกอบด้วย</p>
+            <p class="maatra-line indent">(1) ข้อเท็จจริงอันเป็นสาระสำคัญ</p>
+            <p class="maatra-line indent">(2) ข้อกฎหมายที่อ้างอิง</p>
+            <p class="maatra-line indent">(3) ข้อพิจารณาและข้อสนับสนุนในการใช้ดุลพินิจ</p>
+            <p class="maatra-line">นายกรัฐมนตรีหรือผู้ซึ่งนายกรัฐมนตรีมอบหมายอาจประกาศในราชกิจจานุเบกษากำหนดให้คำสั่งทางปกครองกรณีหนึ่งกรณีใดต้องระบุเหตุผลไว้ในคำสั่งนั้นเองหรือในเอกสารแนบท้ายคำสั่งนั้นก็ได้</p>
+            <p class="maatra-line">บทบัญญัติตามวรรคหนึ่งไม่ใช้บังคับกับกรณีดังต่อไปนี้</p>
+            <p class="maatra-line indent">(1) เป็นกรณีที่มีผลตรงตามคำขอและไม่กระทบสิทธิและหน้าที่ของบุคคลอื่น</p>
+            <p class="maatra-line indent">(2) เหตุผลนั้นเป็นที่รู้กันอยู่แล้วโดยไม่จำต้องระบุอีก</p>
+            <p class="maatra-line indent">(3) เป็นกรณีที่ต้องรักษาไว้เป็นความลับตามมาตรา 32</p>
+            <p class="maatra-line indent">(4) เป็นการออกคำสั่งทางปกครองด้วยวาจาหรือเป็นกรณีเร่งด่วน แต่ต้องให้เหตุผลเป็นลายลักษณ์อักษรในเวลาอันควรหากผู้อยู่ในบังคับของคำสั่งนั้นร้องขอ</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_38">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 38</span>
+              <span class="maatra-title">การแจ้งคำสั่งทางปกครองให้คู่กรณีทราบ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">บทบัญญัติตามมาตรา 36 และมาตรา 37 วรรคหนึ่ง มิให้ใช้บังคับกับคำสั่งทางปกครองที่กำหนดในกฎกระทรวง  ทั้งนี้ ตามหลักเกณฑ์ วิธีการ และเงื่อนไขที่กำหนดในกฎกระทรวง</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_39">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 39</span>
+              <span class="maatra-title">คำสั่งทางปกครองที่ไม่ได้ให้เหตุผล: ขอเหตุผลได้</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">การออกคำสั่งทางปกครองเจ้าหน้าที่อาจกำหนดเงื่อนไขใด ๆ ได้เท่าที่จำเป็นเพื่อให้บรรลุวัตถุประสงค์ของกฎหมาย เว้นแต่กฎหมายจะกำหนดข้อจำกัดดุลพินิจเป็นอย่างอื่น</p>
+            <p class="maatra-line">การกำหนดเงื่อนไขตามวรรคหนึ่ง ให้หมายความรวมถึงการกำหนดเงื่อนไขในกรณีดังต่อไปนี้ ตามความเหมาะสมแก่กรณีด้วย</p>
+            <p class="maatra-line indent">(1) การกำหนดให้สิทธิหรือภาระหน้าที่เริ่มมีผลหรือสิ้นผล ณ เวลาใดเวลาหนึ่ง</p>
+            <p class="maatra-line indent">(2) การกำหนดให้การเริ่มมีผลหรือสิ้นผลของสิทธิหรือภาระหน้าที่ต้องขึ้นอยู่กับเหตุการณ์ในอนาคตที่ไม่แน่นอน</p>
+            <p class="maatra-line indent">(3) ข้อสงวนสิทธิที่จะยกเลิกคำสั่งทางปกครอง</p>
+            <p class="maatra-line indent">(4) การกำหนดให้ผู้ได้รับประโยชน์ต้องกระทำหรืองดเว้นกระทำหรือต้องมีภาระหน้าที่หรือยอมรับภาระหน้าที่หรือความรับผิดชอบบางประการ หรือการกำหนดข้อความในการจัดให้มี เปลี่ยนแปลง หรือเพิ่มข้อกำหนดดังกล่าว</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_39_1">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 39/1</span>
+              <span class="maatra-title">การออกคำสั่งทางปกครองด้วยวิธีการทางอิเล็กทรอนิกส์</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">การออกคำสั่งทางปกครองเป็นหนังสือในเรื่องใด หากมิได้มีกฎหมายหรือกฎกำหนดระยะเวลาในการออกคำสั่งทางปกครองในเรื่องนั้นไว้เป็นประการอื่น ให้เจ้าหน้าที่ออกคำสั่งทางปกครองนั้นให้แล้วเสร็จภายในสามสิบวันนับแต่วันที่เจ้าหน้าที่ได้รับคำขอและเอกสารถูกต้องครบถ้วน</p>
+            <p class="maatra-line">ให้เป็นหน้าที่ของผู้บังคับบัญชาชั้นเหนือขึ้นไปของเจ้าหน้าที่ ที่จะกำกับดูแลให้เจ้าหน้าที่ดำเนินการให้เป็นไปตามวรรคหนึ่ง</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_40">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 40</span>
+              <span class="maatra-title">การระบุวิธีอุทธรณ์และระยะเวลาในคำสั่ง</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">คำสั่งทางปกครองที่อาจอุทธรณ์หรือโต้แย้งต่อไปได้ให้ระบุกรณีที่อาจอุทธรณ์หรือโต้แย้ง การยื่นคำอุทธรณ์หรือคำโต้แย้ง และระยะเวลาสำหรับการอุทธรณ์หรือการโต้แย้งดังกล่าวไว้ด้วย</p>
+            <p class="maatra-line">ในกรณีที่มีการฝ่าฝืนบทบัญญัติตามวรรคหนึ่ง ให้ระยะเวลาสำหรับการอุทธรณ์หรือการโต้แย้งเริ่มนับใหม่ตั้งแต่วันที่ได้รับแจ้งหลักเกณฑ์ตามวรรคหนึ่ง แต่ถ้าไม่มีการแจ้งใหม่และระยะเวลาดังกล่าวมีระยะเวลาสั้นกว่าหนึ่งปี ให้ขยายเป็นหนึ่งปีนับแต่วันที่ได้รับคำสั่งทางปกครอง</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_41">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 41</span>
+              <span class="maatra-title">ข้อบกพร่องที่ไม่ทำให้คำสั่งทางปกครองไม่สมบูรณ์</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">คำสั่งทางปกครองที่ออกโดยการฝ่าฝืนหรือไม่ปฏิบัติตามหลักเกณฑ์ดังต่อไปนี้ ไม่เป็นเหตุให้คำสั่งทางปกครองนั้นไม่สมบูรณ์</p>
+            <p class="maatra-line indent">(1) การออกคำสั่งทางปกครองโดยยังไม่มีผู้ยื่นคำขอในกรณีที่เจ้าหน้าที่จะดำเนินการเองไม่ได้นอกจากจะมีผู้ยื่นคำขอ ถ้าต่อมาในภายหลังได้มีการยื่นคำขอเช่นนั้นแล้ว</p>
+            <p class="maatra-line indent">(2) คำสั่งทางปกครองที่ต้องจัดให้มีเหตุผลตามมาตรา 37 วรรคหนึ่ง ถ้าได้มีการจัดให้มีเหตุผลดังกล่าวในภายหลัง</p>
+            <p class="maatra-line indent">(3) การรับฟังคู่กรณีที่จำเป็นต้องกระทำได้ดำเนินการมาโดยไม่สมบูรณ์ ถ้าได้มีการรับฟังให้สมบูรณ์ในภายหลัง</p>
+            <p class="maatra-line indent">(4) คำสั่งทางปกครองที่ต้องให้เจ้าหน้าที่อื่นให้ความเห็นชอบก่อน ถ้าเจ้าหน้าที่นั้นได้ให้ความเห็นชอบในภายหลัง</p>
+            <p class="maatra-line">เมื่อมีการดำเนินการตามวรรคหนึ่ง (1) (2) (3) หรือ (4) แล้ว และเจ้าหน้าที่ผู้มีคำสั่งทางปกครองประสงค์ให้ผลเป็นไปตามคำสั่งเดิมให้เจ้าหน้าที่ผู้นั้นบันทึกข้อเท็จจริงและความประสงค์ของตนไว้ในหรือแนบไว้กับคำสั่งเดิมและต้องมีหนังสือแจ้งความประสงค์ของตนให้คู่กรณีทราบด้วย</p>
+            <p class="maatra-line">กรณีตาม (2) (3) และ (4) จะต้องกระทำก่อนสิ้นสุดกระบวนการพิจารณาอุทธรณ์ตามส่วนที่ 5 ของหมวดนี้ หรือตามกฎหมายเฉพาะว่าด้วยการนั้น หรือถ้าเป็นกรณีที่ไม่ต้องมีการอุทธรณ์ดังกล่าวก็ต้องก่อนมีการนำคำสั่งทางปกครองไปสู่การพิจารณาของผู้มีอำนาจพิจารณาวินิจฉัยความถูกต้องของคำสั่งทางปกครองนั้น</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_42">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 42</span>
+              <span class="maatra-title">ผลใช้ยันและการสิ้นผลของคำสั่งทางปกครอง</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">คำสั่งทางปกครองให้มีผลใช้ยันต่อบุคคลตั้งแต่ขณะที่ผู้นั้นได้รับแจ้งเป็นต้นไป</p>
+            <p class="maatra-line">คำสั่งทางปกครองย่อมมีผลตราบเท่าที่ยังไม่มีการเพิกถอนหรือสิ้นผลลงโดยเงื่อนเวลาหรือโดยเหตุอื่น</p>
+            <p class="maatra-line">เมื่อคำสั่งทางปกครองสิ้นผลลง ให้เจ้าหน้าที่มีอำนาจเรียกผู้ซึ่งครอบครองเอกสารหรือวัตถุอื่นใดที่ได้จัดทำขึ้นเนื่องในการมีคำสั่งทางปกครองดังกล่าว ซึ่งมีข้อความหรือเครื่องหมายแสดงถึงการมีอยู่ของคำสั่งทางปกครองนั้น ให้ส่งคืนสิ่งนั้นหรือให้นำสิ่งของดังกล่าวอันเป็นกรรมสิทธิ์ของผู้นั้นมาให้เจ้าหน้าที่จัดทำเครื่องหมายแสดงการสิ้นผลของคำสั่งทางปกครองดังกล่าวได้</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_43">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 43</span>
+              <span class="maatra-title">การแก้ไขข้อผิดพลาดเล็กน้อยในคำสั่งทางปกครอง</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">คำสั่งทางปกครองที่มีข้อผิดพลาดเล็กน้อยหรือผิดหลงเล็กน้อยนั้น เจ้าหน้าที่อาจแก้ไขเพิ่มเติมได้เสมอ</p>
+            <p class="maatra-line">ในการแก้ไขเพิ่มเติมคำสั่งทางปกครองตามวรรคหนึ่งให้แจ้งให้ผู้ที่เกี่ยวข้องทราบตามควรแก่กรณี  ในการนี้ เจ้าหน้าที่อาจเรียกให้ผู้ที่เกี่ยวข้องจัดส่งคำสั่งทางปกครอง เอกสารหรือวัตถุอื่นใดที่ได้จัดทำขึ้นเนื่องในการมีคำสั่งทางปกครองดังกล่าวมาเพื่อการแก้ไขเพิ่มเติมได้</p>
+            </div>
+          </div>
+    </div>
+  </div>
+  <div class="group-section " id="g_act_admin_proc_6" style="animation-delay:0.48s;">
+    <div class="group-header" onclick="toggleGroup('g_act_admin_proc_6')">
+      <span class="group-title">ส่วนที่ 5 การอุทธรณ์คำสั่งทางปกครอง (ม.44–48)</span>
+      <div class="group-meta">
+        <span class="group-count">5 มาตรา</span>
+        <span class="group-toggle">▼</span>
+      </div>
+    </div>
+    <div class="group-body" id="g_act_admin_proc_6-body">
+          <div class="maatra-card" id="m_act_admin_proc_44">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 44</span>
+              <span class="maatra-title">การอุทธรณ์คำสั่งทางปกครองภายใน 15 วัน</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ภายใต้บังคับมาตรา 48 ในกรณีที่คำสั่งทางปกครองใดไม่ได้ออกโดยรัฐมนตรีและไม่มีกฎหมายกำหนดขั้นตอนอุทธรณ์ภายในฝ่ายปกครองไว้เป็นการเฉพาะ ให้คู่กรณีอุทธรณ์คำสั่งทางปกครองนั้นโดยยื่นต่อเจ้าหน้าที่ผู้ทำคำสั่งทางปกครองภายในสิบห้าวันนับแต่วันที่ตนได้รับแจ้งคำสั่งดังกล่าว</p>
+            <p class="maatra-line">คำอุทธรณ์ต้องทำเป็นหนังสือโดยระบุข้อโต้แย้งและข้อเท็จจริงหรือข้อกฎหมายที่อ้างอิงประกอบด้วย</p>
+            <p class="maatra-line">การอุทธรณ์ไม่เป็นเหตุให้ทุเลาการบังคับตามคำสั่งทางปกครอง เว้นแต่จะมีการสั่งให้ทุเลาการบังคับตามมาตรา 63/2 วรรคหนึ่ง</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_45">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 45</span>
+              <span class="maatra-title">การพิจารณาคำอุทธรณ์ภายใน 30 วัน</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ให้เจ้าหน้าที่ตามมาตรา 44 วรรคหนึ่ง พิจารณาคำอุทธรณ์และแจ้งผู้อุทธรณ์โดยไม่ชักช้า แต่ต้องไม่เกินสามสิบวันนับแต่วันที่ได้รับอุทธรณ์ ในกรณีที่เห็นด้วยกับคำอุทธรณ์ไม่ว่าทั้งหมดหรือบางส่วนก็ให้ดำเนินการเปลี่ยนแปลงคำสั่งทางปกครองตามความเห็นของตนภายในกำหนดเวลาดังกล่าวด้วย</p>
+            <p class="maatra-line">ถ้าเจ้าหน้าที่ตามมาตรา 44 วรรคหนึ่ง ไม่เห็นด้วยกับคำอุทธรณ์ไม่ว่าทั้งหมดหรือบางส่วนก็ให้เร่งรายงานความเห็นพร้อมเหตุผลไปยังผู้มีอำนาจพิจารณาคำอุทธรณ์ภายในกำหนดเวลาตามวรรคหนึ่ง ให้ผู้มีอำนาจพิจารณาคำอุทธรณ์พิจารณาให้แล้วเสร็จภายในสามสิบวันนับแต่วันที่ตนได้รับรายงาน ถ้ามีเหตุจำเป็นไม่อาจพิจารณาให้แล้วเสร็จภายในระยะเวลาดังกล่าว ให้ผู้มีอำนาจพิจารณาอุทธรณ์มีหนังสือแจ้งให้ผู้อุทธรณ์ทราบก่อนครบกำหนดเวลาดังกล่าว  ในการนี้ ให้ขยายระยะเวลาพิจารณาอุทธรณ์ออกไปได้ไม่เกินสามสิบวันนับแต่วันที่ครบกำหนดเวลาดังกล่าว</p>
+            <p class="maatra-line">เจ้าหน้าที่ผู้ใดจะเป็นผู้มีอำนาจพิจารณาอุทธรณ์ตามวรรคสองให้เป็นไปตามที่กำหนดในกฎกระทรวง</p>
+            <p class="maatra-line">บทบัญญัติมาตรานี้ไม่ใช้กับกรณีที่มีกฎหมายเฉพาะกำหนดไว้เป็นอย่างอื่น</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_46">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 46</span>
+              <span class="maatra-title">ขอบเขตการทบทวนในชั้นอุทธรณ์</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ในการพิจารณาอุทธรณ์ ให้เจ้าหน้าที่พิจารณาทบทวนคำสั่งทางปกครองได้ไม่ว่าจะเป็นปัญหาข้อเท็จจริง ข้อกฎหมาย หรือความเหมาะสมของการทำคำสั่งทางปกครอง และอาจมีคำสั่งเพิกถอนคำสั่งทางปกครองเดิมหรือเปลี่ยนแปลงคำสั่งนั้นไปในทางใด  ทั้งนี้ ไม่ว่าจะเป็นการเพิ่มภาระหรือลดภาระหรือใช้ดุลพินิจแทนในเรื่องความเหมาะสมของการทำคำสั่งทางปกครองหรือมีข้อกำหนดเป็นเงื่อนไขอย่างไรก็ได้</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_47">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 47</span>
+              <span class="maatra-title">การอุทธรณ์ต่อคณะกรรมการ: ขอบเขตตามกฎหมายเฉพาะ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">การใดที่กฎหมายกำหนดให้อุทธรณ์ต่อเจ้าหน้าที่ซึ่งเป็นคณะกรรมการ ขอบเขตการพิจารณาอุทธรณ์ให้เป็นไปตามกฎหมายว่าด้วยการนั้น สำหรับกระบวนการพิจารณาให้ปฏิบัติตามบทบัญญัติ หมวด 2 นี้ เท่าที่ไม่ขัดหรือแย้งกับกฎหมายดังกล่าว</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_48">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 48</span>
+              <span class="maatra-title">สิทธิโต้แย้งคำสั่งของคณะกรรมการต่างๆ (ยกเลิกเมื่อมีศาลปกครอง)</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">คำสั่งทางปกครองของบรรดาคณะกรรมการต่าง ๆ ไม่ว่าจะจัดตั้งขึ้นตามกฎหมายหรือไม่ ให้คู่กรณีมีสิทธิโต้แย้งต่อคณะกรรมการวินิจฉัยร้องทุกข์ตามกฎหมายว่าด้วยคณะกรรมการกฤษฎีกาได้ทั้งในปัญหาข้อเท็จจริงและข้อกฎหมาย ภายในเก้าสิบวันนับแต่วันที่ได้รับแจ้งคำสั่งนั้น แต่ถ้าคณะกรรมการดังกล่าวเป็นคณะกรรมการวินิจฉัยข้อพิพาท สิทธิการอุทธรณ์และกำหนดเวลาอุทธรณ์ให้เป็นไปตามที่บัญญัติในกฎหมายว่าด้วยคณะกรรมการกฤษฎีกา</p>
+            </div>
+          </div>
+    </div>
+  </div>
+  <div class="group-section " id="g_act_admin_proc_7" style="animation-delay:0.56s;">
+    <div class="group-header" onclick="toggleGroup('g_act_admin_proc_7')">
+      <span class="group-title">ส่วนที่ 6 การเพิกถอนคำสั่งทางปกครอง (ม.49–53)</span>
+      <div class="group-meta">
+        <span class="group-count">5 มาตรา</span>
+        <span class="group-toggle">▼</span>
+      </div>
+    </div>
+    <div class="group-body" id="g_act_admin_proc_7-body">
+          <div class="maatra-card" id="m_act_admin_proc_49">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 49</span>
+              <span class="maatra-title">อำนาจเพิกถอนคำสั่งทางปกครองโดยเจ้าหน้าที่ผู้บังคับบัญชา</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">เจ้าหน้าที่หรือผู้บังคับบัญชาของเจ้าหน้าที่อาจเพิกถอนคำสั่งทางปกครองได้ตามหลักเกณฑ์ในมาตรา 51 มาตรา 52 และมาตรา 53 ไม่ว่าจะพ้นขั้นตอนการกำหนดให้อุทธรณ์หรือให้โต้แย้งตามกฎหมายนี้หรือกฎหมายอื่นมาแล้วหรือไม่</p>
+            <p class="maatra-line">การเพิกถอนคำสั่งทางปกครองที่มีลักษณะเป็นการให้ประโยชน์ต้องกระทำภายในเก้าสิบวันนับแต่ได้รู้ถึงเหตุที่จะให้เพิกถอนคำสั่งทางปกครองนั้น เว้นแต่คำสั่งทางปกครองจะได้ทำขึ้นเพราะการแสดงข้อความอันเป็นเท็จหรือปกปิดข้อความจริงซึ่งควรบอกให้แจ้งหรือการข่มขู่หรือการชักจูงใจโดยการให้ทรัพย์สินหรือประโยชน์อื่นใดที่มิชอบด้วยกฎหมาย</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_50">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 50</span>
+              <span class="maatra-title">การเพิกถอนคำสั่งที่ไม่ชอบด้วยกฎหมาย: ย้อนหลังหรือไม่ได้</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">คำสั่งทางปกครองที่ไม่ชอบด้วยกฎหมายอาจถูกเพิกถอนทั้งหมดหรือบางส่วนโดยจะให้มีผลย้อนหลังหรือไม่ย้อนหลังหรือมีผลในอนาคตไปถึงขณะใดขณะหนึ่งตามที่กำหนดได้ แต่ถ้าคำสั่งนั้นเป็นคำสั่งซึ่งเป็นการให้ประโยชน์แก่ผู้รับ การเพิกถอนต้องเป็นไปตามบทบัญญัติมาตรา 51 และมาตรา 52</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_51">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 51</span>
+              <span class="maatra-title">เงื่อนไขเพิกถอนคำสั่งที่ให้ประโยชน์แก่ผู้รับ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">การเพิกถอนคำสั่งทางปกครองที่ไม่ชอบด้วยกฎหมายซึ่งเป็นการให้เงิน หรือให้ทรัพย์สินหรือให้ประโยชน์ที่อาจแบ่งแยกได้ ให้คำนึงถึงความเชื่อโดยสุจริตของผู้รับประโยชน์ในความคงอยู่ของคำสั่งทางปกครองนั้นกับประโยชน์สาธารณะประกอบกัน</p>
+            <p class="maatra-line">ความเชื่อโดยสุจริตตามวรรคหนึ่งจะได้รับความคุ้มครองต่อเมื่อผู้รับคำสั่งทางปกครองได้ใช้ประโยชน์อันเกิดจากคำสั่งทางปกครองหรือได้ดำเนินการเกี่ยวกับทรัพย์สินไปแล้วโดยไม่อาจแก้ไขเปลี่ยนแปลงได้หรือการเปลี่ยนแปลงจะทำให้ผู้นั้นต้องเสียหายเกินควรแก่กรณี</p>
+            <p class="maatra-line">ในกรณีดังต่อไปนี้ ผู้รับคำสั่งทางปกครองจะอ้างความเชื่อโดยสุจริตไม่ได้</p>
+            <p class="maatra-line indent">(1) ผู้นั้นได้แสดงข้อความอันเป็นเท็จหรือปกปิดข้อความจริงซึ่งควรบอกให้แจ้ง หรือข่มขู่ หรือชักจูงใจโดยการให้ทรัพย์สินหรือให้ประโยชน์อื่นใดที่มิชอบด้วยกฎหมาย</p>
+            <p class="maatra-line indent">(2) ผู้นั้นได้ให้ข้อความซึ่งไม่ถูกต้องหรือไม่ครบถ้วนในสาระสำคัญ</p>
+            <p class="maatra-line indent">(3) ผู้นั้นได้รู้ถึงความไม่ชอบด้วยกฎหมายของคำสั่งทางปกครองในขณะได้รับคำสั่งทางปกครองหรือการไม่รู้นั้นเป็นไปโดยความประมาทเลินเล่ออย่างร้ายแรง</p>
+            <p class="maatra-line">ในกรณีที่เพิกถอนโดยให้มีผลย้อนหลัง การคืนเงิน ทรัพย์สินหรือประโยชน์ที่ผู้รับคำสั่งทางปกครองได้ไป ให้นำบทบัญญัติว่าด้วยลาภมิควรได้ในประมวลกฎหมายแพ่งและพาณิชย์มาใช้บังคับโดยอนุโลม โดยถ้าเมื่อใดผู้รับคำสั่งทางปกครองได้รู้ถึงความไม่ชอบด้วยกฎหมายของคำสั่งทางปกครองหรือควรได้รู้เช่นนั้นหากผู้นั้นมิได้ประมาทเลินเล่ออย่างร้ายแรงให้ถือว่าผู้นั้นตกอยู่ในฐานะไม่สุจริตตั้งแต่เวลานั้นเป็นต้นไป และในกรณีตามวรรคสาม ผู้นั้นต้องรับผิดในการคืนเงิน ทรัพย์สินหรือประโยชน์ที่ได้รับไปเต็มจำนวน</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_52">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 52</span>
+              <span class="maatra-title">เงื่อนไขเพิกถอนคำสั่งที่ให้ประโยชน์โดยเงิน/สิ่งของ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">คำสั่งทางปกครองที่ไม่ชอบด้วยกฎหมายและไม่อยู่ในบังคับของมาตรา 51 อาจถูกเพิกถอนทั้งหมดหรือบางส่วนได้ แต่ผู้ได้รับผลกระทบจากการเพิกถอนคำสั่งทางปกครองดังกล่าวมีสิทธิได้รับค่าทดแทนความเสียหายเนื่องจากความเชื่อโดยสุจริตในความคงอยู่ของคำสั่งทางปกครองได้ และให้นำความในมาตรา 51 วรรคหนึ่ง วรรคสอง และวรรคสาม มาใช้บังคับโดยอนุโลม แต่ต้องร้องขอค่าทดแทนภายในหนึ่งร้อยแปดสิบวันนับแต่ได้รับแจ้งให้ทราบถึงการเพิกถอนนั้น</p>
+            <p class="maatra-line">ค่าทดแทนความเสียหายตามมาตรานี้จะต้องไม่สูงกว่าประโยชน์ที่ผู้นั้นอาจได้รับหากคำสั่งทางปกครองดังกล่าวไม่ถูกเพิกถอน</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_53">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 53</span>
+              <span class="maatra-title">การเพิกถอนคำสั่งที่ชอบด้วยกฎหมายและค่าทดแทน</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">คำสั่งทางปกครองที่ชอบด้วยกฎหมายซึ่งไม่เป็นการให้ประโยชน์แก่ผู้รับคำสั่งทางปกครองอาจถูกเพิกถอนทั้งหมดหรือบางส่วนโดยให้มีผลตั้งแต่ขณะที่เพิกถอนหรือมีผลในอนาคตไปถึงขณะใดขณะหนึ่งตามที่กำหนดได้ เว้นแต่เป็นกรณีที่คงต้องทำคำสั่งทางปกครองที่มีเนื้อหาทำนองเดียวกันนั้นอีก หรือเป็นกรณีที่การเพิกถอนไม่อาจกระทำได้เพราะเหตุอื่น  ทั้งนี้ ให้คำนึงถึงประโยชน์ของบุคคลภายนอกประกอบด้วย</p>
+            <p class="maatra-line">คำสั่งทางปกครองที่ชอบด้วยกฎหมายซึ่งเป็นการให้ประโยชน์แก่ผู้รับคำสั่งทางปกครองอาจถูกเพิกถอนทั้งหมดหรือบางส่วนโดยให้มีผลตั้งแต่ขณะที่เพิกถอน หรือมีผลในอนาคตไปถึงขณะใดขณะหนึ่งตามที่กำหนดได้เฉพาะเมื่อมีกรณีดังต่อไปนี้</p>
+            <p class="maatra-line indent">(1) มีกฎหมายกำหนดให้เพิกถอนได้หรือมีข้อสงวนสิทธิให้เพิกถอนได้ในคำสั่งทางปกครองนั้นเอง</p>
+            <p class="maatra-line indent">(2) คำสั่งทางปกครองนั้นมีข้อกำหนดให้ผู้รับประโยชน์ต้องปฏิบัติ แต่ไม่มีการปฏิบัติภายในเวลาที่กำหนด</p>
+            <p class="maatra-line indent">(3) ข้อเท็จจริงและพฤติการณ์เปลี่ยนแปลงไป ซึ่งหากมีข้อเท็จจริงและพฤติการณ์เช่นนี้ในขณะทำคำสั่งทางปกครองแล้วเจ้าหน้าที่คงจะไม่ทำคำสั่งทางปกครองนั้น และหากไม่เพิกถอนจะก่อให้เกิดความเสียหายต่อประโยชน์สาธารณะได้</p>
+            <p class="maatra-line indent">(4) บทกฎหมายเปลี่ยนแปลงไป ซึ่งหากมีบทกฎหมายเช่นนี้ในขณะทำคำสั่งทางปกครองแล้วเจ้าหน้าที่คงจะไม่ทำคำสั่งทางปกครองนั้น แต่การเพิกถอนในกรณีนี้ให้กระทำได้เท่าที่ผู้รับประโยชน์ยังไม่ได้ใช้ประโยชน์ หรือยังไม่ได้รับประโยชน์ตามคำสั่งทางปกครองดังกล่าว และหากไม่เพิกถอนจะก่อให้เกิดความเสียหายต่อประโยชน์สาธารณะได้</p>
+            <p class="maatra-line indent">(5) อาจเกิดความเสียหายอย่างร้ายแรงต่อประโยชน์สาธารณะหรือต่อประชาชนอันจำเป็นต้องป้องกันหรือขจัดเหตุดังกล่าว</p>
+            <p class="maatra-line">ในกรณีที่มีการเพิกถอนคำสั่งทางปกครองเพราะเหตุตามวรรคสอง (3) (4) และ (5) ผู้ได้รับประโยชน์มีสิทธิได้รับค่าทดแทนความเสียหายอันเกิดจากความเชื่อโดยสุจริตในความคงอยู่ของคำสั่งทางปกครองได้ และให้นำมาตรา 52 มาใช้บังคับโดยอนุโลม</p>
+            <p class="maatra-line">คำสั่งทางปกครองที่ชอบด้วยกฎหมายซึ่งเป็นการให้เงินหรือให้ทรัพย์สินหรือให้ประโยชน์ที่อาจแบ่งแยกได้ อาจถูกเพิกถอนทั้งหมดหรือบางส่วนโดยให้มีผลย้อนหลังหรือไม่มีผลย้อนหลังหรือมีผลในอนาคตไปถึงขณะใดขณะหนึ่งตามที่กำหนดได้ในกรณีดังต่อไปนี้</p>
+            <p class="maatra-line indent">(1) มิได้ปฏิบัติหรือปฏิบัติล่าช้าในอันที่จะดำเนินการให้เป็นไปตามวัตถุประสงค์ของคำสั่งทางปกครอง</p>
+            <p class="maatra-line indent">(2) ผู้ได้รับประโยชน์มิได้ปฏิบัติหรือปฏิบัติล่าช้าในอันที่จะดำเนินการให้เป็นไปตามเงื่อนไขของคำสั่งทางปกครอง</p>
+            <p class="maatra-line">ทั้งนี้ ให้นำความในมาตรา 51 มาใช้บังคับโดยอนุโลม</p>
+            </div>
+          </div>
+    </div>
+  </div>
+  <div class="group-section " id="g_act_admin_proc_8" style="animation-delay:0.64s;">
+    <div class="group-header" onclick="toggleGroup('g_act_admin_proc_8')">
+      <span class="group-title">ส่วนที่ 7 การขอให้พิจารณาใหม่ (ม.54)</span>
+      <div class="group-meta">
+        <span class="group-count">1 มาตรา</span>
+        <span class="group-toggle">▼</span>
+      </div>
+    </div>
+    <div class="group-body" id="g_act_admin_proc_8-body">
+          <div class="maatra-card" id="m_act_admin_proc_54">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 54</span>
+              <span class="maatra-title">การงดใช้คำสั่งทางปกครองชั่วคราว</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">เมื่อคู่กรณีมีคำขอ เจ้าหน้าที่อาจเพิกถอนหรือแก้ไขเพิ่มเติมคำสั่งทางปกครองที่พ้นกำหนดอุทธรณ์ตามส่วนที่ 5 ได้ในกรณีดังต่อไปนี้</p>
+            <p class="maatra-line indent">(1) มีพยานหลักฐานใหม่ อันอาจทำให้ข้อเท็จจริงที่ฟังเป็นยุติแล้วนั้นเปลี่ยนแปลงไปในสาระสำคัญ</p>
+            <p class="maatra-line indent">(2) คู่กรณีที่แท้จริงมิได้เข้ามาในกระบวนการพิจารณาทางปกครองหรือได้เข้ามาในกระบวนการพิจารณาครั้งก่อนแล้วแต่ถูกตัดโอกาสโดยไม่เป็นธรรมในการมีส่วนร่วมในกระบวนการพิจารณาทางปกครอง</p>
+            <p class="maatra-line indent">(3) เจ้าหน้าที่ไม่มีอำนาจที่จะทำคำสั่งทางปกครองในเรื่องนั้น</p>
+            <p class="maatra-line indent">(4) ถ้าคำสั่งทางปกครองได้ออกโดยอาศัยข้อเท็จจริงหรือข้อกฎหมายใดและต่อมาข้อเท็จจริงหรือข้อกฎหมายนั้นเปลี่ยนแปลงไปในสาระสำคัญในทางที่จะเป็นประโยชน์แก่คู่กรณี</p>
+            <p class="maatra-line">การยื่นคำขอตามวรรคหนึ่ง (1) (2) หรือ (3) ให้กระทำได้เฉพาะเมื่อคู่กรณีไม่อาจทราบถึงเหตุนั้นในการพิจารณาครั้งที่แล้วมาก่อนโดยไม่ใช่ความผิดของผู้นั้น</p>
+            <p class="maatra-line">การยื่นคำขอให้พิจารณาใหม่ต้องกระทำภายในเก้าสิบวันนับแต่ผู้นั้นได้รู้ถึงเหตุซึ่งอาจขอให้พิจารณาใหม่ได้</p>
+            <p class="maatra-line">****</p>
+            </div>
+          </div>
+    </div>
+  </div>
+  <div class="group-section " id="g_act_admin_proc_9" style="animation-delay:0.72s;">
+    <div class="group-header" onclick="toggleGroup('g_act_admin_proc_9')">
+      <span class="group-title">ส่วนที่ 8 การบังคับทางปกครอง (ม.55–63/25)</span>
+      <div class="group-meta">
+        <span class="group-count">34 มาตรา</span>
+        <span class="group-toggle">▼</span>
+      </div>
+    </div>
+    <div class="group-body" id="g_act_admin_proc_9-body">
+          <div class="maatra-card" id="m_act_admin_proc_55">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 55</span>
+              <span class="maatra-title">การบังคับตามคำสั่งทางปกครองโดยเจ้าหน้าที่</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">(ยกเลิก)</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_56">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 56</span>
+              <span class="maatra-title">การเตือนก่อนบังคับและกำหนดระยะเวลา</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">(ยกเลิก)</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_57">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 57</span>
+              <span class="maatra-title">วิธีบังคับตามคำสั่ง: บุคคลอื่นปฏิบัติแทนหรือปรับรายวัน</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">(ยกเลิก)</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_58">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 58</span>
+              <span class="maatra-title">การใช้กำลังบังคับโดยตรงเมื่อจำเป็น</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">(ยกเลิก)</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_59">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 59</span>
+              <span class="maatra-title">ค่าใช้จ่ายในการบังคับทางปกครอง</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">(ยกเลิก)</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_60">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 60</span>
+              <span class="maatra-title">การเพิกถอนคำสั่งทางปกครองระหว่างขั้นตอนบังคับ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">(ยกเลิก)</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_61">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 61</span>
+              <span class="maatra-title">กฎหมายที่ออกตามอำนาจนี้ยังใช้บังคับต่อไปก่อนออกกฎใหม่</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">(ยกเลิก)</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_62">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 62</span>
+              <span class="maatra-title">หน้าที่แจ้งเหตุผลในคำสั่งปฏิเสธ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">(ยกเลิก)</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_63">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 63</span>
+              <span class="maatra-title">ระยะเวลาและวิธีแจ้งคำสั่งทางปกครอง</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">(ยกเลิก)</p>
+            <p class="maatra-line">****</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_63_1">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 63/1</span>
+              <span class="maatra-title">หลักเกณฑ์การบังคับทางปกครองในส่วนเงิน</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">การบังคับทางปกครองไม่ใช้บังคับกับหน่วยงานของรัฐด้วยกัน เว้นแต่จะมีกฎหมายกำหนดไว้เป็นอย่างอื่น</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_63_2">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 63/2</span>
+              <span class="maatra-title">เจ้าหน้าที่ผู้มีอำนาจบังคับทางปกครองในส่วนเงิน</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">เจ้าหน้าที่ผู้ทำคำสั่งทางปกครองมีอำนาจที่จะพิจารณาใช้มาตรการบังคับทางปกครองเพื่อให้เป็นไปตามคำสั่งของตนได้ตามบทบัญญัติในหมวดนี้ เว้นแต่จะมีการสั่งให้ทุเลาการบังคับไว้ก่อนโดยเจ้าหน้าที่ผู้ทำคำสั่งนั้นเอง ผู้มีอำนาจพิจารณาคำอุทธรณ์ หรือผู้มีอำนาจพิจารณาวินิจฉัยความถูกต้องของคำสั่งทางปกครองดังกล่าว</p>
+            <p class="maatra-line">เจ้าหน้าที่ตามวรรคหนึ่งจะมอบอำนาจให้เจ้าหน้าที่ซึ่งอยู่ใต้บังคับบัญชาหรือเจ้าหน้าที่อื่นเป็นผู้ดำเนินการก็ได้ตามหลักเกณฑ์และวิธีการที่กำหนดในกฎกระทรวง</p>
+            <p class="maatra-line">ให้เจ้าหน้าที่ตามวรรคหนึ่งหรือวรรคสองใช้มาตรการบังคับทางปกครองเพียงเท่าที่จำเป็นเพื่อให้บรรลุตามวัตถุประสงค์ของคำสั่งทางปกครอง โดยกระทบกระเทือนผู้อยู่ในบังคับของคำสั่งทางปกครองน้อยที่สุด</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_63_3">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 63/3</span>
+              <span class="maatra-title">กฎหมายเฉพาะที่กำหนดวิธีบังคับทางปกครองเองใช้บังคับต่อ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ถ้าบทกฎหมายใดกำหนดมาตรการบังคับทางปกครองไว้โดยเฉพาะแล้ว หากเจ้าหน้าที่เห็นว่าการใช้มาตรการบังคับนั้นจะเกิดผลน้อยกว่ามาตรการบังคับตามหมวดนี้ เจ้าหน้าที่จะใช้มาตรการบังคับทางปกครองตามหมวดนี้แทนก็ได้</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_63_4">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 63/4</span>
+              <span class="maatra-title">การใช้มาตรการบังคับชำระเงินตามลำดับ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ในการใช้มาตรการบังคับทางปกครองแก่บุคคลใด หากบุคคลนั้นถึงแก่ความตาย ให้ดำเนินการบังคับทางปกครองต่อไปได้ ถ้าบุคคลนั้นมีทายาทผู้รับมรดกหรือผู้จัดการมรดก ให้ถือว่าทายาทผู้รับมรดกหรือผู้จัดการมรดกเป็นผู้อยู่ในบังคับของมาตรการบังคับทางปกครองนั้น</p>
+            <p class="maatra-line">ในกรณีที่ผู้อยู่ในบังคับของมาตรการบังคับทางปกครองตาย ให้แจ้งมาตรการบังคับทางปกครองไปยังทายาทผู้รับมรดกหรือผู้จัดการมรดก แล้วแต่กรณี โดยให้ระยะเวลาอุทธรณ์การใช้มาตรการบังคับทางปกครองเริ่มนับใหม่ตั้งแต่วันที่ทายาทผู้รับมรดกหรือผู้จัดการมรดกได้รับแจ้ง เมื่อปรากฏว่า</p>
+            <p class="maatra-line indent">(1) ผู้อยู่ในบังคับของมาตรการบังคับทางปกครองตายก่อนสิ้นสุดระยะเวลาอุทธรณ์การใช้มาตรการบังคับทางปกครองและไม่ได้ยื่นอุทธรณ์การใช้มาตรการบังคับทางปกครอง</p>
+            <p class="maatra-line indent">(2) ผู้อยู่ในบังคับของมาตรการบังคับทางปกครองตายหลังสิ้นสุดระยะเวลาอุทธรณ์การใช้มาตรการบังคับทางปกครองและไม่ได้ยื่นอุทธรณ์การใช้มาตรการบังคับทางปกครอง เนื่องจากมีพฤติการณ์ที่จำเป็นอันมิได้เกิดจากความผิดของผู้นั้น</p>
+            <p class="maatra-line">ในกรณีที่เป็นการใช้มาตรการบังคับทางปกครองแก่นิติบุคคลใด หากนิติบุคคลนั้นสิ้นสภาพ โอนกิจการ หรือควบรวมกิจการ ให้ดำเนินการบังคับทางปกครองต่อไปได้ โดยให้แจ้งมาตรการบังคับทางปกครองไปยังผู้ชำระบัญชี หรือนิติบุคคลที่รับโอนกิจการหรือเกิดจากการควบรวมกิจการ แล้วแต่กรณี  ทั้งนี้ โดยไม่จำต้องออกคำสั่งทางปกครองใหม่แก่บุคคลหรือนิติบุคคลดังกล่าวอีก และให้นำหลักเกณฑ์เรื่องระยะเวลาในการอุทธรณ์ตามวรรคสองมาใช้บังคับด้วยโดยอนุโลม</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_63_5">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 63/5</span>
+              <span class="maatra-title">กรณีบทบัญญัติพิเศษใช้แทนมาตรการในส่วนนี้</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ในกรณีที่บทบัญญัติในหมวดนี้หรือกฎหมายอื่นมิได้กำหนดเป็นอย่างอื่น ผู้อยู่ในบังคับของมาตรการบังคับทางปกครองอาจอุทธรณ์การใช้มาตรการบังคับทางปกครองนั้นได้</p>
+            <p class="maatra-line">การอุทธรณ์การใช้มาตรการบังคับทางปกครองให้ใช้หลักเกณฑ์และวิธีการเดียวกับการอุทธรณ์คำสั่งทางปกครองตามส่วนที่ 5 การอุทธรณ์คำสั่งทางปกครอง ในหมวด 2 คำสั่งทางปกครอง</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_63_6">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 63/6</span>
+              <span class="maatra-title">การบังคับตามส่วนนี้ไม่กระทบสิทธิฟ้องคดีแพ่ง</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">บทบัญญัติในหมวดนี้มิให้ใช้บังคับกับการบังคับตามคำสั่งทางปกครองที่กำหนดให้ชำระเงินหรือให้กระทำหรือละเว้นกระทำในกรณีที่หน่วยงานของรัฐได้ฟ้องคดีต่อศาลและศาลได้มีคำพิพากษาให้ชำระเงินหรือให้กระทำหรือละเว้นกระทำแล้ว</p>
+            <p class="maatra-line">เมื่อศาลได้รับฟ้องคดีตามวรรคหนึ่งไว้แล้ว ห้ามมิให้เจ้าหน้าที่ดำเนินการตามส่วนที่ 2 การบังคับตามคำสั่งทางปกครองที่กำหนดให้ชำระเงิน และส่วนที่ 3 การบังคับตามคำสั่งทางปกครองที่กำหนดให้กระทำหรือละเว้นกระทำ เว้นแต่จะได้มีการถอนฟ้อง หรือศาลมีคำสั่งจำหน่ายคดีจากสารบบความเพราะเหตุอื่น  ทั้งนี้ ไม่กระทบต่อการดำเนินการตามมาตรการบังคับทางปกครองที่เจ้าหน้าที่ได้ดำเนินการไปก่อนที่ศาลได้รับฟ้องคดี และให้เจ้าหน้าที่ดำเนินการตามมาตรการบังคับทางปกครองในส่วนนั้นต่อไปจนแล้วเสร็จ</p>
+            <p class="maatra-line">### 1. การบังคับโดยเจ้าหน้าที่ของหน่วยงานของรัฐ</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_63_7">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 63/7</span>
+              <span class="maatra-title">การออกคำสั่งแจ้งให้ชำระเงินก่อนบังคับ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ในกรณีที่เจ้าหน้าที่มีคำสั่งทางปกครองที่กำหนดให้ชำระเงิน ถ้าถึงกำหนดแล้วไม่มีการชำระโดยถูกต้องครบถ้วน ให้เจ้าหน้าที่ผู้ทำคำสั่งทางปกครองมีหนังสือเตือนให้ผู้นั้นชำระภายในระยะเวลาที่กำหนดแต่ต้องไม่น้อยกว่าเจ็ดวัน ถ้าไม่มีการปฏิบัติตามคำเตือน เจ้าหน้าที่มีอำนาจใช้มาตรการบังคับทางปกครองโดยยึดหรืออายัดทรัพย์สินของผู้นั้นและขายทอดตลาดเพื่อชำระเงินให้ครบถ้วนได้</p>
+            <p class="maatra-line">ในการใช้มาตรการบังคับทางปกครองตามวรรคหนึ่ง ให้แต่งตั้งเจ้าพนักงานบังคับทางปกครองเพื่อดำเนินการยึดหรืออายัดและขายทอดตลาดทรัพย์สินต่อไป</p>
+            <p class="maatra-line">เจ้าหน้าที่ผู้ออกคำสั่งใช้มาตรการบังคับทางปกครอง และการแต่งตั้งเจ้าพนักงานบังคับทางปกครอง ให้เป็นไปตามที่กำหนดในกฎกระทรวง</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_63_8">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 63/8</span>
+              <span class="maatra-title">หน่วยงานผู้รับผิดชอบดำเนินการบังคับทางปกครอง</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">หน่วยงานของรัฐที่ออกคำสั่งให้ชำระเงินต้องดำเนินการยึดหรืออายัดทรัพย์สินภายในสิบปีนับแต่วันที่คำสั่งทางปกครองที่กำหนดให้ชำระเงินเป็นที่สุด</p>
+            <p class="maatra-line">คำสั่งทางปกครองที่กำหนดให้ชำระเงินเป็นที่สุดในกรณีดังต่อไปนี้</p>
+            <p class="maatra-line indent">(1) ไม่มีการอุทธรณ์คำสั่งต่อเจ้าหน้าที่ฝ่ายปกครองภายในระยะเวลาอุทธรณ์</p>
+            <p class="maatra-line indent">(2) เจ้าหน้าที่ผู้มีอำนาจพิจารณาอุทธรณ์มีคำวินิจฉัยยกอุทธรณ์ และไม่มีการฟ้องคดีต่อศาลภายในระยะเวลาการฟ้องคดี</p>
+            <p class="maatra-line indent">(3) ศาลมีคำสั่งหรือคำพิพากษายกฟ้อง หรือเพิกถอนคำสั่งบางส่วน และคดีถึงที่สุดแล้ว</p>
+            <p class="maatra-line">หากหน่วยงานของรัฐที่ออกคำสั่งให้ชำระเงินได้ยึดหรืออายัดทรัพย์สินแล้ว แต่ยังไม่ได้รับชำระเงินครบถ้วน และล่วงพ้นกำหนดเวลาตามวรรคหนึ่ง จะยึดหรืออายัดทรัพย์สินเพิ่มเติมอีกมิได้</p>
+            <p class="maatra-line">การขายทอดตลาดหรือจำหน่ายโดยวิธีอื่นซึ่งทรัพย์สินของผู้อยู่ในบังคับของมาตรการบังคับทางปกครองที่ถูกยึดหรืออายัดไว้ภายในกำหนดเวลาตามวรรคหนึ่งเพื่อชำระเงิน รวมทั้งค่าธรรมเนียม ค่าตอบแทน หรือค่าใช้จ่ายอื่นในการบังคับทางปกครอง ให้กระทำได้แม้ล่วงพ้นระยะเวลาดังกล่าว</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_63_9">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 63/9</span>
+              <span class="maatra-title">สิทธิโต้แย้งและระงับการบังคับเมื่ออุทธรณ์</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">กรณีที่มีการอุทธรณ์การใช้มาตรการบังคับทางปกครองและขอทุเลาการบังคับตามมาตรการดังกล่าว เจ้าหน้าที่ผู้ออกคำสั่งใช้มาตรการบังคับทางปกครอง หรือผู้มีอำนาจพิจารณาคำอุทธรณ์ อาจสั่งให้มีการทุเลาการบังคับทางปกครองไว้ก่อนก็ได้ โดยมีอำนาจกำหนดเงื่อนไขให้ผู้อยู่ในบังคับของมาตรการบังคับทางปกครองต้องปฏิบัติด้วยก็ได้</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_63_10">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 63/10</span>
+              <span class="maatra-title">นิยาม &#x27;เจ้าหน้าที่&#x27; ใน ส่วนนี้</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">เพื่อประโยชน์ในการบังคับทางปกครอง ให้เจ้าหน้าที่ผู้ออกคำสั่งใช้มาตรการบังคับทางปกครองมีอำนาจ</p>
+            <p class="maatra-line indent">(1) มีหนังสือสอบถามสถาบันการเงิน สหกรณ์ออมทรัพย์ สหกรณ์เครดิตยูเนียน ตลาดหลักทรัพย์แห่งประเทศไทย กรมที่ดิน กรมการขนส่งทางบก กรมทรัพย์สินทางปัญญา หรือหน่วยงานอื่นของรัฐที่มีหน้าที่ควบคุมทรัพย์สินที่มีทะเบียน เกี่ยวกับทรัพย์สินของผู้อยู่ในบังคับของมาตรการบังคับทางปกครอง</p>
+            <p class="maatra-line indent">(2) มีหนังสือขอให้นายทะเบียน พนักงานเจ้าหน้าที่ หรือบุคคลอื่นผู้มีอำนาจหน้าที่ตามกฎหมายระงับการจดทะเบียนหรือแก้ไขเปลี่ยนแปลงทางทะเบียนที่เกี่ยวกับทรัพย์สินของผู้อยู่ในบังคับของมาตรการบังคับทางปกครองไว้เป็นการชั่วคราวเท่าที่จำเป็นเนื่องจากมีเหตุขัดข้องที่ทำให้ไม่อาจยึดหรืออายัดทรัพย์สินได้ทันที และเมื่อเหตุขัดข้องสิ้นสุดลงให้แจ้งยกเลิกหนังสือดังกล่าว  ทั้งนี้ ต้องปฏิบัติตามหลักเกณฑ์เกี่ยวกับการระงับการจดทะเบียนหรือแก้ไขเปลี่ยนแปลงทางทะเบียนตามกฎหมายว่าด้วยการนั้น</p>
+            <p class="maatra-line">หน่วยงานตาม (1) ที่ให้ข้อมูลแก่เจ้าหน้าที่ผู้ออกคำสั่งใช้มาตรการบังคับทางปกครองในการดำเนินการตาม (1) ให้ถือว่าไม่เป็นความผิดตามกฎหมายว่าด้วยธุรกิจสถาบันการเงิน กฎหมายว่าด้วยหลักทรัพย์และตลาดหลักทรัพย์ และกฎหมายอื่น</p>
+            <p class="maatra-line">ผู้ใดไม่ปฏิบัติตามหนังสือของเจ้าหน้าที่ผู้ออกคำสั่งใช้มาตรการบังคับทางปกครองตามวรรคหนึ่งโดยไม่มีเหตุผลอันสมควร ผู้นั้นมีความผิดฐานขัดคำสั่งเจ้าพนักงานตามประมวลกฎหมายอาญา</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_63_11">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 63/11</span>
+              <span class="maatra-title">การสืบหาทรัพย์สินเพื่อบังคับชำระ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ในการสืบหาทรัพย์สินของผู้อยู่ในบังคับของมาตรการบังคับทางปกครอง หน่วยงานของรัฐที่ออกคำสั่งให้ชำระเงินอาจร้องขอให้สำนักงานอัยการสูงสุดหรือหน่วยงานอื่นดำเนินการสืบหาทรัพย์สินแทนได้ โดยให้หน่วยงานดังกล่าวมีอำนาจตามมาตรา 63/10 ด้วย</p>
+            <p class="maatra-line">ในกรณีที่หน่วยงานของรัฐที่ออกคำสั่งให้ชำระเงินไม่มีเจ้าหน้าที่ในการดำเนินการสืบหาทรัพย์สิน และหากจำนวนเงินที่ต้องชำระตามมาตรการบังคับทางปกครองนั้นมีมูลค่าตั้งแต่สองล้านบาทขึ้นไปหรือตามมูลค่าที่กำหนดเพิ่มขึ้นโดยกฎกระทรวง หน่วยงานของรัฐอาจมอบหมายให้เอกชนสืบหาทรัพย์สินแทนได้</p>
+            <p class="maatra-line">ให้เอกชนที่สืบพบทรัพย์สินได้รับค่าตอบแทนไม่เกินร้อยละสองครึ่งจากเงินหรือทรัพย์สินที่ได้มาจากการยึด อายัด หรือขายทอดตลาดทรัพย์สินที่สืบพบได้  ทั้งนี้ จำนวนเงินค่าตอบแทนสูงสุดต้องไม่เกินหนึ่งล้านบาทต่อจำนวนเงินที่ต้องชำระตามคำสั่งทางปกครองในเรื่องนั้น หรือตามจำนวนที่กำหนดเพิ่มขึ้นโดยกฎกระทรวง</p>
+            <p class="maatra-line">หลักเกณฑ์และวิธีการคัดเลือกเอกชนที่สืบหาทรัพย์สิน การกำหนดค่าตอบแทน และวิธีการจ่ายค่าตอบแทนตามวรรคสาม ให้เป็นไปตามที่กำหนดในกฎกระทรวง</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_63_12">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 63/12</span>
+              <span class="maatra-title">ขั้นตอนและวิธีปฏิบัติในการสืบหาทรัพย์สิน</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ขั้นตอนและวิธีปฏิบัติเกี่ยวกับการยึด การอายัด และการขายทอดตลาดทรัพย์สินให้เป็นไปตามที่กำหนดในกฎกระทรวง ในกรณีที่กฎกระทรวงไม่ได้กำหนดเรื่องใดไว้ ให้นำบทบัญญัติในประมวลกฎหมายวิธีพิจารณาความแพ่งมาใช้บังคับโดยอนุโลม โดยให้ถือว่า</p>
+            <p class="maatra-line indent">(1) เจ้าหนี้ตามคำพิพากษา หมายถึง หน่วยงานของรัฐที่ออกคำสั่งให้ชำระเงิน</p>
+            <p class="maatra-line indent">(2) ลูกหนี้ตามคำพิพากษา หมายถึง ผู้อยู่ในบังคับของมาตรการบังคับทางปกครอง</p>
+            <p class="maatra-line indent">(3) อำนาจของศาลในส่วนที่เกี่ยวกับการบังคับคดี เป็นอำนาจของหัวหน้าหน่วยงานของรัฐ  ทั้งนี้ ตามที่กำหนดในกฎกระทรวง</p>
+            <p class="maatra-line indent">(4) เจ้าพนักงานบังคับคดี หมายถึง เจ้าพนักงานบังคับทางปกครอง</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_63_13">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 63/13</span>
+              <span class="maatra-title">การโต้แย้งกรณีสืบหาทรัพย์ไม่ถูกต้อง</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">การโต้แย้งหรือการใช้สิทธิทางศาลเกี่ยวกับการยึด การอายัด และการขายทอดตลาดทรัพย์สินโดยผู้อยู่ในบังคับของมาตรการบังคับทางปกครอง รวมทั้งบุคคลภายนอกผู้มีส่วนได้เสียเกี่ยวกับทรัพย์สินที่ถูกยึดหรืออายัด ให้เสนอต่อศาล ดังต่อไปนี้</p>
+            <p class="maatra-line indent">(1) ศาลแรงงาน ศาลภาษีอากร ศาลทรัพย์สินทางปัญญาและการค้าระหว่างประเทศ ศาลเยาวชนและครอบครัว หรือศาลชำนัญพิเศษอื่น แล้วแต่กรณี ซึ่งเป็นศาลที่มีเขตอำนาจในการพิจารณาพิพากษาคดีเกี่ยวกับคำสั่งที่มีการบังคับทางปกครองนั้น</p>
+            <p class="maatra-line indent">(2) ศาลปกครอง สำหรับกรณีอื่นที่ไม่อยู่ภายใต้บังคับ (1)</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_63_14">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 63/14</span>
+              <span class="maatra-title">กรณีเจ้าหนี้ (หน่วยงาน) ต้องรับผิดชำระแทน</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">กรณีที่เจ้าหนี้ตามคำพิพากษาในคดีอื่นได้มีการยึดทรัพย์สินหรืออายัดสิทธิเรียกร้องอื่นใดของผู้อยู่ในบังคับของมาตรการบังคับทางปกครองเพื่อนำเงินมาชำระตามคำพิพากษา ให้หน่วยงานของรัฐที่ออกคำสั่งให้ชำระเงินมีสิทธิขอเข้าเฉลี่ยได้เช่นเดียวกับเจ้าหนี้ตามคำพิพากษา</p>
+            <p class="maatra-line">2. การบังคับโดยเจ้าพนักงานบังคับคดี</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_63_15">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 63/15</span>
+              <span class="maatra-title">การบังคับชำระกรณีมีหลายหน่วยงานร่วมรับผิด</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ในกรณีที่มีการบังคับให้ชำระเงินและคำสั่งทางปกครองที่กำหนดให้ชำระเงินเป็นที่สุดแล้ว หากหน่วยงานของรัฐที่ออกคำสั่งให้ชำระเงินประสงค์ให้เจ้าพนักงานบังคับคดีในสังกัดกรมบังคับคดีดำเนินการบังคับให้เป็นไปตามคำสั่งทางปกครองดังกล่าว ให้ยื่นคำขอฝ่ายเดียวต่อศาลภายในสิบปีนับแต่วันที่คำสั่งทางปกครองที่กำหนดให้ชำระเงินเป็นที่สุด เพื่อให้ศาลออกหมายบังคับคดีเพื่อบังคับให้เป็นไปตามคำสั่งทางปกครองนั้น โดยระบุจำนวนเงินที่ผู้อยู่ในบังคับของมาตรการบังคับทางปกครองยังมิได้ชำระตามคำสั่งทางปกครอง  ทั้งนี้ ไม่ว่าหน่วยงานของรัฐยังไม่ได้บังคับทางปกครองหรือได้ดำเนินการบังคับทางปกครองแล้ว แต่ยังไม่ได้รับชำระเงินหรือได้รับชำระเงินไม่ครบถ้วน</p>
+            <p class="maatra-line">เมื่อหน่วยงานของรัฐยื่นคำขอตามวรรคหนึ่ง ถ้าศาลเห็นว่าคำสั่งทางปกครองที่กำหนดให้ชำระเงินเป็นที่สุดแล้ว ให้ศาลออกหมายบังคับคดีตั้งเจ้าพนักงานบังคับคดีและแจ้งให้เจ้าพนักงานบังคับคดีทราบเพื่อดำเนินการต่อไป โดยให้ถือว่าหน่วยงานของรัฐที่ออกคำสั่งให้ชำระเงินเป็นเจ้าหนี้ตามคำพิพากษา และให้ถือว่าผู้อยู่ในบังคับของมาตรการบังคับทางปกครองเป็นลูกหนี้ตามคำพิพากษา</p>
+            <p class="maatra-line">เมื่อศาลออกหมายบังคับคดีแล้ว ให้หน่วยงานของรัฐติดต่อกรมบังคับคดี พร้อมทั้งมีหนังสือแจ้งให้ผู้อยู่ในบังคับของมาตรการบังคับทางปกครองทราบว่าศาลได้ตั้งเจ้าพนักงานบังคับคดีเพื่อดำเนินการบังคับคดีแล้ว</p>
+            <p class="maatra-line">เพื่อประโยชน์ในการบังคับคดีตามวรรคหนึ่ง ให้ถือว่าศาลจังหวัด ศาลแพ่ง ศาลแพ่งกรุงเทพใต้ ศาลแพ่งธนบุรี หรือศาลแพ่งอื่นในกรุงเทพมหานคร แล้วแต่กรณี ที่ผู้อยู่ในบังคับของมาตรการบังคับทางปกครองมีภูมิลำเนาอยู่ในเขตศาล หรือที่ทรัพย์สินที่ถูกบังคับทางปกครองนั้นตั้งอยู่ในเขตศาลมีอำนาจวินิจฉัยชี้ขาด หรือทำคำสั่งในเรื่องใด ๆ อันเกี่ยวด้วยการบังคับคดี และเป็นศาลที่มีอำนาจในการบังคับคดี</p>
+            <p class="maatra-line">กรณีคำขอซึ่งอาจยื่นต่อศาลได้มากกว่าหนึ่งศาล ไม่ว่าจะเป็นเพราะภูมิลำเนาของผู้อยู่ในบังคับของมาตรการบังคับทางปกครองก็ดี เพราะที่ตั้งของทรัพย์สินที่ถูกบังคับทางปกครองก็ดี หรือเพราะมีผู้อยู่ในบังคับของมาตรการบังคับทางปกครองหลายคนในมูลหนี้ที่เกี่ยวข้องกันก็ดี จะยื่นคำขอต่อศาลใดศาลหนึ่งเช่นว่านั้นก็ได้</p>
+            <p class="maatra-line">หน่วยงานของรัฐตามมาตรานี้ หมายความว่า กระทรวง ทบวง กรม หรือส่วนราชการที่เรียกชื่ออย่างอื่นและมีฐานะเป็นกรม ราชการส่วนภูมิภาค ราชการส่วนท้องถิ่น และหน่วยงานอื่นของรัฐตามที่กำหนดในกฎกระทรวง</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_63_16">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 63/16</span>
+              <span class="maatra-title">ผลของคำสั่งบังคับต่อทรัพย์สินที่โอนหลังมีหนี้</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ในกรณีที่คำสั่งทางปกครองที่กำหนดให้ชำระเงินเป็นที่สุดแล้ว และต่อมาผู้อยู่ในบังคับของคำสั่งทางปกครองขอให้พิจารณาคำสั่งทางปกครองที่เป็นที่สุดแล้วนั้นใหม่ หรือฟ้องคดีต่อศาลเพื่อให้พิจารณาเกี่ยวกับคำสั่งทางปกครองที่เป็นที่สุดแล้วนั้นใหม่ หรือขอให้ศาลพิจารณาคดีใหม่ และหน่วยงานของรัฐที่ออกคำสั่งให้ชำระเงินหรือศาลมีคำสั่งให้รับคำขอหรือได้รับคำฟ้องไว้พิจารณา ผู้อยู่ในบังคับของคำสั่งทางปกครองอาจยื่นคำร้องต่อศาลที่มีอำนาจในการออกหมายบังคับคดีตามมาตรา 63/15 เพื่อขอให้สั่งงดการบังคับคดีไว้ก่อน หากศาลพิจารณาคำร้องแล้วมีคำสั่งให้งดการบังคับคดี ให้ศาลส่งคำสั่งนั้นไปให้เจ้าพนักงานบังคับคดีทราบ และให้เจ้าพนักงานบังคับคดีงดการบังคับคดีไว้ภายในระยะเวลาหรือเงื่อนไขตามที่ศาลกำหนด รวมทั้งส่งคำบอกกล่าวงดการบังคับคดีให้หน่วยงานของรัฐที่ออกคำสั่งให้ชำระเงินและบุคคลภายนอกผู้มีส่วนได้เสียทราบโดยไม่ชักช้า</p>
+            <p class="maatra-line">ถ้าหน่วยงานของรัฐที่ออกคำสั่งให้ชำระเงินยื่นคำร้องว่าอาจได้รับความเสียหายจากการยื่นคำร้องตามวรรคหนึ่งและมีพยานหลักฐานเบื้องต้นแสดงว่าคำร้องนั้นไม่มีมูลและยื่นเข้ามาเพื่อประวิงการบังคับคดี ศาลมีอำนาจสั่งให้ผู้อยู่ในบังคับของคำสั่งทางปกครองวางเงินหรือหาประกันตามที่ศาลเห็นสมควรภายในระยะเวลาที่ศาลจะกำหนด เพื่อเป็นประกันการชำระค่าสินไหมทดแทนแก่หน่วยงานของรัฐสำหรับความเสียหายที่อาจได้รับเนื่องจากเหตุเนิ่นช้าในการบังคับคดีอันเกิดจากการยื่นคำร้องนั้น หรือกำหนดวิธีการชั่วคราวเพื่อคุ้มครองอย่างใด ๆ ตามที่เห็นสมควรก็ได้ ถ้าผู้อยู่ในบังคับของคำสั่งทางปกครองไม่ปฏิบัติตามคำสั่งศาล ให้ศาลสั่งให้ดำเนินการบังคับคดีต่อไป</p>
+            <p class="maatra-line">ในกรณีตามวรรคหนึ่ง หากหน่วยงานของรัฐที่ออกคำสั่งให้ชำระเงินหรือศาลที่มีเขตอำนาจในการพิจารณาพิพากษาคดีเกี่ยวกับคำสั่งทางปกครองที่กำหนดให้ชำระเงิน ได้มีคำสั่งให้ทบทวนคำสั่งทางปกครองที่เป็นที่สุดนั้นใหม่ ให้หน่วยงานของรัฐที่ออกคำสั่งให้ชำระเงินยื่นคำร้องต่อศาลที่มีอำนาจออกหมายบังคับคดีตามมาตรา 63/15 เพื่อเพิกถอนการบังคับคดีที่ได้ดำเนินการไปแล้ว ในกรณีที่ศาลเห็นว่าเป็นการพ้นวิสัยที่จะให้คู่ความกลับสู่ฐานะเดิม หรือเมื่อศาลเห็นว่าไม่จำเป็นที่จะบังคับให้เป็นไปตามหมายบังคับคดีต่อไป เพื่อประโยชน์แก่คู่ความหรือบุคคลภายนอก ให้ศาลมีอำนาจสั่งอย่างใด ๆ ตามที่ศาลเห็นสมควร และแจ้งให้เจ้าพนักงานบังคับคดีทราบ</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_63_17">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 63/17</span>
+              <span class="maatra-title">บุริมสิทธิของหน่วยงานในทรัพย์ที่ถูกยึด</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">เพื่อประโยชน์ในการบังคับคดี ให้นำความในมาตรา 63/10 และมาตรา 63/11 มาใช้บังคับกับการสืบหาทรัพย์สินของผู้อยู่ในบังคับของมาตรการบังคับทางปกครองด้วย</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_63_18">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 63/18</span>
+              <span class="maatra-title">หน่วยงานได้รับเงินจากการขายทอดตลาดอย่างไร</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">หน่วยงานของรัฐที่ออกคำสั่งให้ชำระเงินต้องดำเนินการสืบทรัพย์แล้วแจ้งให้เจ้าพนักงานบังคับคดีทราบพร้อมเอกสารหลักฐานที่เกี่ยวข้องเพื่อให้เจ้าพนักงานบังคับคดีดำเนินการเพื่อให้มีการยึดหรืออายัดทรัพย์สินภายในสิบปีนับแต่วันที่คำสั่งทางปกครองที่กำหนดให้ชำระเงินเป็นที่สุด และให้นำความในมาตรา 63/8 วรรคสามและวรรคสี่ มาใช้บังคับโดยอนุโลม</p>
+            <p class="maatra-line">มิให้นำระยะเวลาระหว่างการงดการบังคับคดีตามคำสั่งศาลตามมาตรา 63/16 วรรคหนึ่ง มานับรวมในระยะเวลาสิบปีตามวรรคหนึ่ง</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_63_19">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 63/19</span>
+              <span class="maatra-title">การออกหมายยึดและขายทอดตลาดตามประมวลกฎหมายแพ่ง</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">เมื่อศาลออกหมายบังคับคดีและแต่งตั้งเจ้าพนักงานบังคับคดีแล้ว การดำเนินการบังคับให้เป็นไปตามคำสั่งทางปกครองที่กำหนดให้ชำระเงิน ให้เป็นไปตามประมวลกฎหมายวิธีพิจารณาความแพ่ง</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_63_20">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 63/20</span>
+              <span class="maatra-title">นิยาม &#x27;ค่าป่วยการ&#x27; ในส่วนนี้</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ในส่วนนี้</p>
+            <p class="maatra-line">“ค่าปรับบังคับการ” หมายความว่า ค่าปรับที่เจ้าหน้าที่สั่งให้ผู้ที่ฝ่าฝืนหรือไม่ปฏิบัติตามคำสั่งทางปกครองที่กำหนดให้กระทำหรือละเว้นกระทำ ชำระเป็นรายวันไปจนกว่าจะยุติการฝ่าฝืนคำสั่งหรือได้มีการปฏิบัติตามคำสั่งแล้ว ไม่ว่าจะเป็นค่าปรับที่กำหนดโดยพระราชบัญญัตินี้หรือโดยกฎหมายอื่น</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_63_21">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 63/21</span>
+              <span class="maatra-title">การเพิกถอนหรือสิ้นผลของคำสั่งบังคับก่อนดำเนินการ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">คำสั่งทางปกครองที่กำหนดให้กระทำหรือละเว้นกระทำ ถ้าผู้อยู่ในบังคับของคำสั่งทางปกครองฝ่าฝืนหรือไม่ปฏิบัติตาม เจ้าหน้าที่อาจใช้มาตรการบังคับทางปกครองอย่างหนึ่งอย่างใด ดังต่อไปนี้</p>
+            <p class="maatra-line indent">(1) เจ้าหน้าที่เข้าดำเนินการด้วยตนเองหรือมอบหมายให้บุคคลอื่นกระทำการแทน โดยผู้อยู่ในบังคับของคำสั่งทางปกครองจะต้องชดใช้ค่าใช้จ่ายและเงินเพิ่มรายวันในอัตราร้อยละยี่สิบห้าต่อปีของค่าใช้จ่ายดังกล่าวแก่หน่วยงานของรัฐที่เจ้าหน้าที่นั้นสังกัด</p>
+            <p class="maatra-line indent">(2) ให้มีการชำระค่าปรับบังคับการตามจำนวนที่สมควรแก่เหตุแต่ต้องไม่เกินห้าหมื่นบาทต่อวัน</p>
+            <p class="maatra-line">เจ้าหน้าที่ระดับใดมีอำนาจกำหนดค่าปรับบังคับการจำนวนเท่าใด สำหรับในกรณีใด ให้เป็นไปตามที่กำหนดในกฎกระทรวง</p>
+            <p class="maatra-line">ในกรณีที่มีความจำเป็นที่จะต้องบังคับการโดยเร่งด่วนเพื่อป้องกันมิให้มีการกระทำที่ขัดต่อกฎหมายที่มีโทษทางอาญาหรือมิให้เกิดความเสียหายต่อประโยชน์สาธารณะ เจ้าหน้าที่อาจใช้มาตรการบังคับทางปกครองโดยไม่ต้องออกคำสั่งทางปกครองที่กำหนดให้กระทำหรือละเว้นกระทำก่อนก็ได้  แต่ทั้งนี้ ต้องกระทำโดยสมควรแก่เหตุและภายในขอบเขตอำนาจหน้าที่ของตน</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_63_22">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 63/22</span>
+              <span class="maatra-title">การเตือนและกำหนดระยะเวลาก่อนบังคับ (กระทำ/ละเว้น)</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ก่อนใช้มาตรการบังคับทางปกครองตามมาตรา 63/21 เจ้าหน้าที่จะต้องมีคำเตือนเป็นหนังสือให้มีการกระทำหรือละเว้นกระทำตามคำสั่งทางปกครองภายในระยะเวลาที่กำหนดตามสมควรแก่กรณี คำเตือนดังกล่าวจะกำหนดไปพร้อมกับคำสั่งทางปกครองก็ได้</p>
+            <p class="maatra-line">คำเตือนนั้นจะต้องระบุ</p>
+            <p class="maatra-line indent">(1) มาตรการบังคับทางปกครองที่จะใช้ให้ชัดแจ้ง แต่จะกำหนดมากกว่าหนึ่งมาตรการในคราวเดียวกันไม่ได้</p>
+            <p class="maatra-line indent">(2) ค่าใช้จ่ายและเงินเพิ่มรายวันในการที่เจ้าหน้าที่เข้าดำเนินการด้วยตนเองหรือมอบหมายให้บุคคลอื่นกระทำการแทน หรือจำนวนค่าปรับบังคับการ แล้วแต่กรณี</p>
+            <p class="maatra-line">การกำหนดค่าใช้จ่ายในคำเตือน ไม่เป็นการตัดสิทธิที่จะเรียกค่าใช้จ่ายเพิ่มขึ้น หากจะต้องเสียค่าใช้จ่ายจริงมากกว่าที่ได้กำหนดไว้</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_63_23">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 63/23</span>
+              <span class="maatra-title">เจ้าหน้าที่บังคับโดยกระทำแทนหรือโดยกำลัง</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">เจ้าหน้าที่จะต้องใช้มาตรการบังคับทางปกครองตามที่กำหนดไว้ในคำเตือนตามมาตรา 63/22 การเปลี่ยนแปลงมาตรการจะกระทำได้ก็ต่อเมื่อปรากฏว่ามาตรการที่กำหนดไว้ไม่บรรลุตามวัตถุประสงค์</p>
+            <p class="maatra-line">ถ้าผู้อยู่ในบังคับของคำสั่งทางปกครองต่อสู้ขัดขวางการบังคับทางปกครอง เจ้าหน้าที่อาจใช้กำลังเข้าดำเนินการเพื่อให้เป็นไปตามมาตรการบังคับทางปกครองได้ แต่ต้องกระทำโดยสมควรแก่เหตุ</p>
+            <p class="maatra-line">ในการใช้มาตรการบังคับทางปกครองตามวรรคหนึ่งหรือวรรคสอง เจ้าหน้าที่อาจแจ้งขอความช่วยเหลือจากเจ้าพนักงานตำรวจได้</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_63_24">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 63/24</span>
+              <span class="maatra-title">กรณีไม่มีการชำระค่าใช้จ่ายในการบังคับโดยผู้อื่น</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ในกรณีไม่มีการชำระค่าปรับบังคับการ ค่าใช้จ่าย หรือเงินเพิ่มรายวันโดยถูกต้องครบถ้วน ให้เจ้าหน้าที่ดำเนินการบังคับทางปกครองตามส่วนที่ 2 ต่อไป</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_63_25">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 63/25</span>
+              <span class="maatra-title">สิทธิฟ้องคดีโต้แย้งการบังคับทางปกครอง</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">การฟ้องคดีโต้แย้งการบังคับทางปกครองตามส่วนนี้ ให้เสนอต่อศาลที่มีเขตอำนาจในการพิจารณาพิพากษาคดีเกี่ยวกับคำสั่งที่มีการบังคับทางปกครองนั้น</p>
+            </div>
+          </div>
+    </div>
+  </div>
+  <div class="group-section " id="g_act_admin_proc_10" style="animation-delay:0.8s;">
+    <div class="group-header" onclick="toggleGroup('g_act_admin_proc_10')">
+      <span class="group-title">หมวด 3 ระยะเวลาและอายุความ (ม.64–67)</span>
+      <div class="group-meta">
+        <span class="group-count">4 มาตรา</span>
+        <span class="group-toggle">▼</span>
+      </div>
+    </div>
+    <div class="group-body" id="g_act_admin_proc_10-body">
+          <div class="maatra-card" id="m_act_admin_proc_64">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 64</span>
+              <span class="maatra-title">การแจ้งโดยวิธีปิดประกาศหรือลงโฆษณา</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">กำหนดเวลาเป็นวัน สัปดาห์ เดือน หรือปีนั้น มิให้นับวันแรกแห่งระยะเวลานั้นรวมเข้าด้วย เว้นแต่จะได้เริ่มการในวันนั้นหรือมีการกำหนดไว้เป็นอย่างอื่นโดยเจ้าหน้าที่</p>
+            <p class="maatra-line">ในกรณีที่เจ้าหน้าที่มีหน้าที่ต้องกระทำการอย่างหนึ่งอย่างใดภายในระยะเวลาที่กำหนด ให้นับวันสิ้นสุดของระยะเวลานั้นรวมเข้าด้วยแม้ว่าวันสุดท้ายเป็นวันหยุดทำการงานสำหรับเจ้าหน้าที่</p>
+            <p class="maatra-line">ในกรณีที่บุคคลใดต้องทำการอย่างหนึ่งอย่างใดภายในระยะเวลาที่กำหนดโดยกฎหมายหรือโดยคำสั่งของเจ้าหน้าที่ ถ้าวันสุดท้ายเป็นวันหยุดทำการงานสำหรับเจ้าหน้าที่หรือวันหยุดตามประเพณีของบุคคลผู้รับคำสั่ง ให้ถือว่าระยะเวลานั้นสิ้นสุดในวันทำงานที่ถัดจากวันหยุดนั้น เว้นแต่กฎหมายหรือเจ้าหน้าที่ที่มีคำสั่งจะกำหนดไว้เป็นอย่างอื่น</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_65">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 65</span>
+              <span class="maatra-title">ผลของการแจ้งคำสั่งโดยปิดประกาศและโฆษณา</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ระยะเวลาที่กำหนดไว้ในคำสั่งของเจ้าหน้าที่อาจมีการขยายอีกได้ และถ้าระยะเวลานั้นได้สิ้นสุดลงแล้วเจ้าหน้าที่อาจขยายโดยกำหนดให้มีผลย้อนหลังได้เช่นกันถ้าการสิ้นสุดตามระยะเวลาเดิมจะก่อให้เกิดความไม่เป็นธรรมที่จะให้สิ้นสุดลงตามนั้น</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_66">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 66</span>
+              <span class="maatra-title">การนับระยะเวลาตามพระราชบัญญัตินี้</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ในกรณีที่ผู้ใดไม่อาจกระทำการอย่างหนึ่งอย่างใดภายในระยะเวลาที่กำหนดไว้ในกฎหมายได้เพราะมีพฤติการณ์ที่จำเป็นอันมิได้เกิดขึ้นจากความผิดของผู้นั้น ถ้าผู้นั้นมีคำขอเจ้าหน้าที่อาจขยายระยะเวลาและดำเนินการส่วนหนึ่งส่วนใดที่ล่วงมาแล้วเสียใหม่ก็ได้  ทั้งนี้ ต้องยื่นคำขอภายในสิบห้าวันนับแต่พฤติการณ์เช่นว่านั้นได้สิ้นสุดลง</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_67">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 67</span>
+              <span class="maatra-title">การขยายระยะเวลาเมื่อมีเหตุสุดวิสัย</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">เมื่อมีการอุทธรณ์ตามบทบัญญัติในส่วนที่ 5 ของหมวด 2 แห่งพระราชบัญญัตินี้ หรือการยื่นคำขอต่อคณะกรรมการวินิจฉัยข้อพิพาทหรือคณะกรรมการวินิจฉัยร้องทุกข์ตามกฎหมายว่าด้วยคณะกรรมการกฤษฎีกาเพื่อให้วินิจฉัยชี้ขาดแล้วให้อายุความสะดุดหยุดอยู่ไม่นับในระหว่างนั้นจนกว่าการพิจารณาจะถึงที่สุดหรือเสร็จไปโดยประการอื่น แต่ถ้าเสร็จไปเพราะเหตุถอนคำขอหรือทิ้งคำขอให้ถือว่าอายุความเรียกร้องของผู้ยื่นคำขอไม่เคยมีการสะดุดหยุดอยู่เลย</p>
+            </div>
+          </div>
+    </div>
+  </div>
+  <div class="group-section " id="g_act_admin_proc_11" style="animation-delay:0.88s;">
+    <div class="group-header" onclick="toggleGroup('g_act_admin_proc_11')">
+      <span class="group-title">หมวด 4 การแจ้ง (ม.68–74)</span>
+      <div class="group-meta">
+        <span class="group-count">7 มาตรา</span>
+        <span class="group-toggle">▼</span>
+      </div>
+    </div>
+    <div class="group-body" id="g_act_admin_proc_11-body">
+          <div class="maatra-card" id="m_act_admin_proc_68">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 68</span>
+              <span class="maatra-title">ระยะเวลาที่กำหนดไว้เพื่อประโยชน์ของเจ้าหน้าที่</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">บทบัญญัติในหมวดนี้มิให้ใช้บังคับกับการแจ้งซึ่งไม่อาจกระทำโดยวาจาหรือเป็นหนังสือได้หรือมีกฎหมายกำหนดวิธีการแจ้งไว้เป็นอย่างอื่น</p>
+            <p class="maatra-line">ในกรณีคำสั่งทางปกครองที่แสดงให้ทราบโดยการสื่อความหมายในรูปแบบอื่นตามที่กำหนดในกฎกระทรวง ให้มีผลเมื่อได้แจ้ง</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_69">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 69</span>
+              <span class="maatra-title">วันหยุดราชการและผลต่อระยะเวลา</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">การแจ้งคำสั่งทางปกครอง การนัดพิจารณา หรือการอย่างอื่นที่เจ้าหน้าที่ต้องแจ้งให้ผู้ที่เกี่ยวข้องทราบอาจกระทำด้วยวาจาก็ได้ แต่ถ้าผู้นั้นประสงค์จะให้กระทำเป็นหนังสือก็ให้แจ้งเป็นหนังสือ</p>
+            <p class="maatra-line">การแจ้งเป็นหนังสือให้ส่งหนังสือแจ้งต่อผู้นั้น หรือถ้าได้ส่งไปยังภูมิลำเนาของผู้นั้นก็ให้ถือว่าได้รับแจ้งตั้งแต่ในขณะที่ไปถึง</p>
+            <p class="maatra-line">ในการดำเนินการเรื่องใดที่มีการให้ที่อยู่ไว้กับเจ้าหน้าที่ไว้แล้ว การแจ้งไปยังที่อยู่ดังกล่าวให้ถือว่าเป็นการแจ้งไปยังภูมิลำเนาของผู้นั้นแล้ว</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_70">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 70</span>
+              <span class="maatra-title">การรับฟังความคิดเห็นก่อนออกกฎ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">การแจ้งเป็นหนังสือโดยวิธีให้บุคคลนำไปส่ง ถ้าผู้รับไม่ยอมรับหรือถ้าขณะนำไปส่งไม่พบผู้รับ และหากได้ส่งให้กับบุคคลใดซึ่งบรรลุนิติภาวะที่อยู่หรือทำงานในสถานที่นั้น หรือในกรณีที่ผู้นั้นไม่ยอมรับ หากได้วางหนังสือนั้นหรือปิดหนังสือนั้นไว้ในที่ซึ่งเห็นได้ง่าย ณ สถานที่นั้นต่อหน้าเจ้าพนักงานตามที่กำหนดในกฎกระทรวงที่ไปเป็นพยานก็ให้ถือว่าได้รับแจ้งแล้ว</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_71">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 71</span>
+              <span class="maatra-title">กรณียกเว้นที่ไม่ต้องรับฟังความคิดเห็น</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">การแจ้งโดยวิธีส่งทางไปรษณีย์ตอบรับให้ถือว่าได้รับแจ้งเมื่อครบกำหนดเจ็ดวันนับแต่วันส่งสำหรับกรณีภายในประเทศหรือเมื่อครบกำหนดสิบห้าวันนับแต่วันส่งสำหรับกรณีส่งไปยังต่างประเทศ เว้นแต่จะมีการพิสูจน์ได้ว่าไม่มีการได้รับหรือได้รับก่อนหรือหลังจากวันนั้น</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_72">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 72</span>
+              <span class="maatra-title">การประกาศรับฟังความคิดเห็นล่วงหน้า</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ในกรณีที่มีผู้รับเกินห้าสิบคนเจ้าหน้าที่จะแจ้งให้ทราบตั้งแต่เริ่มดำเนินการในเรื่องนั้นว่าการแจ้งต่อบุคคลเหล่านั้นจะกระทำโดยวิธีปิดประกาศไว้ ณ ที่ทำการของเจ้าหน้าที่และที่ว่าการอำเภอที่ผู้รับมีภูมิลำเนาก็ได้ ในกรณีนี้ให้ถือว่าได้รับแจ้งเมื่อล่วงพ้นระยะเวลาสิบห้าวันนับแต่วันที่ได้แจ้งโดยวิธีดังกล่าว</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_73">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 73</span>
+              <span class="maatra-title">หน้าที่คณะกรรมการวิธีปฏิบัติราชการรายงานผลรับฟัง</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ในกรณีที่ไม่รู้ตัวผู้รับหรือรู้ตัวแต่ไม่รู้ภูมิลำเนาหรือรู้ตัวและภูมิลำเนาแต่มีผู้รับเกินหนึ่งร้อยคน การแจ้งเป็นหนังสือจะกระทำโดยการประกาศในหนังสือพิมพ์ซึ่งแพร่หลายในท้องถิ่นนั้นก็ได้ ในกรณีนี้ให้ถือว่าได้รับแจ้งเมื่อล่วงพ้นระยะเวลาสิบห้าวันนับแต่วันที่ได้แจ้งโดยวิธีดังกล่าว</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_74">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 74</span>
+              <span class="maatra-title">การแต่งตั้งกรรมการโดยตำแหน่ง</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ในกรณีมีเหตุจำเป็นเร่งด่วนการแจ้งคำสั่งทางปกครองจะใช้วิธีส่งทางเครื่องโทรสารก็ได้ แต่ต้องมีหลักฐานการได้ส่งจากหน่วยงานผู้จัดบริการโทรคมนาคมที่เป็นสื่อในการส่งโทรสารนั้น และต้องจัดส่งคำสั่งทางปกครองตัวจริงโดยวิธีใดวิธีหนึ่งตามหมวดนี้ให้แก่ผู้รับในทันทีที่อาจกระทำได้ ในกรณีนี้ให้ถือว่าผู้รับได้รับแจ้งคำสั่งทางปกครองเป็นหนังสือตามวัน เวลา ที่ปรากฏในหลักฐานของหน่วยงานผู้จัดบริการโทรคมนาคมดังกล่าว เว้นแต่จะมีการพิสูจน์ได้ว่าไม่มีการได้รับหรือได้รับก่อนหรือหลังจากนั้น</p>
+            </div>
+          </div>
+    </div>
+  </div>
+  <div class="group-section " id="g_act_admin_proc_12" style="animation-delay:0.96s;">
+    <div class="group-header" onclick="toggleGroup('g_act_admin_proc_12')">
+      <span class="group-title">หมวด 5 คณะกรรมการที่มีอำนาจดำเนินการพิจารณาทางปกครอง (ม.75–84)</span>
+      <div class="group-meta">
+        <span class="group-count">10 มาตรา</span>
+        <span class="group-toggle">▼</span>
+      </div>
+    </div>
+    <div class="group-body" id="g_act_admin_proc_12-body">
+          <div class="maatra-card" id="m_act_admin_proc_75">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 75</span>
+              <span class="maatra-title">การแต่งตั้งกรรมการผู้ทรงคุณวุฒิระบุตัวบุคคล</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">การแต่งตั้งกรรมการในลักษณะที่เป็นผู้ทรงคุณวุฒิให้แต่งตั้งโดยระบุตัวบุคคล</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_76">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 76</span>
+              <span class="maatra-title">เหตุพ้นจากตำแหน่งกรรมการก่อนวาระ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">นอกจากพ้นจากตำแหน่งตามวาระ กรรมการพ้นจากตำแหน่งเมื่อ</p>
+            <p class="maatra-line indent">(1) ตาย</p>
+            <p class="maatra-line indent">(2) ลาออก</p>
+            <p class="maatra-line indent">(3) เป็นบุคคลล้มละลาย</p>
+            <p class="maatra-line indent">(4) เป็นคนไร้ความสามารถหรือคนเสมือนไร้ความสามารถ</p>
+            <p class="maatra-line indent">(5) ได้รับโทษจำคุกโดยคำพิพากษาถึงที่สุดให้จำคุก เว้นแต่เป็นความผิดลหุโทษหรือความผิดอันได้กระทำโดยประมาท</p>
+            <p class="maatra-line indent">(6) มีเหตุต้องพ้นจากตำแหน่งก่อนครบวาระตามกฎหมายว่าด้วยการนั้น</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_77">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 77</span>
+              <span class="maatra-title">การแต่งตั้งกรรมการแทนและวาระที่เหลือ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ในกรณีที่กรรมการพ้นจากตำแหน่งก่อนวาระ ผู้มีอำนาจแต่งตั้งอาจแต่งตั้งผู้อื่นเป็นกรรมการแทนได้ และให้ผู้ที่ได้รับแต่งตั้งให้ดำรงตำแหน่งแทนอยู่ในตำแหน่งเท่ากับวาระที่เหลืออยู่ของผู้ซึ่งตนแทน</p>
+            <p class="maatra-line">ในกรณีที่มีการแต่งตั้งกรรมการเพิ่มขึ้นในระหว่างที่กรรมการซึ่งแต่งตั้งไว้แล้วยังมีวาระอยู่ในตำแหน่ง ให้ผู้ที่ได้รับแต่งตั้งให้เป็นกรรมการเพิ่มขึ้นอยู่ในตำแหน่งเท่ากับวาระที่เหลืออยู่ของกรรมการที่ได้รับแต่งตั้งไว้แล้ว</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_78">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 78</span>
+              <span class="maatra-title">การให้กรรมการวินิจฉัยข้อพิพาทพ้นตำแหน่งก่อนวาระ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ภายใต้บังคับมาตรา 76 การให้กรรมการในคณะกรรมการวินิจฉัยข้อพิพาทพ้นจากตำแหน่งก่อนครบวาระจะกระทำมิได้ เว้นแต่กรณีมีเหตุบกพร่องอย่างยิ่งต่อหน้าที่หรือมีความประพฤติเสื่อมเสียอย่างร้ายแรง</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_79">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 79</span>
+              <span class="maatra-title">องค์ประชุมคณะกรรมการ: กึ่งหนึ่งของกรรมการทั้งหมด</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ภายใต้บังคับมาตรา 15 วรรคสอง การประชุมของคณะกรรมการต้องมีกรรมการมาประชุมอย่างน้อยกึ่งหนึ่งจึงจะเป็นองค์ประชุม เว้นแต่บทบัญญัติแห่งกฎหมายหรือกฎหรือคำสั่งที่จัดให้มีคณะกรรมการชุดนั้นจะกำหนดไว้เป็นอย่างอื่น</p>
+            <p class="maatra-line">ในกรณีมีกรรมการครบที่จะเป็นองค์ประชุมได้ แต่การพิจารณาเรื่องใดถ้าต้องเลื่อนมาเพราะไม่ครบองค์ประชุม ถ้าเป็นการประชุมของคณะกรรมการซึ่งมิใช่คณะกรรมการวินิจฉัยข้อพิพาท หากได้มีการนัดประชุมเรื่องนั้นอีกภายในสิบสี่วันนับแต่วันนัดประชุมที่เลื่อนมา และการประชุมครั้งหลังนี้มีกรรมการมาประชุมไม่น้อยกว่าหนึ่งในสามของจำนวนกรรมการทั้งหมด ให้ถือว่าเป็นองค์ประชุม แต่ทั้งนี้ต้องระบุความประสงค์ให้เกิดผลตามบทบัญญัตินี้ไว้ในหนังสือนัดประชุมด้วย</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_80">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 80</span>
+              <span class="maatra-title">ระเบียบการประชุมและการแจ้งนัดล่วงหน้า 3 วัน</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">การประชุมให้เป็นไปตามระเบียบการที่คณะกรรมการกำหนด</p>
+            <p class="maatra-line">การนัดประชุมต้องทำเป็นหนังสือและแจ้งให้กรรมการทุกคนทราบล่วงหน้าไม่น้อยกว่าสามวัน เว้นแต่กรรมการนั้นจะได้ทราบการบอกนัดในที่ประชุมแล้ว กรณีดังกล่าวนี้จะทำหนังสือแจ้งนัดเฉพาะกรรมการที่ไม่ได้มาประชุมก็ได้</p>
+            <p class="maatra-line">บทบัญญัติในวรรคสองมิให้นำมาใช้บังคับในกรณีมีเหตุจำเป็นเร่งด่วนซึ่งประธานกรรมการจะนัดประชุมเป็นอย่างอื่นก็ได้</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_81">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 81</span>
+              <span class="maatra-title">อำนาจประธานกรรมการดำเนินการประชุมและผู้ทำหน้าที่แทน</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ประธานกรรมการมีอำนาจหน้าที่ดำเนินการประชุม และเพื่อรักษาความเรียบร้อยในการประชุม ให้ประธานมีอำนาจออกคำสั่งใด ๆ ตามความจำเป็นได้</p>
+            <p class="maatra-line">ถ้าประธานกรรมการไม่อยู่ในที่ประชุมหรือไม่สามารถปฏิบัติหน้าที่ได้ให้รองประธานกรรมการทำหน้าที่แทน ถ้าไม่มีรองประธานกรรมการหรือมีแต่ไม่สามารถปฏิบัติหน้าที่ได้ ให้กรรมการที่มาประชุมเลือกกรรมการคนหนึ่งขึ้นทำหน้าที่แทน</p>
+            <p class="maatra-line">ในกรณีที่ประธานกรรมการมีหน้าที่ต้องดำเนินการใด ๆ นอกจากการดำเนินการประชุมให้นำความในวรรคสองมาใช้บังคับโดยอนุโลม</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_82">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 82</span>
+              <span class="maatra-title">การลงมติเสียงข้างมากและเสียงชี้ขาดของประธาน</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">การลงมติของที่ประชุมให้ถือเสียงข้างมาก</p>
+            <p class="maatra-line">กรรมการคนหนึ่งให้มีหนึ่งเสียงในการลงคะแนน ถ้าคะแนนเสียงเท่ากันให้ประธานในที่ประชุมออกเสียงเพิ่มขึ้นอีกเสียงหนึ่งเป็นเสียงชี้ขาด</p>
+            <p class="maatra-line">เรื่องใดถ้าไม่มีผู้คัดค้าน ให้ประธานถามที่ประชุมว่ามีผู้เห็นเป็นอย่างอื่นหรือไม่ เมื่อไม่มีผู้เห็นเป็นอย่างอื่น ให้ถือว่าที่ประชุมลงมติเห็นชอบในเรื่องนั้น</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_83">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 83</span>
+              <span class="maatra-title">รายงานการประชุมและการบันทึกความเห็นแย้ง</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ในการประชุมต้องมีรายงานการประชุมเป็นหนังสือ</p>
+            <p class="maatra-line">ถ้ามีความเห็นแย้งให้บันทึกความเห็นแย้งพร้อมทั้งเหตุผลไว้ในรายงานการประชุม และถ้ากรรมการฝ่ายข้างน้อยเสนอความเห็นแย้งเป็นหนังสือก็ให้บันทึกความเห็นแย้งนั้นไว้ด้วย</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_84">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 84</span>
+              <span class="maatra-title">คำวินิจฉัยต้องลงลายมือชื่อและบันทึกความเห็นแย้ง</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">คำวินิจฉัยของคณะกรรมการวินิจฉัยข้อพิพาทต้องมีลายมือชื่อของกรรมการที่วินิจฉัยเรื่องนั้น</p>
+            <p class="maatra-line">ถ้ากรรมการคนใดมีความเห็นแย้ง ให้มีสิทธิทำความเห็นแย้งของตนรวมไว้ในคำวินิจฉัยได้</p>
+            </div>
+          </div>
+    </div>
+  </div>
+  <div class="group-section " id="g_act_admin_proc_13" style="animation-delay:1.04s;">
+    <div class="group-header" onclick="toggleGroup('g_act_admin_proc_13')">
+      <span class="group-title">บทเฉพาะกาล (ม.85–87)</span>
+      <div class="group-meta">
+        <span class="group-count">3 มาตรา</span>
+        <span class="group-toggle">▼</span>
+      </div>
+    </div>
+    <div class="group-body" id="g_act_admin_proc_13-body">
+          <div class="maatra-card" id="m_act_admin_proc_85">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 85</span>
+              <span class="maatra-title">บทเฉพาะกาล: ระเบียบสำนักนายกฯ ปี 2532 ยังใช้บังคับ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">ให้ถือว่าระเบียบสำนักนายกรัฐมนตรีว่าด้วยการปฏิบัติราชการเพื่อประชาชนของหน่วยงานของรัฐ พ.ศ. 2532 เป็นระเบียบที่คณะรัฐมนตรีวางขึ้นตามมาตรา 33 แห่งพระราชบัญญัตินี้</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_86">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 86</span>
+              <span class="maatra-title">คำขอที่ค้างอยู่ก่อนกฎหมายนี้ใช้บังคับ</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">บรรดาคำขอเพื่อให้มีคำสั่งทางปกครองที่เจ้าหน้าที่ได้รับไว้ก่อนที่พระราชบัญญัตินี้ใช้บังคับ ให้เจ้าหน้าที่ทำการพิจารณาคำขอดังกล่าวตามหลักเกณฑ์ที่กฎหมายหรือกฎสำหรับเรื่องนั้นได้กำหนดไว้</p>
+            </div>
+          </div>
+          <div class="maatra-card" id="m_act_admin_proc_87">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 87</span>
+              <span class="maatra-title">ยกเลิกมาตรา 48 เมื่อมีการจัดตั้งศาลปกครองแล้ว</span>
+            </div>
+            <div class="maatra-body">
+            <p class="maatra-line">เมื่อได้มีการจัดตั้งศาลปกครองขึ้นแล้ว บทบัญญัติมาตรา 48 ให้เป็นอันยกเลิก</p>
+            </div>
+          </div>
+    </div>
+  </div>
+</div>
+<button class="back-top" id="bt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<a class="home-btn" href="../index.html" title="หน้าหลัก">🏠</a>
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('bt').classList.toggle('visible',window.scrollY>350);});
+function toggleGroup(id){const el=document.getElementById(id);if(el)el.classList.toggle('open');}
+function expandAll(){document.querySelectorAll('.group-section,.sub-group').forEach(el=>el.classList.add('open'));}
+function collapseAll(){document.querySelectorAll('.group-section,.sub-group').forEach(el=>el.classList.remove('open'));}
+const allCards=document.querySelectorAll('.maatra-card');
+const allGroups=document.querySelectorAll('.group-section,.sub-group');
+const noRes=document.getElementById('noRes');
+const cnt=document.getElementById('cnt');
+function doSearch(q){
+  allCards.forEach(c=>{const o=c.getAttribute('data-orig');if(o)c.querySelector('.maatra-body').innerHTML=o;c.classList.remove('hidden','highlight');});
+  if(!q.trim()){allGroups.forEach(g=>g.classList.remove('hidden'));noRes.classList.add('hidden');cnt.textContent='';return;}
+  const ql=q.toLowerCase();let mc=0;
+  allCards.forEach(c=>{
+    if(c.textContent.toLowerCase().includes(ql)){c.classList.remove('hidden');c.classList.add('highlight');const b=c.querySelector('.maatra-body');if(b&&!c.getAttribute('data-orig'))c.setAttribute('data-orig',b.innerHTML);if(b)hlText(b,q);mc++;}
+    else{c.classList.add('hidden');c.classList.remove('highlight');}
+  });
+  allGroups.forEach(g=>{const v=g.querySelectorAll('.maatra-card:not(.hidden)').length>0;g.classList.toggle('hidden',!v);if(v)g.classList.add('open');});
+  noRes.classList.toggle('hidden',mc>0);cnt.textContent=mc>0?(mc+' ผล'):'';
+}
+function hlText(el,q){
+  const w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);const ns=[];
+  while(w.nextNode())ns.push(w.currentNode);
+  const rx=new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi');
+  ns.forEach(n=>{if(n.nodeValue&&rx.test(n.nodeValue)){const s=document.createElement('span');s.innerHTML=n.nodeValue.replace(rx,m=>'<span class="search-highlight">'+m+'</span>');const f=document.createDocumentFragment();while(s.firstChild)f.appendChild(s.firstChild);n.parentNode.replaceChild(f,n);}});
+}
+</script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('../service-worker.js').catch(e=>console.error(e));});}</script>
+</body>
+</html>

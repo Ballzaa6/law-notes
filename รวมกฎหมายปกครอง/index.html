@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>รวมกฎหมายปกครอง - สารบัญ</title>
+<meta name="description" content="รวบรวมกฎหมายปกครองหลัก 3 ฉบับ: พ.ร.บ. ความรับผิดทางละเมิดฯ พ.ร.บ. วิธีปฏิบัติราชการทางปกครอง และ พ.ร.บ. จัดตั้งศาลปกครองฯ">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#1B4F72">
+<link rel="icon" href="../icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="กม.ปกครอง">
+<meta name="mobile-web-app-capable" content="yes">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Noto+Serif+Thai:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#E4EAF0;--bg2:#D8E0EA;--bg3:#EEF2F8;
+  --border:#1B4F72;--border-light:#A8BECC;
+  --text:#0D1B2A;--text-muted:#1A5276;--text-dim:#2471A3;
+  --accent1:#1B4F72;--accent2:#154360;
+  --gold:#B7770D;--gold-light:#D4A017;
+  --radius:16px;--radius-sm:10px;--shadow:0 3px 0 0 #1B4F72;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;min-height:100vh;}
+.hero{background:var(--bg);border-bottom:2px dashed var(--border-light);padding:60px 48px 50px;padding-top:calc(60px + env(safe-area-inset-top));text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(27,79,114,0.06) 1px,transparent 1px);background-size:24px 24px;pointer-events:none;}
+.hero-emblem{font-size:58px;margin-bottom:16px;display:block;filter:drop-shadow(0 3px 8px rgba(27,79,114,0.3));}
+.hero-title{font-family:'Noto Serif Thai',serif;font-size:clamp(28px,5vw,48px);font-weight:700;color:var(--accent1);margin-bottom:12px;line-height:1.2;}
+.hero-sub{color:var(--text-muted);font-size:15.5px;margin-bottom:10px;max-width:560px;margin-left:auto;margin-right:auto;}
+.hero-tag{display:inline-block;background:var(--bg3);border:1.5px solid var(--border);border-radius:50px;padding:5px 18px;font-size:12.5px;color:var(--text-muted);font-family:'IBM Plex Mono',monospace;letter-spacing:0.8px;margin-top:12px;}
+.nav-bar{background:var(--bg2);border-bottom:2px solid var(--border-light);padding:12px 36px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:100;}
+.nav-home{display:inline-flex;align-items:center;gap:7px;padding:7px 18px;background:var(--bg3);border:1.5px solid var(--border);border-radius:50px;color:var(--accent1);text-decoration:none;font-size:13.5px;font-weight:700;box-shadow:2px 2px 0 var(--border);transition:all .2s;}
+.nav-home:hover{background:var(--accent1);color:#fff;transform:translate(-1px,-1px);box-shadow:3px 3px 0 #0A2740;}
+.nav-divider{color:var(--border-light);font-size:18px;margin:0 4px;}
+.nav-current{color:var(--text-dim);font-size:13.5px;font-weight:600;}
+.main{max-width:900px;margin:0 auto;padding:48px 24px 100px;}
+.section-label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.section-label::after{content:'';flex:1;height:1.5px;background:linear-gradient(to right,var(--border-light),transparent);}
+.cards-grid{display:grid;grid-template-columns:1fr;gap:24px;}
+.law-card{background:var(--bg3);border:2.5px solid var(--border);border-radius:var(--radius);box-shadow:4px 4px 0 var(--border);overflow:hidden;text-decoration:none;display:block;transition:all .22s;position:relative;}
+.law-card:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--border);}
+.law-card:active{transform:translate(0,0);box-shadow:2px 2px 0 var(--border);}
+.card-banner{padding:24px 28px 20px;position:relative;overflow:hidden;}
+.card-banner::after{content:'';position:absolute;right:-20px;top:-20px;width:100px;height:100px;background:rgba(255,255,255,0.06);border-radius:50%;}
+.card-num{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;opacity:.8;margin-bottom:8px;display:block;}
+.card-emoji{font-size:32px;margin-bottom:10px;display:block;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.2));}
+.card-title{font-family:'Noto Serif Thai',serif;font-size:clamp(17px,2.5vw,21px);font-weight:700;line-height:1.35;margin-bottom:8px;}
+.card-desc{font-size:14px;opacity:.85;line-height:1.7;}
+.card-body{padding:16px 28px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:var(--bg3);border-top:2px solid var(--border-light);}
+.card-stats{display:flex;gap:20px;}
+.card-stat{text-align:center;}
+.card-stat-num{font-size:26px;font-weight:700;color:var(--accent1);display:block;font-family:'IBM Plex Mono',monospace;}
+.card-stat-label{font-size:11px;color:var(--text-muted);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.5px;}
+.card-arrow{width:40px;height:40px;background:var(--accent1);border:2px solid #0A2740;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#E8F4FF;font-size:16px;font-weight:bold;box-shadow:2px 2px 0 #0A2740;transition:all .2s;flex-shrink:0;}
+.law-card:hover .card-arrow{background:var(--accent2);transform:translate(-1px,-1px);box-shadow:3px 3px 0 #0A2740;}
+.info-box{background:var(--bg3);border:2px dashed var(--border-light);border-radius:var(--radius);padding:20px 24px;margin-top:32px;color:var(--text-muted);font-size:14.5px;line-height:1.85;}
+.info-box strong{color:var(--text);}
+.home-btn{position:fixed;bottom:calc(26px + env(safe-area-inset-bottom));left:26px;width:42px;height:42px;background:var(--gold);color:#fff;border:2px solid #8B6308;border-radius:50%;text-decoration:none;font-size:17px;display:flex;align-items:center;justify-content:center;box-shadow:3px 3px 0 #8B6308;transition:all .2s;z-index:999;}
+.home-btn:hover{background:var(--gold-light);transform:translate(-1px,-1px);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.law-card{animation:fadeUp .4s ease both;}
+.law-card:nth-child(1){animation-delay:0s;}
+.law-card:nth-child(2){animation-delay:.1s;}
+.law-card:nth-child(3){animation-delay:.2s;}
+@media(max-width:640px){
+  .hero{padding:40px 20px 36px;padding-top:calc(40px + env(safe-area-inset-top));}
+  .nav-bar{padding:10px 16px;}
+  .main{padding:32px 16px 80px;}
+  .card-banner{padding:20px 20px 16px;}
+  .card-body{padding:14px 20px 16px;}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="hero-emblem">🏛️</span>
+  <h1 class="hero-title">รวมกฎหมายปกครอง</h1>
+  <p class="hero-sub">รวบรวมพระราชบัญญัติหลักด้านกฎหมายปกครอง 3 ฉบับ แบ่งหมวด/ส่วนตามต้นฉบับ พร้อมค้นหาและอ่านออฟไลน์</p>
+  <span class="hero-tag">3 พระราชบัญญัติ · 286 มาตรา · 24 หมวด/ส่วน</span>
+</div>
+
+<nav class="nav-bar">
+  <a href="../index.html" class="nav-home">🏠 หน้าหลัก</a>
+  <span class="nav-divider">/</span>
+  <span class="nav-current">รวมกฎหมายปกครอง</span>
+</nav>
+
+<main class="main">
+  <p class="section-label">เลือกพระราชบัญญัติ</p>
+
+  <div class="cards-grid">
+
+    <a href="พรบ_ความรับผิดทางละเมิด.html" class="law-card">
+      <div class="card-banner" style="background:linear-gradient(135deg,#1A5276,#0E3552);">
+        <span class="card-num" style="color:#90B4E0;">พระราชบัญญัติ · พ.ศ. 2539</span>
+        <span class="card-emoji">⚖️</span>
+        <div class="card-title" style="color:#D4E5FF;">ความรับผิดทางละเมิดของเจ้าหน้าที่</div>
+        <div class="card-desc" style="color:#90B4E0;">หลักความรับผิดของหน่วยงานรัฐและเจ้าหน้าที่ต่อผู้เสียหายจากการปฏิบัติหน้าที่ สิทธิไล่เบี้ย และกระบวนการยื่นคำขอชดใช้</div>
+      </div>
+      <div class="card-body">
+        <div class="card-stats">
+          <div class="card-stat"><span class="card-stat-num">15</span><span class="card-stat-label">มาตรา</span></div>
+          <div class="card-stat"><span class="card-stat-num">1</span><span class="card-stat-label">หมวด</span></div>
+        </div>
+        <div class="card-arrow">→</div>
+      </div>
+    </a>
+
+    <a href="พรบ_วิธีปฏิบัติราชการทางปกครอง.html" class="law-card">
+      <div class="card-banner" style="background:linear-gradient(135deg,#154360,#0A2740);">
+        <span class="card-num" style="color:#7EB8E0;">พระราชบัญญัติ · พ.ศ. 2539</span>
+        <span class="card-emoji">📋</span>
+        <div class="card-title" style="color:#C8E6FF;">วิธีปฏิบัติราชการทางปกครอง</div>
+        <div class="card-desc" style="color:#7EB8E0;">หลักเกณฑ์คำสั่งทางปกครอง สิทธิคู่กรณี การอุทธรณ์ การเพิกถอน การบังคับ และระยะเวลาตามกฎหมายปกครอง</div>
+      </div>
+      <div class="card-body">
+        <div class="card-stats">
+          <div class="card-stat"><span class="card-stat-num">113</span><span class="card-stat-label">มาตรา</span></div>
+          <div class="card-stat"><span class="card-stat-num">14</span><span class="card-stat-label">หมวด/ส่วน</span></div>
+        </div>
+        <div class="card-arrow">→</div>
+      </div>
+    </a>
+
+    <a href="พรบ_จัดตั้งศาลปกครอง.html" class="law-card">
+      <div class="card-banner" style="background:linear-gradient(135deg,#1B2A47,#0D1829);">
+        <span class="card-num" style="color:#6B9FD4;">พระราชบัญญัติ · พ.ศ. 2542</span>
+        <span class="card-emoji">🏛️</span>
+        <div class="card-title" style="color:#B8D4FF;">จัดตั้งศาลปกครองและวิธีพิจารณาคดีปกครอง</div>
+        <div class="card-desc" style="color:#6B9FD4;">การจัดตั้งศาลปกครองสูงสุดและชั้นต้น อำนาจศาล คุณสมบัติตุลาการ ก.ศป. วิธีฟ้องคดีและการพิพากษา</div>
+      </div>
+      <div class="card-body">
+        <div class="card-stats">
+          <div class="card-stat"><span class="card-stat-num">158</span><span class="card-stat-label">มาตรา</span></div>
+          <div class="card-stat"><span class="card-stat-num">9</span><span class="card-stat-label">หมวด/ส่วน</span></div>
+        </div>
+        <div class="card-arrow">→</div>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="info-box">
+    <strong>หมายเหตุ:</strong> แต่ละพระราชบัญญัติแบ่งตามหมวดและส่วนตามต้นฉบับ แต่ละมาตราตั้งชื่อย่อให้เข้าใจง่ายในทันที รองรับการค้นหาข้อความและการอ่านแบบออฟไลน์
+  </div>
+</main>
+
+<a class="home-btn" href="../index.html" title="กลับหน้าหลัก">🏠</a>
+
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('../service-worker.js').catch(e=>console.error(e));
+  });
+}
+</script>
+</body>
+</html>
