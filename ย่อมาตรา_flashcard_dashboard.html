@@ -58,12 +58,80 @@ body {
 ::-webkit-scrollbar-track { background: var(--bg2); }
 ::-webkit-scrollbar-thumb { background: var(--accent1); border-radius: 4px; }
 
+/* Top JAVIS Navigation Bar */
+.nav-bar {
+  background: var(--sidebar);
+  border-bottom: 2px solid var(--border-light);
+  padding: 10px 24px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-top: calc(10px + env(safe-area-inset-top));
+}
+.nav-label {
+  font-size: 11px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-right: 4px;
+  white-space: nowrap;
+  font-family: 'IBM Plex Mono', monospace;
+}
+.nav-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 14px;
+  background: var(--bg3);
+  border: 1.5px solid var(--border);
+  border-radius: 50px;
+  color: var(--accent1);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.2s;
+  box-shadow: 2px 2px 0 var(--border);
+}
+.nav-pill:hover {
+  background: var(--accent1);
+  color: var(--bg3);
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 #1a2e1b;
+}
+
+/* Floating Home Button */
+.home-btn {
+  position: fixed;
+  bottom: calc(28px + env(safe-area-inset-bottom));
+  left: 24px;
+  width: 46px;
+  height: 46px;
+  background: var(--gold);
+  color: #fff;
+  border: 2px solid #8B6308;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 3px 3px 0 #8B6308;
+  transition: all 0.2s;
+  z-index: 9999;
+}
+.home-btn:hover {
+  background: var(--gold-light);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #8B6308;
+}
+
 /* Hero / Header */
 .hero {
   background: var(--bg);
   border-bottom: 2px dashed var(--border-light);
   padding: 24px 16px 20px;
-  padding-top: calc(20px + env(safe-area-inset-top));
   text-align: center;
   position: relative;
 }
@@ -487,6 +555,8 @@ footer {
   body {
     padding-bottom: calc(75px + env(safe-area-inset-bottom));
   }
+  .nav-bar { padding: 8px 12px; }
+  .home-btn { bottom: calc(75px + env(safe-area-inset-bottom)); left: 16px; width: 40px; height: 40px; font-size: 16px; }
   .hero { padding: 18px 12px 12px; }
   .mobile-bottom-bar {
     display: flex !important;
@@ -537,6 +607,17 @@ footer {
 <script src="ย่อมาตรา/flashcards_data.js"></script>
 </head>
 <body>
+
+<!-- Top Navigation Bar -->
+<nav class="nav-bar">
+  <span class="nav-label">เมนูหลัก:</span>
+  <a href="index.html" class="nav-pill">🏠 หน้าหลัก (Index)</a>
+  <a href="สรุปตัวบท_ขาอาญา_dashboard.html" class="nav-pill">🔨 ขาอาญา</a>
+  <a href="สรุปตัวบท_ขาแพ่ง_dashboard.html" class="nav-pill">📜 ขาแพ่ง</a>
+</nav>
+
+<!-- Floating Home Button -->
+<a href="index.html" class="home-btn" title="กลับหน้าหลัก (Index)">🏠</a>
 
 <header class="hero">
   <span class="hero-emblem">🎴</span>
