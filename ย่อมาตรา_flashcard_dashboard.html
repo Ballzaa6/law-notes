@@ -58,7 +58,6 @@ body {
 ::-webkit-scrollbar-track { background: var(--bg2); }
 ::-webkit-scrollbar-thumb { background: var(--accent1); border-radius: 4px; }
 
-/* Top JAVIS Navigation Bar */
 .nav-bar {
   background: var(--sidebar);
   border-bottom: 2px solid var(--border-light);
@@ -101,7 +100,6 @@ body {
   box-shadow: 3px 3px 0 #1a2e1b;
 }
 
-/* Floating Home Button */
 .home-btn {
   position: fixed;
   bottom: calc(28px + env(safe-area-inset-bottom));
@@ -127,7 +125,6 @@ body {
   box-shadow: 4px 4px 0 #8B6308;
 }
 
-/* Hero / Header */
 .hero {
   background: var(--bg);
   border-bottom: 2px dashed var(--border-light);
@@ -494,7 +491,6 @@ body {
   color: var(--text-muted);
 }
 
-/* Fixed Bottom Navigation Bar for Mobile & iPad */
 .mobile-bottom-bar {
   display: none;
 }
@@ -550,7 +546,6 @@ footer {
   color: var(--text-muted);
 }
 
-/* Responsive Mobile & iPad Breakpoints */
 @media (max-width: 768px) {
   body {
     padding-bottom: calc(75px + env(safe-area-inset-bottom));
@@ -636,7 +631,7 @@ footer {
       </div>
       <div class="hero-stat" onclick="selectSide('ขาอาญา')" id="stat-crim">
         <span class="hero-stat-num">401</span>
-        <span class="hero-stat-label">ขาอาญา (10 ข้อ)</span>
+        <span class="hero-stat-label">ขาอาญา (9 ข้อ)</span>
       </div>
     </div>
 
@@ -766,7 +761,7 @@ if ('serviceWorker' in navigator) {
 const RAW_DATA = window.FLASHCARDS_DATA;
 
 let currentSide = 'ขาแพ่ง'; 
-let currentQuestion = 1;   
+let currentQuestion = '1';   
 let activeDeck = [];
 let currentIndex = 0;
 let isGridView = false;
@@ -779,36 +774,50 @@ function init() {
   setupTouchSwipe();
 }
 
+function getQuestionKeys(side) {
+  if (side === 'ขาแพ่ง') {
+    return ['1','2','3','4','5','6','7','8','9','10'];
+  } else if (side === 'ขาอาญา') {
+    return ['1','2-3','4','5','6','7','8','9','10'];
+  } else {
+    return ['1','2','2-3','3','4','5','6','7','8','9','10'];
+  }
+}
+
 function renderQuestionPills() {
   const nav = document.getElementById('questionNav');
   let html = '';
   
-  const isAllActive = (currentQuestion === 0);
-  html += '<div class="q-pill ' + (isAllActive ? 'active' : '') + '" onclick="selectQuestion(0)">' +
+  const isAllActive = (currentQuestion === 'ALL' || currentQuestion === 0 || currentQuestion === '0');
+  html += '<div class="q-pill ' + (isAllActive ? 'active' : '') + '" onclick="selectQuestion('ALL')">' +
             '<span>ทุกข้อ</span>' +
            '</div>';
 
-  for (let i = 1; i <= 10; i++) {
+  const keys = getQuestionKeys(currentSide);
+
+  keys.forEach(qKey => {
     let count = 0;
     if (currentSide === 'ALL') {
-      count += (RAW_DATA['ขาแพ่ง'][i] ? RAW_DATA['ขาแพ่ง'][i].count : 0);
-      count += (RAW_DATA['ขาอาญา'][i] ? RAW_DATA['ขาอาญา'][i].count : 0);
-    } else if (RAW_DATA[currentSide] && RAW_DATA[currentSide][i]) {
-      count = RAW_DATA[currentSide][i].count;
+      count += (RAW_DATA['ขาแพ่ง'][qKey] ? RAW_DATA['ขาแพ่ง'][qKey].count : 0);
+      count += (RAW_DATA['ขาอาญา'][qKey] ? RAW_DATA['ขาอาญา'][qKey].count : 0);
+    } else if (RAW_DATA[currentSide] && RAW_DATA[currentSide][qKey]) {
+      count = RAW_DATA[currentSide][qKey].count;
     }
     
-    const isActive = (currentQuestion === i);
-    html += '<div class="q-pill ' + (isActive ? 'active' : '') + '" onclick="selectQuestion(' + i + ')">' +
-              '<span>ข้อ ' + i + '</span>' +
+    const isActive = (currentQuestion === qKey);
+    html += '<div class="q-pill ' + (isActive ? 'active' : '') + '" onclick="selectQuestion('' + qKey + '')">' +
+              '<span>ข้อ ' + qKey + '</span>' +
               '<span class="badge">' + count + '</span>' +
              '</div>';
-  }
+  });
   
   nav.innerHTML = html;
 }
 
 function selectSide(side) {
   currentSide = side;
+  currentQuestion = (side === 'ขาอาญา' && currentQuestion === '2') ? '2-3' : currentQuestion;
+  
   document.querySelectorAll('.hero-stat').forEach(el => el.classList.remove('active'));
   if (side === 'ALL') document.getElementById('stat-all').classList.add('active');
   if (side === 'ขาแพ่ง') document.getElementById('stat-civil').classList.add('active');
@@ -818,8 +827,8 @@ function selectSide(side) {
   buildDeck();
 }
 
-function selectQuestion(qNum) {
-  currentQuestion = qNum;
+function selectQuestion(qKey) {
+  currentQuestion = qKey;
   renderQuestionPills();
   buildDeck();
 }
@@ -831,16 +840,19 @@ function buildDeck() {
   const sidesToScan = (currentSide === 'ALL') ? ['ขาแพ่ง', 'ขาอาญา'] : [currentSide];
 
   sidesToScan.forEach(s => {
-    const questionsToScan = (currentQuestion === 0) ? [1,2,3,4,5,6,7,8,9,10] : [currentQuestion];
-    questionsToScan.forEach(q => {
-      if (RAW_DATA[s] && RAW_DATA[s][q]) {
-        const item = RAW_DATA[s][q];
+    const keysToScan = (currentQuestion === 'ALL' || currentQuestion === 0 || currentQuestion === '0')
+      ? getQuestionKeys(s)
+      : [currentQuestion];
+
+    keysToScan.forEach(qKey => {
+      if (RAW_DATA[s] && RAW_DATA[s][qKey]) {
+        const item = RAW_DATA[s][qKey];
         item.cards.forEach(card => {
           const fullText = (card.title + " " + card.back.join(" ")).toLowerCase();
           if (!searchVal || fullText.includes(searchVal)) {
             activeDeck.push({
               side: s,
-              questionNum: q,
+              questionNum: qKey,
               topic: item.topic,
               card: card
             });
@@ -853,7 +865,7 @@ function buildDeck() {
   currentIndex = 0;
 
   let topicTitleText = "";
-  if (currentQuestion === 0) {
+  if (currentQuestion === 'ALL' || currentQuestion === 0 || currentQuestion === '0') {
     topicTitleText = (currentSide === 'ALL') ? "รวมทุกข้อ ขาแพ่ง & ขาอาญา" : ("รวมทุกข้อ - " + currentSide);
   } else {
     const topicName = (currentSide !== 'ALL' && RAW_DATA[currentSide][currentQuestion]) 
@@ -998,7 +1010,6 @@ function jumpToCard(idx) {
   toggleViewMode();
 }
 
-/* Touch Swipe Gestures for Mobile & iPad */
 function setupTouchSwipe() {
   let startX = 0;
   let startY = 0;
@@ -1029,9 +1040,9 @@ function setupTouchSwipe() {
     if (Math.abs(diffX) > 45 && Math.abs(diffX) > Math.abs(diffY)) {
       isSwiping = true;
       if (diffX < 0) {
-        nextCard(); // Swipe Left -> Next
+        nextCard();
       } else {
-        prevCard(); // Swipe Right -> Prev
+        prevCard();
       }
     }
   }, { passive: true });
