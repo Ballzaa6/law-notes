@@ -672,7 +672,7 @@ footer {
 
   <!-- Deck Mode View -->
   <div id="deckView">
-    <div class="flashcard-wrapper" id="cardWrapper">
+    <div class="flashcard-wrapper" id="cardWrapper" onclick="flipCard()">
       <div class="flashcard" id="activeCard">
         <!-- Front -->
         <div class="card-face card-front">
@@ -789,7 +789,7 @@ function renderQuestionPills() {
   let html = '';
   
   const isAllActive = (currentQuestion === 'ALL' || currentQuestion === 0 || currentQuestion === '0');
-  html += '<div class="q-pill ' + (isAllActive ? 'active' : '') + '" onclick="selectQuestion('ALL')">' +
+  html += '<div class="q-pill ' + (isAllActive ? 'active' : '') + '" data-q="ALL" onclick="onPillClick(this)">' +
             '<span>ทุกข้อ</span>' +
            '</div>';
 
@@ -805,7 +805,7 @@ function renderQuestionPills() {
     }
     
     const isActive = (currentQuestion === qKey);
-    html += '<div class="q-pill ' + (isActive ? 'active' : '') + '" onclick="selectQuestion('' + qKey + '')">' +
+    html += '<div class="q-pill ' + (isActive ? 'active' : '') + '" data-q="' + qKey + '" onclick="onPillClick(this)">' +
               '<span>ข้อ ' + qKey + '</span>' +
               '<span class="badge">' + count + '</span>' +
              '</div>';
@@ -814,9 +814,18 @@ function renderQuestionPills() {
   nav.innerHTML = html;
 }
 
+function onPillClick(el) {
+  const qKey = el.getAttribute('data-q');
+  selectQuestion(qKey);
+}
+
 function selectSide(side) {
   currentSide = side;
-  currentQuestion = (side === 'ขาอาญา' && currentQuestion === '2') ? '2-3' : currentQuestion;
+  if (side === 'ขาอาญา' && (currentQuestion === '2' || currentQuestion === '3')) {
+    currentQuestion = '2-3';
+  } else if (side === 'ขาแพ่ง' && currentQuestion === '2-3') {
+    currentQuestion = '2';
+  }
   
   document.querySelectorAll('.hero-stat').forEach(el => el.classList.remove('active'));
   if (side === 'ALL') document.getElementById('stat-all').classList.add('active');
