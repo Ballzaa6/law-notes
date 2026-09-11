@@ -4349,7 +4349,7 @@ function toggleAllChapters(collapse) {
 window.addEventListener('scroll', () => {
   const btn = document.getElementById('backTop');
   if (btn) {
-    if (window.scrollY > 250) {
+    if (window.scrollY > 200) {
       btn.classList.add('visible');
     } else {
       btn.classList.remove('visible');
@@ -4428,7 +4428,7 @@ function highlightText(el, q) {
     }
   }
   
-  const regex = new RegExp(q.replace(/[.*+?^${}()|[\]\]/g, '\$&'), 'gi');
+  const regex = new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
   nodes.forEach(node => {
     if (node.nodeValue && regex.test(node.nodeValue)) {
       const span = document.createElement('span');
