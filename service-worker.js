@@ -1,5 +1,5 @@
 // เพิ่มเลขเวอร์ชันทุกครั้งที่แก้ไขไฟล์เนื้อหา เพื่อบังคับให้ผู้ใช้ได้แคชชุดใหม่
-const CACHE_NAME = 'sarup-tuabot-v23';
+const CACHE_NAME = 'sarup-tuabot-v24';
 
 const PRECACHE_URLS = [
   './',
@@ -32,7 +32,8 @@ const PRECACHE_URLS = [
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/apple-touch-icon.png',
-  './icons/icon.svg'
+  './icons/icon.svg',
+  './maatra_star.js'
 ];
 
 self.addEventListener('install', (event) => {
