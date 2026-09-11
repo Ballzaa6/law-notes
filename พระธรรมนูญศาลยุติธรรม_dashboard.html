@@ -370,13 +370,14 @@ body {
   color: var(--text);
   font-size: 17px;
   text-align: justify;
+  text-indent: 2.5em; /* tab ย่อหน้าเมื่อขึ้นวรรคใหม่ */
 }
 .maatra-line:last-child {
   margin-bottom: 0;
 }
 .maatra-line.indent {
-  padding-left: 28px;
-  text-indent: -10px;
+  padding-left: 48px;
+  text-indent: -24px;
 }
 
 /* ============= SEARCH HIGHLIGHT ============= */
@@ -468,6 +469,8 @@ body {
   .muat-body-content { padding: 14px; }
   .muat-header-top { padding: 16px 18px; }
   .maatra-body { padding: 14px 16px; }
+  .maatra-line { text-indent: 2em; font-size: 16px; }
+  .maatra-line.indent { padding-left: 36px; text-indent: -20px; }
 }
 @media (max-width: 380px) {
   .hero { padding: 28px 16px 24px; padding-top: calc(28px + env(safe-area-inset-top)); }
