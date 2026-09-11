@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>พระธรรมนูญศาลยุติธรรม — Dashboard</title>
+<meta name="description" content="พระธรรมนูญศาลยุติธรรม ฉบับเต็มทุกมาตรา พร้อมหัวข้อมาตรา ระบบค้นหา คัดกรอง และระบบติดดาวมาตราสำคัญสำหรับเตรียมสอบเนติบัณฑิตและผู้ช่วยผู้พิพากษา">
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1B365D">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="พระธรรมนูญศาลฯ">
+<meta name="mobile-web-app-capable" content="yes">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+Thai:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+/* ============= RESET ============= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Judicial Navy & Gold Palette */
+  --bg:          #F4F1EA;
+  --bg2:         #E8E3D7;
+  --bg3:         #FCFBF8;
+  --sidebar:     #E8E3D7;
+  --border:      #1B365D;   /* judicial navy */
+  --border-light:#D0C9BA;
+  --text:        #162436;
+  --text-muted:  #4A5D73;
+  --text-dim:    #768698;
+  --accent1:     #1B365D;   /* deep navy - primary */
+  --accent2:     #2E5388;   /* mid navy */
+  --accent3:     #7A5C28;   /* court bronze */
+  --gold:        #B8860B;   /* court gold */
+  --gold-light:  #D4A017;
+  --radius:      14px;
+  --radius-sm:   10px;
+  --shadow:      0 2px 12px rgba(27,54,93,0.12);
+  --shadow-card: 0 3px 0 0 #1B365D;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Sarabun', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.85;
+  font-size: 17px;
+}
+
+/* ============= SCROLLBAR ============= */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--accent1); border-radius: 3px; opacity: 0.5; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent2); }
+
+/* ============= HERO / HEADER ============= */
+.hero {
+  background: var(--bg);
+  border-bottom: 2px dashed var(--border-light);
+  padding: 56px 48px 44px;
+  padding-top: calc(56px + env(safe-area-inset-top));
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(27,54,93,0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+.hero-emblem {
+  font-size: 52px;
+  margin-bottom: 16px;
+  display: block;
+  filter: drop-shadow(0 2px 6px rgba(27,54,93,0.25));
+}
+.hero-title {
+  font-family: 'Noto Serif Thai', serif;
+  font-size: clamp(30px, 4vw, 50px);
+  font-weight: 700;
+  color: var(--accent1);
+  margin-bottom: 10px;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+}
+.hero-sub {
+  color: var(--text-muted);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13.5px;
+  margin-bottom: 32px;
+  letter-spacing: 0.3px;
+}
+.hero-stats {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+.hero-stat {
+  background: var(--bg3);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 14px 28px;
+  text-align: center;
+}
+.hero-stat-num {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--accent1);
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+}
+.hero-stat-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: 'IBM Plex Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-top: 2px;
+  display: block;
+}
+
+/* ============= SEARCH ============= */
+.search-wrapper {
+  max-width: 580px;
+  margin: 0 auto;
+  position: relative;
+}
+.search-input {
+  width: 100%;
+  padding: 13px 20px 13px 46px;
+  background: var(--bg3);
+  border: 2px solid var(--border);
+  border-radius: 50px;
+  color: var(--text);
+  font-size: 16px;
+  font-family: 'Sarabun', sans-serif;
+  outline: none;
+  transition: all 0.25s;
+  box-shadow: 3px 3px 0 var(--border);
+}
+.search-input::placeholder { color: var(--text-dim); }
+.search-input:focus {
+  background: #fff;
+  box-shadow: 4px 4px 0 var(--accent1);
+}
+.search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 16px;
+  pointer-events: none;
+}
+.search-results-count {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* ============= NAV BAR ============= */
+.nav-bar {
+  background: var(--sidebar);
+  border-bottom: 2px solid var(--border-light);
+  padding: 10px 36px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.nav-label {
+  font-size: 11px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-right: 4px;
+  white-space: nowrap;
+  font-family: 'IBM Plex Mono', monospace;
+}
+.nav-pill {
+  display: inline-block;
+  padding: 5px 14px;
+  background: var(--bg3);
+  border: 1.5px solid var(--border);
+  border-radius: 50px;
+  color: var(--accent1);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.2s;
+  box-shadow: 2px 2px 0 var(--border);
+}
+.nav-pill:hover {
+  background: var(--accent1);
+  color: var(--bg3);
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 #0E1D33;
+}
+
+/* ============= MAIN LAYOUT ============= */
+.main-container {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+/* ============= CHAPTER SECTION ============= */
+.muat-wrapper {
+  margin-bottom: 40px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 2.5px solid var(--border);
+  box-shadow: 4px 4px 0 var(--border);
+  background: var(--bg3);
+}
+.muat-header-top {
+  padding: 22px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  cursor: pointer;
+  user-select: none;
+  transition: opacity 0.2s;
+}
+.muat-header-top:hover {
+  opacity: 0.95;
+}
+
+/* Chapter theme gradients */
+.muat-c1 .muat-header-top { background: #1B365D; }
+.muat-c2 .muat-header-top { background: #234167; }
+.muat-c3 .muat-header-top { background: #162E50; }
+.muat-c4 .muat-header-top { background: #2A3B54; }
+
+.muat-title-group { flex: 1; }
+.muat-main-title {
+  font-family: 'Noto Serif Thai', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #F4F1EA;
+  margin-bottom: 4px;
+}
+.muat-sub-title {
+  font-size: 15px;
+  color: #C2D1E5;
+  font-family: 'Sarabun', sans-serif;
+}
+.muat-stats-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.stat-badge {
+  text-align: center;
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid rgba(244,241,234,0.35);
+  background: rgba(244,241,234,0.12);
+  min-width: 80px;
+}
+.stat-num {
+  font-size: 24px;
+  font-weight: 700;
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  color: #FFE8A3;
+}
+.stat-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.7);
+  font-family: 'IBM Plex Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.toggle-icon {
+  color: #FFE8A3;
+  transition: transform 0.3s;
+  font-size: 14px;
+  font-weight: bold;
+}
+.muat-wrapper.collapsed .toggle-icon {
+  transform: rotate(-90deg);
+}
+.muat-body-content {
+  background: var(--bg);
+  padding: 24px;
+}
+.muat-wrapper.collapsed .muat-body-content {
+  display: none;
+}
+
+/* ============= MAATRA CARD ============= */
+.maatra-card {
+  background: var(--bg3);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 18px;
+  overflow: hidden;
+  transition: all 0.18s;
+  box-shadow: 3px 3px 0 var(--border);
+}
+.maatra-card:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--border);
+}
+.maatra-card.highlight {
+  border-color: var(--gold) !important;
+  box-shadow: 3px 3px 0 var(--gold) !important;
+}
+.maatra-card.highlight .maatra-badge {
+  background: var(--gold) !important;
+  color: #fff !important;
+  border-color: #8B6308 !important;
+}
+.maatra-header {
+  padding: 10px 18px;
+  background: var(--bg2);
+  border-bottom: 1.5px solid var(--border-light);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+.maatra-badge {
+  background: var(--accent1);
+  color: #F4F1EA;
+  padding: 4px 14px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  font-family: 'IBM Plex Mono', monospace;
+  border: 1.5px solid #0E1D33;
+  letter-spacing: 0.3px;
+}
+.maatra-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.2px;
+  flex: 1;
+}
+.maatra-body {
+  padding: 18px 22px;
+}
+.maatra-line {
+  margin-bottom: 14px;
+  line-height: 1.9;
+  color: var(--text);
+  font-size: 17px;
+  text-align: justify;
+}
+.maatra-line:last-child {
+  margin-bottom: 0;
+}
+.maatra-line.indent {
+  padding-left: 28px;
+  text-indent: -10px;
+}
+
+/* ============= SEARCH HIGHLIGHT ============= */
+.search-highlight {
+  background: rgba(212,160,23,0.3);
+  color: #5A3800;
+  border-radius: 3px;
+  padding: 0 3px;
+  font-weight: 600;
+}
+.hidden { display: none !important; }
+.search-no-results {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+  font-size: 17px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* ============= BACK TO TOP & HOME ============= */
+.back-top {
+  position: fixed;
+  bottom: calc(28px + env(safe-area-inset-bottom));
+  right: 28px;
+  width: 44px;
+  height: 44px;
+  background: var(--accent1);
+  color: #F4F1EA;
+  border: 2px solid #0E1D33;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 3px 3px 0 #0E1D33;
+  transition: all 0.2s;
+  z-index: 999;
+}
+.back-top:hover {
+  background: var(--accent2);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #0E1D33;
+}
+.back-top.visible { display: flex; }
+
+.home-btn {
+  position: fixed;
+  bottom: calc(28px + env(safe-area-inset-bottom));
+  left: 28px;
+  width: 44px;
+  height: 44px;
+  background: var(--gold);
+  color: #fff;
+  border: 2px solid #8B6308;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 3px 3px 0 #8B6308;
+  transition: all 0.2s;
+  z-index: 999;
+}
+.home-btn:hover {
+  background: var(--gold-light);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #8B6308;
+}
+
+/* ============= ANIMATIONS ============= */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.muat-wrapper {
+  animation: fadeInUp 0.45s ease both;
+}
+
+/* ============= RESPONSIVE ============= */
+@media (max-width: 1024px) {
+  .hero { padding: 44px 32px 36px; padding-top: calc(44px + env(safe-area-inset-top)); }
+  .main-container { padding: 32px 20px 72px; }
+}
+@media (max-width: 768px) {
+  .hero { padding: 36px 20px 30px; padding-top: calc(36px + env(safe-area-inset-top)); }
+  .nav-bar { padding: 10px 16px; }
+  .muat-body-content { padding: 14px; }
+  .muat-header-top { padding: 16px 18px; }
+  .maatra-body { padding: 14px 16px; }
+}
+@media (max-width: 380px) {
+  .hero { padding: 28px 16px 24px; padding-top: calc(28px + env(safe-area-inset-top)); }
+  .hero-emblem { font-size: 40px; margin-bottom: 12px; }
+  .hero-stat { padding: 10px 18px; }
+  .hero-stat-num { font-size: 24px; }
+  .main-container { padding: 24px 14px 64px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-emblem">🏛️</span>
+  <h1 class="hero-title">พระธรรมนูญศาลยุติธรรม</h1>
+  <p class="hero-sub">พระราชบัญญัติให้ใช้พระธรรมนูญศาลยุติธรรม พ.ศ. ๒๕๔๓</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="hero-stat-num">4</span>
+      <span class="hero-stat-label">หมวด</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">34</span>
+      <span class="hero-stat-label">มาตรา</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">3</span>
+      <span class="hero-stat-label">ชั้นศาล</span>
+    </div>
+  </div>
+  <div class="search-wrapper">
+    <span class="search-icon">🔍</span>
+    <input type="text" class="search-input" id="searchInput"
+           placeholder="ค้นหามาตรา เช่น 25, 19/1 หรือ เหตุจำเป็น..."
+           oninput="doSearch(this.value)">
+    <span class="search-results-count" id="searchCount"></span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav-bar">
+  <span class="nav-label">ไปที่:</span>
+  <a href="#muat_1" class="nav-pill">หมวด ๑ บททั่วไป</a>
+  <a href="#muat_2" class="nav-pill">หมวด ๒ เขตอำนาจศาล</a>
+  <a href="#muat_3" class="nav-pill">หมวด ๓ องค์คณะผู้พิพากษา</a>
+  <a href="#muat_4" class="nav-pill">หมวด ๔ การจ่าย การโอน และการเรียกคืนสำนวนคดี</a>
+</nav>
+
+<!-- MAIN -->
+<div class="main-container" id="mainContainer">
+  <div id="searchNoResults" class="search-no-results hidden">
+    ไม่พบผลลัพธ์สำหรับการค้นหานี้
+  </div>
+
+<section class="muat-wrapper muat-c1" id="muat_1">
+  <div class="muat-header-top" onclick="toggleMuat('muat_1')">
+    <div class="muat-title-group">
+      <h2 class="muat-main-title">หมวด ๑</h2>
+      <span class="muat-sub-title">บททั่วไป</span>
+    </div>
+    <div class="muat-stats-group">
+      <div class="stat-badge">
+        <span class="stat-num">14</span>
+        <span class="stat-label">มาตรา</span>
+      </div>
+      <span class="toggle-icon">▼</span>
+    </div>
+  </div>
+  <div class="muat-body-content" id="muat_1_body">
+    <div class="maatra-card" id="มาตรา-1">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 1</span>
+        <span class="maatra-title">ชั้นของศาลยุติธรรม (สามชั้น: ศาลชั้นต้น ศาลชั้นอุทธรณ์ ศาลฎีกา)</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ศาลยุติธรรมตามพระธรรมนูญนี้มีสามชั้น คือ ศาลชั้นต้น ศาลชั้นอุทธรณ์ และศาลฎีกา เว้นแต่จะมีกฎหมายบัญญัติไว้เป็นอย่างอื่น</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-2">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 2</span>
+        <span class="maatra-title">ศาลชั้นต้น (ศาลแพ่ง ศาลอาญา ศาลจังหวัด ศาลแขวง และศาลยุติธรรมอื่น)</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ศาลชั้นต้น ได้แก่ ศาลแพ่ง ศาลแพ่งกรุงเทพใต้ ศาลแพ่งตลิ่งชัน ศาลแพ่งธนบุรี ศาลแพ่งพระโขนง ศาลแพ่งมีนบุรี ศาลอาญา ศาลอาญากรุงเทพใต้ ศาลอาญาตลิ่งชัน ศาลอาญาธนบุรี ศาลอาญาพระโขนง ศาลอาญามีนบุรี ศาลจังหวัด ศาลแขวง และศาลยุติธรรมอื่นที่พระราชบัญญัติจัดตั้งศาลนั้นกำหนดให้เป็นศาลชั้นต้น</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-3">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 3</span>
+        <span class="maatra-title">ศาลชั้นอุทธรณ์ (ศาลอุทธรณ์ ศาลอุทธรณ์ภาค และศาลยุติธรรมอื่น)</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ศาลชั้นอุทธรณ์ ได้แก่ ศาลอุทธรณ์ ศาลอุทธรณ์ภาค และศาลยุติธรรมอื่นที่พระราชบัญญัติจัดตั้งศาลนั้นกำหนดให้เป็นศาลชั้นอุทธรณ์</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-4">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 4</span>
+        <span class="maatra-title">การแบ่งส่วนราชการ แผนก สาขา และการกำหนดสถานที่ตั้งของศาล</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ศาลฎีกา ศาลชั้นอุทธรณ์ และศาลชั้นต้น อาจแบ่งส่วนราชการเป็นแผนกหรือหน่วยงานที่เรียกชื่ออย่างอื่น และจะให้มีอำนาจในคดีประเภทใดหรือคดีในท้องที่ใด ซึ่งอยู่ในเขตอำนาจของแต่ละศาลนั้นแยกต่างหากโดยเฉพาะก็ได้ โดยให้ออกเป็นประกาศคณะกรรมการบริหารศาลยุติธรรม</p>
+        <p class="maatra-line">ศาลชั้นต้นอาจเปิดทำการสาขาในท้องที่อื่นใด และจะให้มีอำนาจในคดีประเภทใดหรือคดีในท้องที่ใด ซึ่งอยู่ในเขตอำนาจของศาลนั้นแยกต่างหากโดยเฉพาะก็ได้ โดยให้ออกเป็นประกาศคณะกรรมการบริหารศาลยุติธรรม</p>
+        <p class="maatra-line">การกำหนดและการเปลี่ยนแปลงสถานที่ตั้งของศาล ให้ออกเป็นประกาศคณะกรรมการบริหารศาลยุติธรรม</p>
+        <p class="maatra-line">ประกาศคณะกรรมการบริหารศาลยุติธรรมที่ออกตามความในมาตรานี้เมื่อประกาศในราชกิจจานุเบกษาแล้ว ให้ใช้บังคับได้</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-5">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 5</span>
+        <span class="maatra-title">อำนาจหน้าที่ของประธานศาลฎีกาในการวางระเบียบราชการฝ่ายตุลาการ</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ให้ประธานศาลฎีกามีหน้าที่วางระเบียบราชการฝ่ายตุลาการของศาลยุติธรรมเพื่อให้กิจการของศาลยุติธรรมดำเนินไปโดยเรียบร้อยและเป็นระเบียบเดียวกัน และให้ประธานศาลฎีกามีอำนาจให้คำแนะนำแก่ผู้พิพากษาในการปฏิบัติตามระเบียบวิธีการต่าง ๆ ที่กำหนดขึ้นโดยกฎหมายหรือโดยประการอื่นให้เป็นไปโดยถูกต้อง</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-6">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 6</span>
+        <span class="maatra-title">อำนาจเสนอความเห็นเกี่ยวกับการจัดตั้ง ยุบเลิก หรือเปลี่ยนแปลงเขตอำนาจศาล</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ให้เลขาธิการสำนักงานศาลยุติธรรมโดยความเห็นชอบของคณะกรรมการบริหารศาลยุติธรรมมีอำนาจเสนอความเห็นเกี่ยวกับการจัดตั้ง การยุบเลิก หรือการเปลี่ยนแปลงเขตอำนาจศาลของศาลยุติธรรมต่อคณะรัฐมนตรีเพื่อพิจารณาดำเนินการ  ทั้งนี้ โดยคำนึงถึงจำนวน สภาพ สถานที่ตั้ง และเขตอำนาจศาลตามที่จำเป็นเพื่อให้การอำนวยความยุติธรรมแก่ประชาชนเป็นไปโดยเรียบร้อยตลอดราชอาณาจักร</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-7">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 7</span>
+        <span class="maatra-title">การกำหนดจำนวนผู้พิพากษาในศาลยุติธรรมโดย ก.บ.ศ.</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ให้คณะกรรมการบริหารศาลยุติธรรมกำหนดจำนวนผู้พิพากษาในศาลยุติธรรมให้เหมาะสมตามความจำเป็นแห่งราชการ</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-8">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 8</span>
+        <span class="maatra-title">ตำแหน่งผู้บริหารศาลยุติธรรมและการทำการแทน (ประธานศาลฎีกา ประธานศาลอุทธรณ์ อธิบดีผู้พิพากษา)</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ให้มีประธานศาลฎีกาประจำศาลฎีกาหนึ่งคน ประธานศาลอุทธรณ์ประจำศาลอุทธรณ์หนึ่งคน ประธานศาลอุทธรณ์ภาคประจำศาลอุทธรณ์ภาค ศาลละหนึ่งคน และให้มีอธิบดีผู้พิพากษาศาลชั้นต้นประจำศาลแพ่ง ศาลแพ่งกรุงเทพใต้ ศาลแพ่งตลิ่งชัน ศาลแพ่งธนบุรี ศาลแพ่งพระโขนง ศาลแพ่งมีนบุรี ศาลอาญา ศาลอาญากรุงเทพใต้ ศาลอาญาตลิ่งชัน ศาลอาญาธนบุรี ศาลอาญาพระโขนง ศาลอาญามีนบุรี และศาลยุติธรรมอื่นที่พระราชบัญญัติจัดตั้งศาลนั้นกำหนดให้เป็นศาลชั้นต้น ศาลละหนึ่งคน กับให้มีรองประธานศาลฎีกาประจำศาลฎีกา รองประธานศาลอุทธรณ์ประจำศาลอุทธรณ์ รองประธานศาลอุทธรณ์ภาคประจำศาลอุทธรณ์ภาค และรองอธิบดีผู้พิพากษาศาลชั้นต้นประจำศาลแพ่ง ศาลแพ่งกรุงเทพใต้ ศาลแพ่งตลิ่งชัน ศาลแพ่งธนบุรี ศาลแพ่งพระโขนง ศาลแพ่งมีนบุรี ศาลอาญา ศาลอาญากรุงเทพใต้ ศาลอาญาตลิ่งชัน ศาลอาญาธนบุรี ศาลอาญาพระโขนง ศาลอาญามีนบุรี และศาลยุติธรรมอื่นที่พระราชบัญญัติจัดตั้งศาลนั้นกำหนดให้เป็นศาลชั้นต้น ศาลละหนึ่งคน และในกรณีที่มีความจำเป็นเพื่อประโยชน์ในทางราชการ คณะกรรมการบริหารศาลยุติธรรมโดยความเห็นชอบของประธานศาลฎีกาจะกำหนดให้มีรองประธานศาลฎีกามากกว่าหนึ่งคนแต่ไม่เกินหกคน รองประธานศาลอุทธรณ์ รองประธานศาลอุทธรณ์ภาค หรือรองอธิบดีผู้พิพากษาศาลชั้นต้น มากกว่าหนึ่งคนแต่ไม่เกินสามคนก็ได้</p>
+        <p class="maatra-line">เมื่อตำแหน่งประธานศาลฎีกา ประธานศาลอุทธรณ์ ประธานศาลอุทธรณ์ภาค หรืออธิบดีผู้พิพากษาศาลชั้นต้นว่างลง หรือเมื่อผู้ดำรงตำแหน่งดังกล่าวไม่อาจปฏิบัติราชการได้ให้รองประธานศาลฎีกา รองประธานศาลอุทธรณ์ รองประธานศาลอุทธรณ์ภาค หรือรองอธิบดีผู้พิพากษาศาลชั้นต้น แล้วแต่กรณี เป็นผู้ทำการแทน ถ้ามีรองประธานศาลฎีกา รองประธานศาลอุทธรณ์ รองประธานศาลอุทธรณ์ภาค หรือรองอธิบดีผู้พิพากษาศาลชั้นต้นหลายคน ให้รองประธานศาลฎีกา รองประธานศาลอุทธรณ์ รองประธานศาลอุทธรณ์ภาค หรือรองอธิบดีผู้พิพากษาศาลชั้นต้น ที่มีอาวุโสสูงสุดเป็นผู้ทำการแทน ถ้าผู้ที่มีอาวุโสสูงสุดไม่อาจปฏิบัติราชการได้ ให้ผู้ที่มีอาวุโสถัดลงมาตามลำดับเป็นผู้ทำการแทน</p>
+        <p class="maatra-line">ในกรณีที่ไม่มีผู้ทำการแทนประธานศาลฎีกา ประธานศาลอุทธรณ์ ประธานศาลอุทธรณ์ภาค หรืออธิบดีผู้พิพากษาศาลชั้นต้นตามวรรคสอง หรือมีแต่ไม่อาจปฏิบัติราชการได้ ให้ผู้พิพากษาที่มีอาวุโสสูงสุดในศาลนั้นเป็นผู้ทำการแทน ถ้าผู้ที่มีอาวุโสสูงสุดไม่อาจปฏิบัติราชการได้ ให้ผู้พิพากษาที่มีอาวุโสถัดลงมาตามลำดับเป็นผู้ทำการแทน</p>
+        <p class="maatra-line">ในกรณีที่ไม่มีผู้ทำการแทนตามวรรคสาม ประธานศาลฎีกาจะสั่งให้ผู้พิพากษาคนหนึ่งเป็นผู้ทำการแทนก็ได้</p>
+        <p class="maatra-line">ผู้พิพากษาอาวุโสหรือผู้พิพากษาประจำศาลจะเป็นผู้ทำการแทนในตำแหน่งตามวรรคหนึ่งไม่ได้</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-9">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 9</span>
+        <span class="maatra-title">ผู้พิพากษาหัวหน้าศาลจังหวัดและศาลแขวง และการทำการแทน</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ในศาลจังหวัดหรือศาลแขวง ให้มีผู้พิพากษาหัวหน้าศาล ศาลละหนึ่งคน</p>
+        <p class="maatra-line">เมื่อตำแหน่งผู้พิพากษาหัวหน้าศาลจังหวัดหรือผู้พิพากษาหัวหน้าศาลแขวงว่างลง หรือเมื่อผู้ดำรงตำแหน่งดังกล่าวไม่อาจปฏิบัติราชการได้ ให้ผู้พิพากษาที่มีอาวุโสสูงสุดในศาลนั้นเป็นผู้ทำการแทน ถ้าผู้ที่มีอาวุโสสูงสุดในศาลนั้นไม่อาจปฏิบัติราชการได้ ให้ผู้พิพากษาที่มีอาวุโสถัดลงมาตามลำดับในศาลนั้นเป็นผู้ทำการแทน</p>
+        <p class="maatra-line">ในกรณีที่ไม่มีผู้ทำการแทนตามวรรคสอง ประธานศาลฎีกาจะสั่งให้ผู้พิพากษาคนหนึ่งเป็นผู้ทำการแทนก็ได้</p>
+        <p class="maatra-line">ผู้พิพากษาอาวุโสหรือผู้พิพากษาประจำศาลจะเป็นผู้ทำการแทนในตำแหน่งตามวรรคหนึ่งไม่ได้</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-10">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 10</span>
+        <span class="maatra-title">ผู้พิพากษาหัวหน้าแผนกในศาลยุติธรรม และการทำการแทน</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ในกรณีที่มีการแบ่งส่วนราชการในศาลฎีกา ศาลชั้นอุทธรณ์ หรือศาลชั้นต้นออกเป็นแผนกหรือหน่วยงานที่เรียกชื่ออย่างอื่น ให้มีผู้พิพากษาหัวหน้าแผนกหรือผู้พิพากษาหัวหน้าหน่วยงานที่เรียกชื่ออย่างอื่น แผนกหรือหน่วยงานละหนึ่งคน</p>
+        <p class="maatra-line">เมื่อตำแหน่งผู้พิพากษาหัวหน้าแผนกหรือผู้พิพากษาหัวหน้าหน่วยงานที่เรียกชื่ออย่างอื่นตามวรรคหนึ่งว่างลง หรือเมื่อผู้ดำรงตำแหน่งดังกล่าวไม่อาจปฏิบัติราชการได้ ให้ผู้พิพากษาที่มีอาวุโสสูงสุดในแผนกหรือในหน่วยงานที่เรียกชื่ออย่างอื่นนั้นเป็นผู้ทำการแทน ถ้าผู้ที่มีอาวุโสสูงสุดในแผนกหรือในหน่วยงานที่เรียกชื่ออย่างอื่นนั้นไม่อาจปฏิบัติราชการได้ ให้ผู้พิพากษาที่มีอาวุโสถัดลงมาตามลำดับในแผนกหรือในหน่วยงานที่เรียกชื่ออย่างอื่นนั้นเป็นผู้ทำการแทน</p>
+        <p class="maatra-line">ในกรณีที่ไม่มีผู้ทำการแทนตามวรรคสอง ประธานศาลฎีกาจะสั่งให้ผู้พิพากษาคนหนึ่งเป็นผู้ทำการแทนก็ได้</p>
+        <p class="maatra-line">ผู้พิพากษาอาวุโสหรือผู้พิพากษาประจำศาลจะทำการแทนในตำแหน่งตามวรรคหนึ่งไม่ได้</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-11">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 11</span>
+        <span class="maatra-title">อำนาจหน้าที่ของผู้บริหารศาลยุติธรรมในการบริหารราชการศาล</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ประธานศาลฎีกา ประธานศาลอุทธรณ์ ประธานศาลอุทธรณ์ภาค อธิบดีผู้พิพากษาศาลชั้นต้น และผู้พิพากษาหัวหน้าศาล ต้องรับผิดชอบในราชการของศาลให้เป็นไปโดยเรียบร้อย และให้มีอำนาจหน้าที่ดังต่อไปนี้ด้วย</p>
+        <p class="maatra-line indent">(๑) นั่งพิจารณาและพิพากษาคดีใด ๆ ของศาลนั้น หรือเมื่อได้ตรวจสำนวนคดีใดแล้วมีอำนาจทำความเห็นแย้งได้</p>
+        <p class="maatra-line indent">(๒) สั่งคำร้องคำขอต่าง ๆ ที่ยื่นต่อตนตามบทบัญญัติแห่งกฎหมายว่าด้วยวิธีพิจารณาความ</p>
+        <p class="maatra-line indent">(๓) ระมัดระวังการใช้ระเบียบวิธีการต่าง ๆ ที่กำหนดขึ้นโดยกฎหมายหรือโดยประการอื่นให้เป็นไปโดยถูกต้อง เพื่อให้การพิจารณาพิพากษาคดีเสร็จเด็ดขาดไปโดยเร็ว</p>
+        <p class="maatra-line indent">(๔) ให้คำแนะนำแก่ผู้พิพากษาในศาลนั้นในข้อขัดข้องเนื่องในการปฏิบัติหน้าที่ของผู้พิพากษา</p>
+        <p class="maatra-line indent">(๕) ร่วมมือกับเจ้าพนักงานฝ่ายปกครองในบรรดากิจการอันเกี่ยวกับการจัดวางระเบียบและการดำเนินการงานส่วนธุรการของศาล</p>
+        <p class="maatra-line indent">(๖) ทำรายงานการคดีและกิจการของศาลส่งตามระเบียบ</p>
+        <p class="maatra-line indent">(๗) มีอำนาจหน้าที่อื่นตามที่กฎหมายกำหนด</p>
+        <p class="maatra-line">ให้รองประธานศาลฎีกา รองประธานศาลอุทธรณ์ รองประธานศาลอุทธรณ์ภาค หรือรองอธิบดีผู้พิพากษาศาลชั้นต้น มีอำนาจตาม (๒) ด้วย และให้มีหน้าที่ช่วยประธานศาลฎีกา ประธานศาลอุทธรณ์  ประธานศาลอุทธรณ์ภาค หรืออธิบดีผู้พิพากษาศาลชั้นต้น แล้วแต่กรณี ตามที่ประธานศาลฎีกา ประธานศาลอุทธรณ์ ประธานศาลอุทธรณ์ภาค หรืออธิบดีผู้พิพากษาศาลชั้นต้นมอบหมาย</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-12">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 12</span>
+        <span class="maatra-title">หน้าที่และความรับผิดชอบของผู้พิพากษาหัวหน้าแผนก</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ผู้พิพากษาหัวหน้าแผนกหรือผู้พิพากษาหัวหน้าหน่วยงานที่เรียกชื่ออย่างอื่นตามมาตรา ๑๐ วรรคหนึ่ง ต้องรับผิดชอบงานของแผนกหรือหน่วยงานที่เรียกชื่ออย่างอื่นให้เป็นไปโดยเรียบร้อยตามที่กำหนดไว้ในประกาศคณะกรรมการบริหารศาลยุติธรรมที่ได้จัดตั้งแผนกหรือหน่วยงานที่เรียกชื่ออย่างอื่นนั้น และต้องปฏิบัติตามคำสั่งของประธานศาลฎีกา ประธานศาลอุทธรณ์ ประธานศาลอุทธรณ์ภาค อธิบดีผู้พิพากษาศาลชั้นต้น หรือผู้พิพากษาหัวหน้าศาลนั้น</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-13">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 13</span>
+        <span class="maatra-title">อธิบดีผู้พิพากษาภาคและรองอธิบดีผู้พิพากษาภาค (9 ภาค)</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ให้มีอธิบดีผู้พิพากษาภาค ภาคละหนึ่งคน จำนวนเก้าภาค มีสถานที่ตั้งและเขตอำนาจตามที่คณะกรรมการบริหารศาลยุติธรรมกำหนดโดยประกาศในราชกิจจานุเบกษา กับให้มีรองอธิบดีผู้พิพากษาภาค ภาคละสามคน ในกรณีที่มีความจำเป็นเพื่อประโยชน์ในทางราชการ คณะกรรมการบริหารศาลยุติธรรมโดยความเห็นชอบของประธานศาลฎีกาจะกำหนดให้มีรองอธิบดีผู้พิพากษาภาคมากกว่าสามคนแต่ไม่เกินหกคนก็ได้</p>
+        <p class="maatra-line">เมื่อตำแหน่งอธิบดีผู้พิพากษาภาคว่างลง หรือเมื่อผู้ดำรงตำแหน่งดังกล่าวไม่อาจปฏิบัติราชการได้ ให้รองอธิบดีผู้พิพากษาภาคที่มีอาวุโสสูงสุดเป็นผู้ทำการแทน ถ้าผู้ที่มีอาวุโสสูงสุดไม่อาจปฏิบัติราชการได้ ให้ผู้ที่มีอาวุโสถัดลงมาตามลำดับเป็นผู้ทำการแทน</p>
+        <p class="maatra-line">ในกรณีที่ไม่มีผู้ทำการแทนตามวรรคสอง ประธานศาลฎีกาจะสั่งให้ผู้พิพากษาคนหนึ่งเป็นผู้ทำการแทนก็ได้</p>
+        <p class="maatra-line">ผู้พิพากษาอาวุโสหรือผู้พิพากษาประจำศาลจะเป็นผู้ทำการแทนในตำแหน่งตามวรรคหนึ่งไม่ได้</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-14">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 14</span>
+        <span class="maatra-title">อำนาจหน้าที่ของอธิบดีผู้พิพากษาภาค (สั่งตรวจสำนวน สั่งช่วยทำงานชั่วคราว)</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ให้อธิบดีผู้พิพากษาภาคเป็นผู้พิพากษาในศาลที่อยู่ในเขตอำนาจด้วยผู้หนึ่ง โดยให้มีอำนาจและหน้าที่ตามที่กำหนดไว้ในมาตรา ๑๑ วรรคหนึ่ง และให้มีอำนาจหน้าที่ดังต่อไปนี้ด้วย</p>
+        <p class="maatra-line indent">(๑) สั่งให้หัวหน้าสำนักงานประจำศาลยุติธรรมรายงานเกี่ยวด้วยคดี หรือรายงานกิจการอื่นของศาลที่อยู่ในเขตอำนาจของตน</p>
+        <p class="maatra-line indent">(๒) ในกรณีจำเป็นจะสั่งให้ผู้พิพากษาคนใดคนหนึ่งในศาลที่อยู่ในเขตอำนาจของตนไปช่วยทำงานชั่วคราวมีกำหนดไม่เกินสามเดือนในอีกศาลหนึ่งโดยความยินยอมของผู้พิพากษานั้นก็ได้ แล้วรายงานไปยังประธานศาลฎีกาทันที</p>
+        <p class="maatra-line">ให้รองอธิบดีผู้พิพากษาภาคเป็นผู้พิพากษาในศาลที่อยู่ในเขตอำนาจด้วย โดยให้มีอำนาจตามที่กำหนดไว้ในมาตรา ๑๑ วรรคหนึ่ง (๒) และให้มีหน้าที่ช่วยอธิบดีผู้พิพากษาภาคตามที่อธิบดีผู้พิพากษาภาคมอบหมาย</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="muat-wrapper muat-c2" id="muat_2">
+  <div class="muat-header-top" onclick="toggleMuat('muat_2')">
+    <div class="muat-title-group">
+      <h2 class="muat-main-title">หมวด ๒</h2>
+      <span class="muat-sub-title">เขตอำนาจศาล</span>
+    </div>
+    <div class="muat-stats-group">
+      <div class="stat-badge">
+        <span class="stat-num">10</span>
+        <span class="stat-label">มาตรา</span>
+      </div>
+      <span class="toggle-icon">▼</span>
+    </div>
+  </div>
+  <div class="muat-body-content" id="muat_2_body">
+    <div class="maatra-card" id="มาตรา-15">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 15</span>
+        <span class="maatra-title">ข้อห้ามศาลรับคดีที่ศาลอื่นรับประทับฟ้องไว้แล้ว (ห้ามฟ้องซ้อนข้ามศาล)</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ห้ามมิให้ศาลยุติธรรมศาลใดศาลหนึ่งรับคดีซึ่งศาลยุติธรรมอื่นได้สั่งรับประทับฟ้องโดยชอบแล้วไว้พิจารณาพิพากษา เว้นแต่คดีนั้นจะได้โอนมาตามบทบัญญัติแห่งกฎหมายว่าด้วยวิธีพิจารณาความหรือตามพระธรรมนูญศาลยุติธรรม</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-16">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 16</span>
+        <span class="maatra-title">เขตอำนาจศาลชั้นต้น และดุลพินิจของศาลแพ่ง/ศาลอาญาในการรับคดีนอกเขตหรือโอนคดี</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ศาลชั้นต้นมีเขตตามที่พระราชบัญญัติจัดตั้งศาลนั้นกำหนดไว้ในกรณีที่มีความจำเป็นต้องเปลี่ยนแปลงเขตอำนาจศาลเพื่อประโยชน์ในการอำนวยความยุติธรรมแก่ประชาชน ให้ตราเป็นพระราชกฤษฎีกา</p>
+        <p class="maatra-line">ศาลแพ่งและศาลอาญา มีเขตตลอดท้องที่กรุงเทพมหานครนอกจากท้องที่ที่อยู่ในเขตของศาลแพ่งกรุงเทพใต้ ศาลแพ่งตลิ่งชัน ศาลแพ่งธนบุรี ศาลแพ่งพระโขนง ศาลแพ่งมีนบุรี ศาลอาญากรุงเทพใต้ ศาลอาญาตลิ่งชัน ศาลอาญาธนบุรี ศาลอาญาพระโขนง ศาลอาญามีนบุรี และศาลยุติธรรมอื่นตามที่พระราชบัญญัติจัดตั้งศาลนั้นกำหนดไว้</p>
+        <p class="maatra-line">ในกรณีที่มีการยื่นฟ้องคดีต่อศาลแพ่งหรือศาลอาญา และคดีนั้นเกิดขึ้นนอกเขตของศาลแพ่งหรือศาลอาญา ศาลแพ่งหรือศาลอาญา แล้วแต่กรณี อาจใช้ดุลพินิจยอมรับไว้พิจารณาพิพากษาหรือมีคำสั่งโอนคดีไปยังศาลยุติธรรมอื่นที่มีเขตอำนาจ</p>
+        <p class="maatra-line">(ยกเลิก)</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-17">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 17</span>
+        <span class="maatra-title">อำนาจพิจารณาพิพากษาคดีของศาลแขวง</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ศาลแขวงมีอำนาจพิจารณาพิพากษาคดี และมีอำนาจทำการไต่สวน หรือมีคำสั่งใด ๆ ซึ่งผู้พิพากษาคนเดียวมีอำนาจตามที่กำหนดไว้ในมาตรา ๒๔ และมาตรา ๒๕ วรรคหนึ่ง</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-18">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 18</span>
+        <span class="maatra-title">อำนาจพิจารณาพิพากษาคดีของศาลจังหวัด</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ภายใต้บังคับมาตรา ๑๙/๑ ศาลจังหวัดมีอำนาจพิจารณาพิพากษาคดีแพ่งและคดีอาญาทั้งปวงที่มิได้อยู่ในอำนาจของศาลยุติธรรมอื่น</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-19">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 19</span>
+        <span class="maatra-title">อำนาจพิจารณาพิพากษาคดีของศาลแพ่งและศาลอาญา</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ศาลแพ่ง ศาลแพ่งกรุงเทพใต้ ศาลแพ่งตลิ่งชัน ศาลแพ่งธนบุรี ศาลแพ่งพระโขนง และศาลแพ่งมีนบุรีมีอำนาจพิจารณาพิพากษาคดีแพ่งทั้งปวงและคดีอื่นใดที่มิได้อยู่ในอำนาจของศาลยุติธรรมอื่น</p>
+        <p class="maatra-line">ศาลอาญา ศาลอาญากรุงเทพใต้ ศาลอาญาตลิ่งชัน ศาลอาญาธนบุรี ศาลอาญาพระโขนง และศาลอาญามีนบุรีมีอำนาจพิจารณาพิพากษาคดีอาญาทั้งปวงที่มิได้อยู่ในอำนาจของศาลยุติธรรมอื่น รวมทั้งคดีอื่นใดที่มีกฎหมายบัญญัติให้อยู่ในอำนาจของศาลที่มีอำนาจพิจารณาพิพากษาคดีอาญา แล้วแต่กรณี</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-19_1">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 19/1</span>
+        <span class="maatra-title">ดุลพินิจของศาลแพ่ง ศาลอาญา ศาลจังหวัด ในคดีที่อยู่ในอำนาจศาลแขวง</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">บรรดาคดีซึ่งเกิดขึ้นในเขตศาลแขวงและอยู่ในอำนาจของศาลแขวงนั้น ถ้ายื่นฟ้องต่อศาลแพ่ง ศาลแพ่งกรุงเทพใต้ ศาลแพ่งตลิ่งชัน ศาลแพ่งธนบุรี ศาลแพ่งพระโขนง ศาลแพ่งมีนบุรี ศาลอาญา ศาลอาญากรุงเทพใต้ ศาลอาญาตลิ่งชัน ศาลอาญาธนบุรี ศาลอาญาพระโขนง ศาลอาญามีนบุรี หรือศาลจังหวัด ให้อยู่ในดุลพินิจของศาลดังกล่าวที่จะยอมรับพิจารณาคดีใดคดีหนึ่งที่ยื่นฟ้องเช่นนั้นหรือมีคำสั่งโอนคดีไปยังศาลแขวงที่มีเขตอำนาจก็ได้ และไม่ว่ากรณีจะเป็นประการใด หากศาลแพ่ง ศาลแพ่งกรุงเทพใต้ ศาลแพ่งตลิ่งชัน ศาลแพ่งธนบุรี ศาลแพ่งพระโขนง ศาลแพ่งมีนบุรี ศาลอาญา ศาลอาญากรุงเทพใต้ ศาลอาญาตลิ่งชัน ศาลอาญาธนบุรี ศาลอาญาพระโขนง ศาลอาญามีนบุรี หรือศาลจังหวัด ได้มีคำสั่งรับฟ้องคดีเช่นว่านั้นไว้แล้ว ให้ศาลดังกล่าวพิจารณาพิพากษาคดีนั้นต่อไป</p>
+        <p class="maatra-line">ในกรณีที่ขณะยื่นฟ้องคดีนั้นเป็นคดีที่อยู่ในอำนาจศาลแพ่ง ศาลแพ่งกรุงเทพใต้ ศาลแพ่งตลิ่งชัน ศาลแพ่งธนบุรี ศาลแพ่งพระโขนง ศาลแพ่งมีนบุรี ศาลอาญา ศาลอาญากรุงเทพใต้ ศาลอาญาตลิ่งชัน ศาลอาญาธนบุรี ศาลอาญาพระโขนง ศาลอาญามีนบุรี หรือศาลจังหวัดอยู่แล้ว แม้ต่อมาจะมีพฤติการณ์เปลี่ยนแปลงไปทำให้คดีนั้นเป็นคดีที่อยู่ในอำนาจของศาลแขวง ก็ให้ศาลดังกล่าวพิจารณาพิพากษาคดีนั้นต่อไป</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-20">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 20</span>
+        <span class="maatra-title">อำนาจพิจารณาพิพากษาคดีของศาลยุติธรรมอื่น</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ศาลยุติธรรมอื่นมีอำนาจพิจารณาพิพากษาคดีตามที่พระราชบัญญัติจัดตั้งศาลนั้นหรือกฎหมายอื่นกำหนดไว้</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-21">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 21</span>
+        <span class="maatra-title">เขตอำนาจศาลอุทธรณ์และดุลพินิจในการรับหรือโอนคดีนอกเขต</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ศาลอุทธรณ์มีเขตตลอดท้องที่ที่มิได้อยู่ในเขตศาลอุทธรณ์ภาค</p>
+        <p class="maatra-line">ในกรณีที่มีการยื่นอุทธรณ์คดีต่อศาลอุทธรณ์ และคดีนั้นอยู่นอกเขตของศาลอุทธรณ์ ศาลอุทธรณ์อาจใช้ดุลพินิจยอมรับไว้พิจารณาพิพากษาหรือมีคำสั่งโอนคดีนั้นไปยังศาลอุทธรณ์ภาคที่มีเขตอำนาจ</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-22">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 22</span>
+        <span class="maatra-title">อำนาจพิจารณาพิพากษาคดีของศาลอุทธรณ์และศาลอุทธรณ์ภาค</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ศาลอุทธรณ์และศาลอุทธรณ์ภาคมีอำนาจพิจารณาพิพากษาบรรดาคดีที่อุทธรณ์คำพิพากษาหรือคำสั่งของศาลชั้นต้น ตามบทบัญญัติแห่งกฎหมายว่าด้วยการอุทธรณ์ และว่าด้วยเขตอำนาจศาล และมีอำนาจดังต่อไปนี้</p>
+        <p class="maatra-line indent">(๑) พิพากษายืนตาม แก้ไข กลับ หรือยกคำพิพากษาของศาลชั้นต้นที่พิพากษาลงโทษประหารชีวิตหรือจำคุกตลอดชีวิต ในเมื่อคดีนั้นได้ส่งขึ้นมายังศาลอุทธรณ์และศาลอุทธรณ์ภาคตามที่บัญญัติไว้ในกฎหมายวิธีพิจารณาความอาญา</p>
+        <p class="maatra-line indent">(๒) วินิจฉัยชี้ขาดคำร้องคำขอที่ยื่นต่อศาลอุทธรณ์หรือศาลอุทธรณ์ภาคตามกฎหมาย</p>
+        <p class="maatra-line indent">(๓) วินิจฉัยชี้ขาดคดีที่ศาลอุทธรณ์และศาลอุทธรณ์ภาคมีอำนาจวินิจฉัยได้ตามกฎหมายอื่น</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-23">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 23</span>
+        <span class="maatra-title">อำนาจพิจารณาพิพากษาคดีของศาลฎีกาและข้อห้ามทูลเกล้าฯ ถวายฎีกา</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ศาลฎีกามีอำนาจพิจารณาพิพากษาคดีที่รัฐธรรมนูญหรือกฎหมายบัญญัติให้เสนอต่อศาลฎีกาได้โดยตรง และคดีที่อุทธรณ์หรือฎีกาคำพิพากษาหรือคำสั่งของศาลชั้นต้น ศาลอุทธรณ์ หรือศาลอุทธรณ์ภาคตามที่กฎหมายบัญญัติ เว้นแต่กรณีที่ศาลฎีกาเห็นว่าข้อกฎหมายหรือข้อเท็จจริงที่อุทธรณ์หรือฎีกานั้นจะไม่เป็นสาระอันควรแก่การพิจารณา ศาลฎีกามีอำนาจไม่รับคดีไว้พิจารณาพิพากษาได้  ทั้งนี้ ตามระเบียบที่ที่ประชุมใหญ่ศาลฎีกากำหนดโดยประกาศในราชกิจจานุเบกษา</p>
+        <p class="maatra-line">คดีที่ศาลฎีกาได้พิจารณาพิพากษาหรือมีคำสั่งแล้ว คู่ความไม่มีสิทธิที่จะทูลเกล้าฯ ถวายฎีกาคัดค้านคดีนั้นต่อไป</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="muat-wrapper muat-c3" id="muat_3">
+  <div class="muat-header-top" onclick="toggleMuat('muat_3')">
+    <div class="muat-title-group">
+      <h2 class="muat-main-title">หมวด ๓</h2>
+      <span class="muat-sub-title">องค์คณะผู้พิพากษา</span>
+    </div>
+    <div class="muat-stats-group">
+      <div class="stat-badge">
+        <span class="stat-num">8</span>
+        <span class="stat-label">มาตรา</span>
+      </div>
+      <span class="toggle-icon">▼</span>
+    </div>
+  </div>
+  <div class="muat-body-content" id="muat_3_body">
+    <div class="maatra-card" id="มาตรา-24">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 24</span>
+        <span class="maatra-title">อำนาจของผู้พิพากษาคนหนึ่งในการออกหมายและคำสั่งที่มิใช่วินิจฉัยชี้ขาด</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ให้ผู้พิพากษาคนหนึ่งมีอำนาจดังต่อไปนี้</p>
+        <p class="maatra-line indent">(๑) ออกหมายเรียก หมายอาญา หรือหมายสั่งให้ส่งคนมาจากหรือไปยังจังหวัดอื่น</p>
+        <p class="maatra-line indent">(๒) ออกคำสั่งใด ๆ ซึ่งมิใช่เป็นไปในทางวินิจฉัยชี้ขาดข้อพิพาทแห่งคดี</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-25">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 25</span>
+        <span class="maatra-title">อำนาจของผู้พิพากษาคนเดียวในศาลชั้นต้น (ไต่สวนมูลฟ้อง คดีแพ่งไม่เกิน 3 แสน คดีอาญาโทษจำไม่เกิน 3 ปี/ปรับไม่เกิน 6 หมื่น)</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ในศาลชั้นต้น ผู้พิพากษาคนเดียวเป็นองค์คณะมีอำนาจเกี่ยวแก่คดีซึ่งอยู่ในอำนาจของศาลนั้น ดังต่อไปนี้</p>
+        <p class="maatra-line indent">(๑) ไต่สวนและวินิจฉัยชี้ขาดคำร้องหรือคำขอที่ยื่นต่อศาลในคดีทั้งปวง</p>
+        <p class="maatra-line indent">(๒) ไต่สวนและมีคำสั่งเกี่ยวกับวิธีการเพื่อความปลอดภัย</p>
+        <p class="maatra-line indent">(๓) ไต่สวนมูลฟ้องและมีคำสั่งในคดีอาญา</p>
+        <p class="maatra-line indent">(๔) พิจารณาพิพากษาคดีแพ่ง ซึ่งราคาทรัพย์สินที่พิพาทหรือจำนวนเงินที่ฟ้องไม่เกินสามแสนบาท ราคาทรัพย์สินที่พิพาทหรือจำนวนเงินดังกล่าวอาจขยายได้โดยการตราเป็นพระราชกฤษฎีกา</p>
+        <p class="maatra-line indent">(๕) พิจารณาพิพากษาคดีอาญา ซึ่งกฎหมายกำหนดอัตราโทษอย่างสูงไว้ให้จำคุกไม่เกินสามปี หรือปรับไม่เกินหกหมื่นบาท หรือทั้งจำทั้งปรับ แต่จะลงโทษจำคุกเกินหกเดือน หรือปรับเกินหนึ่งหมื่นบาท หรือทั้งจำทั้งปรับ ซึ่งโทษจำคุกหรือปรับอย่างใดอย่างหนึ่งหรือทั้งสองอย่างเกินอัตราที่กล่าวแล้วไม่ได้</p>
+        <p class="maatra-line">ผู้พิพากษาประจำศาลไม่มีอำนาจตาม (๓) (๔) หรือ (๕)</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-26">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 26</span>
+        <span class="maatra-title">องค์คณะผู้พิพากษาในการพิจารณาพิพากษาคดีของศาลชั้นต้น (อย่างน้อย 2 คน)</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ภายใต้บังคับมาตรา ๒๕ ในการพิจารณาพิพากษาคดีของศาลชั้นต้น นอกจากศาลแขวงและศาลยุติธรรมอื่นซึ่งพระราชบัญญัติจัดตั้งศาลนั้นกำหนดไว้เป็นอย่างอื่น ต้องมีผู้พิพากษาอย่างน้อยสองคนและต้องไม่เป็นผู้พิพากษาประจำศาลเกินหนึ่งคน จึงเป็นองค์คณะที่มีอำนาจพิจารณาพิพากษาคดีแพ่งหรือคดีอาญาทั้งปวง</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-27">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 27</span>
+        <span class="maatra-title">องค์คณะผู้พิพากษาของศาลอุทธรณ์ ศาลอุทธรณ์ภาค และศาลฎีกา (อย่างน้อย 3 คน)</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ในการพิจารณาพิพากษาคดีของศาลอุทธรณ์ ศาลอุทธรณ์ภาค หรือศาลฎีกา ต้องมีผู้พิพากษาอย่างน้อยสามคน จึงเป็นองค์คณะที่มีอำนาจพิจารณาพิพากษาคดีได้</p>
+        <p class="maatra-line">ผู้พิพากษาศาลอุทธรณ์ ผู้พิพากษาศาลอุทธรณ์ภาค และผู้พิพากษาศาลฎีกา ที่เข้าประชุมใหญ่ในศาลนั้นหรือในแผนกคดีของศาลดังกล่าว เมื่อได้ตรวจสำนวนคดีที่ประชุมใหญ่หรือที่ประชุมแผนกคดีแล้ว มีอำนาจพิพากษาหรือทำคำสั่งคดีนั้นได้ และเฉพาะในศาลอุทธรณ์หรือศาลอุทธรณ์ภาคมีอำนาจทำความเห็นแย้งได้ด้วย</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-28">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 28</span>
+        <span class="maatra-title">การนั่งพิจารณาแทนเมื่อมีเหตุสุดวิสัยหรือเหตุจำเป็นอื่นอันมิอาจก้าวล่วงได้ระหว่างพิจารณา</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ในระหว่างการพิจารณาคดีใด หากมีเหตุสุดวิสัยหรือมีเหตุจำเป็นอื่นอันมิอาจก้าวล่วงได้ ทำให้ผู้พิพากษาซึ่งเป็นองค์คณะในการพิจารณาคดีนั้น ไม่อาจจะนั่งพิจารณาคดีต่อไป ให้ผู้พิพากษาดังต่อไปนี้นั่งพิจารณาคดีนั้นแทนต่อไปได้</p>
+        <p class="maatra-line indent">(๑) ในศาลฎีกา ได้แก่ ประธานศาลฎีกา หรือรองประธานศาลฎีกา หรือผู้พิพากษาในศาลฎีกาซึ่งประธานศาลฎีกามอบหมาย</p>
+        <p class="maatra-line indent">(๒) ในศาลอุทธรณ์หรือศาลอุทธรณ์ภาค ได้แก่ ประธานศาลอุทธรณ์ ประธานศาลอุทธรณ์ภาค หรือรองประธานศาลอุทธรณ์ รองประธานศาลอุทธรณ์ภาค หรือผู้พิพากษาในศาลอุทธรณ์หรือศาลอุทธรณ์ภาคซึ่งประธานศาลอุทธรณ์หรือประธานศาลอุทธรณ์ภาค แล้วแต่กรณี มอบหมาย</p>
+        <p class="maatra-line indent">(๓) ในศาลชั้นต้น ได้แก่ อธิบดีผู้พิพากษาศาลชั้นต้น อธิบดีผู้พิพากษาภาค ผู้พิพากษาหัวหน้าศาล หรือรองอธิบดีผู้พิพากษาศาลชั้นต้น รองอธิบดีผู้พิพากษาภาค หรือผู้พิพากษาในศาลชั้นต้นของศาลนั้น ซึ่งอธิบดีผู้พิพากษาศาลชั้นต้น อธิบดีผู้พิพากษาภาค หรือผู้พิพากษาหัวหน้าศาล แล้วแต่กรณี มอบหมาย</p>
+        <p class="maatra-line">ให้ผู้ทำการแทนในตำแหน่งต่าง ๆ ตามมาตรา ๘ มาตรา ๙ และมาตรา ๑๓ มีอำนาจตาม (๑) (๒) และ (๓) ด้วย</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-29">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 29</span>
+        <span class="maatra-title">การลงลายมือชื่อทำคำพิพากษาแทนเมื่อมีเหตุสุดวิสัยหรือเหตุจำเป็นอื่นอันมิอาจก้าวล่วงได้ระหว่างทำคำพิพากษา</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ในระหว่างการทำคำพิพากษาคดีใด หากมีเหตุสุดวิสัยหรือเหตุจำเป็นอื่นอันมิอาจก้าวล่วงได้ ทำให้ผู้พิพากษาซึ่งเป็นองค์คณะในการพิจารณาคดีนั้นไม่อาจจะทำคำพิพากษาในคดีนั้นต่อไปได้ ให้ผู้พิพากษาดังต่อไปนี้มีอำนาจลงลายมือชื่อทำคำพิพากษา และเฉพาะในศาลอุทธรณ์ ศาลอุทธรณ์ภาค และศาลชั้นต้น มีอำนาจทำความเห็นแย้งได้ด้วย  ทั้งนี้ หลังจากได้ตรวจสำนวนคดีนั้นแล้ว</p>
+        <p class="maatra-line indent">(๑) ในศาลฎีกา ได้แก่ ประธานศาลฎีกาหรือรองประธานศาลฎีกา</p>
+        <p class="maatra-line indent">(๒) ในศาลอุทธรณ์หรือศาลอุทธรณ์ภาค ได้แก่ ประธานศาลอุทธรณ์ ประธานศาลอุทธรณ์ภาค รองประธานศาลอุทธรณ์ หรือรองประธานศาลอุทธรณ์ภาค แล้วแต่กรณี</p>
+        <p class="maatra-line indent">(๓) ในศาลชั้นต้น ได้แก่ อธิบดีผู้พิพากษาศาลชั้นต้น อธิบดีผู้พิพากษาภาค รองอธิบดีผู้พิพากษาศาลชั้นต้น รองอธิบดีผู้พิพากษาภาค หรือผู้พิพากษาหัวหน้าศาล แล้วแต่กรณี</p>
+        <p class="maatra-line">ให้ผู้ทำการแทนในตำแหน่งต่าง ๆ ตามมาตรา ๘ มาตรา ๙ และมาตรา ๑๓ มีอำนาจตาม (๑) (๒) และ (๓) ด้วย</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-30">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 30</span>
+        <span class="maatra-title">ความหมายของเหตุจำเป็นอื่นอันมิอาจก้าวล่วงได้ตามมาตรา 28 และ 29 (พ้นตำแหน่ง ถูกคัดค้าน ไม่อาจปฏิบัติราชการ)</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">เหตุจำเป็นอื่นอันมิอาจก้าวล่วงได้ตามมาตรา ๒๘ และมาตรา ๒๙ หมายถึง กรณีที่ผู้พิพากษาซึ่งเป็นองค์คณะนั่งพิจารณาคดีนั้นพ้นจากตำแหน่งที่ดำรงอยู่หรือถูกคัดค้านและถอนตัวไป หรือไม่อาจปฏิบัติราชการจนไม่สามารถนั่งพิจารณาหรือทำคำพิพากษาในคดีนั้นได้</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-31">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 31</span>
+        <span class="maatra-title">กรณีที่ถือเป็นเหตุจำเป็นอื่นอันมิอาจก้าวล่วงได้เพิ่มเติม (ยกฟ้องคดีอาญาเกินอำนาจ, จำคุกเกิน 6 เดือน/ปรับเกินหมื่น, เสียงเท่ากัน, คดีแพ่งเกินอำนาจ)</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">เหตุจำเป็นอื่นอันมิอาจก้าวล่วงได้ตามมาตรา ๒๘ และมาตรา ๒๙ นอกจากที่กำหนดไว้ในมาตรา ๓๐ แล้ว ให้หมายความรวมถึงกรณีดังต่อไปนี้ด้วย</p>
+        <p class="maatra-line indent">(๑) กรณีที่ผู้พิพากษาคนเดียวไต่สวนมูลฟ้องคดีอาญาแล้วเห็นว่าควรพิพากษายกฟ้อง แต่คดีนั้นมีอัตราโทษตามที่กฎหมายกำหนดเกินกว่าอัตราโทษตามมาตรา ๒๕ (๕)</p>
+        <p class="maatra-line indent">(๒) กรณีที่ผู้พิพากษาคนเดียวพิจารณาคดีอาญาตามมาตรา ๒๕ (๕) แล้วเห็นว่าควรพิพากษาลงโทษจำคุกเกินกว่าหกเดือน หรือปรับเกินหนึ่งหมื่นบาท หรือทั้งจำทั้งปรับ ซึ่งโทษจำคุกหรือปรับนั้นอย่างใดอย่างหนึ่ง หรือทั้งสองอย่างเกินอัตราดังกล่าว</p>
+        <p class="maatra-line indent">(๓) กรณีที่คำพิพากษาหรือคำสั่งคดีแพ่งเรื่องใดของศาลนั้นจะต้องกระทำโดยองค์คณะซึ่งประกอบด้วยผู้พิพากษาหลายคน และผู้พิพากษาในองค์คณะนั้นมีความเห็นแย้งกันจนหาเสียงข้างมากมิได้</p>
+        <p class="maatra-line indent">(๔) กรณีที่ผู้พิพากษาคนเดียวพิจารณาคดีแพ่งตามมาตรา ๒๕ (๔) ไปแล้ว ต่อมาปรากฏว่าราคาทรัพย์สินที่พิพาทหรือจำนวนเงินที่ฟ้องเกินกว่าอำนาจพิจารณาพิพากษาของผู้พิพากษาคนเดียว</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="muat-wrapper muat-c4" id="muat_4">
+  <div class="muat-header-top" onclick="toggleMuat('muat_4')">
+    <div class="muat-title-group">
+      <h2 class="muat-main-title">หมวด ๔</h2>
+      <span class="muat-sub-title">การจ่าย การโอน และการเรียกคืนสำนวนคดี</span>
+    </div>
+    <div class="muat-stats-group">
+      <div class="stat-badge">
+        <span class="stat-num">2</span>
+        <span class="stat-label">มาตรา</span>
+      </div>
+      <span class="toggle-icon">▼</span>
+    </div>
+  </div>
+  <div class="muat-body-content" id="muat_4_body">
+    <div class="maatra-card" id="มาตรา-32">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 32</span>
+        <span class="maatra-title">การจ่ายสำนวนคดีให้แก่องค์คณะผู้พิพากษา</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">ให้ประธานศาลฎีกา ประธานศาลอุทธรณ์ ประธานศาลอุทธรณ์ภาค อธิบดีผู้พิพากษาศาลชั้นต้น ผู้พิพากษาหัวหน้าศาล หรือผู้พิพากษาหัวหน้าแผนกคดีในแต่ละศาล แล้วแต่กรณี รับผิดชอบในการจ่ายสำนวนคดีให้แก่องค์คณะผู้พิพากษาในศาลหรือในแผนกคดีนั้น โดยให้ปฏิบัติตามหลักเกณฑ์และวิธีการที่กำหนดโดยระเบียบราชการฝ่ายตุลาการของศาลยุติธรรม</p>
+        <p class="maatra-line">การออกระเบียบราชการฝ่ายตุลาการของศาลยุติธรรมตามวรรคหนึ่ง ให้คำนึงถึงความเชี่ยวชาญและความเหมาะสมขององค์คณะผู้พิพากษาที่จะรับผิดชอบสำนวนคดีนั้น รวมทั้งปริมาณคดีที่องค์คณะผู้พิพากษาแต่ละองค์คณะรับผิดชอบ</p>
+      </div>
+    </div>
+    <div class="maatra-card" id="มาตรา-33">
+      <div class="maatra-header">
+        <span class="maatra-badge">มาตรา 33</span>
+        <span class="maatra-title">หลักเกณฑ์และวิธีการเรียกคืนสำนวนคดีหรือโอนสำนวนคดี</span>
+      </div>
+      <div class="maatra-body">
+        <p class="maatra-line">การเรียกคืนสำนวนคดีหรือการโอนสำนวนคดีซึ่งอยู่ในความรับผิดชอบขององค์คณะผู้พิพากษาใด ประธานศาลฎีกา ประธานศาลอุทธรณ์ ประธานศาลอุทธรณ์ภาค อธิบดีผู้พิพากษาศาลชั้นต้น หรือผู้พิพากษาหัวหน้าศาล จะกระทำได้ต่อเมื่อเป็นกรณีที่จะกระทบกระเทือนต่อความยุติธรรมในการพิจารณาหรือพิพากษาอรรถคดีของศาลนั้น และรองประธานศาลฎีกา รองประธานศาลอุทธรณ์ รองประธานศาลอุทธรณ์ภาค รองอธิบดีผู้พิพากษาศาลชั้นต้น หรือผู้พิพากษาในศาลจังหวัดหรือศาลแขวง ที่มีอาวุโสสูงสุดในศาลนั้น แล้วแต่กรณี ที่มิได้เป็นองค์คณะในสำนวนคดีดังกล่าวได้เสนอความเห็นให้กระทำได้</p>
+        <p class="maatra-line">ในกรณีที่รองประธานศาลฎีกา รองประธานศาลอุทธรณ์ รองประธานศาลอุทธรณ์ภาค รองอธิบดีผู้พิพากษาศาลชั้นต้น หรือผู้พิพากษาในศาลจังหวัดหรือศาลแขวง ที่มีอาวุโสสูงสุดในศาลนั้น แล้วแต่กรณี ไม่อาจปฏิบัติราชการได้ หรือได้เข้าเป็นองค์คณะในสำนวนคดีที่เรียกคืนหรือโอนนั้น ให้รองประธานศาลฎีกา รองประธานศาลอุทธรณ์ รองประธานศาลอุทธรณ์ภาค รองอธิบดีผู้พิพากษาศาลชั้นต้น หรือผู้พิพากษา ที่มีอาวุโสถัดลงมาตามลำดับในศาลนั้น เป็นผู้มีอำนาจในการเสนอความเห็นแทน ในกรณีที่รองประธานศาลฎีกา รองประธานศาลอุทธรณ์ รองประธานศาลอุทธรณ์ภาค รองอธิบดีผู้พิพากษาศาลชั้นต้น มีหนึ่งคน หรือมีหลายคนแต่ไม่อาจปฏิบัติราชการได้หรือได้เข้าเป็นองค์คณะในสำนวนคดีที่เรียกคืนหรือโอนนั้นทั้งหมด ให้ผู้พิพากษาที่มีอาวุโสสูงสุดของศาลนั้นเป็นผู้มีอำนาจในการเสนอความเห็น</p>
+        <p class="maatra-line">ผู้พิพากษาอาวุโสหรือผู้พิพากษาประจำศาลไม่มีอำนาจในการเสนอความเห็นตามวรรคหนึ่งหรือวรรคสอง</p>
+        <p class="maatra-line">ในกรณีที่ผู้พิพากษาเจ้าของสำนวนหรือองค์คณะผู้พิพากษามีคดีค้างการพิจารณาอยู่เป็นจำนวนมาก ซึ่งจะทำให้การพิจารณาพิพากษาคดีของศาลนั้นล่าช้า และผู้พิพากษาเจ้าของสำนวนหรือองค์คณะผู้พิพากษานั้นขอคืนสำนวนคดีที่ตนรับผิดชอบอยู่ ให้ประธานศาลฎีกา ประธานศาลอุทธรณ์ ประธานศาลอุทธรณ์ภาค อธิบดีผู้พิพากษาศาลชั้นต้น หรือผู้พิพากษาหัวหน้าศาล แล้วแต่กรณี มีอำนาจรับคืนสำนวนคดีดังกล่าว และโอนให้ผู้พิพากษาหรือองค์คณะผู้พิพากษาอื่นในศาลนั้นรับผิดชอบแทนได้</p>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- HOME -->
+<a class="home-btn" href="index.html" title="กลับหน้าหลัก" aria-label="กลับหน้าหลัก">🏠</a>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// Toggle Chapter
+function toggleMuat(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('collapsed');
+}
+
+// Back to top
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('backTop');
+  if (window.scrollY > 400) btn.classList.add('visible');
+  else btn.classList.remove('visible');
+});
+
+// Search
+let searchTimer = null;
+function doSearch(q) {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => runSearch(q.trim()), 200);
+}
+
+function runSearch(q) {
+  const cards = document.querySelectorAll('.maatra-card');
+  const sections = document.querySelectorAll('.muat-wrapper');
+  const noResults = document.getElementById('searchNoResults');
+  const countEl = document.getElementById('searchCount');
+  
+  // Remove old highlights
+  document.querySelectorAll('.search-highlight').forEach(el => {
+    const parent = el.parentNode;
+    parent.replaceChild(document.createTextNode(el.textContent), el);
+    parent.normalize();
+  });
+  
+  if (!q) {
+    cards.forEach(c => { c.classList.remove('hidden', 'highlight'); });
+    sections.forEach(s => {
+      s.classList.remove('hidden');
+    });
+    noResults.classList.add('hidden');
+    countEl.textContent = '';
+    return;
+  }
+  
+  const qLower = q.toLowerCase();
+  let matchCount = 0;
+  
+  cards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    if (text.includes(qLower)) {
+      card.classList.remove('hidden');
+      card.classList.add('highlight');
+      highlightText(card, q);
+      matchCount++;
+    } else {
+      card.classList.add('hidden');
+      card.classList.remove('highlight');
+    }
+  });
+  
+  // Show/hide chapter sections based on visible cards
+  sections.forEach(sec => {
+    const visibleCards = sec.querySelectorAll('.maatra-card:not(.hidden)').length;
+    sec.classList.toggle('hidden', visibleCards === 0);
+    if (visibleCards > 0) {
+      sec.classList.remove('collapsed');
+    }
+  });
+  
+  noResults.classList.toggle('hidden', matchCount > 0);
+  countEl.textContent = matchCount > 0 ? `${matchCount} ผล` : '';
+}
+
+function highlightText(el, q) {
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+  const nodes = [];
+  while (walker.nextNode()) {
+    // Avoid re-highlighting inside star button or scripts
+    if (!walker.currentNode.parentElement.closest('.maatra-star-btn')) {
+      nodes.push(walker.currentNode);
+    }
+  }
+  
+  const regex = new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+  nodes.forEach(node => {
+    if (node.nodeValue && regex.test(node.nodeValue)) {
+      const span = document.createElement('span');
+      span.innerHTML = node.nodeValue.replace(regex, m => `<span class="search-highlight">${m}</span>`);
+      const frag = document.createDocumentFragment();
+      while (span.firstChild) frag.appendChild(span.firstChild);
+      node.parentNode.replaceChild(frag, node);
+    }
+  });
+}
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js').catch(err => console.error('SW registration failed:', err));
+  });
+}
+</script>
+<script src="maatra_star.js"></script>
+</body>
+</html>
