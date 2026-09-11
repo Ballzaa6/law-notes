@@ -435,35 +435,56 @@ body {
 
 .hidden { display: none !important; }
 
-/* Back to top floating button */
-.back-to-top {
+/* ============= BACK TO TOP & HOME ============= */
+.back-top {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
-  background: var(--accent1);
-  color: #F4F1EA;
-  border: 2px solid var(--gold);
-  border-radius: 50%;
+  bottom: calc(28px + env(safe-area-inset-bottom));
+  right: 28px;
   width: 44px;
   height: 44px;
-  font-size: 20px;
+  background: var(--accent1);
+  color: #F4F1EA;
+  border: 2px solid #0E1726;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 3px 3px 0 #0E1726;
+  transition: all 0.2s;
+  z-index: 9999;
+}
+.back-top:hover {
+  background: var(--accent2);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #0E1726;
+}
+.back-top.visible { display: flex; }
+
+.home-btn {
+  position: fixed;
+  bottom: calc(28px + env(safe-area-inset-bottom));
+  left: 28px;
+  width: 44px;
+  height: 44px;
+  background: var(--gold);
+  color: #fff;
+  border: 2px solid #8B6308;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  box-shadow: 3px 3px 0 #8B6308;
   transition: all 0.2s;
-  z-index: 999;
-  opacity: 0;
-  pointer-events: none;
+  z-index: 9999;
 }
-.back-to-top.visible {
-  opacity: 1;
-  pointer-events: auto;
-}
-.back-to-top:hover {
-  transform: translateY(-3px);
-  background: var(--accent2);
+.home-btn:hover {
+  background: var(--gold-light);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #8B6308;
 }
 
 @media (max-width: 768px) {
@@ -513,6 +534,7 @@ body {
 </header>
 
 <nav class="nav-bar">
+  <a class="nav-pill" href="index.html" style="background: var(--gold); color: #fff; border-color: #8B6308; font-weight: 700;">🏠 หน้าหลัก</a>
   <span class="nav-label">หมวด:</span>
   <a class="nav-pill" href="#chapter-general">บททั่วไป</a>
   <a class="nav-pill" href="#chapter-1">หมวด 1 ขอให้ล้มละลาย</a>
@@ -4301,7 +4323,11 @@ body {
   </section>
 </main>
 
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="กลับสู่ด้านบน">↑</button>
+<!-- HOME -->
+<a class="home-btn" href="index.html" title="กลับหน้าหลัก" aria-label="กลับหน้าหลัก">🏠</a>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="กลับสู่ด้านบน" aria-label="กลับสู่ด้านบน">↑</button>
 
 <script>
 function toggleChapter(header) {
@@ -4321,11 +4347,13 @@ function toggleAllChapters(collapse) {
 
 // Back to top visibility
 window.addEventListener('scroll', () => {
-  const btn = document.getElementById('backToTop');
-  if (window.scrollY > 400) {
-    btn.classList.add('visible');
-  } else {
-    btn.classList.remove('visible');
+  const btn = document.getElementById('backTop');
+  if (btn) {
+    if (window.scrollY > 250) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
   }
 });
 
