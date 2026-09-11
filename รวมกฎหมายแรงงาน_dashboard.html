@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>รวมกฎหมายแรงงาน - Dashboard</title>
-<meta name="description" content="รวบรวม 4 พระราชบัญญัติหลักด้านแรงงาน: พ.ร.บ. คุ้มครองแรงงาน พ.ร.บ. จัดตั้งศาลแรงงานฯ พ.ร.บ. เงินทดแทน และ พ.ร.บ. แรงงานสัมพันธ์ อ่านและค้นหาได้แบบออฟไลน์">
+<meta name="description" content="รวบรวมกฎหมายแรงงาน: ป.พ.พ. จ้างแรงงาน และ 4 พระราชบัญญัติหลักด้านแรงงาน: พ.ร.บ. คุ้มครองแรงงาน พ.ร.บ. จัดตั้งศาลแรงงานฯ พ.ร.บ. เงินทดแทน และ พ.ร.บ. แรงงานสัมพันธ์ อ่านและค้นหาได้แบบออฟไลน์">
 
 <!-- PWA -->
 <link rel="manifest" href="manifest.json">
@@ -263,25 +263,25 @@ body {
 <div class="hero">
   <span class="hero-emblem">&#x1F477;</span>
   <h1 class="hero-title">รวมกฎหมายแรงงาน</h1>
-  <p class="hero-sub">รวบรวม 4 พระราชบัญญัติหลักด้านแรงงาน: คุ้มครองแรงงาน, จัดตั้งศาลแรงงานและวิธีพิจารณาคดีแรงงาน, เงินทดแทน และแรงงานสัมพันธ์ (เลขอารบิก)</p>
+  <p class="hero-sub">รวบรวม ป.พ.พ. จ้างแรงงาน และ 4 พระราชบัญญัติหลักด้านแรงงาน: คุ้มครองแรงงาน, จัดตั้งศาลแรงงานและวิธีพิจารณาคดีแรงงาน, เงินทดแทน และแรงงานสัมพันธ์ (เลขอารบิก)</p>
   <div class="hero-stats">
     <div class="hero-stat">
-      <span class="hero-stat-num">4</span>
-      <span class="hero-stat-label">พระราชบัญญัติ</span>
+      <span class="hero-stat-num">5</span>
+      <span class="hero-stat-label">หมวดหมู่กฎหมาย</span>
     </div>
     <div class="hero-stat">
-      <span class="hero-stat-num">493</span>
+      <span class="hero-stat-num">505</span>
       <span class="hero-stat-label">มาตรา</span>
     </div>
     <div class="hero-stat">
-      <span class="hero-stat-num">47</span>
-      <span class="hero-stat-label">หมวดกฎหมาย</span>
+      <span class="hero-stat-num">48</span>
+      <span class="hero-stat-label">หมวด/ลักษณะ</span>
     </div>
   </div>
   <div class="search-wrapper">
     <span class="search-icon">&#x1F50D;</span>
     <input type="text" class="search-input" id="searchInput"
-           placeholder="ค้นหา เช่น มาตรา 119, ค่าชดเชย, เลิกจ้าง, ศาลแรงงาน, เงินทดแทน..."
+           placeholder="ค้นหา เช่น มาตรา 575, สินจ้าง, มาตรา 119, ค่าชดเชย, เลิกจ้าง, เงินทดแทน..."
            oninput="doSearch(this.value)">
     <span class="search-results-count" id="searchCount"></span>
   </div>
@@ -290,6 +290,7 @@ body {
 <nav class="nav-bar">
   <div class="nav-pills-group">
     <span class="nav-label">ไปที่:</span>
+    <a href="#act_ccc_labor" class="nav-pill">ป.พ.พ. จ้างแรงงาน (ม. 575-586)</a>
     <a href="#act_protection" class="nav-pill">1. พ.ร.บ. คุ้มครองแรงงาน (2541)</a>
     <a href="#act_court" class="nav-pill">2. พ.ร.บ. จัดตั้งศาลแรงงานฯ (2522)</a>
     <a href="#act_compensation" class="nav-pill">3. พ.ร.บ. เงินทดแทน (2537)</a>
@@ -304,6 +305,162 @@ body {
 <div class="main-container" id="mainContainer">
   <div id="searchNoResults" class="search-no-results hidden">
     ไม่พบผลลัพธ์สำหรับการค้นหานี้
+  </div>
+
+  <!-- CCC Labor (จ้างแรงงาน) -->
+  <div class="phak-section" id="act_ccc_labor">
+    <div class="phak-header" style="background: linear-gradient(135deg, #7C3A21 0%, #A04D2E 100%);" onclick="togglePhak('phak-body-ccc')">
+      <div class="phak-title-group">
+        <h2 class="phak-title">ประมวลกฎหมายแพ่งและพาณิชย์ บรรพ 3 ลักษณะ 6 จ้างแรงงาน</h2>
+        <div class="phak-subtitle">หลักทั่วไปแห่งสัญญาจ้างแรงงาน สิทธิหน้าที่นายจ้างและลูกจ้าง การบอกเลิกสัญญา และค่าเดินทางขากลับ (มาตรา 575 - 586)</div>
+      </div>
+      <div class="stat-badge" style="background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.3); color: #fff;">
+        <span class="stat-num">12</span>
+        <span class="stat-label">มาตรา</span>
+      </div>
+      <span class="phak-toggle-icon" id="phak-body-ccc-icon">▼</span>
+    </div>
+    <div class="phak-body" id="phak-body-ccc">
+      <!-- Category 1 -->
+      <div class="lugsana-section open" id="act_ccc_labor_cat0">
+        <div class="lugsana-header" onclick="toggleSection('act_ccc_labor_cat0')">
+          <div class="lugsana-title-group">
+            <span class="lugsana-title">ลักษณะ 6 จ้างแรงงาน (มาตรา 575 - 586)</span>
+          </div>
+          <div class="lugsana-meta">
+            <span class="maatra-count-badge">12 มาตรา</span>
+            <span class="toggle-icon">▼</span>
+          </div>
+        </div>
+        <div class="lugsana-body">
+          <!-- Maatra 575 -->
+          <div class="maatra-card" id="act_ccc_labor_m575">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 575</span>
+              <span class="maatra-title">นิยามสัญญาจ้างแรงงาน (ลูกจ้าง นายจ้าง สินจ้าง)</span>
+            </div>
+            <div class="maatra-body">
+              <div class="maatra-line">อันว่าจ้างแรงงานนั้น คือสัญญาซึ่งบุคคลคนหนึ่ง เรียกว่าลูกจ้าง ตกลงจะทำงานให้แก่บุคคลอีกคนหนึ่ง เรียกว่านายจ้าง และนายจ้างตกลงจะให้สินจ้างตลอดเวลาที่ทำงานให้</div>
+            </div>
+          </div>
+          <!-- Maatra 576 -->
+          <div class="maatra-card" id="act_ccc_labor_m576">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 576</span>
+              <span class="maatra-title">ข้อสันนิษฐานคำมั่นว่าจะให้สินจ้างโดยปริยาย</span>
+            </div>
+            <div class="maatra-body">
+              <div class="maatra-line">ถ้าตามพฤติการณ์ไม่อาจจะคาดหมายได้ว่างานนั้นจะพึงทำให้เปล่าไซร้ ท่านย่อมถือเอาโดยปริยายว่ามีคำมั่นจะให้สินจ้าง</div>
+            </div>
+          </div>
+          <!-- Maatra 577 -->
+          <div class="maatra-card" id="act_ccc_labor_m577">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 577</span>
+              <span class="maatra-title">การโอนสิทธิและการให้บุคคลภายนอกทำงานแทน (ความยินยอมของคู่สัญญา)</span>
+            </div>
+            <div class="maatra-body">
+              <div class="maatra-line">นายจ้างจะโอนสิทธิของตนให้แก่บุคคลภายนอกก็ได้เมื่อลูกจ้างยินยอมพร้อมใจด้วย</div>
+              <div class="maatra-line">ลูกจ้างจะให้บุคคลภายนอกทำงานแทนตนก็ได้เมื่อนายจ้างยินยอมพร้อมใจด้วย</div>
+              <div class="maatra-line">ถ้าคู่สัญญาฝ่ายใดทำการฝ่าฝืนบทบัญญัตินี้ คู่สัญญาอีกฝ่ายหนึ่งจะบอกเลิกสัญญาเสียก็ได้</div>
+            </div>
+          </div>
+          <!-- Maatra 578 -->
+          <div class="maatra-card" id="act_ccc_labor_m578">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 578</span>
+              <span class="maatra-title">ลูกจ้างรับรองว่ามีฝีมือพิเศษแต่กลับไร้ฝีมือ (สิทธิบอกเลิกสัญญา)</span>
+            </div>
+            <div class="maatra-body">
+              <div class="maatra-line">ถ้าลูกจ้างรับรองโดยแสดงออกชัดหรือโดยปริยายว่าตนเป็นผู้มีฝีมือพิเศษ หากมาปรากฏว่าไร้ฝีมือเช่นนั้นไซร้ ท่านว่านายจ้างชอบที่จะบอกเลิกสัญญาเสียได้</div>
+            </div>
+          </div>
+          <!-- Maatra 579 -->
+          <div class="maatra-card" id="act_ccc_labor_m579">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 579</span>
+              <span class="maatra-title">ลูกจ้างขาดงานโดยมีเหตุอันสมควรชั่วระยะเวลาเล็กน้อย</span>
+            </div>
+            <div class="maatra-body">
+              <div class="maatra-line">การที่ลูกจ้างขาดงานไปโดยเหตุอันสมควรและชั่วระยะเวลาน้อยพอสมควรนั้น ท่านว่าไม่ทำให้นายจ้างมีสิทธิบอกเลิกสัญญาได้</div>
+            </div>
+          </div>
+          <!-- Maatra 580 -->
+          <div class="maatra-card" id="act_ccc_labor_m580">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 580</span>
+              <span class="maatra-title">กำหนดเวลาการจ่ายสินจ้าง (จ่ายเมื่องานแล้วเสร็จหรือตามระยะเวลา)</span>
+            </div>
+            <div class="maatra-body">
+              <div class="maatra-line">ถ้าไม่มีกำหนดโดยสัญญาหรือจารีตประเพณีว่าจะพึงจ่ายสินจ้างเมื่อไร ท่านว่าพึงจ่ายเมื่องานได้ทำแล้วเสร็จ ถ้าการจ่ายสินจ้างนั้นได้กำหนดกันไว้เป็นระยะเวลา ก็ให้พึงจ่ายเมื่อสุดระยะเวลาเช่นนั้นทุกคราวไป</div>
+            </div>
+          </div>
+          <!-- Maatra 581 -->
+          <div class="maatra-card" id="act_ccc_labor_m581">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 581</span>
+              <span class="maatra-title">ข้อสันนิษฐานการต่อสัญญาจ้างใหม่โดยปริยาย</span>
+            </div>
+            <div class="maatra-body">
+              <div class="maatra-line">ถ้าระยะเวลาที่ได้ตกลงว่าจ้างกันนั้นสุดสิ้นลงแล้ว ลูกจ้างยังคงทำงานอยู่ต่อไปอีก และนายจ้างรู้ดังนั้นก็ไม่ทักท้วงไซร้ ท่านให้สันนิษฐานไว้ก่อนว่าคู่สัญญาเป็นอันได้ทำสัญญาจ้างกันใหม่โดยความอย่างเดียวกันกับสัญญาเดิม แต่คู่สัญญาฝ่ายใดฝ่ายหนึ่งอาจจะเลิกสัญญาเสียได้ด้วยการบอกกล่าวตามความในมาตราต่อไปนี้</div>
+            </div>
+          </div>
+          <!-- Maatra 582 -->
+          <div class="maatra-card" id="act_ccc_labor_m582">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 582</span>
+              <span class="maatra-title">การบอกเลิกสัญญาจ้างที่ไม่มีกำหนดระยะเวลา (บอกกล่าวล่วงหน้า / สินจ้างแทนการบอกกล่าว)</span>
+            </div>
+            <div class="maatra-body">
+              <div class="maatra-line">ถ้าคู่สัญญาไม่ได้กำหนดลงไว้ในสัญญาว่าจะจ้างกันนานเท่าไร ท่านว่าฝ่ายใดฝ่ายหนึ่งจะเลิกสัญญาด้วยการบอกกล่าวล่วงหน้าในเมื่อถึงหรือก่อนจะถึงกำหนดจ่ายสินจ้างคราวใดคราวหนึ่ง เพื่อให้เป็นผลเลิกสัญญากันเมื่อถึงกำหนดจ่ายสินจ้างคราวถัดไปข้างหน้าก็อาจทำได้ แต่ไม่จำต้องบอกกล่าวล่วงหน้ากว่า 3 เดือน</div>
+              <div class="maatra-line">อนึ่ง ในเมื่อบอกกล่าวดังว่านี้ นายจ้างจะจ่ายสินจ้างแก่ลูกจ้างเสียให้ครบจำนวนที่จะต้องจ่ายจนถึงเวลาเลิกสัญญาตามกำหนดที่บอกกล่าวนั้นทีเดียว แล้วปล่อยลูกจ้างจากงานเสียในทันทีก็อาจทำได้</div>
+            </div>
+          </div>
+          <!-- Maatra 583 -->
+          <div class="maatra-card" id="act_ccc_labor_m583">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 583</span>
+              <span class="maatra-title">สิทธิของนายจ้างในการเลิกจ้าง (ไล่ออก) ทันทีโดยไม่ต้องบอกกล่าวล่วงหน้าหรือให้สินไหมทดแทน</span>
+            </div>
+            <div class="maatra-body">
+              <div class="maatra-line">ถ้าลูกจ้างจงใจขัดคำสั่งของนายจ้างอันชอบด้วยกฎหมายก็ดี หรือละเลยไม่นำพาต่อคำสั่งเช่นว่านั้นเป็นอาจิณก็ดี ละทิ้งการงานไปเสียก็ดี กระทำความผิดอย่างร้ายแรงก็ดี หรือทำประการอื่นอันไม่สมแก่การปฏิบัติหน้าที่ของตนให้ลุล่วงไปโดยถูกต้องและสุจริตก็ดี ท่านว่านายจ้างจะไล่ออกโดยมิพักต้องบอกกล่าวล่วงหน้าหรือให้สินไหมทดแทนก็ได้</div>
+            </div>
+          </div>
+          <!-- Maatra 584 -->
+          <div class="maatra-card" id="act_ccc_labor_m584">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 584</span>
+              <span class="maatra-title">สัญญาจ้างระงับด้วยมรณะแห่งนายจ้าง (กรณีสาระสำคัญอยู่ที่ตัวบุคคลนายจ้าง)</span>
+            </div>
+            <div class="maatra-body">
+              <div class="maatra-line">ถ้าจ้างแรงงานรายใดมีสาระสำคัญอยู่ที่ตัวบุคคลผู้เป็นนายจ้าง ท่านว่าสัญญาจ้างเช่นนั้นย่อมระงับไปด้วยมรณะแห่งนายจ้าง</div>
+            </div>
+          </div>
+          <!-- Maatra 585 -->
+          <div class="maatra-card" id="act_ccc_labor_m585">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 585</span>
+              <span class="maatra-title">สิทธิลูกจ้างในการขอรับใบสำคัญการทำงาน (ใบรับรองการผ่านงาน)</span>
+            </div>
+            <div class="maatra-body">
+              <div class="maatra-line">เมื่อการจ้างแรงงานสุดสิ้นลงแล้ว ลูกจ้างชอบที่จะได้รับใบสำคัญแสดงว่าลูกจ้างนั้นได้ทำงานมานานเท่าไรและงานที่ทำนั้นเป็นงานอย่างไร</div>
+            </div>
+          </div>
+          <!-- Maatra 586 -->
+          <div class="maatra-card" id="act_ccc_labor_m586">
+            <div class="maatra-header">
+              <span class="maatra-badge">มาตรา 586</span>
+              <span class="maatra-title">หน้าที่ของนายจ้างในการออกเงินค่าเดินทางขากลับ (กรณีจ้างมาจากต่างถิ่น)</span>
+            </div>
+            <div class="maatra-body">
+              <div class="maatra-line">ถ้าลูกจ้างเป็นผู้ซึ่งนายจ้างได้จ้างเอามาแต่ต่างถิ่นโดยนายจ้างออกเงินค่าเดินทางให้ไซร้ เมื่อการจ้างแรงงานสุดสิ้นลง และถ้ามิได้กำหนดกันไว้เป็นอย่างอื่นในสัญญาแล้ว ท่านว่านายจ้างจำต้องใช้เงินค่าเดินทางขากลับให้ แต่จะต้องเป็นดังต่อไปนี้ คือ</div>
+              <div class="maatra-line indent">(1) สัญญามิได้เลิกหรือระงับเพราะการกระทำหรือความผิดของลูกจ้าง และ</div>
+              <div class="maatra-line indent">(2) ลูกจ้างกลับไปยังถิ่นที่ได้จ้างเอามาภายในเวลาอันสมควร</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Act 1 -->
