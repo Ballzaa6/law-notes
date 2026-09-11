@@ -1,9 +1,10 @@
 // เพิ่มเลขเวอร์ชันทุกครั้งที่แก้ไขไฟล์เนื้อหา เพื่อบังคับให้ผู้ใช้ได้แคชชุดใหม่
-const CACHE_NAME = 'sarup-tuabot-v22';
+const CACHE_NAME = 'sarup-tuabot-v23';
 
 const PRECACHE_URLS = [
   './',
   './index.html',
+  './รวมกฎหมายแรงงาน_dashboard.html',
   './สรุปตัวบท_ขาอาญา_dashboard.html',
   './สรุปตัวบท_ขาแพ่ง_dashboard.html',
   './ประมวลกฎหมายอาญา_dashboard.html',
@@ -16,6 +17,7 @@ const PRECACHE_URLS = [
   './รวมกฎหมายทรัพย์สินทางปัญญา_dashboard.html',
   './รวมกฎหมายทรัพย์สินทางปัญญาและการค้าระหว่างประเทศ/รวมกฎหมายทรัพย์สินทางปัญญา_dashboard.html',
   './รวมกฎหมายทรัพย์สินทางปัญญาและการค้าระหว่างประเทศ/พรบ_การรับขนของทางทะเล_dashboard.html',
+  './รวมกฎหมายรัฐธรรม และพระราชบัญญัติประกอบรัฐธรรมนูญ/รัฐธรรมนูญ_2560_dashboard.html',
   './รวมกฎหมายปกครอง/index.html',
   './รวมกฎหมายปกครอง/พรบ_ความรับผิดทางละเมิด.html',
   './รวมกฎหมายปกครอง/พรบ_วิธีปฏิบัติราชการทางปกครอง.html',
@@ -24,6 +26,8 @@ const PRECACHE_URLS = [
   './บทบรรณาธิการ_ขาอาญา_สมัย77_dashboard.html',
   './บทบรรณาธิการ_ขาแพ่ง_สมัย76_dashboard.html',
   './บทบรรณาธิการ_ขาแพ่ง_สมัย77_dashboard.html',
+  './ย่อมาตรา_flashcard_dashboard.html',
+  './ย่อมาตรา/flashcards_data.js',
   './manifest.json',
   './icons/icon-192.png',
   './icons/icon-512.png',
