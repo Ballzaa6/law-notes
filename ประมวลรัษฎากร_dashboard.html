@@ -263,6 +263,82 @@ body {
 .phak-green .stat-badge  { background: rgba(240,232,216,0.12); border-color: rgba(240,232,216,0.35); }
 .phak-green .stat-num    { color: #DBC090; }
 
+/* phak schedule - gold / tax rates */
+.phak-gold .phak-header { background: #6B5324; }
+.phak-gold .phak-title  { color: #FFF8EB; }
+.phak-gold .phak-subtitle { color: #E8D4AE; }
+.phak-gold .stat-badge  { background: rgba(255,248,235,0.15); border-color: rgba(255,248,235,0.4); }
+.phak-gold .stat-num    { color: #FFE8A3; }
+
+/* ============= TAX SCHEDULE TABLE ============= */
+.tax-table-container {
+  overflow-x: auto;
+  margin: 12px 0 16px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border-light);
+  background: var(--bg3);
+  box-shadow: 2px 2px 0 var(--border-light);
+}
+.tax-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.tax-table th {
+  background: var(--bg2);
+  color: var(--accent1);
+  font-weight: 700;
+  padding: 12px 18px;
+  border-bottom: 2px solid var(--border-light);
+  font-family: 'Noto Serif Thai', serif;
+  text-align: left;
+  font-size: 15px;
+}
+.tax-table th.text-center, .tax-table td.text-center {
+  text-align: center;
+}
+.tax-table th.text-right, .tax-table td.text-right {
+  text-align: right;
+}
+.tax-table td {
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text);
+  vertical-align: middle;
+}
+.tax-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.tax-table tbody tr:nth-child(even) {
+  background: rgba(61,90,62,0.025);
+}
+.tax-table tbody tr:hover {
+  background: rgba(61,90,62,0.06);
+}
+.tax-rate-pill {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 700;
+  font-size: 15px;
+  color: #1A3C1E;
+  background: #DCEDC8;
+  border: 1.5px solid #5C7A3E;
+  padding: 3px 12px;
+  border-radius: 50px;
+  white-space: nowrap;
+}
+.tax-note-box {
+  margin-top: 14px;
+  padding: 12px 16px;
+  background: rgba(61,90,62,0.05);
+  border-left: 3.5px solid var(--accent2);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
 .phak-title {
   font-family: 'Noto Serif Thai', serif;
   font-size: 22px;
@@ -574,6 +650,7 @@ body {
   <a href="#phak_0" class="nav-pill">ลักษณะ 1 ข้อความเบื้องต้น</a>
 <a href="#phak_1" class="nav-pill">ลักษณะ 2 ภาษีอากรฝ่ายสรรพากร</a>
 <a href="#phak_2" class="nav-pill">ลักษณะ 3 ภาษีป้าย</a>
+<a href="#tax_schedule" class="nav-pill">บัญชีอัตราภาษีเงินได้</a>
 </nav>
 
 <!-- MAIN -->
@@ -2896,6 +2973,137 @@ body {
   </div>
   <div class="maatra-body"><p class="maatra-line">ถึง มาตรา 102 และบัญชีอัตราภาษีป้าย   (ยกเลิก)</p></div>
 </div>
+  </div>
+</section>
+<section class="phak-section phak-gold" id="tax_schedule">
+  <div class="phak-header">
+    <div class="phak-title-group">
+      <h2 class="phak-title">บัญชีอัตราภาษีเงินได้</h2>
+      <span class="phak-subtitle">ท้ายหมวด 3 ในลักษณะ 2 แห่งประมวลรัษฎากร</span>
+    </div>
+    <div class="phak-stats">
+      <div class="stat-badge">
+        <span class="stat-num">2</span>
+        <span class="stat-label">ประเภท</span>
+      </div>
+    </div>
+  </div>
+  <div class="phak-body">
+    <div class="maatra-card" id="tax_schedule_personal">
+      <div class="maatra-header">
+        <span class="maatra-badge">บัญชีอัตราภาษี</span>
+        <span class="maatra-title">(1) สำหรับบุคคลธรรมดา</span>
+      </div>
+      <div class="maatra-body">
+        <div class="tax-table-container">
+          <table class="tax-table">
+            <thead>
+              <tr>
+                <th style="width: 55%;">ช่วงเงินได้สุทธิ</th>
+                <th class="text-right" style="width: 25%;">จำนวนเงินได้สุทธิ</th>
+                <th class="text-center" style="width: 20%;">อัตราภาษี</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>เงินได้สุทธิไม่เกิน</td>
+                <td class="text-right">300,000 บาท</td>
+                <td class="text-center"><span class="tax-rate-pill">ร้อยละ 5</span></td>
+              </tr>
+              <tr>
+                <td>เงินได้สุทธิส่วนที่เกิน 300,000 บาท แต่ไม่เกิน</td>
+                <td class="text-right">500,000 บาท</td>
+                <td class="text-center"><span class="tax-rate-pill">ร้อยละ 10</span></td>
+              </tr>
+              <tr>
+                <td>เงินได้สุทธิส่วนที่เกิน 500,000 บาท แต่ไม่เกิน</td>
+                <td class="text-right">750,000 บาท</td>
+                <td class="text-center"><span class="tax-rate-pill">ร้อยละ 15</span></td>
+              </tr>
+              <tr>
+                <td>เงินได้สุทธิส่วนที่เกิน 750,000 บาท แต่ไม่เกิน</td>
+                <td class="text-right">1,000,000 บาท</td>
+                <td class="text-center"><span class="tax-rate-pill">ร้อยละ 20</span></td>
+              </tr>
+              <tr>
+                <td>เงินได้สุทธิส่วนที่เกิน 1,000,000 บาท แต่ไม่เกิน</td>
+                <td class="text-right">2,000,000 บาท</td>
+                <td class="text-center"><span class="tax-rate-pill">ร้อยละ 25</span></td>
+              </tr>
+              <tr>
+                <td>เงินได้สุทธิส่วนที่เกิน 2,000,000 บาท แต่ไม่เกิน</td>
+                <td class="text-right">5,000,000 บาท</td>
+                <td class="text-center"><span class="tax-rate-pill">ร้อยละ 30</span></td>
+              </tr>
+              <tr>
+                <td>เงินได้สุทธิส่วนที่เกิน</td>
+                <td class="text-right">5,000,000 บาท</td>
+                <td class="text-center"><span class="tax-rate-pill">ร้อยละ 35</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tax-note-box">
+          (พระราชบัญญัติแก้ไขเพิ่มเติมประมวลรัษฎากร (ฉบับที่ 44) พ.ศ. 2560 ใช้บังคับสำหรับเงินได้พึงประเมินประจำปีภาษี พ.ศ. 2560 ที่จะต้องยื่นรายการใน พ.ศ. 2561 เป็นต้นไป)
+        </div>
+      </div>
+    </div>
+
+    <div class="maatra-card" id="tax_schedule_corporate">
+      <div class="maatra-header">
+        <span class="maatra-badge">บัญชีอัตราภาษี</span>
+        <span class="maatra-title">(2) สำหรับบริษัทหรือห้างหุ้นส่วนนิติบุคคล</span>
+      </div>
+      <div class="maatra-body">
+        <div class="tax-table-container">
+          <table class="tax-table">
+            <thead>
+              <tr>
+                <th style="width: 75%;">ประเภทฐานภาษี / รายการ</th>
+                <th class="text-center" style="width: 25%;">อัตราภาษี</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong>(ก)</strong> ภาษีจากกำไรสุทธิของบริษัทหรือห้างหุ้นส่วนนิติบุคคล
+                  <div style="font-size: 13.5px; color: var(--text-muted); margin-top: 4px;">
+                    (พระราชบัญญัติแก้ไขเพิ่มเติมประมวลรัษฎากร (ฉบับที่ 42) พ.ศ. 2559 ใช้บังคับสำหรับรอบระยะเวลาบัญชีเริ่มในหรือหลัง 1 ม.ค. 2559 เป็นต้นไป)
+                  </div>
+                </td>
+                <td class="text-center"><span class="tax-rate-pill">ร้อยละ 20</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>(ข)</strong> ภาษีตามมาตรา 70 นอกจากที่ระบุใน (ค)
+                </td>
+                <td class="text-center"><span class="tax-rate-pill">ร้อยละ 15</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>(ค)</strong> ภาษีตามมาตรา 70 เฉพาะกรณีการจ่ายเงินได้พึงประเมินตามมาตรา 40(4)(ข)
+                </td>
+                <td class="text-center"><span class="tax-rate-pill">ร้อยละ 10</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>(ง)</strong> ภาษีตามมาตรา 70 ทวิ
+                  <div style="font-size: 13.5px; color: var(--text-muted); margin-top: 4px;">
+                    (พระราชกำหนดแก้ไขเพิ่มเติมประมวลรัษฎากร (ฉบับที่ 16) พ.ศ. 2534 ใช้บังคับ 1 เม.ย. 2535 เป็นต้นไป)
+                  </div>
+                </td>
+                <td class="text-center"><span class="tax-rate-pill">ร้อยละ 10</span></td>
+              </tr>
+              <tr>
+                <td colspan="2" style="color: var(--text-muted);">
+                  <strong>(จ)</strong> <em>(ยกเลิกโดยพระราชบัญญัติแก้ไขเพิ่มเติมประมวลรัษฎากร (ฉบับที่ 52) พ.ศ. 2562 ให้ใช้บังคับตั้งแต่วันที่ 20 สิงหาคม พ.ศ. 2562 เป็นต้นไป)</em>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 </div>
