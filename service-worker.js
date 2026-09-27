@@ -1,5 +1,5 @@
 // เพิ่มเลขเวอร์ชันทุกครั้งที่แก้ไขไฟล์เนื้อหา เพื่อบังคับให้ผู้ใช้ได้แคชชุดใหม่
-const CACHE_NAME = 'sarup-tuabot-v43';
+const CACHE_NAME = 'sarup-tuabot-v44';
 
 const PRECACHE_URLS = [
   './',
@@ -56,11 +56,28 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// cache-first: ตอบจากแคชก่อนเพื่อให้เปิดออฟไลน์ได้ทันที
-// แล้วค่อยอัปเดตแคชเงียบๆ เบื้องหลังถ้ามีเน็ต (stale-while-revalidate)
+// สำหรับ Navigation / HTML: Network-first เพื่อให้อัปเดตข้อมูลล่าสุดเสมอเมื่อมีเน็ต
+// สำหรับ Static assets: Stale-while-revalidate / Cache-first เพื่อความเร็วและออฟไลน์
 self.addEventListener('fetch', (event) => {
   const req = event.request;
   if (req.method !== 'GET' || new URL(req.url).origin !== self.location.origin) return;
+
+  const isHtml = req.mode === 'navigate' || (req.headers.get('accept') && req.headers.get('accept').includes('text/html'));
+
+  if (isHtml) {
+    event.respondWith(
+      fetch(req)
+        .then((res) => {
+          if (res && res.ok) {
+            const resClone = res.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(req, resClone));
+          }
+          return res;
+        })
+        .catch(() => caches.match(req))
+    );
+    return;
+  }
 
   event.respondWith(
     caches.match(req).then((cached) => {

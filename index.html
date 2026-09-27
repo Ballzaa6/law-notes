@@ -425,17 +425,31 @@ body {
 function updateCountdowns() {
   const now = new Date();
   document.querySelectorAll('.countdown-timer[data-exam]').forEach(timer => {
-    const target = new Date(timer.dataset.exam + 'T00:00:00');
+    const parts = timer.dataset.exam.split('-').map(Number);
+    const target = new Date(parts[0], parts[1] - 1, parts[2]);
     const yEl = timer.querySelector('[data-unit="y"]');
     const mEl = timer.querySelector('[data-unit="m"]');
     const dEl = timer.querySelector('[data-unit="d"]');
 
-    if (now >= target) {
+    const isToday = now.getFullYear() === target.getFullYear() &&
+                    now.getMonth() === target.getMonth() &&
+                    now.getDate() === target.getDate();
+
+    if (now >= target && !isToday) {
       yEl.textContent = '0';
       mEl.textContent = '0';
       dEl.textContent = '0';
       const dateEl = timer.closest('.countdown-card').querySelector('.countdown-date');
       dateEl.textContent = 'สอบผ่านไปแล้ว';
+      return;
+    }
+
+    if (isToday) {
+      yEl.textContent = '0';
+      mEl.textContent = '0';
+      dEl.textContent = '0';
+      const dateEl = timer.closest('.countdown-card').querySelector('.countdown-date');
+      dateEl.textContent = 'วันนี้วันสอบ!';
       return;
     }
 
@@ -465,12 +479,21 @@ setInterval(updateCountdowns, 60 * 1000);
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('service-worker.js')
-      .then(() => {
+      .then((reg) => {
+        reg.update();
         const note = document.getElementById('offlineNote');
         note.textContent = 'พร้อมอ่านแบบออฟไลน์แล้ว';
         note.classList.add('ready');
       })
       .catch(err => console.error('SW registration failed:', err));
+  });
+
+  let refreshing = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!refreshing) {
+      refreshing = true;
+      window.location.reload();
+    }
   });
 } else {
   document.getElementById('offlineNote').textContent = '';
