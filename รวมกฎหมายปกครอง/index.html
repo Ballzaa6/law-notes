@@ -68,12 +68,23 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 .law-card:nth-child(3){animation-delay:.2s;}
 .law-card:nth-child(4){animation-delay:.3s;}
 .law-card:nth-child(5){animation-delay:.4s;}
+.countdown-wrap{display:flex;gap:16px;justify-content:center;margin-top:20px;}
+.countdown-card{background:var(--bg3);border:2px solid var(--border);border-radius:var(--radius);box-shadow:3px 3px 0 var(--border);padding:14px 24px;min-width:220px;display:inline-block;}
+.countdown-label{font-family:'Noto Serif Thai',serif;font-weight:700;font-size:14.5px;color:var(--accent1);margin-bottom:8px;}
+.countdown-timer{display:flex;gap:14px;justify-content:center;}
+.countdown-unit{text-align:center;min-width:38px;}
+.countdown-num{display:block;font-family:'IBM Plex Mono',monospace;font-size:24px;font-weight:700;color:var(--gold);}
+.countdown-unit-label{display:block;font-size:11px;color:var(--text-muted);font-family:'IBM Plex Mono',monospace;margin-top:2px;}
+.countdown-date{margin-top:8px;font-size:12px;color:var(--text-dim);font-family:'IBM Plex Mono',monospace;}
 @media(max-width:640px){
   .hero{padding:40px 20px 36px;padding-top:calc(40px + env(safe-area-inset-top));}
   .nav-bar{padding:10px 16px;}
   .main{padding:32px 16px 80px;}
   .card-banner{padding:20px 20px 16px;}
   .card-body{padding:14px 20px 16px;}
+  .countdown-card{padding:12px 18px;min-width:180px;}
+  .countdown-num{font-size:20px;}
+  .countdown-timer{gap:10px;}
 }
 </style>
 </head>
@@ -84,6 +95,18 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
   <h1 class="hero-title">รวมกฎหมายปกครอง</h1>
   <p class="hero-sub">รวบรวมพระราชบัญญัติหลักด้านกฎหมายปกครอง พร้อมฉบับแปลภาษาอังกฤษทางการ แบ่งหมวด/ส่วนตามต้นฉบับ พร้อมค้นหาและอ่านออฟไลน์</p>
   <span class="hero-tag">5 รายการ (ไทย / English) · 557 มาตรา · 38 หมวด/ส่วน</span>
+
+  <div class="countdown-wrap">
+    <div class="countdown-card">
+      <div class="countdown-label">นับถอยหลังสอบ พนักงานคดีปกครอง</div>
+      <div class="countdown-timer" data-exam="2026-11-15">
+        <div class="countdown-unit"><span class="countdown-num" data-unit="y">0</span><span class="countdown-unit-label">ปี</span></div>
+        <div class="countdown-unit"><span class="countdown-num" data-unit="m">0</span><span class="countdown-unit-label">เดือน</span></div>
+        <div class="countdown-unit"><span class="countdown-num" data-unit="d">0</span><span class="countdown-unit-label">วัน</span></div>
+      </div>
+      <div class="countdown-date">สอบวันที่ 15 พฤศจิกายน 2569</div>
+    </div>
+  </div>
 </div>
 
 <nav class="nav-bar">
@@ -187,6 +210,58 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);lin
 <a class="home-btn" href="../index.html" title="กลับหน้าหลัก">🏠</a>
 
 <script>
+function updateCountdowns() {
+  const now = new Date();
+  document.querySelectorAll('.countdown-timer[data-exam]').forEach(timer => {
+    const parts = timer.dataset.exam.split('-').map(Number);
+    const target = new Date(parts[0], parts[1] - 1, parts[2]);
+    const yEl = timer.querySelector('[data-unit="y"]');
+    const mEl = timer.querySelector('[data-unit="m"]');
+    const dEl = timer.querySelector('[data-unit="d"]');
+
+    const isToday = now.getFullYear() === target.getFullYear() &&
+                    now.getMonth() === target.getMonth() &&
+                    now.getDate() === target.getDate();
+
+    if (now >= target && !isToday) {
+      yEl.textContent = '0';
+      mEl.textContent = '0';
+      dEl.textContent = '0';
+      const dateEl = timer.closest('.countdown-card').querySelector('.countdown-date');
+      dateEl.textContent = 'สอบผ่านไปแล้ว';
+      return;
+    }
+
+    if (isToday) {
+      yEl.textContent = '0';
+      mEl.textContent = '0';
+      dEl.textContent = '0';
+      const dateEl = timer.closest('.countdown-card').querySelector('.countdown-date');
+      dateEl.textContent = 'วันนี้วันสอบ!';
+      return;
+    }
+
+    let years = target.getFullYear() - now.getFullYear();
+    let months = target.getMonth() - now.getMonth();
+    let days = target.getDate() - now.getDate();
+
+    if (days < 0) {
+      months--;
+      days += new Date(target.getFullYear(), target.getMonth(), 0).getDate();
+    }
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
+
+    yEl.textContent = years;
+    mEl.textContent = months;
+    dEl.textContent = days;
+  });
+}
+updateCountdowns();
+setInterval(updateCountdowns, 60 * 1000);
+
 if('serviceWorker' in navigator){
   window.addEventListener('load',()=>{
     navigator.serviceWorker.register('../service-worker.js').catch(e=>console.error(e));
