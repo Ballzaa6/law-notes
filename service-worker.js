@@ -1,5 +1,5 @@
 // เพิ่มเลขเวอร์ชันทุกครั้งที่แก้ไขไฟล์เนื้อหา เพื่อบังคับให้ผู้ใช้ได้แคชชุดใหม่
-const CACHE_NAME = 'sarup-tuabot-v50';
+const CACHE_NAME = 'sarup-tuabot-v51';
 
 const PRECACHE_URLS = [
   './',
@@ -69,7 +69,7 @@ self.addEventListener('fetch', (event) => {
 
   if (isHtml) {
     event.respondWith(
-      fetch(req)
+      fetch(new Request(req, { cache: 'reload' }))
         .then((res) => {
           if (res && res.ok) {
             const resClone = res.clone();
