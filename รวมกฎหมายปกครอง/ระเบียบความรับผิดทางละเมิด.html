@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ระเบียบสำนักนายกรัฐมนตรี ว่าด้วยหลักเกณฑ์การปฏิบัติเกี่ยวกับความรับผิดทางละเมิดของเจ้าหน้าที่ พ.ศ. 2539 - Dashboard</title>
+<meta name="description" content="ระเบียบสำนักนายกรัฐมนตรี ว่าด้วยหลักเกณฑ์การปฏิบัติเกี่ยวกับความรับผิดทางละเมิดของเจ้าหน้าที่ พ.ศ. 2539 แก้ไขเพิ่มเติมถึงฉบับที่ 2 พ.ศ. 2559 ครบถ้วน 39 ข้อ พร้อมระบบค้นหา">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#1B4F72">
+<link rel="icon" href="../icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ระเบียบความรับผิดทางละเมิด">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Noto+Serif+Thai:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#E4EAF0;--bg2:#D8E0EA;--bg3:#EEF2F8;
+  --border:#1B4F72;--border-light:#A8BECC;
+  --text:#0D1B2A;--text-muted:#1A5276;--text-dim:#2471A3;
+  --accent1:#1B4F72;--accent2:#154360;
+  --gold:#B7770D;--gold-light:#D4A017;
+  --radius:14px;--radius-sm:10px;--shadow:0 3px 0 0 #1B4F72;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;}
+::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:var(--bg2);}::-webkit-scrollbar-thumb{background:var(--accent1);border-radius:3px;}
+
+.hero{
+  background:var(--bg);
+  border-bottom:2px dashed var(--border-light);
+  padding:52px 48px 40px;
+  padding-top:calc(52px + env(safe-area-inset-top));
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:radial-gradient(circle,rgba(27,79,114,0.06) 1px,transparent 1px);
+  background-size:24px 24px;
+  pointer-events:none;
+}
+.hero-emblem{
+  font-size:48px;
+  margin-bottom:14px;
+  display:block;
+  filter:drop-shadow(0 2px 6px rgba(27,79,114,0.25));
+}
+.hero-title{
+  font-family:'Noto Serif Thai',serif;
+  font-size:clamp(20px,3.8vw,36px);
+  font-weight:700;
+  color:var(--accent1);
+  margin-bottom:10px;
+  line-height:1.3;
+}
+.hero-sub{
+  color:var(--text-muted);
+  font-size:15px;
+  margin-bottom:28px;
+  max-width:820px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.hero-stats{
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-bottom:32px;
+}
+.hero-stat{
+  background:var(--bg3);
+  border:2px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:12px 24px;
+  text-align:center;
+}
+.hero-stat-num{
+  font-size:28px;
+  font-weight:700;
+  color:var(--accent1);
+  display:block;
+  font-family:'IBM Plex Mono',monospace;
+}
+.hero-stat-label{
+  font-size:11px;
+  color:var(--text-muted);
+  font-family:'IBM Plex Mono',monospace;
+  text-transform:uppercase;
+  letter-spacing:0.8px;
+  margin-top:2px;
+  display:block;
+}
+.search-wrapper{
+  max-width:580px;
+  margin:0 auto;
+  position:relative;
+}
+.search-input{
+  width:100%;
+  padding:12px 20px 12px 44px;
+  background:var(--bg3);
+  border:2px solid var(--border);
+  border-radius:50px;
+  color:var(--text);
+  font-size:15.5px;
+  font-family:'Sarabun',sans-serif;
+  outline:none;
+  transition:all .25s;
+  box-shadow:3px 3px 0 var(--border);
+}
+.search-input::placeholder{color:var(--text-dim);}
+.search-input:focus{background:#fff;box-shadow:4px 4px 0 var(--accent1);}
+.search-icon{
+  position:absolute;
+  left:15px;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--text-muted);
+  font-size:15px;
+  pointer-events:none;
+}
+.search-count{
+  position:absolute;
+  right:16px;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--text-muted);
+  font-size:12px;
+  font-family:'IBM Plex Mono',monospace;
+}
+
+.nav-bar{
+  position:static !important;
+  top:auto !important;
+  background:var(--bg2);
+  border-bottom:2px solid var(--border-light);
+  padding:10px 32px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+}
+.nav-left{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.nav-label{
+  font-size:11px;
+  color:var(--text-dim);
+  text-transform:uppercase;
+  letter-spacing:1px;
+  font-family:'IBM Plex Mono',monospace;
+}
+.nav-pill{
+  display:inline-block;
+  padding:5px 14px;
+  background:var(--bg3);
+  border:1.5px solid var(--border);
+  border-radius:50px;
+  color:var(--accent1);
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+  white-space:nowrap;
+  transition:all .2s;
+  box-shadow:2px 2px 0 var(--border);
+}
+.nav-pill:hover{
+  background:var(--accent1);
+  color:var(--bg3);
+  transform:translate(-1px,-1px);
+  box-shadow:3px 3px 0 #0A2740;
+}
+.nav-btn{
+  padding:5px 13px;
+  background:var(--bg3);
+  border:1.5px solid var(--border);
+  border-radius:50px;
+  color:var(--accent1);
+  font-size:12.5px;
+  font-weight:700;
+  cursor:pointer;
+  transition:all .2s;
+  box-shadow:2px 2px 0 var(--border);
+  font-family:'Sarabun',sans-serif;
+}
+.nav-btn:hover{background:var(--accent2);color:#fff;transform:translate(-1px,-1px);}
+
+.container{max-width:1040px;margin:0 auto;padding:36px 22px 80px;}
+
+/* Preamble info box */
+.preamble-box{
+  background:var(--bg3);
+  border:2.5px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:4px 4px 0 var(--border);
+  margin-bottom:32px;
+  padding:24px 28px;
+  animation:fadeUp .4s ease both;
+}
+.preamble-header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:14px;
+  padding-bottom:12px;
+  border-bottom:1.5px dashed var(--border-light);
+}
+.preamble-title{
+  font-family:'Noto Serif Thai',serif;
+  font-size:17.5px;
+  font-weight:700;
+  color:var(--accent1);
+}
+.preamble-badge{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  background:var(--bg2);
+  color:var(--text-muted);
+  padding:2px 10px;
+  border-radius:50px;
+  border:1px solid var(--border-light);
+}
+.preamble-body{
+  font-size:15.5px;
+  color:var(--text);
+  line-height:1.9;
+}
+.preamble-body p{margin-bottom:10px;}
+.preamble-body p:last-child{margin-bottom:0;}
+
+.group-section{
+  margin-bottom:32px;
+  border:2.5px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden;
+  background:var(--bg3);
+  box-shadow:4px 4px 0 var(--border);
+  animation:fadeUp .4s ease both;
+}
+.group-header{
+  padding:16px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  cursor:pointer;
+  user-select:none;
+  background:var(--accent1);
+  transition:filter .2s;
+}
+.group-header:hover{filter:brightness(1.1);}
+.group-title{
+  font-family:'Noto Serif Thai',serif;
+  font-size:17.5px;
+  font-weight:700;
+  color:#E8F4FF;
+  flex:1;
+}
+.group-meta{display:flex;align-items:center;gap:10px;}
+.group-count{
+  background:rgba(255,255,255,0.18);
+  color:#E8F4FF;
+  padding:3px 12px;
+  border-radius:50px;
+  font-size:12px;
+  font-weight:600;
+  font-family:'IBM Plex Mono',monospace;
+  border:1px solid rgba(255,255,255,0.3);
+}
+.group-toggle{
+  font-size:14px;
+  color:#E8F4FF;
+  transition:transform .3s;
+  font-weight:bold;
+}
+.group-section.open .group-toggle{transform:rotate(180deg);}
+.group-body{display:none;padding:20px;}
+.group-section.open .group-body{display:block;}
+
+.maatra-card{
+  background:var(--bg3);
+  border:2px solid var(--border);
+  border-radius:var(--radius-sm);
+  margin-bottom:14px;
+  overflow:hidden;
+  transition:all .18s;
+  box-shadow:3px 3px 0 var(--border);
+}
+.maatra-card:last-child{margin-bottom:0;}
+.maatra-card:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--border);}
+.maatra-card.highlight{border-color:var(--gold)!important;box-shadow:3px 3px 0 var(--gold)!important;}
+.maatra-card.highlight .maatra-badge{background:var(--gold)!important;border-color:#8B6308!important;}
+.maatra-header{
+  padding:9px 16px;
+  background:var(--bg2);
+  border-bottom:1.5px solid var(--border-light);
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:9px;
+}
+.maatra-badge{
+  background:var(--accent1);
+  color:#E8F4FF;
+  padding:3px 13px;
+  border-radius:50px;
+  font-size:12.5px;
+  font-weight:700;
+  white-space:nowrap;
+  font-family:'IBM Plex Mono',monospace;
+  border:1.5px solid #0A2740;
+}
+.maatra-title{
+  font-size:14.5px;
+  font-weight:600;
+  color:var(--text);
+  flex:1;
+}
+.maatra-body{padding:16px 18px;}
+.maatra-line{
+  margin-bottom:11px;
+  line-height:1.9;
+  color:var(--text);
+  font-size:16px;
+}
+.maatra-line.indent{
+  padding-left:22px;
+  margin-bottom:7px;
+}
+.maatra-line:last-child{margin-bottom:0;}
+
+.maatra-footnotes{
+  margin-top:14px;
+  padding-top:10px;
+  border-top:1.5px dashed var(--border-light);
+  font-size:13.5px;
+  color:var(--text-muted);
+}
+.fn-header{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:0.8px;
+  color:var(--text-dim);
+  margin-bottom:4px;
+  font-weight:600;
+}
+.fn-item{
+  margin-bottom:4px;
+  line-height:1.6;
+}
+.fn-item:last-child{margin-bottom:0;}
+
+.search-highlight{
+  background:rgba(183,119,13,0.28);
+  color:#5A3800;
+  border-radius:3px;
+  padding:0 3px;
+  font-weight:600;
+}
+.hidden{display:none!important;}
+.no-results{
+  text-align:center;
+  padding:50px 20px;
+  color:var(--text-muted);
+  font-size:16px;
+  font-family:'IBM Plex Mono',monospace;
+}
+.back-top{
+  position:fixed;
+  bottom:calc(26px + env(safe-area-inset-bottom));
+  right:26px;
+  width:42px;
+  height:42px;
+  background:var(--accent1);
+  color:#E8F4FF;
+  border:2px solid #0A2740;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:17px;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  box-shadow:3px 3px 0 #0A2740;
+  transition:all .2s;
+  z-index:999;
+}
+.back-top:hover{background:var(--accent2);transform:translate(-1px,-1px);}
+.back-top.visible{display:flex;}
+
+.home-btn{
+  position:fixed;
+  bottom:calc(26px + env(safe-area-inset-bottom));
+  left:26px;
+  width:42px;
+  height:42px;
+  background:var(--gold);
+  color:#fff;
+  border:2px solid #8B6308;
+  border-radius:50%;
+  text-decoration:none;
+  font-size:17px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:3px 3px 0 #8B6308;
+  transition:all .2s;
+  z-index:999;
+}
+.home-btn:hover{background:var(--gold-light);transform:translate(-1px,-1px);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+
+@media(max-width:768px){
+  .hero{padding:32px 18px 26px;padding-top:calc(32px + env(safe-area-inset-top));}
+  .nav-bar{padding:8px 14px;flex-direction:column;align-items:flex-start;gap:10px;}
+  .group-body{padding:12px;}
+  .maatra-line.indent{padding-left:14px;}
+}
+
+.hero-accent{
+  background:linear-gradient(135deg,#134E5E,#0B2B36);
+  padding:10px 24px;
+  border-radius:50px;
+  display:inline-block;
+  margin-bottom:18px;
+}
+.hero-accent-text{
+  color:#90E0EF;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="hero-emblem">📑</span>
+  <div class="hero-accent">
+    <span class="hero-accent-text">พ.ศ. 2539 · Update ถึง ระเบียบฯ (ฉ.2/2559)</span>
+  </div>
+  <h1 class="hero-title">ระเบียบสำนักนายกรัฐมนตรี<br>ว่าด้วยหลักเกณฑ์การปฏิบัติเกี่ยวกับความรับผิดทางละเมิดของเจ้าหน้าที่ พ.ศ. 2539</h1>
+  <p class="hero-sub">หลักเกณฑ์การแต่งตั้งคณะกรรมการสอบข้อเท็จจริงความรับผิดทางละเมิด การส่งสำนวนให้กระทรวงการคลังตรวจสอบ การผ่อนชำระ การประนีประนอม และการใช้สิทธิไล่เบี้ย</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><span class="hero-stat-num">39</span><span class="hero-stat-label">ข้อ</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">4</span><span class="hero-stat-label">หมวด/กลุ่ม</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">2</span><span class="hero-stat-label">หมวดหลัก</span></div>
+  </div>
+  <div class="search-wrapper">
+    <span class="search-icon">🔍</span>
+    <input type="text" class="search-input" id="searchInput" placeholder="ค้นหาข้อ, เลขที่ข้อ, หรือเนื้อหา..." oninput="doSearch(this.value)">
+    <span class="search-count" id="cnt"></span>
+  </div>
+</div>
+
+<nav class="nav-bar">
+  <div class="nav-left">
+    <a href="index.html" class="nav-pill">← รวมกฎหมายปกครอง</a>
+    <a href="พรบ_ความรับผิดทางละเมิด.html" class="nav-pill" style="background:#FFF7E6;border-color:var(--gold);color:var(--gold);font-weight:700;" title="เปิด พ.ร.บ. ความรับผิดทางละเมิดของเจ้าหน้าที่ พ.ศ. 2539">⚖️ พ.ร.บ. ความรับผิดทางละเมิดฯ</a>
+    <span class="nav-label">|</span>
+    <a href="#g_rule_tort_0" class="nav-pill">บทเริ่มต้น (ข้อ 1–5)</a>
+    <a href="#g_rule_tort_1" class="nav-pill">หมวด 1 ละเมิดต่อหน่วยงานของรัฐ</a>
+    <a href="#g_rule_tort_2" class="nav-pill">หมวด 2 ละเมิดต่อบุคคลภายนอก</a>
+    <a href="#g_rule_tort_3" class="nav-pill">ท้ายระเบียบ/หมายเหตุ</a>
+  </div>
+  <div style="display:flex;gap:6px;">
+    <button class="nav-btn" onclick="expandAll()">📂 ขยาย</button>
+    <button class="nav-btn" onclick="collapseAll()">📁 พับ</button>
+  </div>
+</nav>
+
+<div class="container">
+  <div id="noRes" class="no-results hidden">ไม่พบผลการค้นหา</div>
+
+  <!-- Preamble Box -->
+  <div class="preamble-box">
+    <div class="preamble-header">
+      <span style="font-size:24px;">⚖️</span>
+      <div>
+        <div class="preamble-title">คำปรารภและหลักการสำคัญของระเบียบ</div>
+        <span class="preamble-badge">มติคณะรัฐมนตรี · สอดคล้อง พ.ร.บ. ความรับผิดทางละเมิดของเจ้าหน้าที่ พ.ศ. ๒๕๓๙</span>
+      </div>
+    </div>
+    <div class="preamble-body">
+      <p>โดยที่ได้มีการตราพระราชบัญญัติความรับผิดทางละเมิดของเจ้าหน้าที่ พ.ศ. ๒๕๓๙ ขึ้น และกฎหมายดังกล่าวมีหลักการเกี่ยวกับความรับผิดทางละเมิดของเจ้าหน้าที่ ซึ่งเปลี่ยนแปลงไปจากแนวทางปฏิบัติในเรื่องความรับผิดทางแพ่งที่ทางราชการถือปฏิบัติในปัจจุบัน โดยได้แยกความรับผิดทางละเมิดของเจ้าหน้าที่ออกเป็นเหตุที่เนื่องมาจากการปฏิบัติหน้าที่และที่ไม่ใช่การปฏิบัติหน้าที่ โดยเมื่อมีความเสียหายเนื่องมาจากการปฏิบัติหน้าที่นั้น หน่วยงานของรัฐจะต้องรับภาระชดใช้ค่าเสียหายไปก่อน ส่วนเจ้าหน้าที่ของรัฐจะรับผิดชดใช้ค่าเสียหายต่อหน่วยงานของรัฐเพียงใดนั้น ให้ไปไล่เบี้ยต่อไปในภายหลัง โดยจะยึดหลักว่าจะเรียกเอาแก่เจ้าหน้าที่ของรัฐเฉพาะกรณีความเสียหายนั้นเกิดขึ้นโดยจงใจหรือประมาทเลินเล่ออย่างร้ายแรงเท่านั้น นอกจากนี้ในกรณีที่เจ้าหน้าที่ของรัฐต้องรับผิดชดใช้ค่าเสียหายให้เจ้าหน้าที่ของรัฐสามารถผ่อนชำระค่าสินไหมทดแทนได้โดยคำนึงถึงรายได้ ฐานะ ครอบครัวและความรับผิดชอบ และพฤติการณ์แห่งกรณีประกอบด้วย สำหรับความเสียหายที่เกิดจากการที่ไม่ใช่การปฏิบัติหน้าที่ เจ้าหน้าที่ของรัฐจะต้องถูกฟ้องและชดใช้ค่าสินไหมทดแทนเป็นการส่วนตัวโดยไม่เกี่ยวกับทางราชการ สมควรวางระเบียบกำหนดหลักเกณฑ์การปฏิบัติเกี่ยวกับความรับผิดทางละเมิดของเจ้าหน้าที่ให้เหมาะสมและสอดคล้องกับพระราชบัญญัติความรับผิดทางละเมิดของเจ้าหน้าที่ พ.ศ. ๒๕๓๙ คณะรัฐมนตรีจึงมีมติให้วางระเบียบไว้ดังต่อไปนี้</p>
+    </div>
+  </div>
+
+  <!-- Group 0: บทเริ่มต้น -->
+  <div class="group-section open" id="g_rule_tort_0">
+    <div class="group-header" onclick="toggleGroup('g_rule_tort_0')">
+      <span class="group-title">บทเริ่มต้น (ข้อ 1–5)</span>
+      <div class="group-meta">
+        <span class="group-count">5 ข้อ</span>
+        <span class="group-toggle">▼</span>
+      </div>
+    </div>
+    <div class="group-body" id="g_rule_tort_0-body">
+
+      <div class="maatra-card" id="m_rule_tort_1">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 1</span>
+          <span class="maatra-title">ชื่อระเบียบ</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ระเบียบนี้เรียกว่า “ระเบียบสำนักนายกรัฐมนตรี ว่าด้วยหลักเกณฑ์การปฏิบัติเกี่ยวกับความรับผิดทางละเมิดของเจ้าหน้าที่ พ.ศ. ๒๕๓๙”</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_2">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 2</span>
+          <span class="maatra-title">วันใช้บังคับระเบียบ</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ระเบียบนี้ให้ใช้บังคับตั้งแต่วันถัดจากวันประกาศในราชกิจจานุเบกษาเป็นต้นไป</p>
+          <div class="maatra-footnotes">
+            <div class="fn-header">หมายเหตุ / อ้างอิง</div>
+            <div class="fn-item">๑. ราชกิจจานุเบกษา เล่ม ๑๑๓/ตอนพิเศษ ๓๙ ง/หน้า ๑/๑๕ พฤศจิกายน ๒๕๓๙</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_3">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 3</span>
+          <span class="maatra-title">การยกเลิกระเบียบและหนังสือเวียนเดิมที่ขัดหรือแย้ง</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ให้ยกเลิก</p>
+          <p class="maatra-line indent">(๑) ระเบียบความรับผิดชอบของข้าราชการในทางแพ่ง ซึ่งออกตามมติคณะรัฐมนตรี โดยหนังสือสำนักเลขาธิการคณะรัฐมนตรี ด่วน ที่ นว ๑๕๕/๒๕๐๓ ลงวันที่ ๑ ธันวาคม ๒๕๐๓</p>
+          <p class="maatra-line indent">(๒) หนังสือกระทรวงการคลัง ที่ ๑๓๕๘๒, ๑๓๕๘๓ (บคร)./๒๕๐๔ ลงวันที่ ๒๔ เมษายน ๒๕๐๔</p>
+          <p class="maatra-line indent">(๓) หนังสือกระทรวงการคลัง ที่ กค ๐๕๐๘/๖๔๖๖ ลงวันที่ ๑๑ มีนาคม ๒๕๐๙</p>
+          <p class="maatra-line indent">(๔) หนังสือกระทรวงการคลัง ที่ กค ๐๕๐๘/๑๐๒๘๓ ลงวันที่ ๕ เมษายน ๒๕๑๖</p>
+          <p class="maatra-line indent">(๕) หนังสือกระทรวงการคลัง ที่ กค ๐๕๐๘/ว.๒๗๒๗๔ ลงวันที่ ๑๙ กรกฎาคม ๒๕๒๕</p>
+          <p class="maatra-line indent">(๖) หนังสือกระทรวงการคลัง ที่ กค ๐๕๑๔/๒๑๗๓๘ ลงวันที่ ๗ พฤษภาคม ๒๕๒๘</p>
+          <p class="maatra-line indent">(๗) หนังสือกรมบัญชีกลาง ที่ กค ๐๕๑๔/๒๓๐๒ ลงวันที่ ๑๖ เมษายน ๒๕๒๙</p>
+          <p class="maatra-line indent">(๘) หนังสือกระทรวงการคลัง ที่ กค ๐๕๑๔/๑๒๔๖๑ ลงวันที่ ๒๕ มีนาคม ๒๕๓๐</p>
+          <p class="maatra-line indent">(๙) หนังสือกระทรวงการคลัง ที่ กค ๐๕๑๔/๕๒๓๓๓ ลงวันที่ ๒๙ ตุลาคม ๒๕๓๐</p>
+          <p class="maatra-line indent">(๑๐) หนังสือกรมบัญชีกลาง ที่ กค ๐๕๑๔/๕๙๗๕ ลงวันที่ ๑๑ พฤศจิกายน ๒๕๓๐</p>
+          <p class="maatra-line indent">(๑๑) หนังสือกระทรวงการคลัง ที่ กค ๐๕๑๔/๒๓๒๒๘ ลงวันที่ ๑๐ พฤษภาคม ๒๕๓๑</p>
+          <p class="maatra-line indent">(๑๒) หนังสือกระทรวงการคลัง ที่ กค ๐๕๑๔/๖๓๑๑๙ ลงวันที่ ๒๐ ธันวาคม ๒๕๓๑</p>
+          <p class="maatra-line">บรรดาระเบียบ ข้อบังคับ หรือมติคณะรัฐมนตรีอื่นใดในส่วนที่กำหนดไว้แล้วในระเบียบนี้ หรือซึ่งขัดหรือแย้งกับระเบียบนี้ให้ใช้ระเบียบนี้แทน</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_4">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 4</span>
+          <span class="maatra-title">บทนิยามคำสำคัญ (เจ้าหน้าที่, คณะกรรมการ, ผู้แต่งตั้ง, ความเสียหาย)</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ในระเบียบนี้</p>
+          <p class="maatra-line">“เจ้าหน้าที่” หมายความว่า ข้าราชการ พนักงาน ลูกจ้าง หรือผู้ปฏิบัติงานประเภทอื่น ไม่ว่าจะเป็นการแต่งตั้งในฐานะเป็นกรรมการหรือฐานะอื่นใด บรรดาซึ่งได้รับแต่งตั้งหรือถูกสั่งให้ปฏิบัติงานให้แก่หน่วยงานของรัฐ</p>
+          <p class="maatra-line">“คณะกรรมการ” หมายความว่า คณะกรรมการสอบข้อเท็จจริงความรับผิดทางละเมิด</p>
+          <p class="maatra-line">“ผู้แต่งตั้ง” หมายความว่า ผู้แต่งตั้งคณะกรรมการขึ้นเพื่อปฏิบัติตามระเบียบนี้</p>
+          <p class="maatra-line">“ความเสียหาย” หมายความว่า ความเสียหายที่เกิดจากการละเมิดอย่างใด ๆ แต่ไม่รวมถึงการออกคำสั่งหรือกฎ</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_5">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 5</span>
+          <span class="maatra-title">ผู้รักษาการตามระเบียบ</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ให้นายกรัฐมนตรีรักษาการตามระเบียบนี้</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Group 1: หมวด 1 -->
+  <div class="group-section open" id="g_rule_tort_1">
+    <div class="group-header" onclick="toggleGroup('g_rule_tort_1')">
+      <span class="group-title">หมวด 1 กรณีเจ้าหน้าที่กระทำละเมิดต่อหน่วยงานของรัฐ (ข้อ 6–29)</span>
+      <div class="group-meta">
+        <span class="group-count">25 ข้อ</span>
+        <span class="group-toggle">▼</span>
+      </div>
+    </div>
+    <div class="group-body" id="g_rule_tort_1-body">
+
+      <div class="maatra-card" id="m_rule_tort_6">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 6</span>
+          <span class="maatra-title">นิยามคำว่า “หน่วยงานของรัฐ” ในหมวด 1</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ในหมวดนี้</p>
+          <p class="maatra-line">“หน่วยงานของรัฐ” หมายความว่า กระทรวง ทบวง กรม หรือส่วนราชการที่เรียกชื่ออย่างอื่นและมีฐานะเป็นกรม ราชการส่วนภูมิภาค ราชการส่วนท้องถิ่น รัฐวิสาหกิจที่จัดตั้งขึ้นโดยพระราชบัญญัติหรือพระราชกฤษฎีกา หรือหน่วยงานอื่นของรัฐตามกฎหมายว่าด้วยความรับผิดทางละเมิดของเจ้าหน้าที่</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_7">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 7</span>
+          <span class="maatra-title">หน้าที่การแจ้งและรายงานความเสียหายตามลำดับชั้นโดยไม่ชักช้า</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">เมื่อเกิดความเสียหายแก่หน่วยงานของรัฐ ให้เจ้าหน้าที่ที่เกี่ยวข้องแจ้งต่อผู้บังคับบัญชาโดยไม่ชักช้า และให้มีการรายงานตามลำดับชั้นถึงหัวหน้าหน่วยงานของรัฐแห่งนั้น</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_8">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 8</span>
+          <span class="maatra-title">การแต่งตั้งคณะกรรมการสอบข้อเท็จจริงความรับผิดทางละเมิดและองค์ประกอบ</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">เมื่อเกิดความเสียหายแก่หน่วยงานของรัฐแห่งใด และหัวหน้าหน่วยงานของรัฐแห่งนั้นมีเหตุอันควรเชื่อว่าเกิดจากการกระทำของเจ้าหน้าที่ของหน่วยงานของรัฐแห่งนั้น ให้หัวหน้าหน่วยงานของรัฐดังกล่าวแต่งตั้งคณะกรรมการสอบข้อเท็จจริงความรับผิดทางละเมิดขึ้นคณะหนึ่ง โดยไม่ชักช้า เพื่อพิจารณาเสนอความเห็นเกี่ยวกับผู้ต้องรับผิดและจำนวนค่าสินไหมทดแทนที่ผู้นั้นต้องชดใช้</p>
+          <p class="maatra-line">คณะกรรมการตามวรรคหนึ่ง ให้มีจำนวนไม่เกินห้าคน โดยแต่งตั้งจากเจ้าหน้าที่ของหน่วยงานของรัฐแห่งนั้นหรือหน่วยงานของรัฐอื่นตามที่เห็นสมควร</p>
+          <p class="maatra-line">กระทรวงการคลังอาจประกาศกำหนดว่าในกรณีความเสียหายที่เกิดขึ้นมีมูลค่าความเสียหายตั้งแต่จำนวนเท่าใด จะให้มีผู้แทนของหน่วยงานของรัฐหน่วยงานใดเข้าร่วมเป็นกรรมการด้วยก็ได้</p>
+          <p class="maatra-line">ในการแต่งตั้งคณะกรรมการ ให้กำหนดเวลาแล้วเสร็จของการพิจารณาของคณะกรรมการไว้ด้วย</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_9">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 9</span>
+          <span class="maatra-title">การแจ้งเหตุกรณีเจ้าหน้าที่ทำให้เกิดความเสียหายแก่หน่วยงานของรัฐอีกแห่งหนึ่ง</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ถ้าเจ้าหน้าที่ของหน่วยงานของรัฐแห่งหนึ่งทำให้เกิดความเสียหายแก่หน่วยงานของรัฐอีกแห่งหนึ่ง ให้เจ้าหน้าที่ผู้ทำให้เกิดความเสียหายแจ้งต่อผู้บังคับบัญชา และให้มีการรายงานตามลำดับชั้นจนถึงหัวหน้าหน่วยงานของรัฐที่ตนสังกัด เว้นแต่</p>
+          <p class="maatra-line indent">(๑) ถ้าเจ้าหน้าที่ผู้ทำให้เกิดความเสียหายเป็นรัฐมนตรี ให้แจ้งต่อนายกรัฐมนตรี</p>
+          <p class="maatra-line indent">(๒) ถ้าเจ้าหน้าที่ผู้ทำให้เกิดความเสียหายเป็นกรรมการที่ตั้งขึ้นเพื่อปฏิบัติงานในหน่วยงานของรัฐแห่งใด ให้แจ้งต่อหัวหน้าหน่วยงานของรัฐแห่งนั้น</p>
+          <p class="maatra-line indent">(๓) ถ้าเจ้าหน้าที่ผู้ทำให้เกิดความเสียหายเป็นผู้ซึ่งไม่ได้สังกัดหน่วยงานของรัฐแห่งใด ให้แจ้งต่อกระทรวงการคลัง</p>
+          <p class="maatra-line indent">(๔) ถ้าเจ้าหน้าที่ผู้ทำให้เกิดความเสียหายเป็นผู้ซึ่งไม่มีผู้บังคับบัญชาและมิใช่ผู้ปฏิบัติงานในราชการส่วนท้องถิ่น รัฐวิสาหกิจที่จัดตั้งขึ้นโดยพระราชบัญญัติหรือพระราชกฤษฎีกา หรือหน่วยงานอื่นของรัฐตามกฎหมายว่าด้วยความรับผิดทางละเมิดของเจ้าหน้าที่ ให้แจ้งต่อผู้มีอำนาจกำกับดูแล ผู้แต่งตั้งตน หรือผู้ซึ่งสั่งให้ตนปฏิบัติงานให้แก่หน่วยงานของรัฐ</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_10">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 10</span>
+          <span class="maatra-title">อำนาจร่วมกันแต่งตั้งคณะกรรมการกรณีข้ามหน่วยงานตามข้อ 9</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ในกรณีความเสียหายเกิดขึ้นตามข้อ ๙ ให้หัวหน้าหน่วยงานของรัฐที่ได้รับความเสียหาย และหัวหน้าหน่วยงานของรัฐที่เจ้าหน้าที่ผู้นั้นสังกัดหรือผู้ซึ่งระเบียบนี้กำหนดให้เป็นผู้รับแจ้งตามข้อ ๙ (๑) (๒) (๓) หรือ (๔) แล้วแต่กรณีมีอำนาจร่วมกันแต่งตั้งคณะกรรมการ</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_11">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 11</span>
+          <span class="maatra-title">การร่วมกันแต่งตั้งคณะกรรมการกรณีเสียหายหลายแห่งหรือหลายหน่วยงาน</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ในกรณีที่เกิดความเสียหายแก่หน่วยงานของรัฐมากกว่าหนึ่งแห่ง และหรือความเสียหายเกิดจากผลการกระทำของเจ้าหน้าที่หลายหน่วยงาน ให้ผู้มีอำนาจแต่งตั้งคณะกรรมการตามข้อ ๘ หรือข้อ ๑๐ บรรดาที่เกี่ยวข้อง แล้วแต่กรณีร่วมกันแต่งตั้งคณะกรรมการ</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_12">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 12</span>
+          <span class="maatra-title">การรายงานผู้บังคับบัญชาเพื่อตรวจสอบความถูกต้องของการแต่งตั้งหรือไม่แต่งตั้ง</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ในกรณีที่ผู้มีอำนาจแต่งตั้งคณะกรรมการตามข้อ ๘ ข้อ ๑๐ หรือข้อ ๑๑ แต่งตั้งคณะกรรมการหรือเห็นว่าไม่มีเหตุที่จะแต่งตั้งคณะกรรมการ ให้ผู้มีอำนาจแต่งตั้งคณะกรรมการรายงานไปยังผู้บังคับบัญชาหรือผู้กำกับดูแลหรือควบคุมการปฏิบัติงานของผู้มีอำนาจแต่งตั้งนั้นเพื่อตรวจสอบความถูกต้องของการแต่งตั้งหรือไม่แต่งตั้งคณะกรรมการ หากการนั้นไม่ถูกต้องให้สั่งแก้ไขใหม่ให้ถูกต้อง</p>
+          <p class="maatra-line">ถ้าผู้มีอำนาจแต่งตั้งคณะกรรมการตามข้อ ๘ ข้อ ๑๐ หรือข้อ ๑๑ ไม่แก้ไขใหม่ให้ถูกต้องตามคำสั่งในวรรคหนึ่งภายในเวลาอันสมควร ให้ผู้บังคับบัญชาหรือผู้กำกับดูแลหรือควบคุมการปฏิบัติงานของผู้มีอำนาจแต่งตั้งคณะกรรมการ มีอำนาจแต่งตั้งคณะกรรมการหรือเปลี่ยนแปลงกรรมการแทนผู้มีอำนาจแต่งตั้งนั้นได้ตามที่เห็นสมควร</p>
+          <div class="maatra-footnotes">
+            <div class="fn-header">หมายเหตุ / การแก้ไขเพิ่มเติม</div>
+            <div class="fn-item">๒. ข้อ ๑๒ แก้ไขเพิ่มเติมโดยระเบียบฯ (ฉ.๒/๒๕๕๙)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_12_1">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 12/1</span>
+          <span class="maatra-title">กรณีหัวหน้าหน่วยงานของรัฐเป็นผู้ทำให้เกิดความเสียหายเสียเอง</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ในกรณีที่มีเหตุอันควรเชื่อได้ว่าหัวหน้าหน่วยงานของรัฐกระทำให้เกิดความเสียหายหรือมีส่วนกระทำให้เกิดความเสียหายแก่หน่วยงานของรัฐ ให้ผู้บังคับบัญชาหรือผู้กำกับดูแลหรือควบคุมการปฏิบัติงานของหัวหน้าหน่วยงานของรัฐมีอำนาจแต่งตั้งคณะกรรมการ</p>
+          <div class="maatra-footnotes">
+            <div class="fn-header">หมายเหตุ / การแก้ไขเพิ่มเติม</div>
+            <div class="fn-item">๓. ข้อ ๑๒/๑ เพิ่มเติมโดยระเบียบฯ (ฉ.๒/๒๕๕๙)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_13">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 13</span>
+          <span class="maatra-title">องค์ประชุม มติเสียงข้างมาก และความเห็นแย้งของคณะกรรมการ</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ในการประชุมคณะกรรมการต้องมีกรรมการมาประชุมไม่น้อยกว่ากึ่งหนึ่งของกรรมการทั้งหมดจึงจะเป็นองค์ประชุม ถ้าประธานกรรมการไม่อยู่ในที่ประชุม หรือไม่สามารถปฏิบัติหน้าที่ได้ให้กรรมการที่มาประชุมเลือกกรรมการคนใดคนหนึ่งขึ้นทำหน้าที่แทน</p>
+          <p class="maatra-line">มติที่ประชุมให้ถือเสียงข้างมาก กรรมการที่ไม่เห็นด้วยกับมติที่ประชุม อาจทำความเห็นแย้งมติที่ประชุมรวมไว้ในความเห็นของคณะกรรมการได้</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_14">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 14</span>
+          <span class="maatra-title">อำนาจหน้าที่ในการแสวงหาข้อเท็จจริงและรวบรวมพยานหลักฐาน</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ในการปฏิบัติหน้าที่ ให้คณะกรรมการมีอำนาจหน้าที่พิจารณาข้อเท็จจริงอันเกี่ยวกับการกระทำละเมิด โดยตรวจสอบข้อเท็จจริงและรวบรวมพยานหลักฐานทั้งปวงที่เกี่ยวข้อง รับฟังพยานบุคคล หรือพยานผู้เชี่ยวชาญ และตรวจสอบเอกสาร วัตถุ หรือสถานที่</p>
+          <p class="maatra-line">กระทรวงการคลังอาจกำหนดแนวทางการสอบข้อเท็จจริง การทำบันทึกและการรายงานผล เพื่อเป็นแนวทางปฏิบัติเป็นการทั่วไปได้</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_15">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 15</span>
+          <span class="maatra-title">หลักฟังความทุกฝ่าย (เปิดโอกาสชี้แจงและโต้แย้งแสดงพยานหลักฐาน)</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">คณะกรรมการต้องให้โอกาสแก่เจ้าหน้าที่ที่เกี่ยวข้องหรือผู้เสียหายได้ชี้แจงข้อเท็จจริงและโต้แย้งแสดงพยานหลักฐานของตนอย่างเพียงพอและเป็นธรรม</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_16">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 16</span>
+          <span class="maatra-title">การเสนอความเห็น การสอบสวนเพิ่มเติม และผลทางกฎหมายของความเห็น</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">เมื่อคณะกรรมการพิจารณาเสร็จแล้วให้เสนอความเห็นไปยังผู้แต่งตั้ง ถ้าผู้แต่งตั้งขอให้ทบทวนหรือสอบสวนเพิ่มเติม ให้คณะกรรมการรีบดำเนินการให้เสร็จสิ้นภายในเวลาที่ผู้แต่งตั้งกำหนด</p>
+          <p class="maatra-line">ความเห็นของคณะกรรมการต้องมีข้อเท็จจริงและข้อกฎหมายที่แจ้งชัด และต้องมีพยานหลักฐานที่สนับสนุนประกอบด้วย</p>
+          <p class="maatra-line">ความเห็นของคณะกรรมการไม่ผูกมัดผู้แต่งตั้งหรือรัฐที่จะมีความเห็นเป็นอย่างอื่น</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_17">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 17</span>
+          <span class="maatra-title">การวินิจฉัยสั่งการของผู้แต่งตั้ง การส่งสำนวนภายใน 7 วัน และกำหนดเวลาตรวจสอบของ กค.</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">เมื่อผู้แต่งตั้งได้รับผลการพิจารณาของคณะกรรมการแล้ว ให้วินิจฉัยสั่งการว่ามีผู้รับผิดชดใช้ค่าสินไหมทดแทนหรือไม่ และเป็นจำนวนเท่าใด แต่ยังมิต้องแจ้งการสั่งการให้ผู้ที่เกี่ยวข้องทราบ</p>
+          <p class="maatra-line">ให้ผู้แต่งตั้งส่งสำนวนภายในเจ็ดวันนับแต่วันวินิจฉัยสั่งการให้กระทรวงการคลังเพื่อตรวจสอบ เว้นแต่เป็นเรื่องที่กระทรวงการคลังประกาศกำหนดว่าไม่ต้องรายงานให้กระทรวงการคลังตรวจสอบ</p>
+          <p class="maatra-line">ให้กระทรวงการคลังพิจารณาโดยไม่ชักช้า และให้มีอำนาจตรวจสอบพยานหลักฐานที่เกี่ยวข้อง ในกรณีที่เห็นสมควรจะให้บุคคลใดส่งพยานหลักฐาน หรือมาให้ถ้อยคำเพื่อประกอบการพิจารณาเพิ่มเติมอีกก็ได้</p>
+          <p class="maatra-line">ในระหว่างการพิจารณาของกระทรวงการคลัง ให้ผู้แต่งตั้งสั่งการให้ตระเตรียมเรื่องให้พร้อมสำหรับการออกคำสั่งให้เจ้าหน้าที่ชำระค่าสินไหมทดแทนหรือดำเนินการฟ้องคดีเพื่อมิให้ขาดอายุความสองปีนับจากวันที่ผู้แต่งตั้งวินิจฉัยสั่งการ</p>
+          <p class="maatra-line">ให้กระทรวงการคลังพิจารณาให้แล้วเสร็จก่อนอายุความสองปีสิ้นสุดไม่น้อยกว่าหกเดือน ถ้ากระทรวงการคลังไม่แจ้งผลการตรวจสอบให้ทราบภายในกำหนดเวลาดังกล่าว ให้ผู้แต่งตั้งมีคำสั่งตามที่เห็นสมควรและแจ้งให้ผู้ที่เกี่ยวข้องทราบ เว้นแต่ในกรณีหน่วยงานของรัฐนั้นเป็นราชการส่วนท้องถิ่น รัฐวิสาหกิจที่จัดตั้งขึ้นโดยพระราชบัญญัติหรือพระราชกฤษฎีกา หรือหน่วยงานอื่นของรัฐตามกฎหมายว่าด้วยความรับผิดทางละเมิดของเจ้าหน้าที่ ให้กระทรวงการคลังพิจารณาให้แล้วเสร็จก่อนอายุความสองปีสิ้นสุดไม่น้อยกว่าหนึ่งปี ถ้ากระทรวงการคลังไม่แจ้งผลการตรวจสอบให้ทราบภายในกำหนดเวลาดังกล่าว ให้ผู้แต่งตั้งมีคำสั่งตามที่เห็นสมควรและแจ้งให้ผู้ที่เกี่ยวข้องทราบ</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_18">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 18</span>
+          <span class="maatra-title">การสั่งการตามความเห็นของกระทรวงการคลังและการสอบเพิ่มเติมกรณีผู้รับผิดใหม่</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">เมื่อกระทรวงการคลังพิจารณาเสร็จแล้ว ให้ผู้แต่งตั้งมีคำสั่งตามความเห็นของกระทรวงการคลังและแจ้งคำสั่งนั้นให้ผู้ที่เกี่ยวข้องทราบ รวมทั้งราชการส่วนท้องถิ่น รัฐวิสาหกิจที่จัดตั้งขึ้นโดยพระราชบัญญัติหรือพระราชกฤษฎีกา หรือหน่วยงานอื่นของรัฐตามกฎหมายว่าด้วยความรับผิดทางละเมิดของเจ้าหน้าที่ ให้ผู้แต่งตั้งของหน่วยงานของรัฐแห่งนั้นสั่งการไปตามความเห็นของกระทรวงการคลัง</p>
+          <p class="maatra-line">เมื่อหน่วยงานของรัฐที่เสียหายตามวรรคหนึ่งสั่งการตามความเห็นของกระทรวงการคลังแล้ว ให้ผู้แต่งตั้งดำเนินการเพื่อออกคำสั่งให้ผู้ต้องรับผิดชำระค่าสินไหมทดแทนหรือฟ้องคดีต่อศาลอย่าให้ขาดอายุความ</p>
+          <p class="maatra-line">ในกรณีที่ปรากฏตามความเห็นของกระทรวงการคลังว่ามีผู้ใดต้องรับผิดชดใช้ค่าสินไหมทดแทนเพิ่มขึ้นหรือต่างไปจากสำนวนที่ผู้แต่งตั้งส่งให้ตรวจสอบ หากยังไม่เคยมีการสอบผู้นั้นในฐานะผู้ต้องรับผิดมาก่อน ให้ผู้แต่งตั้งส่งเรื่องให้คณะกรรมการทำการสอบข้อเท็จจริงความรับผิดผู้นั้นเพื่อประกอบการวินิจฉัยสั่งการ</p>
+          <p class="maatra-line">ถ้าผลของคำวินิจฉัยของผู้แต่งตั้งตรงกับความเห็นของกระทรวงการคลัง ให้ผู้แต่งตั้งสั่งการให้ผู้นั้นรับผิดแล้วรายงานกระทรวงการคลังเพื่อทราบ ถ้าผลของคำวินิจฉัยของผู้แต่งตั้งต่างไปจากความเห็นของกระทรวงการคลัง ให้ผู้แต่งตั้งรายงานกระทรวงการคลังพิจารณาให้ความเห็นอีกครั้งหนึ่ง ทั้งนี้ ให้นำความในข้อ ๑๗ วรรคสี่และวรรคห้า มาใช้บังคับโดยอนุโลม</p>
+          <div class="maatra-footnotes">
+            <div class="fn-header">หมายเหตุ / การแก้ไขเพิ่มเติม</div>
+            <div class="fn-item">๔. ข้อ ๑๘ แก้ไขเพิ่มเติมโดยระเบียบฯ (ฉ.๒/๒๕๕๙)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_19">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 19</span>
+          <span class="maatra-title">(ยกเลิก)</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">(ยกเลิก)</p>
+          <div class="maatra-footnotes">
+            <div class="fn-header">หมายเหตุ / การแก้ไขเพิ่มเติม</div>
+            <div class="fn-item">๕. ข้อ ๑๙ ยกเลิกโดยระเบียบฯ (ฉ.๒/๒๕๕๙)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_20">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 20</span>
+          <span class="maatra-title">การหาข้อยุติกรณีผู้แต่งตั้งร่วมมีความเห็นแตกต่างกันจนถึงที่สุด</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ในกรณีร่วมกันแต่งตั้งคณะกรรมการตามข้อ ๑๐ หรือข้อ ๑๑ ให้ผู้แต่งตั้งร่วมร่วมกันวินิจฉัยสั่งการ และเสนอความเห็นทั้งหมด ไม่ว่าจะเห็นตรงกันหรือไม่ ไปยังกระทรวงการคลัง และเมื่อได้ดำเนินการตามข้อ ๑๗ และข้อ ๑๘ แล้ว ถ้าผลในชั้นที่สุดผู้แต่งตั้งร่วมยังมีความเห็นตามข้อ ๑๘ แตกต่างกันจนหาข้อยุติไม่ได้ ก็ให้เสนอเรื่องให้คณะรัฐมนตรีวินิจฉัยชี้ขาด</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_21">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 21</span>
+          <span class="maatra-title">คณะกรรมการพิจารณาความรับผิดทางแพ่งของกระทรวงการคลัง</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ในการพิจารณาของกระทรวงการคลัง ให้มี “คณะกรรมการพิจารณาความรับผิดทางแพ่ง” เป็นผู้พิจารณาให้ความเห็นต่อกระทรวงการคลัง</p>
+          <p class="maatra-line">ให้คณะกรรมการตามวรรคหนึ่งประกอบด้วยอธิบดีกรมบัญชีกลางเป็นประธานกรรมการ ผู้แทนสำนักงานคณะกรรมการกฤษฎีกา ผู้แทนสำนักงานอัยการสูงสุด ผู้แทนสำนักงานตรวจเงินแผ่นดิน และผู้แทนกระทรวงการคลังตามจำนวนที่จำเป็นซึ่งปลัดกระทรวงการคลังแต่งตั้ง เป็นกรรมการ</p>
+          <p class="maatra-line">คณะกรรมการพิจารณาความรับผิดทางแพ่งอาจแต่งตั้งคณะอนุกรรมการเพื่อปฏิบัติหน้าที่ตามที่มอบหมายได้</p>
+          <p class="maatra-line">ในการประชุมของคณะกรรมการพิจารณาความรับผิดทางแพ่งให้นำความในข้อ ๑๓ มาใช้บังคับโดยอนุโลม</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_22">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 22</span>
+          <span class="maatra-title">ความเสียหายที่เกิดแก่เงินต้องชดใช้เป็นเงินเท่านั้น</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ในกรณีที่ความเสียหายเกิดแก่เงิน ให้ใช้เป็นเงินแต่เพียงอย่างเดียว</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_23">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 23</span>
+          <span class="maatra-title">การชดใช้เป็นทรัพย์สินหรือซ่อมแซมกรณีความเสียหายมิได้เกิดแก่เงิน</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ในกรณีที่ความเสียหายมิได้เกิดแก่เงิน จะดำเนินการดังต่อไปนี้แทนการชำระเงินก็ได้</p>
+          <p class="maatra-line indent">(๑) ชดใช้เป็นทรัพย์สินอย่างเดียวกันโดยมีสภาพคุณภาพปริมาณ และลักษณะเดียวกันกับทรัพย์สินที่สูญหายหรือเสียหายและใช้งานแทนได้เช่นเดียวกับทรัพย์สินที่สูญหายหรือเสียหาย โดยทำสัญญายินยอมชดใช้ค่าสินไหมทดแทนเป็นทรัพย์สินดังกล่าว</p>
+          <p class="maatra-line indent">(๒) ซ่อมแซมหรือบูรณะทรัพย์สินที่ชำรุดเสียหายให้คงสภาพเดิม โดยทำสัญญาว่าจะจัดการให้ทรัพย์สินคงสภาพเหมือนเดิมภายในเวลาไม่เกินหกเดือน</p>
+          <p class="maatra-line indent">(๓) การชดใช้เป็นทรัพย์สินหรือการซ่อมแซมหรือบูรณะทรัพย์สินที่แตกต่างไปจาก (๑) หรือ (๒) ต้องได้รับความเห็นชอบจากกระทรวงการคลังก่อน</p>
+          <p class="maatra-line">การชดใช้ค่าเสียหายเป็นทรัพย์สินหรือการซ่อมแซมหรือบูรณะทรัพย์สินตามวรรคหนึ่ง ให้มีการตรวจรับตามระเบียบว่าด้วยการพัสดุของทางราชการหรือของหน่วยงานของรัฐนั้น ๆ</p>
+          <p class="maatra-line">การทำสัญญาตามวรรคหนึ่งต้องจัดให้มีผู้ค้ำประกัน และในกรณีที่เห็นสมควรจะให้วางหลักประกันด้วยก็ได้</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_24">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 24</span>
+          <span class="maatra-title">การดำเนินการกรณีเจ้าหน้าที่ผู้รับผิดตาย (ระวังขาดอายุความมรดก)</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ในกรณีที่เจ้าหน้าที่ผู้รับผิดตาย ให้รีบดำเนินการตามระเบียบนี้โดยอนุโลมเพื่อให้ได้ข้อยุติโดยเร็วและระมัดระวังอย่าให้ขาดอายุความมรดก ในกรณีที่ผู้แต่งตั้งเห็นว่าเจ้าหน้าที่ต้องรับผิดชดใช้ค่าสินไหมทดแทนแก่หน่วยงานของรัฐ ให้ส่งเรื่องให้พนักงานอัยการเพื่อฟ้องผู้จัดการมรดกหรือทายาทต่อไป ในกรณีของผู้แต่งตั้งร่วมถ้ามีความเห็นแตกต่างกันให้ดำเนินการไปพลางก่อนตามความเห็นของผู้แต่งตั้งสำหรับหน่วยงานของรัฐที่เสียหาย และถ้าต่อมามีข้อยุติเป็นประการใด ให้แก้ไขเปลี่ยนแปลงการดำเนินการไปตามนั้น</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_25">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 25</span>
+          <span class="maatra-title">หลักเกณฑ์การผ่อนชำระค่าสินไหมทดแทนและการจัดหาผู้ค้ำประกัน</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ในกรณีที่เจ้าหน้าที่ต้องรับผิดและขอผ่อนชำระค่าสินไหมทดแทนไม่ว่าจะเกิดขึ้นในขั้นตอนใด ให้หน่วยงานของรัฐที่เสียหายกำหนดจำนวนเงินที่ขอผ่อนชำระนั้นตามความเหมาะสม โดยคำนึงถึงรายได้ ค่าใช้จ่ายในการดำรงชีพตามฐานานุรูปของเจ้าหน้าที่ ความรับผิดชอบที่บุคคลนั้นมีอยู่ตามกฎหมายหรือศีลธรรมอันดี และพฤติการณ์แห่งกรณีประกอบด้วย</p>
+          <p class="maatra-line">ในการให้ผ่อนชำระ ต้องจัดให้มีผู้ค้ำประกัน และในกรณีที่เห็นสมควรจะให้วางหลักประกันด้วยก็ได้</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_26">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 26</span>
+          <span class="maatra-title">อำนาจกระทรวงการคลังประกาศหลักเกณฑ์ค้ำประกันและหนังสือผ่อนชำระ</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">กระทรวงการคลังอาจประกาศกำหนดหลักเกณฑ์เกี่ยวกับการค้ำประกัน การวางหลักประกัน หนังสือผ่อนชำระ และสัญญาค้ำประกันก็ได้</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_27">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 27</span>
+          <span class="maatra-title">การผ่อนผันกรณีไม่สามารถชำระหนี้และข้อยกเว้นการฟ้องคดีล้มละลาย</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ในกรณีที่เจ้าหน้าที่ต้องชดใช้ค่าสินไหมทดแทน แม้ปรากฏว่าเจ้าหน้าที่ไม่สามารถชำระหนี้ได้ ให้หน่วยงานของรัฐที่เสียหายพิจารณาผ่อนผันตามความเหมาะสมตามหลักเกณฑ์ที่กระทรวงการคลังกำหนดและต้องไม่ดำเนินคดีล้มละลายแก่ผู้นั้น แต่ถ้าการที่ไม่สามารถชำระหนี้ได้นั้นเกิดจากการประพฤติชั่วอย่างร้ายแรงของเจ้าหน้าที่หรือเจ้าหน้าที่กระทำการใด ๆ อันเป็นการประพฤติชั่วอย่างร้ายแรงเพื่อให้หน่วยงานของรัฐไม่ได้รับชำระหนี้ครบถ้วน ให้หน่วยงานของรัฐที่เสียหายส่งเรื่องให้พนักงานอัยการดำเนินคดีล้มละลาย</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_28">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 28</span>
+          <span class="maatra-title">การประนีประนอมยอมความต้องได้รับความเห็นชอบจากกระทรวงการคลัง</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">การประนีประนอมยอมความไม่ว่าจะเกิดขึ้นในขั้นตอนใดต้องได้รับความเห็นชอบจากกระทรวงการคลังก่อน เว้นแต่กระทรวงการคลังจะประกาศกำหนดเป็นอย่างอื่น</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_29">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 29</span>
+          <span class="maatra-title">หลักเกณฑ์เฉพาะของราชการส่วนท้องถิ่น รัฐวิสาหกิจ หรือหน่วยงานอื่นของรัฐ</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ในกรณีตามข้อ ๒๖ ข้อ ๒๗ หรือข้อ ๒๘ ถ้าเกี่ยวกับหน่วยงานของรัฐที่เป็นราชการส่วนท้องถิ่น รัฐวิสาหกิจที่จัดตั้งขึ้นโดยพระราชบัญญัติหรือพระราชกฤษฎีกา หรือหน่วยงานอื่นของรัฐตามกฎหมายว่าด้วยความรับผิดทางละเมิดของเจ้าหน้าที่ การดำเนินการให้เป็นไปตามระเบียบสำหรับหน่วยงานของรัฐแห่งนั้น</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Group 2: หมวด 2 -->
+  <div class="group-section open" id="g_rule_tort_2">
+    <div class="group-header" onclick="toggleGroup('g_rule_tort_2')">
+      <span class="group-title">หมวด 2 กรณีเจ้าหน้าที่ของรัฐกระทำละเมิดต่อบุคคลภายนอก (ข้อ 30–38)</span>
+      <div class="group-meta">
+        <span class="group-count">9 ข้อ</span>
+        <span class="group-toggle">▼</span>
+      </div>
+    </div>
+    <div class="group-body" id="g_rule_tort_2-body">
+
+      <div class="maatra-card" id="m_rule_tort_30">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 30</span>
+          <span class="maatra-title">นิยามคำว่า “หน่วยงานของรัฐ” ในหมวด 2</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ในหมวดนี้</p>
+          <p class="maatra-line">“หน่วยงานของรัฐ” หมายความว่า กระทรวง ทบวง กรม หรือส่วนราชการที่เรียกชื่ออย่างอื่นและมีฐานะเป็นกรม และราชการส่วนภูมิภาค แต่ไม่รวมถึงราชการส่วนท้องถิ่น รัฐวิสาหกิจ หรือหน่วยงานอื่นของรัฐ</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_31">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 31</span>
+          <span class="maatra-title">การแจ้งเหตุเมื่อเจ้าหน้าที่ทำละเมิดต่อบุคคลภายนอกในการปฏิบัติหน้าที่</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ในกรณีที่เจ้าหน้าที่ทำให้เกิดความเสียหายต่อบุคคลภายนอก ถ้าเจ้าหน้าที่ผู้นั้นเห็นว่าความเสียหายเกิดขึ้นเนื่องในการที่ตนได้กระทำในการปฏิบัติหน้าที่ ให้เจ้าหน้าที่ผู้นั้นแจ้งต่อผู้บังคับบัญชาโดยไม่ชักช้า และให้มีการรายงานตามลำดับชั้นถึงหัวหน้าหน่วยงานของรัฐแห่งนั้น แต่ในกรณีที่เจ้าหน้าที่เป็นรัฐมนตรีหรือกรรมการที่ตั้งขึ้นเพื่อปฏิบัติงานในหน่วยงานของรัฐหรือผู้ซึ่งไม่สังกัดหน่วยงานของรัฐแห่งใด หรือผู้ซึ่งไม่มีผู้บังคับบัญชา ให้ดำเนินการตามข้อ ๙ (๑) (๒) (๓) หรือ (๔) และให้นำข้อ ๘ ถึงข้อ ๒๐ มาใช้บังคับโดยอนุโลม</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_32">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 32</span>
+          <span class="maatra-title">การรับคำขอให้ชดใช้ค่าสินไหมทดแทนและการส่งต่อกรณีผิดหน่วยงาน</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ในกรณีที่ผู้เสียหายยื่นคำขอให้หน่วยงานของรัฐชดใช้ค่าสินไหมทดแทน ให้หน่วยงานของรัฐที่เจ้าหน้าที่ผู้นั้นสังกัด หรือกระทรวงการคลัง ในกรณีที่เจ้าหน้าที่มิได้สังกัดหน่วยงานใด หรือหน่วยงานของรัฐแห่งใดแห่งหนึ่ง ในกรณีที่ความเสียหายเกิดจากผลการกระทำของเจ้าหน้าที่หลายหน่วยงาน รับคำขอนั้นและดำเนินการตามระเบียบนี้โดยไม่ชักช้า</p>
+          <p class="maatra-line">ในกรณีที่ผู้เสียหายยื่นคำขอผิดหน่วยงาน ให้หน่วยงานผู้รับคำขอรีบส่งเรื่องไปยังหน่วยงานของรัฐที่เห็นว่าเป็นหน่วยงานของรัฐที่จะต้องรับผิดชอบพิจารณาต่อไป และให้แจ้งให้ผู้ยื่นคำขอทราบ กรณีดังกล่าวนี้ให้ถือว่าหน่วยงานของรัฐได้รับคำขอให้ชดใช้ค่าสินไหมทดแทนนับแต่วันที่ได้รับคำขอที่ส่งมานั้น</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_33">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 33</span>
+          <span class="maatra-title">การแต่งตั้งคณะกรรมการเมื่อได้รับคำขอชดใช้ค่าสินไหมทดแทน</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">เมื่อได้รับคำขอตามข้อ ๓๒ และหน่วยงานของรัฐที่ได้รับคำขอไว้เห็นว่าเป็นเรื่องที่เกี่ยวกับตน ให้แต่งตั้งคณะกรรมการเพื่อดำเนินการต่อไปโดยไม่ชักช้า</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_34">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 34</span>
+          <span class="maatra-title">การชดใช้ค่าสินไหมทดแทนและการคิดดอกเบี้ยผิดนัดตั้งแต่วันทำละเมิด</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ในกรณีที่ต้องชดใช้ค่าสินไหมทดแทนให้แก่ผู้ยื่นคำขอ ให้หน่วยงานของรัฐที่ต้องชดใช้ค่าสินไหมทดแทนปฏิบัติตามที่กระทรวงการคลังกำหนด</p>
+          <p class="maatra-line">ให้คิดดอกเบี้ยตามอัตราดอกเบี้ยผิดนัดนับแต่วันกระทำละเมิดในจำนวนเงินที่ต้องชดใช้ค่าสินไหมทดแทนให้แก่ผู้ยื่นคำขอจนถึงวันชำระค่าสินไหมทดแทน</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_35">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 35</span>
+          <span class="maatra-title">กรณีผู้เสียหายฟ้องคดีต่อศาลและการประสานงานสำนักงานอัยการสูงสุด</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ในกรณีที่ผู้เสียหายฟ้องคดีต่อศาล ให้ผู้มีอำนาจแต่งตั้งตั้งคณะกรรมการโดยไม่ชักช้า เว้นแต่จะได้มีการตั้งคณะกรรมการดังกล่าวไว้แล้ว และให้ประสานงานกับสำนักงานอัยการสูงสุดเพื่อเตรียมการต่อสู้คดีต่อไป พร้อมทั้งรายงานให้กระทรวงการคลังทราบและปฏิบัติตามที่ได้รับคำแนะนำจากกระทรวงการคลัง</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_36">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 36</span>
+          <span class="maatra-title">การเรียกเจ้าหน้าที่เข้ามาเป็นคู่ความเมื่อมิได้กระทำในการปฏิบัติหน้าที่</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ถ้าผู้แต่งตั้งเห็นว่าความเสียหายเกิดจากเจ้าหน้าที่มิได้กระทำในการปฏิบัติหน้าที่ หรือเมื่อได้ฟังความเห็นของคณะกรรมการหรือได้รับทราบผลการพิจารณาของกระทรวงการคลังแล้ว เห็นว่าความเสียหายเกิดจากเจ้าหน้าที่มิได้กระทำในการปฏิบัติหน้าที่ ให้เรียกเจ้าหน้าที่ผู้นั้นเข้ามาเป็นคู่ความในคดีด้วย</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_37">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 37</span>
+          <span class="maatra-title">ห้ามเรียกเจ้าหน้าที่เป็นคู่ความและช่วยเหลือให้พ้นคดีเมื่อกระทำในการปฏิบัติหน้าที่</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ถ้าผลการพิจารณาของผู้แต่งตั้งยุติเป็นที่สุดว่า ความเสียหายเกิดจากเจ้าหน้าที่ได้กระทำในการปฏิบัติหน้าที่ จะต้องไม่มีการเรียกเจ้าหน้าที่เข้ามาเป็นคู่ความในคดี แต่ถ้าผู้เสียหายได้ฟ้องเจ้าหน้าที่ต่อศาลก่อนแล้วหรือมีการเรียกเจ้าหน้าที่เข้ามาเป็นคู่ความในคดีก่อนแล้ว ให้ผู้แต่งตั้งแจ้งผลการพิจารณาให้พนักงานอัยการเพื่อแถลงต่อศาล เพื่อให้เจ้าหน้าที่มีโอกาสพ้นจากการเป็นคู่ความในคดี และขอให้พนักงานอัยการช่วยเหลือทางคดีแก่เจ้าหน้าที่ในระหว่างนั้นด้วย</p>
+        </div>
+      </div>
+
+      <div class="maatra-card" id="m_rule_tort_38">
+        <div class="maatra-header">
+          <span class="maatra-badge">ข้อ 38</span>
+          <span class="maatra-title">การพิจารณาไล่เบี้ยเจ้าหน้าที่ในภายหลังและนำข้อ 22–29 มาใช้โดยอนุโลม</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ในกรณีหน่วยงานของรัฐต้องรับผิดต่อบุคคลภายนอกในความเสียหายที่เกิดขึ้นจากการปฏิบัติหน้าที่ของเจ้าหน้าที่นั้น ความรับผิดของเจ้าหน้าที่จะมีหรือไม่ และเพียงใด เป็นกรณีที่หน่วยงานของรัฐจะพิจารณาไล่เบี้ยเอาจากเจ้าหน้าที่ในภายหลัง ซึ่งคณะกรรมการ ผู้แต่งตั้ง และกระทรวงการคลัง แล้วแต่กรณี ต้องพิจารณาด้วยว่าจะมีการไล่เบี้ยหรือไม่ หรือจะไล่เบี้ยให้ชดใช้เพียงใด และให้นำข้อ ๒๒ ถึงข้อ ๒๙ มาใช้บังคับกับการชดใช้ค่าสินไหมทดแทนที่หน่วยงานของรัฐได้ใช้ให้แก่ผู้เสียหาย โดยอนุโลม</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Group 3: ท้ายระเบียบและหมายเหตุ -->
+  <div class="group-section open" id="g_rule_tort_3">
+    <div class="group-header" onclick="toggleGroup('g_rule_tort_3')">
+      <span class="group-title">ท้ายระเบียบ หมายเหตุ และประวัติการแก้ไขเพิ่มเติม</span>
+      <div class="group-meta">
+        <span class="group-count">หมายเหตุ</span>
+        <span class="group-toggle">▼</span>
+      </div>
+    </div>
+    <div class="group-body" id="g_rule_tort_3-body">
+      <div class="maatra-card" id="m_rule_tort_remarks">
+        <div class="maatra-header">
+          <span class="maatra-badge">ประกาศท้ายระเบียบ</span>
+          <span class="maatra-title">ผู้ลงนามและประวัติการประกาศแก้ไขเพิ่มเติม</span>
+        </div>
+        <div class="maatra-body">
+          <p class="maatra-line">ประกาศ ณ วันที่ ๑๕ พฤศจิกายน พ.ศ. ๒๕๓๙</p>
+          <p class="maatra-line"><strong>บรรหาร ศิลปอาชา</strong><br>นายกรัฐมนตรี</p>
+          <div style="margin-top:16px;padding-top:14px;border-top:1.5px dashed var(--border-light);">
+            <p class="maatra-line"><strong>ประวัติการประกาศในราชกิจจานุเบกษาและการแก้ไขเพิ่มเติม:</strong></p>
+            <ul style="padding-left:24px;line-height:1.9;color:var(--text);font-size:15.5px;">
+              <li><strong>ฉบับแรก (พ.ศ. ๒๕๓๙):</strong> ราชกิจจานุเบกษา เล่ม ๑๑๓/ตอนพิเศษ ๓๙ ง/หน้า ๑/๑๕ พฤศจิกายน ๒๕๓๙</li>
+              <li><strong>ระเบียบสำนักนายกรัฐมนตรี ว่าด้วยหลักเกณฑ์การปฏิบัติเกี่ยวกับความรับผิดทางละเมิดของเจ้าหน้าที่ (ฉบับที่ ๒) พ.ศ. ๒๕๕๙:</strong> แก้ไขเพิ่มเติมข้อ ๑๒, เพิ่มข้อ ๑๒/๑, แก้ไขเพิ่มเติมข้อ ๑๘ และยกเลิกข้อ ๑๙ (ราชกิจจานุเบกษา เล่ม ๑๓๓/ตอนพิเศษ ๒๐๗ ง/หน้า ๑/๑๕ กันยายน ๒๕๕๙)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<button class="back-top" id="bt" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="กลับด้านบน">↑</button>
+<a class="home-btn" href="../index.html" title="หน้าหลัก">🏠</a>
+
+<script>
+window.addEventListener('scroll',()=>{
+  const bt = document.getElementById('bt');
+  if(bt) bt.classList.toggle('visible', window.scrollY > 300);
+});
+function toggleGroup(id){
+  const el = document.getElementById(id);
+  if(el) el.classList.toggle('open');
+}
+function expandAll(){
+  document.querySelectorAll('.group-section').forEach(el => el.classList.add('open'));
+}
+function collapseAll(){
+  document.querySelectorAll('.group-section').forEach(el => el.classList.remove('open'));
+}
+
+const allCards = document.querySelectorAll('.maatra-card');
+const allGroups = document.querySelectorAll('.group-section');
+const noRes = document.getElementById('noRes');
+const cnt = document.getElementById('cnt');
+
+function doSearch(q){
+  allCards.forEach(c => {
+    const o = c.getAttribute('data-orig');
+    if(o) c.querySelector('.maatra-body').innerHTML = o;
+    c.classList.remove('hidden', 'highlight');
+  });
+  if(!q.trim()){
+    allGroups.forEach(g => g.classList.remove('hidden'));
+    noRes.classList.add('hidden');
+    cnt.textContent = '';
+    return;
+  }
+  const ql = q.toLowerCase();
+  let mc = 0;
+  allCards.forEach(c => {
+    if(c.textContent.toLowerCase().includes(ql)){
+      c.classList.remove('hidden');
+      c.classList.add('highlight');
+      const b = c.querySelector('.maatra-body');
+      if(b && !c.getAttribute('data-orig')) c.setAttribute('data-orig', b.innerHTML);
+      if(b) hlText(b, q);
+      mc++;
+    } else {
+      c.classList.add('hidden');
+      c.classList.remove('highlight');
+    }
+  });
+  allGroups.forEach(g => {
+    const v = g.querySelectorAll('.maatra-card:not(.hidden)').length > 0;
+    g.classList.toggle('hidden', !v);
+    if(v) g.classList.add('open');
+  });
+  noRes.classList.toggle('hidden', mc > 0);
+  cnt.textContent = mc > 0 ? (mc + ' ข้อที่ตรงกัน') : '';
+}
+
+function hlText(el, q){
+  const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+  const ns = [];
+  while(w.nextNode()) ns.push(w.currentNode);
+  const escaped = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const rx = new RegExp(escaped, 'gi');
+  ns.forEach(n => {
+    if(n.nodeValue && rx.test(n.nodeValue)){
+      const s = document.createElement('span');
+      s.innerHTML = n.nodeValue.replace(rx, m => '<span class="search-highlight">' + m + '</span>');
+      const f = document.createDocumentFragment();
+      while(s.firstChild) f.appendChild(s.firstChild);
+      n.parentNode.replaceChild(f, n);
+    }
+  });
+}
+</script>
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('../service-worker.js')
+      .then(reg => reg.update())
+      .catch(e=>console.error(e));
+  });
+  let refreshing = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!refreshing) {
+      refreshing = true;
+      window.location.reload();
+    }
+  });
+}
+</script>
+<script src="../maatra_star.js"></script>
+</body>
+</html>
